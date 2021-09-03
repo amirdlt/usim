@@ -1,0 +1,95 @@
+plugins {
+    id 'java'
+}
+
+group 'com.usim'
+version '1.0.0-beta'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+
+    implementation platform('org.lwjgl:lwjgl-bom:3.2.3')
+
+    implementation "org.joml:joml:1.10.1"
+    implementation "org.joml:joml-primitives:1.10.0"
+
+    implementation 'org.lwjgl:lwjgl:3.2.3'
+    implementation 'org.lwjgl:lwjgl-assimp:3.2.3'
+    implementation 'org.lwjgl:lwjgl-bgfx:3.2.3'
+    implementation 'org.lwjgl:lwjgl-cuda:3.2.3'
+    implementation 'org.lwjgl:lwjgl-egl:3.2.3'
+    implementation 'org.lwjgl:lwjgl-glfw:3.2.3'
+    implementation 'org.lwjgl:lwjgl-jawt:3.2.3'
+    implementation 'org.lwjgl:lwjgl-jemalloc:3.2.3'
+    implementation 'org.lwjgl:lwjgl-libdivide:3.2.3'
+    implementation 'org.lwjgl:lwjgl-llvm:3.2.3'
+    implementation 'org.lwjgl:lwjgl-lmdb:3.2.3'
+    implementation 'org.lwjgl:lwjgl-lz4:3.2.3'
+    implementation 'org.lwjgl:lwjgl-meow:3.2.3'
+    implementation 'org.lwjgl:lwjgl-nanovg:3.2.3'
+    implementation 'org.lwjgl:lwjgl-nfd:3.2.3'
+    implementation 'org.lwjgl:lwjgl-nuklear:3.2.3'
+    implementation 'org.lwjgl:lwjgl-odbc:3.2.3'
+    implementation 'org.lwjgl:lwjgl-openal:3.2.3'
+    implementation 'org.lwjgl:lwjgl-opencl:3.2.3'
+    implementation 'org.lwjgl:lwjgl-opengl:3.2.3'
+    implementation 'org.lwjgl:lwjgl-opengles:3.2.3'
+    implementation 'org.lwjgl:lwjgl-openvr:3.2.3'
+    implementation 'org.lwjgl:lwjgl-opus:3.2.3'
+    implementation 'org.lwjgl:lwjgl-ovr:3.2.3'
+    implementation 'org.lwjgl:lwjgl-par:3.2.3'
+    implementation 'org.lwjgl:lwjgl-remotery:3.2.3'
+    implementation 'org.lwjgl:lwjgl-rpmalloc:3.2.3'
+    implementation 'org.lwjgl:lwjgl-shaderc:3.2.3'
+    implementation 'org.lwjgl:lwjgl-sse:3.2.3'
+    implementation 'org.lwjgl:lwjgl-stb:3.2.3'
+    implementation 'org.lwjgl:lwjgl-tinyexr:3.2.3'
+    implementation 'org.lwjgl:lwjgl-tinyfd:3.2.3'
+    implementation 'org.lwjgl:lwjgl-tootle:3.2.3'
+    implementation 'org.lwjgl:lwjgl-vma:3.2.3'
+    implementation 'org.lwjgl:lwjgl-vulkan:3.2.3'
+    implementation 'org.lwjgl:lwjgl-xxhash:3.2.3'
+    implementation 'org.lwjgl:lwjgl-yoga:3.2.3'
+    implementation 'org.lwjgl:lwjgl-zstd:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-assimp:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-bgfx:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-glfw:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-jemalloc:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-libdivide:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-llvm:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-lmdb:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-lz4:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-meow:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-nanovg:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-nfd:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-nuklear:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-openal:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-opengl:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-opengles:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-openvr:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-opus:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-ovr:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-par:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-remotery:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-rpmalloc:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-shaderc:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-sse:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-stb:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-tinyexr:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-tinyfd:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-tootle:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-vma:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-xxhash:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-yoga:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl-zstd:3.2.3'
+}
+
+test {
+    useJUnitPlatform()
+}
