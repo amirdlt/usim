@@ -1,13 +1,13 @@
-//package com.usim.ulib.visualization.render3D.camera;
+package com.usim.ulib.visualization.render3D.camera;//package visualization.render3D.camera;
 //
 //import animation.canvaspanel.CoordinatedCanvasPanel;
 //import animation.canvaspanel.Render;
 //import animation.shapes.shapes3d.Shape3D;
-//import com.usim.ulib.jmath.datatypes.tuples.Point3D;
-//import com.usim.ulib.utils.managers.KeyManager;
+//import jmath.datatypes.tuples.Point3D;
+//import utils.managers.KeyManager;
 //
 //import static java.awt.event.KeyEvent.*;
-//import static com.usim.ulib.utils.managers.KeyManager.*;
+//import static utils.managers.KeyManager.*;
 //
 //import java.awt.*;
 //import java.util.ArrayList;

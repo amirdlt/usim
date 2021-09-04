@@ -1,8 +1,8 @@
 package com.usim.ulib.visualization.animatedmodels;
 
-import com.usim.ulib.visualization.shapes.shape2d.grid2d.GridPlain2D;
 import com.usim.ulib.visualization.canvas.CoordinatedScreen;
 import com.usim.ulib.visualization.canvas.Render;
+import com.usim.ulib.visualization.shapes.shape2d.grid2d.GridPlain2D;
 
 import java.awt.*;
 import java.util.*;

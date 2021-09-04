@@ -3,8 +3,8 @@ package com.usim.ulib.jmath.operators;
 import com.usim.ulib.jmath.datatypes.Operator;
 import com.usim.ulib.jmath.datatypes.functions.*;
 import com.usim.ulib.jmath.datatypes.tuples.Point2D;
-import com.usim.ulib.jmath.functions.unaries.real.ConstantFunction2D;
 import com.usim.ulib.jmath.functions.utils.Sampling;
+import com.usim.ulib.jmath.functions.unaries.real.ConstantFunction2D;
 
 import java.util.List;
 

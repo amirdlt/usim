@@ -1,9 +1,9 @@
 package com.usim.ulib.visualization.animatedmodels;
 
-import com.usim.ulib.jmath.datatypes.functions.Mapper2D;
 import com.usim.ulib.utils.Utils;
 import com.usim.ulib.visualization.canvas.CoordinatedCanvas;
 import com.usim.ulib.visualization.canvas.Render;
+import com.usim.ulib.jmath.datatypes.functions.Mapper2D;
 
 import java.awt.*;
 

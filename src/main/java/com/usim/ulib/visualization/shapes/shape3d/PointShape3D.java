@@ -1,7 +1,7 @@
 package com.usim.ulib.visualization.shapes.shape3d;
 
-import com.usim.ulib.jmath.datatypes.tuples.Point3D;
 import com.usim.ulib.visualization.canvas.CoordinatedScreen;
+import com.usim.ulib.jmath.datatypes.tuples.Point3D;
 
 import java.awt.*;
 

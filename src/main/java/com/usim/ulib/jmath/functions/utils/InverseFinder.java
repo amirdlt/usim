@@ -1,8 +1,8 @@
 package com.usim.ulib.jmath.functions.utils;
 
 import com.usim.ulib.jmath.datatypes.functions.Function2D;
-import com.usim.ulib.jmath.datatypes.functions.UnaryFunction;
 import com.usim.ulib.jmath.datatypes.tuples.Point2D;
+import com.usim.ulib.jmath.datatypes.functions.UnaryFunction;
 
 import java.util.Collections;
 import java.util.List;

@@ -1,13 +1,13 @@
-//package com.usim.ulib.visualization.model;
+package com.usim.ulib.visualization.model;//package visualization.model;
 //
-//import com.usim.ulib.jmath.datatypes.functions.Arc3D;
-//import com.usim.ulib.jmath.datatypes.tuples.Point2D;
-//import com.usim.ulib.jmath.datatypes.tuples.Point3D;
-//import com.usim.ulib.visualization.canvas.CoordinatedCanvas;
-//import com.usim.ulib.visualization.canvas.CoordinatedScreen;
-//import com.usim.ulib.visualization.canvas.Graph3DCanvas;
-//import com.usim.ulib.visualization.canvas.Render;
-//import com.usim.ulib.visualization.shapes.shapes3d.Shape3D;
+//import jmath.datatypes.functions.Arc3D;
+//import jmath.datatypes.tuples.Point2D;
+//import jmath.datatypes.tuples.Point3D;
+//import visualization.canvas.CoordinatedCanvas;
+//import visualization.canvas.CoordinatedScreen;
+//import visualization.canvas.Graph3DCanvas;
+//import visualization.canvas.Render;
+//import visualization.shapes.shapes3d.Shape3D;
 //
 //import java.awt.*;
 //import java.util.ArrayList;

@@ -1,8 +1,8 @@
 package com.usim.ulib.visualization.render3D.shading;
 
-import com.usim.ulib.jmath.datatypes.tuples.Point3D;
 import com.usim.ulib.visualization.shapes.shape3d.FlatSurface;
 import com.usim.ulib.visualization.shapes.shape3d.Shape3D;
+import com.usim.ulib.jmath.datatypes.tuples.Point3D;
 
 import java.awt.*;
 import java.io.Serializable;

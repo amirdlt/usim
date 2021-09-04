@@ -3,11 +3,11 @@ package com.usim.ulib.jmath.functions.utils;
 import com.usim.ulib.jmath.datatypes.functions.Arc2D;
 import com.usim.ulib.jmath.datatypes.functions.Arc3D;
 import com.usim.ulib.jmath.datatypes.functions.Function2D;
-import com.usim.ulib.jmath.datatypes.functions.UnaryFunction;
 import com.usim.ulib.jmath.datatypes.tuples.AbstractPoint;
 import com.usim.ulib.jmath.datatypes.tuples.Pair;
 import com.usim.ulib.jmath.datatypes.tuples.Point2D;
 import com.usim.ulib.jmath.datatypes.tuples.Point3D;
+import com.usim.ulib.jmath.datatypes.functions.UnaryFunction;
 import com.usim.ulib.jmath.functions.unaries.real.ConstantFunction2D;
 import com.usim.ulib.jmath.functions.unaries.real.LinearFunction;
 

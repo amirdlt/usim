@@ -1,11 +1,11 @@
 package com.usim.ulib.jmath.datatypes.tuples;
 
+import com.usim.ulib.jmath.datatypes.matrix.MatUtils;
+import com.usim.ulib.visualization.canvas.CoordinatedScreen;
 import com.usim.ulib.jmath.datatypes.functions.Function2D;
 import com.usim.ulib.jmath.datatypes.functions.Function4D;
 import com.usim.ulib.jmath.datatypes.functions.Mapper3D;
-import com.usim.ulib.jmath.datatypes.matrix.MatUtils;
 import org.jetbrains.annotations.NotNull;
-import com.usim.ulib.visualization.canvas.CoordinatedScreen;
 
 import java.awt.*;
 import java.util.Arrays;

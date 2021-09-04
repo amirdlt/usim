@@ -1,13 +1,16 @@
 package com.usim.ulib.visualization.shapes.shape3d;
 
-import com.usim.ulib.jmath.datatypes.functions.*;
-import com.usim.ulib.jmath.datatypes.tuples.Point2D;
-import com.usim.ulib.jmath.datatypes.tuples.Point3D;
-import com.usim.ulib.jmath.functions.utils.Sampling;
+import com.usim.ulib.jmath.datatypes.functions.Arc2D;
+import com.usim.ulib.jmath.datatypes.functions.Function3D;
+import com.usim.ulib.jmath.datatypes.functions.Mapper3D;
+import com.usim.ulib.jmath.datatypes.functions.Surface;
 import com.usim.ulib.utils.Utils;
 import com.usim.ulib.visualization.canvas.CoordinatedScreen;
 import com.usim.ulib.visualization.canvas.Graph3DCanvas;
 import com.usim.ulib.visualization.model.OBJHandler;
+import com.usim.ulib.jmath.datatypes.tuples.Point2D;
+import com.usim.ulib.jmath.datatypes.tuples.Point3D;
+import com.usim.ulib.jmath.functions.utils.Sampling;
 import com.usim.ulib.visualization.render3D.shading.LightSource;
 import com.usim.ulib.visualization.render3D.shading.Shader;
 
@@ -54,10 +57,10 @@ public class Area extends Shape3D {
                 var p = points.get(i);
                 components.add(new FlatSurface(canvas,
                         new Color(
-                                checkBounds(Math.abs((int) (Math.atan2(p.y, p.x) * 256)), 35, 255),
-                                checkBounds(Math.abs((int) (p.x/xU * 256)), 35, 255),
-                                checkBounds(Math.abs((int) (p.y/yU * 256)), 35, 255),
-                                checkBounds(Math.abs((int) (p.z/maxZ * 256)), 35, 255)
+                                Utils.checkBounds(Math.abs((int) (Math.atan2(p.y, p.x) * 256)), 35, 255),
+                                Utils.checkBounds(Math.abs((int) (p.x/xU * 256)), 35, 255),
+                                Utils.checkBounds(Math.abs((int) (p.y/yU * 256)), 35, 255),
+                                Utils.checkBounds(Math.abs((int) (p.z/maxZ * 256)), 35, 255)
                         ),
                         isFill, thickness,
                         points.get(i), points.get(i + 1), points.get(i + numberOfCols + 1), points.get(i + numberOfCols)));

@@ -1,9 +1,8 @@
 package com.usim.ulib.visualization.animatedmodels;
 
-import com.usim.ulib.jmath.datatypes.tuples.Point2D;
-import com.usim.ulib.utils.Utils;
 import com.usim.ulib.visualization.canvas.CoordinatedScreen;
 import com.usim.ulib.visualization.canvas.Render;
+import com.usim.ulib.jmath.datatypes.tuples.Point2D;
 
 import java.awt.*;
 

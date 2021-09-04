@@ -4,7 +4,318 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="" />
+    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/GameItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Mesh.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/ShaderProgram.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Texture.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Transformation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Engine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Window.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/Logic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/util/Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/game/DummyGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/game/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/game/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/backtracking/NQueens.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/genetic/ImageGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni/Grid2DPathFinderAlgorithm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni/PathFinderAlgorithm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni/PathFinderVisualPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni/Runner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni2/FitnessModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni2/GeneticAlgorithm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni2/Runner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni2/Visualization.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni3/BacktrackAlgorithm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni3/CheckingMethod.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni3/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni3/Runner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni3/VisualTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni4/Database.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni4/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/ai/uni4/NLP.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/algo/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/algo/PathFinders.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/algo/Sort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/algo/tmp/Q1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/algo/tmp/Q2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/algo/tmp/Q3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/algo/tmp/Q4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/algo/tmp/Q5.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/algo/tmp/Q6.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/algo/tmp/Q7.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/encubator/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/encubator/net/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/encubator/net/twitch/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/encubator/net/twitch/model/LinkFinder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/encubator/net/twitch/view/Window.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jdk16/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jdk16/Me.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jdk16/Point.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jdk16/SealedClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jdk16/You.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/CFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/CFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/UnaryFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/UnaryFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/graph/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/tuples/Point3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/tuples/Point3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/functions/utils/InverseFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/functions/utils/InverseFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/functions/utils/RootsFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/functions/utils/RootsFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/functions/utils/Sampling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/functions/utils/Sampling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/operators/Integral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/operators/Integral.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/parser/FunctionVDParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/parser/FunctionVDParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/net/InsomniaJURL.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/net/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/net/uni/Jurl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/Course.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/Exam.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/FordFulkerson.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/HW1Q2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/HW1Q3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/HW3Q1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/HW3Q2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/HW4Q1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/HW4Q2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/IntSet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/Mana.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/Point.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/PolygonDrawer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/Solution.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/Vaccines.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/WGraph.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/BKS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/BestSolutions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/BestSolutionsDiff.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/CWS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/Edge.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/ElapsedTime.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/Inputs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/InputsManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/MultiStart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/MultiStartTester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/Outputs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/PairBest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/PairBestCust.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/PairBestDist.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/PairBestProfit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/Route.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/RouteCache.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/Solution.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/Stochastic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/TestsManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/VNS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/alg/simPairsList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/hho/HarrisHawksOptimizations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/javasoundapi/CapturePlayback.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/javasoundapi/ControlContext.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/javasoundapi/Groove.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/javasoundapi/JavaSound.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/javasoundapi/JavaSoundApplet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/javasoundapi/Juke.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/javasoundapi/MidiSynth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/javasoundapi/TempoDial.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj1/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj1/DNSHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj1/DNSRecord.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj1/DNSRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj1/DNSResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj1/DnsClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj1/DnsRequest0.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj1/MissingDomainException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj1/QueryType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj1/rDataEntry.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj10/BachelorStudent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj10/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj10/MastersStudent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj10/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj11/Parser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj2/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj3/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj3/model/Backpack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj3/model/HashTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj3/model/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj3/model/Shop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj3/model/Weapon.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj4/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj5/DNSRecord.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj5/DnsClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj5/DnsRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj5/DnsResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj5/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj5/MissingDomainException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj5/QueryType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj5/rDataEntry.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/Author.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/AuthorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/BookTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/CustomerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/EmployeeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/Invoice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/InvoiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/Line2DComposition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/Line2DCompositionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/Line2DInheritance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/Line2DInheritanceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/Point2D.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/Point2DTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/Point3D.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj6/Point3DTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj7/HarmonicSeries.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj7/PascalTriangle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj7/PerfectNumber.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj7/PerfectSquareNumber.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj7/PrimeNumber.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj8/HanoiTower.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj8/QuickSort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj9/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj9/DVD.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj9/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj9/Items.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj9/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj9/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj9/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/proj9/Teacher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp1/DownloadManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp1/DownloadManagerGUI.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp1/DownloadManagerGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp1/DownloadTableModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp1/Downloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp1/HttpDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp1/ProgressRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp10/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp11/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp12/ExamQ1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp12/ExamQ2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp12/ExamQ3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp12/FileUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp12/LinkedList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp12/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp13/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp13/Cone.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp13/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp13/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp13/Point.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp14/Exam.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp14/ExamQ1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp14/ExamQ3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp14/Rectangle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp15/Exam.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp15/ExamQ1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp2/Q1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp2/Q2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp3/Backtracing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp3/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp4/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp4/controller/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp4/model/DownloadManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp4/model/DownloadRecord.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp4/model/DownloadState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp4/model/DownloadThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp4/runner/Runner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp4/view/DownloadPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp4/view/SettingPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp4/view/WindowFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp5/LinkedList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp5/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp5/Operation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp5/PrintOperation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp5/Program.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp6/Bank.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp6/Boss.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp6/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp6/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp6/EmployeeTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp6/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp6/RoundRobinQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp7/BST.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp7/Circle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp7/ExQ1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp7/ExamQ1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp7/ExamQ4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp7/ExamQ6.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp7/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp7/Q2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp8/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp8/Document.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp8/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp9/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp9/Orasmi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp9/Teacher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/tmp9/o_413.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Animal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Baking.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Bear.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Buffalo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Cat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Chicken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Dog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/DomesticAnimal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Factory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/FoodAndWater.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/IceCream.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/InputProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Level.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Lion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Loom.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Manager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Maps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/MilkPackage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Mill.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Store.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Tailoring.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Tiger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Time.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Turkey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/Vehicle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd/WildAnimal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd2/ExamQ1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd2/ExamQ2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/notmine/zhd2/ExamQ3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/swingutils/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/swingutils/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/animatedmodels/ComplexFunctionVisualization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/animatedmodels/ComplexFunctionVisualization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/animatedmodels/GameOfLife3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/animatedmodels/GameOfLife3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/animatedmodels/Mapper2DVisualization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/animatedmodels/Mapper2DVisualization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/animatedmodels/PuzzleGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/animatedmodels/PuzzleGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/animatedmodels/VectorField2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/animatedmodels/VectorField2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/canvas/CoordinatedCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/canvas/CoordinatedCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/canvas/Graph2DCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/canvas/Graph2DCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/canvas/Graph3DCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/canvas/Graph3DCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/fractals/FractalFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/fractals/FractalFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/fractals/FractalPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/fractals/FractalPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/lwjgl/PolygonDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/lwjgl/PolygonDrawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/model/OBJHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/model/OBJHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/model/Point3DMover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/model/Point3DMover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/render3D/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/render3D/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/render3D/camera/Camera3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/render3D/camera/Camera3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/render3D/raytracer/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/render3D/raytracer/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/render3D/shading/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/render3D/shading/Shader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape2d/Shape2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape2d/Shape2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape2d/grid2d/GridPlain2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape2d/grid2d/GridPlain2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape2d/grid2d/Tile2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape2d/grid2d/Tile2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/Area.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/Area.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/Curve3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/Curve3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/FlatSurface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/FlatSurface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/Line3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/Line3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/PointMover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/PointMover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/PointShape3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/PointShape3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/Shape3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/Shape3D.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,14 +326,42 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="usim" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.base/java/util/concurrent/Future.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.base/java/lang/Object.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.base/java/lang/Thread.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.base/java/lang/System.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1xXJstHDVkhNhnoXYsjqRHlE3ME" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -30,10 +369,89 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Programming Projects\Java Projects\usim\src\main\java" />
+      <recent name="E:\Programming Projects\Java Projects\usim\src\main\java\com\usim\ulib" />
+      <recent name="E:\Programming Projects\Java Projects\usim\src\main\java\com\ulib" />
+      <recent name="E:\Programming Projects\Java Projects\usim" />
+      <recent name="E:\Programming Projects\Java Projects\usim\src\main" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.usim.engine" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main (۲)">
+    <configuration name="Main (۱)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.lwjglb.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.lwjglb.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.engine.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main (۲)" />
+        <item itemvalue="Application.Main (۱)" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main (۱)" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -45,11 +463,25 @@
       <updated>1630495714521</updated>
       <workItem from="1630495718255" duration="2281000" />
       <workItem from="1630581794183" duration="1704000" />
-      <workItem from="1630643646824" duration="3744000" />
+      <workItem from="1630643646824" duration="6859000" />
+      <workItem from="1630678746490" duration="6145000" />
+      <workItem from="1630712376488" duration="27088000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

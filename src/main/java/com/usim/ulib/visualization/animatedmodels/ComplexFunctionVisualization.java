@@ -1,10 +1,10 @@
 package com.usim.ulib.visualization.animatedmodels;
 
-import com.usim.ulib.jmath.datatypes.functions.CFunction;
-import com.usim.ulib.jmath.datatypes.functions.ComplexFunction;
 import com.usim.ulib.utils.Utils;
 import com.usim.ulib.visualization.canvas.CoordinatedCanvas;
 import com.usim.ulib.visualization.canvas.Render;
+import com.usim.ulib.jmath.datatypes.functions.CFunction;
+import com.usim.ulib.jmath.datatypes.functions.ComplexFunction;
 
 import java.awt.*;
 

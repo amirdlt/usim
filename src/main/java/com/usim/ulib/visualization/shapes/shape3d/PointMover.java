@@ -1,10 +1,10 @@
 package com.usim.ulib.visualization.shapes.shape3d;
 
+import com.usim.ulib.visualization.canvas.CoordinatedScreen;
+import com.usim.ulib.visualization.canvas.Graph3DCanvas;
 import com.usim.ulib.jmath.datatypes.functions.Arc3D;
 import com.usim.ulib.jmath.datatypes.tuples.Point3D;
 import com.usim.ulib.swingutils.MainFrame;
-import com.usim.ulib.visualization.canvas.CoordinatedScreen;
-import com.usim.ulib.visualization.canvas.Graph3DCanvas;
 
 import javax.swing.*;
 import java.awt.*;

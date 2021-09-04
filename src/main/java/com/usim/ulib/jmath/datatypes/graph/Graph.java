@@ -1,12 +1,12 @@
 package com.usim.ulib.jmath.datatypes.graph;
 
-import com.usim.ulib.jmath.datatypes.tuples.AbstractPoint;
 import com.usim.ulib.jmath.datatypes.tuples.Point2D;
 import com.usim.ulib.jmath.datatypes.tuples.Point3D;
 import com.usim.ulib.utils.Utils;
 import com.usim.ulib.visualization.canvas.CoordinatedScreen;
 import com.usim.ulib.visualization.shapes.shape3d.Line3D;
 import com.usim.ulib.visualization.shapes.shape3d.Shape3D;
+import com.usim.ulib.jmath.datatypes.tuples.AbstractPoint;
 
 import java.awt.*;
 import java.util.*;

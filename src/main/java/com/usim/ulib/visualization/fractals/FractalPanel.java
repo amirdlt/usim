@@ -1,8 +1,8 @@
 package com.usim.ulib.visualization.fractals;
 
+import com.usim.ulib.visualization.canvas.Graph3DCanvas;
 import com.usim.ulib.jmath.datatypes.functions.Function3D;
 import com.usim.ulib.swingutils.MainFrame;
-import com.usim.ulib.visualization.canvas.Graph3DCanvas;
 
 import javax.swing.*;
 import java.awt.*;

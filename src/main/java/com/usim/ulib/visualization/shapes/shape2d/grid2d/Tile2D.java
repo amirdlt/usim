@@ -1,12 +1,12 @@
 package com.usim.ulib.visualization.shapes.shape2d.grid2d;
 
-import com.usim.ulib.jmath.datatypes.tuples.Point2D;
+import com.usim.ulib.utils.Utils;
 import com.usim.ulib.utils.supplier.BooleanSupplier;
 import com.usim.ulib.utils.supplier.ColorSupplier;
 import com.usim.ulib.utils.supplier.StringSupplier;
-import com.usim.ulib.utils.Utils;
 import com.usim.ulib.visualization.canvas.CoordinatedScreen;
 import com.usim.ulib.visualization.canvas.Render;
+import com.usim.ulib.jmath.datatypes.tuples.Point2D;
 
 import java.awt.*;
 

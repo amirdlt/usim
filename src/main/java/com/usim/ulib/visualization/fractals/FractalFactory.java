@@ -1,8 +1,8 @@
-//package com.usim.ulib.visualization.fractals;
+package com.usim.ulib.visualization.fractals;//package visualization.fractals;
 //
 //import animation.canvaspanel.Graph2DPanel;
 //import guitools.MainFrame;
-//import com.usim.ulib.jmath.datatypes.tuples.Point2D;
+//import jmath.datatypes.tuples.Point2D;
 //
 //import javax.swing.*;
 //import java.awt.*;

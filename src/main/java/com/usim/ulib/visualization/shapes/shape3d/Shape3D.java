@@ -1,11 +1,11 @@
 package com.usim.ulib.visualization.shapes.shape3d;
 
-import com.usim.ulib.jmath.datatypes.functions.Function;
-import com.usim.ulib.jmath.datatypes.functions.Mapper3D;
-import com.usim.ulib.jmath.datatypes.tuples.Point3D;
 import com.usim.ulib.utils.annotation.NotFinal;
 import com.usim.ulib.visualization.canvas.CoordinatedScreen;
 import com.usim.ulib.visualization.canvas.Render;
+import com.usim.ulib.jmath.datatypes.functions.Function;
+import com.usim.ulib.jmath.datatypes.functions.Mapper3D;
+import com.usim.ulib.jmath.datatypes.tuples.Point3D;
 
 import javax.swing.*;
 import javax.swing.Timer;

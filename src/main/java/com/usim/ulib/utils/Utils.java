@@ -1,18 +1,20 @@
 package com.usim.ulib.utils;
 
 import com.sun.management.OperatingSystemMXBean;
+import com.usim.ulib.utils.predicate.IntBinaryPredicate;
 import com.usim.ulib.jmath.datatypes.functions.ColorFunction;
 import com.usim.ulib.jmath.datatypes.functions.IntMapper2D;
 import com.usim.ulib.jmath.datatypes.functions.Mapper2D;
 import com.usim.ulib.jmath.datatypes.tuples.Point3D;
+import com.usim.ulib.visualization.canvas.CoordinatedCanvas;
+import com.usim.ulib.visualization.canvas.Graph3DCanvas;
+import com.usim.ulib.visualization.canvas.Render;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 import com.usim.ulib.swingutils.MainFrame;
 import com.usim.ulib.utils.annotation.NotFinal;
-import com.usim.ulib.utils.predicate.IntBinaryPredicate;
-import com.usim.ulib.visualization.canvas.*;
 import com.usim.ulib.visualization.canvas.Canvas;
 
 import javax.imageio.ImageIO;
@@ -803,7 +805,7 @@ public final class Utils {
         return getFileAsStringAndDelete("tmp.exe");
     }
 
-    ///// file com.usim.ulib.utils
+    ///// file utils
 
     public static int fileCount(String directoryPath, String fileExtension) {
         fileExtension = fileExtension.trim().toLowerCase();
@@ -1004,7 +1006,7 @@ public final class Utils {
         System.out.println("Min num of line: (without empty) " + min2.getKey() + "   " + min2.getValue());
     }
 
-    /////// pdf file com.usim.ulib.utils
+    /////// pdf file utils
 
 //    public static void pdfFileMerger(@NotNull Collection<File> pdfFiles, String destination) throws IOException {
 //        var pmu = new PDFMergerUtility();

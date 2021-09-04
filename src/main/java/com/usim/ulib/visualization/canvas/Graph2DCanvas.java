@@ -1,5 +1,6 @@
 package com.usim.ulib.visualization.canvas;
 
+import com.usim.ulib.utils.Utils;
 import com.usim.ulib.jmath.datatypes.functions.Arc2D;
 import com.usim.ulib.jmath.datatypes.functions.Function;
 import com.usim.ulib.jmath.datatypes.functions.Function2D;
@@ -9,7 +10,6 @@ import com.usim.ulib.jmath.functions.utils.FunctionAnalyser;
 import com.usim.ulib.jmath.functions.utils.RootsFinder;
 import com.usim.ulib.jmath.functions.utils.Sampling;
 import com.usim.ulib.jmath.parser.Function4DParser;
-import com.usim.ulib.utils.Utils;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

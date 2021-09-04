@@ -1,12 +1,12 @@
-//package com.usim.ulib.visualization.render3D;
+package com.usim.ulib.visualization.render3D;//package visualization.render3D;
 //
 //import animation.canvaspanel.Graph3DPanel;
 //import animation.shapes.shapes3d.*;
 //import guitools.MainFrame;
-//import com.usim.ulib.utils.Utils;
-//import com.usim.ulib.utils.managers.TTManager;
+//import utils.Utils;
+//import utils.managers.TTManager;
 //
-//public class com.usim.ulib.Main {
+//public class Main {
 //    public static void main(String[] args) {
 //        MainFrame frame = new MainFrame("AHD");
 //        Graph3DPanel canvas = new Graph3DPanel();

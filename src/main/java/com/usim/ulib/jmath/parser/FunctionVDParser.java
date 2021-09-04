@@ -6,6 +6,9 @@ import com.usim.ulib.jmath.operators.Derivative;
 import com.usim.ulib.jmath.operators.FourierSeries;
 import com.usim.ulib.jmath.operators.Integral;
 import com.usim.ulib.jmath.operators.LaplaceTransform;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
@@ -163,9 +166,7 @@ public class FunctionVDParser implements Parser<FunctionVD> {
         }
         params.add(paramString.split(start, paramString.getLength()));
 
-        if (params.size() == 0) {
-            return null;
-        } else if (params.size() == 1) {
+        if (params.size() == 1) {
             var p = doOrderOfOperations(params.get(0));
             switch (type) {
                 case ABSOLUTE_VALUE:
@@ -399,7 +400,8 @@ public class FunctionVDParser implements Parser<FunctionVD> {
         return tkString;
     }
 
-    private TokenType getTokenTypeByName(String name, TokenType[] tokenTypes) {
+    @Contract(pure = true)
+    private @Nullable TokenType getTokenTypeByName(String name, TokenType @NotNull [] tokenTypes) {
         for (var v : tokenTypes) {
             if (v.name.equals(name))
                 return v;
@@ -407,7 +409,7 @@ public class FunctionVDParser implements Parser<FunctionVD> {
         return null;
     }
 
-    private void checkParentheses(TokenString tokens) {
+    private void checkParentheses(@NotNull TokenString tokens) {
         int openParentheses = 0;
         for (int i = 0; i < tokens.getLength(); i++) {
             Token t = tokens.tokenAt(i);
@@ -423,7 +425,7 @@ public class FunctionVDParser implements Parser<FunctionVD> {
             System.out.println("You did not close enough parentheses!");
     }
 
-    private void substituteUnaryMinus(TokenString tokens) {
+    private void substituteUnaryMinus(@NotNull TokenString tokens) {
         Token prev = null;
         for (int i = 0; i < tokens.getLength(); i++) {
             Token t = tokens.tokenAt(i);

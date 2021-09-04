@@ -1,9 +1,11 @@
 package com.usim.ulib.visualization.canvas;
 
+import com.usim.ulib.utils.Utils;
 import com.usim.ulib.jmath.datatypes.tuples.Point3D;
 import com.usim.ulib.jmath.parser.Function4DParser;
-import com.usim.ulib.utils.Utils;
-import com.usim.ulib.visualization.shapes.shape3d.*;
+import com.usim.ulib.visualization.shapes.shape3d.Area;
+import com.usim.ulib.visualization.shapes.shape3d.Curve3D;
+import com.usim.ulib.visualization.shapes.shape3d.Shape3D;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

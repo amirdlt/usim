@@ -1,5 +1,6 @@
 package com.usim.ulib.visualization.canvas;
 
+import com.usim.ulib.utils.Utils;
 import com.usim.ulib.jmath.datatypes.tuples.Point2D;
 import com.usim.ulib.jmath.datatypes.tuples.Point3D;
 
@@ -7,8 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static com.usim.ulib.utils.Utils.round;
 
 @SuppressWarnings("unused")
 public class CoordinatedCanvas extends Canvas implements CoordinatedScreen {
@@ -459,17 +458,17 @@ public class CoordinatedCanvas extends Canvas implements CoordinatedScreen {
 
         if (!isShowInfo())
             return;
-        g.drawString("ScaleX: " + round(xScale, 2) + ", ScaleY: " + round(yScale, 2), 0, (int) (infoFont.getSize() * 2.1));
+        g.drawString("ScaleX: " + Utils.round(xScale, 2) + ", ScaleY: " + Utils.round(yScale, 2), 0, (int) (infoFont.getSize() * 2.1));
         if (mousePoint != null)
             g.drawString("MouseClicked(Pixels): (" + mousePoint.x + ", " + mousePoint.y +
-                    "), MouseClicked(Coordinated): (" + round(coordinateX(mousePoint.x), 2) + ", " + round(coordinateY(mousePoint.y), 2) + "), Z: " + round(camera.getZ(), 2), 0, (int) (infoFont.getSize() * 3.2));
+                    "), MouseClicked(Coordinated): (" + Utils.round(coordinateX(mousePoint.x), 2) + ", " + Utils.round(coordinateY(mousePoint.y), 2) + "), Z: " + Utils.round(camera.getZ(), 2), 0, (int) (infoFont.getSize() * 3.2));
         if (!isRunning())
             return;
         var mp = getMousePosition();
         try {
             g.drawString(
                     "MousePos(Pixels): (" + mp.x + ", " + mp.y + ")" +
-                            ", MousePos(Coordinated): (" + round(coordinateX(mp.x), 2) + ", " + round(coordinateY(mp.y), 2) + ")"
+                            ", MousePos(Coordinated): (" + Utils.round(coordinateX(mp.x), 2) + ", " + Utils.round(coordinateY(mp.y), 2) + ")"
                     , 0, (int) (infoFont.getSize() * 4.5));
         } catch (NullPointerException ignore) {}
     }
