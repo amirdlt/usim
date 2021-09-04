@@ -1,19 +1,16 @@
-package com.usim.engine.engine;
+package com.usim.engine.engine.entity;
 
 import com.usim.engine.engine.graph.Mesh;
 import org.joml.Vector3f;
 
-public class GameItem {
+public class Entity {
 
     private final Mesh mesh;
-    
     private final Vector3f position;
-    
     private float scale;
-
     private final Vector3f rotation;
 
-    public GameItem(Mesh mesh) {
+    public Entity(Mesh mesh) {
         this.mesh = mesh;
         position = new Vector3f();
         scale = 1;

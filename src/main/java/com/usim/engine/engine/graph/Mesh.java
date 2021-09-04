@@ -30,13 +30,9 @@ import static org.lwjgl.opengl.GL30.glDeleteVertexArrays;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 public class Mesh {
-
     private final int vaoId;
-
     private final List<Integer> vboIdList;
-
     private final int vertexCount;
-
     private final Texture texture;
 
     public Mesh(float[] positions, float[] textCoords, int[] indices, Texture texture) {
@@ -82,15 +78,12 @@ public class Mesh {
             glBindBuffer(GL_ARRAY_BUFFER, 0);
             glBindVertexArray(0);
         } finally {
-            if (posBuffer != null) {
+            if (posBuffer != null)
                 MemoryUtil.memFree(posBuffer);
-            }
-            if (textCoordsBuffer != null) {
+            if (textCoordsBuffer != null)
                 MemoryUtil.memFree(textCoordsBuffer);
-            }
-            if (indicesBuffer != null) {
+            if (indicesBuffer != null)
                 MemoryUtil.memFree(indicesBuffer);
-            }
         }
     }
 
@@ -103,7 +96,6 @@ public class Mesh {
     }
 
     public void render() {
-        // Activate firs texture bank
         glActiveTexture(GL_TEXTURE0);
         // Bind the texture
         glBindTexture(GL_TEXTURE_2D, texture.getId());

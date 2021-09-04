@@ -1,9 +1,7 @@
-package com.usim.engine.game;
+package com.usim.engine.engine.internal;
 
-import com.usim.engine.engine.GameItem;
-import com.usim.engine.engine.internal.Engine;
+import com.usim.engine.engine.entity.Entity;
 import com.usim.engine.engine.util.Utils;
-import com.usim.engine.engine.internal.Window;
 import com.usim.engine.engine.graph.ShaderProgram;
 import com.usim.engine.engine.graph.Transformation;
 import org.joml.Matrix4f;
@@ -17,7 +15,7 @@ public class Renderer {
 
     public Renderer() {
         transformation = new Transformation();
-        window = Engine.getWindow();
+        window = Engine.window();
     }
 
     public void init() throws Exception {
@@ -37,7 +35,7 @@ public class Renderer {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
-    public void render(GameItem[] gameItems) {
+    public void render(Entity[] entities) {
         clear();
 
         if (window.isResized()) {
@@ -53,15 +51,15 @@ public class Renderer {
         
         shaderProgram.setUniform("texture_sampler", 0);
         // Render each gameItem
-        for (GameItem gameItem : gameItems) {
+        for (Entity entity : entities) {
             // Set world matrix for this item
             Matrix4f worldMatrix = transformation.getWorldMatrix(
-                    gameItem.getPosition(),
-                    gameItem.getRotation(),
-                    gameItem.getScale());
+                    entity.getPosition(),
+                    entity.getRotation(),
+                    entity.getScale());
             shaderProgram.setUniform("worldMatrix", worldMatrix);
             // Render the mes for this game item
-            gameItem.getMesh().render();
+            entity.getMesh().render();
         }
 
         shaderProgram.unbind();

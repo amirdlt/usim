@@ -229,6 +229,10 @@ public final class Engine {
         return working;
     }
 
+    public Window getWindow() {
+        return window;
+    }
+
     public static @NotNull Engine get(String windowTitle, int width, int height, boolean vSync) {
         return engine == null ? engine = new Engine(windowTitle, width, height, vSync) : engine;
     }
@@ -237,7 +241,7 @@ public final class Engine {
         return get(DEFAULT_GLFW_WINDOW_NAME, DEFAULT_GLFW_WINDOW_WIDTH, DEFAULT_GLFW_WINDOW_HEIGHT, false);
     }
 
-    public static Window getWindow() {
+    public static Window window() {
         if (engine == null)
             throw new IllegalStateException("AHD:: First invoke Engine.get to create an Engine.");
         return engine.window;

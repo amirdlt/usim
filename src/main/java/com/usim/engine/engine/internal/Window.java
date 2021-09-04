@@ -1,11 +1,21 @@
 package com.usim.engine.engine.internal;
 
+import static com.usim.engine.engine.Constants.DEFAULT_GLFW_ICON_PATH;
+import static com.usim.engine.engine.util.Utils.ioResourceToByteBuffer;
 import static org.lwjgl.glfw.GLFW.*;
 import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWImage;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
+import org.lwjgl.stb.STBImage;
+
+import javax.swing.*;
+
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.system.MemoryUtil.NULL;
+import static org.lwjgl.system.MemoryUtil.*;
 
 public class Window {
     private String title;
@@ -14,16 +24,22 @@ public class Window {
     private long windowHandle;
     private boolean resized;
     private boolean vSync;
+    private boolean isInitialized;
 
     Window(String title, int width, int height, boolean vSync) {
         this.title = title;
         this.width = width;
         this.height = height;
         this.vSync = vSync;
-        this.resized = false;
+        resized = false;
+        isInitialized = false;
     }
 
-    void init() {
+    public void init() {
+        if (isInitialized)
+            return;
+        isInitialized = true;
+
         GLFWErrorCallback.createPrint(System.err).set();
 
         if (!glfwInit()) {
@@ -71,6 +87,50 @@ public class Window {
 
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glEnable(GL_DEPTH_TEST);
+
+        setIcon(DEFAULT_GLFW_ICON_PATH);
+    }
+
+    public void setIcon(String path) {
+        IntBuffer w = memAllocInt(1);
+        IntBuffer h = memAllocInt(1);
+        IntBuffer comp = memAllocInt(1);
+
+        ByteBuffer icon16;
+        ByteBuffer icon32;
+        try {
+            icon16 = ioResourceToByteBuffer(path, 2048);
+            icon32 = ioResourceToByteBuffer(path, 4096);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        try ( GLFWImage.Buffer icons = GLFWImage.malloc(2) ) {
+            ByteBuffer pixels16 = STBImage.stbi_load_from_memory(icon16, w, h, comp, 4);
+            assert pixels16 != null;
+            icons
+                    .position(0)
+                    .width(w.get(0))
+                    .height(h.get(0))
+                    .pixels(pixels16);
+
+            ByteBuffer pixels32 = STBImage.stbi_load_from_memory(icon32, w, h, comp, 4);
+            assert pixels32 != null;
+            icons
+                    .position(1)
+                    .width(w.get(0))
+                    .height(h.get(0))
+                    .pixels(pixels32);
+
+            icons.position(0);
+            glfwSetWindowIcon(windowHandle, icons);
+
+            STBImage.stbi_image_free(pixels32);
+            STBImage.stbi_image_free(pixels16);
+        }
+        memFree(comp);
+        memFree(h);
+        memFree(w);
     }
 
     public void setClearColor(float r, float g, float b, float alpha) {

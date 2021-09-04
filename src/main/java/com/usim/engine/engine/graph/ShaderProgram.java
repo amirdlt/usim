@@ -1,43 +1,40 @@
 package com.usim.engine.engine.graph;
 
-import java.nio.FloatBuffer;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
+
+import static com.usim.engine.engine.Constants.GL_LOG_MAX_LENGTH;
 import static org.lwjgl.opengl.GL20.*;
 import org.lwjgl.system.MemoryStack;
 
 public class ShaderProgram {
-
     private final int programId;
 
     private int vertexShaderId;
-
     private int fragmentShaderId;
 
     private final Map<String, Integer> uniforms;
 
-    public ShaderProgram() throws Exception {
+    public ShaderProgram() {
         programId = glCreateProgram();
-        if (programId == 0) {
-            throw new Exception("Could not create Shader");
-        }
+        if (programId == 0)
+            throw new RuntimeException("AHD:: Could not create Shader");
         uniforms = new HashMap<>();
     }
 
-    public void createUniform(String uniformName) throws Exception {
+    public void createUniform(String uniformName) {
         int uniformLocation = glGetUniformLocation(programId, uniformName);
-        if (uniformLocation < 0) {
-            throw new Exception("Could not find uniform:" + uniformName);
-        }
+        if (uniformLocation < 0)
+            throw new RuntimeException("AHD:: Could not find uniform:" + uniformName);
         uniforms.put(uniformName, uniformLocation);
     }
 
-    public void setUniform(String uniformName, Matrix4f value) {
-        // Dump the matrix into a float buffer
+    public void setUniform(String uniformName, @NotNull Matrix4f value) {
         try (MemoryStack stack = MemoryStack.stackPush()) {
-            glUniformMatrix4fv(uniforms.get(uniformName), false,
-                               value.get(stack.mallocFloat(16)));
+            glUniformMatrix4fv(uniforms.get(uniformName), false, value.get(stack.mallocFloat(16)));
         }
     }
 
@@ -63,7 +60,7 @@ public class ShaderProgram {
         glCompileShader(shaderId);
 
         if (glGetShaderi(shaderId, GL_COMPILE_STATUS) == 0) {
-            throw new Exception("Error compiling Shader code: " + glGetShaderInfoLog(shaderId, 1024));
+            throw new Exception("Error compiling Shader code: " + glGetShaderInfoLog(shaderId, GL_LOG_MAX_LENGTH));
         }
 
         glAttachShader(programId, shaderId);
@@ -71,22 +68,20 @@ public class ShaderProgram {
         return shaderId;
     }
 
-    public void link() throws Exception {
+    public void link() {
         glLinkProgram(programId);
-        if (glGetProgrami(programId, GL_LINK_STATUS) == 0) {
-            throw new Exception("Error linking Shader code: " + glGetProgramInfoLog(programId, 1024));
-        }
+        if (glGetProgrami(programId, GL_LINK_STATUS) == 0)
+            throw new RuntimeException("AHD:: Error linking Shader code: " + glGetProgramInfoLog(programId, GL_LOG_MAX_LENGTH));
 
-        if (vertexShaderId != 0) {
+        if (vertexShaderId != 0)
             glDetachShader(programId, vertexShaderId);
-        }
-        if (fragmentShaderId != 0) {
+
+        if (fragmentShaderId != 0)
             glDetachShader(programId, fragmentShaderId);
-        }
 
         glValidateProgram(programId);
         if (glGetProgrami(programId, GL_VALIDATE_STATUS) == 0) {
-            System.err.println("Warning validating Shader code: " + glGetProgramInfoLog(programId, 1024));
+            System.err.println("Warning validating Shader code: " + glGetProgramInfoLog(programId, GL_LOG_MAX_LENGTH));
         }
 
     }

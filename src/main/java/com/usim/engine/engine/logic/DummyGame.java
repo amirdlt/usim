@@ -1,8 +1,8 @@
-package com.usim.engine.game;
+package com.usim.engine.engine.logic;
 
-import com.usim.engine.engine.GameItem;
+import com.usim.engine.engine.entity.Entity;
 import com.usim.engine.engine.internal.Engine;
-import com.usim.engine.engine.logic.Logic;
+import com.usim.engine.engine.internal.Renderer;
 import com.usim.engine.engine.internal.Window;
 import com.usim.engine.engine.graph.Mesh;
 import com.usim.engine.engine.graph.Texture;
@@ -21,13 +21,13 @@ public class DummyGame implements Logic {
 
     private final Renderer renderer;
 
-    private GameItem[] gameItems;
+    private Entity[] entities;
 
     private final Window window;
 
     public DummyGame() {
         renderer = new Renderer();
-        window = Engine.getWindow();
+        window = Engine.window();
     }
 
     @Override
@@ -139,9 +139,9 @@ public class DummyGame implements Logic {
             e.printStackTrace();
         }
         Mesh mesh = new Mesh(positions, textCoords, indices, texture);
-        GameItem gameItem = new GameItem(mesh);
-        gameItem.setPosition(0, 0, -2);
-        gameItems = new GameItem[]{gameItem};
+        Entity entity = new Entity(mesh);
+        entity.setPosition(0, 0, -2);
+        entities = new Entity[]{ entity };
     }
 
     @Override
@@ -171,41 +171,41 @@ public class DummyGame implements Logic {
 
     @Override
     public void update() {
-        for (GameItem gameItem : gameItems) {
+        for (Entity entity : entities) {
             // Update position
-            Vector3f itemPos = gameItem.getPosition();
+            Vector3f itemPos = entity.getPosition();
             float posx = itemPos.x + displxInc * 0.01f;
             float posy = itemPos.y + displyInc * 0.01f;
             float posz = itemPos.z + displzInc * 0.01f;
-            gameItem.setPosition(posx, posy, posz);
+            entity.setPosition(posx, posy, posz);
 
             // Update scale
-            float scale = gameItem.getScale();
+            float scale = entity.getScale();
             scale += scaleInc * 0.005f;
             if (scale < 0) {
                 scale = 0;
             }
-            gameItem.setScale(scale);
+            entity.setScale(scale);
 
             // Update rotation angle
-            float rotation = gameItem.getRotation().x + 0.5f;
+            float rotation = entity.getRotation().x + 0.5f;
             if (rotation > 360) {
                 rotation = 0;
             }
-            gameItem.setRotation(rotation, rotation, rotation);
+            entity.setRotation(rotation, rotation, rotation);
         }
     }
 
     @Override
     public void render() {
-        renderer.render(gameItems);
+        renderer.render(entities);
     }
 
     @Override
     public void cleanup() {
         renderer.cleanup();
-        for (GameItem gameItem : gameItems) {
-            gameItem.getMesh().cleanUp();
+        for (Entity entity : entities) {
+            entity.getMesh().cleanUp();
         }
     }
 
