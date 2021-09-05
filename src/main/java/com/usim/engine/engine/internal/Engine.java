@@ -69,7 +69,7 @@ public final class Engine {
         working = true;
         if (logic == null)
             throw new IllegalStateException("AHD:: Please first set a logic for this engine.");
-        this.targetUps = IntStream.of(targetFps, targetUps, targetUps).max().orElse(0);
+        this.targetUps = targetUps;
         this.targetFps = targetFps;
         this.targetIps = targetIps;
         ScheduledFuture<?> update = null;
@@ -106,9 +106,6 @@ public final class Engine {
                     this.fps = fps * 1_000f / rTime;
                     ups = (fps * renderFactor + frameLoss) * (float) MILLI / rTime;
                     ips = ups / inputFactor;
-                    window.setTitle(DEFAULT_GLFW_WINDOW_NAME +
-                            " | fps: " + this.fps + " | ups: " + ups + " | ips: " + ips + " | render: " + renderTime + " | update: "
-                                    + updateTime + " | input: " + inputTime + " | frameLoss: " + frameLoss);
                     renderSynchronizer.drainPermits();
                     fps = 0;
                     rTime = 0;
@@ -266,19 +263,21 @@ public final class Engine {
 
     public void setTargetFps(int targetFps) {
         stop();
-        this.targetFps = targetFps;
+        this.targetFps = Math.min(targetFps, targetUps);
         _start();
     }
 
     public void setTargetUps(int targetUps) {
         stop();
         this.targetUps = targetUps;
+        targetFps = Math.min(targetUps, targetFps);
+        targetIps = Math.min(targetIps, targetUps);
         _start();
     }
 
     public void setTargetIps(int targetIps) {
         stop();
-        this.targetIps = targetIps;
+        this.targetIps = Math.min(targetIps, targetUps);
         _start();
     }
 

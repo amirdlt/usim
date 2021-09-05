@@ -145,6 +145,8 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
         setJMenuBar(menuBar);
     }
 
+    private Runnable _gotoTray;
+    private String trayIconPath;
     private void handleSystemTray() {
         TrayIcon trayIcon;
         SystemTray tray;
@@ -158,7 +160,7 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
         tray = SystemTray.getSystemTray();
         popupMenu = new PopupMenu();
 
-        trayIcon = new TrayIcon(new ImageIcon(".\\res\\icon.png").getImage(), tooltip, popupMenu);
+        trayIcon = new TrayIcon(new ImageIcon(trayIconPath == null ? "" : trayIconPath).getImage(), tooltip, popupMenu);
         JFrame main = this;
         trayIcon.addMouseListener(new MouseAdapter() {
             @Override
@@ -198,19 +200,23 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
 
         });
 
-        getJMenuBar().getMenu(4).getItem(0).addActionListener(e -> {
+        _gotoTray = () -> {
             try {
                 tray.add(trayIcon);
                 main.setVisible(false);
             } catch (AWTException ignore) {}
-        });
+        };
+        getJMenuBar().getMenu(4).getItem(0).addActionListener(e -> _gotoTray.run());
 
         trayIcon.addActionListener(e -> tray.remove(trayIcon));
 
         Toolkit.getDefaultToolkit().addAWTEventListener(event -> {
             if (main.isVisible()) tray.remove(trayIcon);
         }, AWTEvent.ACTION_EVENT_MASK + AWTEvent.WINDOW_EVENT_MASK);
+    }
 
+    protected void gotoSystemTray() {
+        _gotoTray.run();
     }
 
     protected JComponent element(String tag, JComponent component) {
@@ -339,6 +345,15 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
 
     public boolean isDark() {
         return isDark;
+    }
+
+    public String getTrayIconPath() {
+        return trayIconPath;
+    }
+
+    public void setTrayIconPath(String trayIconPath) {
+        this.trayIconPath = trayIconPath;
+        handleSystemTray();
     }
 
     @Override
