@@ -10,7 +10,7 @@ import static com.usim.engine.engine.Constants.GL_LOG_MAX_LENGTH;
 import static org.lwjgl.opengl.GL20.*;
 import org.lwjgl.system.MemoryStack;
 
-public class ShaderProgram {
+public class Shader {
     private final int programId;
 
     private int vertexShaderId;
@@ -18,7 +18,7 @@ public class ShaderProgram {
 
     private final Map<String, Integer> uniforms;
 
-    public ShaderProgram() {
+    public Shader() {
         programId = glCreateProgram();
         if (programId == 0)
             throw new RuntimeException("AHD:: Could not create Shader");
@@ -33,7 +33,7 @@ public class ShaderProgram {
     }
 
     public void setUniform(String uniformName, @NotNull Matrix4f value) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (var stack = MemoryStack.stackPush()) {
             glUniformMatrix4fv(uniforms.get(uniformName), false, value.get(stack.mallocFloat(16)));
         }
     }
@@ -42,26 +42,24 @@ public class ShaderProgram {
         glUniform1i(uniforms.get(uniformName), value);
     }
 
-    public void createVertexShader(String shaderCode) throws Exception {
+    public void createVertexShader(String shaderCode) {
         vertexShaderId = createShader(shaderCode, GL_VERTEX_SHADER);
     }
 
-    public void createFragmentShader(String shaderCode) throws Exception {
+    public void createFragmentShader(String shaderCode) {
         fragmentShaderId = createShader(shaderCode, GL_FRAGMENT_SHADER);
     }
 
-    protected int createShader(String shaderCode, int shaderType) throws Exception {
+    protected int createShader(String shaderCode, int shaderType) {
         int shaderId = glCreateShader(shaderType);
-        if (shaderId == 0) {
-            throw new Exception("Error creating shader. Type: " + shaderType);
-        }
+        if (shaderId == 0)
+            throw new RuntimeException("AHD:: Error creating shader. Type: " + shaderType);
 
         glShaderSource(shaderId, shaderCode);
         glCompileShader(shaderId);
 
-        if (glGetShaderi(shaderId, GL_COMPILE_STATUS) == 0) {
-            throw new Exception("Error compiling Shader code: " + glGetShaderInfoLog(shaderId, GL_LOG_MAX_LENGTH));
-        }
+        if (glGetShaderi(shaderId, GL_COMPILE_STATUS) == 0)
+            throw new RuntimeException("AHD:: Error compiling Shader code: " + glGetShaderInfoLog(shaderId, GL_LOG_MAX_LENGTH));
 
         glAttachShader(programId, shaderId);
 

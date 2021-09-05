@@ -17,6 +17,10 @@ public class Entity {
         rotation = new Vector3f();
     }
 
+    public void render() {
+        mesh.render();
+    }
+
     public Vector3f getPosition() {
         return position;
     }

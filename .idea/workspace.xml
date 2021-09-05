@@ -4,21 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="First USim Schema">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/usim-icon.png" afterDir="false" />
+    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="repackaging">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/shaders/fragment-cube-smiple.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/shaders/vertex-cube-simple.vs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/GameItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Mesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Mesh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/ShaderProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Texture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Transformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Transformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Shader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/DummyGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/DummyGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/util/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/util/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/game/DummyGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/DummyGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/game/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/game/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Renderer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +70,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/icons" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/shaders" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -85,11 +80,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Programming Projects\Java Projects\usim\src\main\resources\shaders" />
       <recent name="E:\Programming Projects\Java Projects\usim\src\main\resources\icons" />
       <recent name="E:\Programming Projects\Java Projects\usim\src\main\java" />
       <recent name="E:\Programming Projects\Java Projects\usim\src\main\java\com\usim\ulib" />
       <recent name="E:\Programming Projects\Java Projects\usim\src\main\java\com\ulib" />
-      <recent name="E:\Programming Projects\Java Projects\usim" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.usim.engine" />
@@ -183,7 +178,7 @@
       <workItem from="1630643646824" duration="6859000" />
       <workItem from="1630678746490" duration="6145000" />
       <workItem from="1630712376488" duration="29621000" />
-      <workItem from="1630765231009" duration="4621000" />
+      <workItem from="1630765231009" duration="9317000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="First USim Schema">
       <created>1630752367079</created>
@@ -191,7 +186,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۰۱" />
       <updated>1630752367079</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL‎۰۰۰۰۲" summary="repackaging">
+      <created>1630771727952</created>
+      <option name="number" value="LOCAL‎۰۰۰۰۲" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۰۲" />
+      <updated>1630771727952</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +212,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First USim Schema" />
-    <option name="LAST_COMMIT_MESSAGE" value="First USim Schema" />
+    <MESSAGE value="repackaging" />
+    <option name="LAST_COMMIT_MESSAGE" value="repackaging" />
   </component>
 </project>

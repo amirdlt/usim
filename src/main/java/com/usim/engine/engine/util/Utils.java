@@ -9,6 +9,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.SeekableByteChannel;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,13 +17,15 @@ import java.util.Scanner;
 
 public class Utils {
 
-    public static String loadResource(String fileName) throws Exception {
+    public static String loadResource(String fileName) {
         String result;
-        try (InputStream in = Utils.class.getResourceAsStream(fileName)) {
+        try (var in = Utils.class.getResourceAsStream(fileName)) {
             assert in != null;
-            try (Scanner scanner = new Scanner(in, java.nio.charset.StandardCharsets.UTF_8.name())) {
+            try (Scanner scanner = new Scanner(in, StandardCharsets.UTF_8)) {
                 result = scanner.useDelimiter("\\A").next();
             }
+        } catch (IOException e) {
+            throw new RuntimeException("AHD:: IOException during load resource.", e);
         }
         return result;
     }

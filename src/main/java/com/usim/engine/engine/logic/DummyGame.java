@@ -141,7 +141,22 @@ public class DummyGame implements Logic {
         Mesh mesh = new Mesh(positions, textCoords, indices, texture);
         Entity entity = new Entity(mesh);
         entity.setPosition(0, 0, -2);
-        entities = new Entity[]{ entity };
+
+
+        float[] colours = new float[]{
+                0.5f, 0.0f, 0.0f,
+                0.0f, 0.5f, 0.0f,
+                0.0f, 0.0f, 0.5f,
+                0.0f, 0.5f, 0.5f,
+                0.5f, 0.0f, 0.0f,
+                0.0f, 0.5f, 0.0f,
+                0.0f, 0.0f, 0.5f,
+                0.0f, 0.5f, 0.5f,
+        };
+
+        var entity2 = new Entity(new Mesh(positions, colours, indices));
+        entity2.setPosition(2, 0, -2);
+        entities = new Entity[] { entity, entity2 };
     }
 
     @Override
