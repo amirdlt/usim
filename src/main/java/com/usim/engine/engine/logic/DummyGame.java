@@ -1,6 +1,7 @@
 package com.usim.engine.engine.logic;
 
 import com.usim.engine.engine.entity.Entity;
+import com.usim.engine.engine.internal.Camera;
 import com.usim.engine.engine.internal.Engine;
 import com.usim.engine.engine.internal.Renderer;
 import com.usim.engine.engine.internal.Window;
@@ -12,22 +13,18 @@ import static org.lwjgl.glfw.GLFW.*;
 public class DummyGame implements Logic {
 
     private int displxInc = 0;
-
     private int displyInc = 0;
-
     private int displzInc = 0;
-
     private int scaleInc = 0;
-
     private final Renderer renderer;
-
     private Entity[] entities;
-
     private final Window window;
+    private final Camera camera;
 
     public DummyGame() {
         renderer = new Renderer();
         window = Engine.window();
+        camera = new Camera();
     }
 
     @Override
@@ -213,7 +210,7 @@ public class DummyGame implements Logic {
 
     @Override
     public void render() {
-        renderer.render(entities);
+        renderer.render(entities, camera);
     }
 
     @Override

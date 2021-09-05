@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Add EngineRuntimeToolsFrame">
+    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Add Elements to EngineRuntimeToolsFrame">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/swing/EngineRuntimeToolsFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/swing/EngineRuntimeToolsFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/game/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/swingutils/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/swingutils/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Transformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Transformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/DummyGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/DummyGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +121,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.engine.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.usim.Main" />
       <module name="usim.main" />
@@ -183,7 +195,8 @@
       <workItem from="1630643646824" duration="6859000" />
       <workItem from="1630678746490" duration="6145000" />
       <workItem from="1630712376488" duration="29621000" />
-      <workItem from="1630765231009" duration="28744000" />
+      <workItem from="1630765231009" duration="32961000" />
+      <workItem from="1630828890404" duration="4771000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="First USim Schema">
       <created>1630752367079</created>
@@ -209,7 +222,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۰۴" />
       <updated>1630816123925</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL‎۰۰۰۰۵" summary="Add Elements to EngineRuntimeToolsFrame">
+      <created>1630821206487</created>
+      <option name="number" value="LOCAL‎۰۰۰۰۵" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۰۵" />
+      <updated>1630821206487</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,6 +251,7 @@
     <MESSAGE value="repackaging" />
     <MESSAGE value="More Dev" />
     <MESSAGE value="Add EngineRuntimeToolsFrame" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add EngineRuntimeToolsFrame" />
+    <MESSAGE value="Add Elements to EngineRuntimeToolsFrame" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Elements to EngineRuntimeToolsFrame" />
   </component>
 </project>

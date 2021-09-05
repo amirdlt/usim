@@ -41,7 +41,7 @@ public class Renderer {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
-    public void render(Entity[] entities) {
+    public void render(Entity[] entities, Camera camera) {
         clear();
 
         if (window.isResized()) {
@@ -50,20 +50,21 @@ public class Renderer {
         }
 
         shader.bind();
-        
+
         // Update projection Matrix
-        shader.setUniform("projectionMatrix",
-                transformation.getProjectionMatrix(DEFAULT_FIELD_OF_VIEW, window.getWidth(), window.getHeight(), DEFAULT_Z_NEAR,
-                        DEFAULT_Z_FAR));
-        
+        Matrix4f projectionMatrix = transformation.getProjectionMatrix(DEFAULT_FIELD_OF_VIEW, window.getWidth(), window.getHeight(),
+                DEFAULT_Z_NEAR, DEFAULT_Z_FAR);
+        shader.setUniform("projectionMatrix", projectionMatrix);
+
+        // Update view Matrix
+        Matrix4f viewMatrix = transformation.getViewMatrix(camera);
+
         shader.setUniform("texture_sampler", 0);
         // Render each gameItem
         for (var entity : entities) {
-            // Set world matrix for this item
-            shader.setUniform("worldMatrix", transformation.getWorldMatrix(
-                    entity.getPosition(),
-                    entity.getRotation(),
-                    entity.getScale()));
+            // Set model view matrix for this item
+            Matrix4f modelViewMatrix = transformation.getModelViewMatrix(entity, viewMatrix);
+            shader.setUniform("modelViewMatrix", modelViewMatrix);
             // Render the mes for this game item
             entity.render();
         }
