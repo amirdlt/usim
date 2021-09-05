@@ -175,6 +175,7 @@ public class Window {
 
     public void setVSync(boolean vSync) {
         this.vSync = vSync;
+        glfwSwapInterval(vSync ? 1 : 0);
     }
 
     public void update() {

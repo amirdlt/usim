@@ -7,7 +7,7 @@ public interface Constants {
 
     int DEFAULT_TARGET_FPS = 60;
     int DEFAULT_TARGET_UPS = 60;
-    int DEFAULT_TARGET_IPS = 60;
+    int DEFAULT_TARGET_IPS = 30;
 
     int DEFAULT_GLFW_WINDOW_WIDTH = 1280;
     int DEFAULT_GLFW_WINDOW_HEIGHT = 720;

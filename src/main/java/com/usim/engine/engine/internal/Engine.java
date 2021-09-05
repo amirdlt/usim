@@ -1,9 +1,12 @@
 package com.usim.engine.engine.internal;
 
 import com.usim.engine.engine.logic.Logic;
+import com.usim.engine.engine.swing.EngineRuntimeToolsFrame;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
 import java.util.concurrent.*;
+import java.util.stream.IntStream;
 
 import static com.usim.engine.engine.Constants.*;
 
@@ -11,10 +14,15 @@ import static com.usim.engine.engine.Constants.*;
 public final class Engine {
     private static Engine engine = null;
 
+    private boolean on;
+    private final Semaphore startLoopLock;
+
     private final Window window;
     private final ScheduledThreadPoolExecutor executor;
     private final Semaphore renderSynchronizer;
+    private EngineRuntimeToolsFrame engineRuntimeToolsFrame;
     private boolean working;
+    private boolean initialized;
     private Logic logic;
     private float renderTime;
     private float updateTime;
@@ -33,8 +41,10 @@ public final class Engine {
     private Engine(String windowTitle, int width, int height, boolean vSync) {
         window = new Window(windowTitle, width, height, vSync);
         logic = null;
+        engineRuntimeToolsFrame = null;
         executor = new ScheduledThreadPoolExecutor(1);
         renderSynchronizer = new Semaphore(0);
+        startLoopLock = new Semaphore(1);
         renderTime = Float.NaN;
         inputTime = Float.NaN;
         updateTime = Float.NaN;
@@ -49,15 +59,17 @@ public final class Engine {
         targetIps = DEFAULT_TARGET_IPS;
         targetUps = DEFAULT_TARGET_UPS;
         working = false;
+        on = false;
+        initialized = false;
     }
 
-    public void start(int targetFps, int targetUps, int targetIps) {
+    private void start(int targetFps, int targetUps, int targetIps) {
         if (working)
             return;
         working = true;
         if (logic == null)
             throw new IllegalStateException("AHD:: Please first set a logic for this engine.");
-        this.targetUps = targetUps;
+        this.targetUps = IntStream.of(targetFps, targetUps, targetUps).max().orElse(0);
         this.targetFps = targetFps;
         this.targetIps = targetIps;
         ScheduledFuture<?> update = null;
@@ -94,10 +106,9 @@ public final class Engine {
                     this.fps = fps * 1_000f / rTime;
                     ups = (fps * renderFactor + frameLoss) * (float) MILLI / rTime;
                     ips = ups / inputFactor;
-                    System.out.println(
-                            "fps: " + this.fps + " ups: " + ups + " ips: " + ips + " render time: " + renderTime + " update time: "
-                                    + updateTime + " frameLoss: " + frameLoss + " input time: " + inputTime + "  #n input: "
-                                    + inputCount);
+                    window.setTitle(DEFAULT_GLFW_WINDOW_NAME +
+                            " | fps: " + this.fps + " | ups: " + ups + " | ips: " + ips + " | render: " + renderTime + " | update: "
+                                    + updateTime + " | input: " + inputTime + " | frameLoss: " + frameLoss);
                     renderSynchronizer.drainPermits();
                     fps = 0;
                     rTime = 0;
@@ -114,24 +125,35 @@ public final class Engine {
         }
     }
 
-    public void start() {
-        start(DEFAULT_TARGET_FPS, DEFAULT_TARGET_UPS, DEFAULT_TARGET_IPS);
+    private void start() {
+        start(targetFps, targetUps, targetIps);
     }
 
-    public void stop() {
+    private void stop() {
         if (!working)
             return;
         working = false;
     }
 
     private void init() {
+        if (initialized)
+            return;
+        initialized = true;
         window.init();
         logic.init();
+        if (engineRuntimeToolsFrame == null) {
+            SwingUtilities.invokeLater(engineRuntimeToolsFrame = new EngineRuntimeToolsFrame());
+        } else if (!engineRuntimeToolsFrame.isVisible()) {
+            SwingUtilities.invokeLater(engineRuntimeToolsFrame);
+        }
     }
 
     private void cleanup() {
         logic.cleanup();
+        engineRuntimeToolsFrame.dispose();
         window.cleanup();
+        System.err.println("EngineWindowClosed -> System.exit");
+        System.exit(0);
     }
 
     private void input() {
@@ -145,6 +167,41 @@ public final class Engine {
     private void render() {
         logic.render();
         window.update();
+    }
+
+    private void _start() {
+        startLoopLock.release();
+    }
+
+    public void turnon() {
+        if (on)
+            return;
+        if (!Thread.currentThread().getName().equals("main"))
+            throw new RuntimeException("AHD:: Engine must be turned on inside the main thread due to lwjgl constraints.");
+        var oldPriority = Thread.currentThread().getPriority();
+        Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
+        if (engine == null)
+            get();
+        on = true;
+        while (on) {
+            try {
+                startLoopLock.acquire();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            engine.start();
+        }
+        Thread.currentThread().setPriority(oldPriority);
+    }
+
+    public void turnoff() {
+        if (!on)
+            return;
+        if (engine == null)
+            get();
+        on = false;
+        engine.stop();
+        cleanup();
     }
 
     public void setLogic(Logic logic) {
@@ -210,19 +267,19 @@ public final class Engine {
     public void setTargetFps(int targetFps) {
         stop();
         this.targetFps = targetFps;
-        start();
+        _start();
     }
 
     public void setTargetUps(int targetUps) {
         stop();
         this.targetUps = targetUps;
-        start();
+        _start();
     }
 
     public void setTargetIps(int targetIps) {
         stop();
         this.targetIps = targetIps;
-        start();
+        _start();
     }
 
     public boolean isWorking() {
@@ -234,16 +291,16 @@ public final class Engine {
     }
 
     public static @NotNull Engine get(String windowTitle, int width, int height, boolean vSync) {
-        return engine == null ? engine = new Engine(windowTitle, width, height, vSync) : engine;
+        if (engine != null)
+            engine.turnoff();
+        return engine = new Engine(windowTitle, width, height, vSync);
     }
 
     public static @NotNull Engine get() {
-        return get(DEFAULT_GLFW_WINDOW_NAME, DEFAULT_GLFW_WINDOW_WIDTH, DEFAULT_GLFW_WINDOW_HEIGHT, false);
+        return engine != null ? engine : get(DEFAULT_GLFW_WINDOW_NAME, DEFAULT_GLFW_WINDOW_WIDTH, DEFAULT_GLFW_WINDOW_HEIGHT, false);
     }
 
     public static Window window() {
-        if (engine == null)
-            throw new IllegalStateException("AHD:: First invoke Engine.get to create an Engine.");
-        return engine.window;
+        return engine == null ? get().window : engine.window;
     }
 }

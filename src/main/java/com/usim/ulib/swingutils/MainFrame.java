@@ -15,7 +15,8 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
     public static final int DEFAULT_HEIGHT = 720;
     public static final int DEFAULT_WIDTH = DEFAULT_HEIGHT * 16 / 9;
 
-    private final HashMap<String, Container> stateMap;
+    private final Map<String, Container> stateMap;
+    private final Map<String, JComponent> elements;
 
     private boolean isDark;
     private boolean isFullScreen;
@@ -26,6 +27,7 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
         super(title);
 
         stateMap = new HashMap<>();
+        elements = new HashMap<>();
         isDark = dark;
         isFullScreen = false;
         currentState = "initial";
@@ -209,6 +211,87 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
             if (main.isVisible()) tray.remove(trayIcon);
         }, AWTEvent.ACTION_EVENT_MASK + AWTEvent.WINDOW_EVENT_MASK);
 
+    }
+
+    protected JComponent element(String tag, JComponent component) {
+        elements.put(tag, component);
+        return component;
+    }
+
+    protected JComponent element(String tag) {
+        return elements.get(tag);
+    }
+
+    protected JButton buttonE(String tag) {
+        return (JButton) elements.get(tag);
+    }
+
+    protected JTextField textFieldE(String tag) {
+        return (JTextField) elements.get(tag);
+    }
+
+    protected JSlider sliderE(String tag) {
+        return (JSlider) elements.get(tag);
+    }
+
+    protected JTabbedPane tabbedPaneE(String tag) {
+        return (JTabbedPane) elements.get(tag);
+    }
+
+    protected JTextArea textAreaE(String tag) {
+        return (JTextArea) elements.get(tag);
+    }
+
+    protected JTextPane textPaneE(String tag) {
+        return (JTextPane) elements.get(tag);
+    }
+
+    protected JScrollPane scrollPaneE(String tag) {
+        return (JScrollPane) elements.get(tag);
+    }
+
+    protected JPanel panelE(String tag) {
+        return (JPanel) elements.get(tag);
+    }
+
+    protected JTable tableE(String tag) {
+        return (JTable) elements.get(tag);
+    }
+
+    protected JComboBox<?> comboBoxE(String tag) {
+        return (JComboBox<?>) elements.get(tag);
+    }
+
+    protected JLabel labelE(String tag) {
+        return (JLabel) elements.get(tag);
+    }
+
+    protected JSplitPane splitPaneE(String tag) {
+        return (JSplitPane) elements.get(tag);
+    }
+
+    protected JSeparator separatorE(String tag) {
+        return (JSeparator) elements.get(tag);
+    }
+
+    protected JList<?> listE(String tag) {
+        return (JList<?>) elements.get(tag);
+    }
+
+    protected JCheckBox checkBoxE(String tag) {
+        return (JCheckBox) elements.get(tag);
+    }
+
+    protected JMenu menuE(String tag) {
+        return (JMenu) elements.get(tag);
+    }
+
+    protected JMenuBar menuBarE(String tag) {
+        return (JMenuBar) elements.get(tag);
+    }
+
+    protected JEditorPane editorPaneE(String tag) {
+        return (JEditorPane) elements.get(tag);
     }
 
     public void toggleFullScreen() {

@@ -7,10 +7,7 @@ import com.usim.engine.engine.graph.Transformation;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.lwjgl.opengl.GL11.*;
 import static com.usim.engine.engine.Constants.*;
@@ -18,7 +15,7 @@ import static com.usim.engine.engine.Constants.*;
 public class Renderer {
     private final Transformation transformation;
     private Shader shader;
-    private final Map<String, Shader> shaders;
+    private final Map<Shader, List<Entity>> shaders;
     private final Window window;
 
     public Renderer() {
@@ -27,7 +24,7 @@ public class Renderer {
         shaders = new HashMap<>();
     }
 
-    public void init() throws Exception {
+    public void init() {
         // Create shader
         shader = new Shader();
         shader.createVertexShader(Utils.loadResource("/shaders/vertex.vs"));
@@ -68,24 +65,29 @@ public class Renderer {
                     entity.getRotation(),
                     entity.getScale()));
             // Render the mes for this game item
-            entity.getMesh().render();
+            entity.render();
         }
 
         shader.unbind();
     }
 
-    public void importShader(String name, String vertexShaderCode, String fragmentShaderCode, @NotNull List<String> uniforms) {
-        shaders.put(name, new Shader() {{
+    public void importShader(String vertexShaderCode, String fragmentShaderCode, @NotNull List<String> uniforms) {
+        shaders.put(new Shader() {{
             createVertexShader(vertexShaderCode);
-            createVertexShader(fragmentShaderCode);
+            createFragmentShader(fragmentShaderCode);
             link();
             uniforms.forEach(this::createUniform);
-        }});
+        }}, new ArrayList<>());
     }
 
     public void cleanup() {
         if (shader != null) {
             shader.cleanup();
         }
+    }
+
+    @FunctionalInterface
+    public interface UniformSetter {
+        Object valueOf(String uniformName);
     }
 }
