@@ -24,7 +24,6 @@ public class Window {
     private long windowHandle;
     private boolean resized;
     private boolean vSync;
-    private boolean isInitialized;
 
     Window(String title, int width, int height, boolean vSync) {
         this.title = title;
@@ -32,14 +31,9 @@ public class Window {
         this.height = height;
         this.vSync = vSync;
         resized = false;
-        isInitialized = false;
     }
 
-    public void init() {
-        if (isInitialized)
-            return;
-        isInitialized = true;
-
+    void init() {
         GLFWErrorCallback.createPrint(System.err).set();
 
         if (!glfwInit()) {
@@ -185,5 +179,9 @@ public class Window {
 
     public void cleanup() {
         glfwDestroyWindow(windowHandle);
+    }
+
+    public long getWindowHandle() {
+        return windowHandle;
     }
 }

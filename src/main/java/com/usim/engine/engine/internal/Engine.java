@@ -6,7 +6,6 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.util.concurrent.*;
-import java.util.stream.IntStream;
 
 import static com.usim.engine.engine.Constants.*;
 
@@ -20,6 +19,8 @@ public final class Engine {
     private final Window window;
     private final ScheduledThreadPoolExecutor executor;
     private final Semaphore renderSynchronizer;
+    private final Input input;
+
     private EngineRuntimeToolsFrame engineRuntimeToolsFrame;
     private boolean working;
     private boolean initialized;
@@ -61,6 +62,7 @@ public final class Engine {
         working = false;
         on = false;
         initialized = false;
+        input = new Input();
     }
 
     private void start(int targetFps, int targetUps, int targetIps) {
@@ -137,6 +139,7 @@ public final class Engine {
             return;
         initialized = true;
         window.init();
+        input.init();
         logic.init();
         if (engineRuntimeToolsFrame == null) {
             SwingUtilities.invokeLater(engineRuntimeToolsFrame = new EngineRuntimeToolsFrame());
@@ -154,6 +157,7 @@ public final class Engine {
     }
 
     private void input() {
+        input.input();
         logic.input();
     }
 
@@ -287,6 +291,10 @@ public final class Engine {
 
     public Window getWindow() {
         return window;
+    }
+
+    public Input getInput() {
+        return input;
     }
 
     public static @NotNull Engine get(String windowTitle, int width, int height, boolean vSync) {

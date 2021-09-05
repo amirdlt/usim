@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Add Elements to EngineRuntimeToolsFrame">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Camera.java" afterDir="false" />
+    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Add Camera">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Input.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/MouseInput.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Transformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Transformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/DummyGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/DummyGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Engine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +196,7 @@
       <workItem from="1630678746490" duration="6145000" />
       <workItem from="1630712376488" duration="29621000" />
       <workItem from="1630765231009" duration="32961000" />
-      <workItem from="1630828890404" duration="4771000" />
+      <workItem from="1630828890404" duration="7550000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="First USim Schema">
       <created>1630752367079</created>
@@ -228,7 +228,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۰۵" />
       <updated>1630821206487</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL‎۰۰۰۰۶" summary="Add Camera">
+      <created>1630840681729</created>
+      <option name="number" value="LOCAL‎۰۰۰۰۶" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۰۶" />
+      <updated>1630840681729</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,6 +258,7 @@
     <MESSAGE value="More Dev" />
     <MESSAGE value="Add EngineRuntimeToolsFrame" />
     <MESSAGE value="Add Elements to EngineRuntimeToolsFrame" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Elements to EngineRuntimeToolsFrame" />
+    <MESSAGE value="Add Camera" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Camera" />
   </component>
 </project>
