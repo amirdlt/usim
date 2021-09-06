@@ -23,4 +23,7 @@ public interface Constants {
     float DEFAULT_FIELD_OF_VIEW = (float) Math.PI / 3;
     float DEFAULT_Z_NEAR = 0.01f;
     float DEFAULT_Z_FAR = 1000.f;
+
+    float DEFAULT_MOUSE_MOVEMENT_SENSITIVITY = 0.002f;
+    float DEFAULT_CAMERA_MOVEMENT_SENSITIVITY = 0.05f;
 }

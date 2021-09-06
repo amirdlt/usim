@@ -196,10 +196,8 @@ public final class Engine {
     }
 
     public void turnoff() {
-        if (!on)
+        if (!on || engine == null)
             return;
-        if (engine == null)
-            get();
         on = false;
         engine.stop();
         cleanup();
@@ -251,6 +249,10 @@ public final class Engine {
 
     public int getFrameLoss() {
         return frameLoss;
+    }
+
+    public long getTotalFrameLoss() {
+        return updateCount - renderCount;
     }
 
     public int getTargetFps() {
@@ -309,5 +311,9 @@ public final class Engine {
 
     public static Window window() {
         return engine == null ? get().window : engine.window;
+    }
+
+    public static Input _input() {
+        return engine == null ? get().input : engine.input;
     }
 }

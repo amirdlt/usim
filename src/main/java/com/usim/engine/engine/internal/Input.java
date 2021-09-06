@@ -14,7 +14,7 @@ public final class Input {
     private boolean leftButtonPressed;
     private boolean rightButtonPressed;
     private boolean middleButtonPressed;
-    private final boolean[] keys;
+    private long windowHandle;
 
     Input() {
         previousPosition = new Vector2d(-1, -1);
@@ -24,12 +24,11 @@ public final class Input {
         leftButtonPressed = false;
         rightButtonPressed = false;
         middleButtonPressed = false;
-        keys = new boolean[349];
+        windowHandle = -1;
     }
 
     void init() {
-        var windowHandle = Engine.window().getWindowHandle();
-        glfwSetKeyCallback(windowHandle, ((window, key, scancode, action, mods) -> keys[key] = action == GLFW_PRESS));
+        windowHandle = Engine.window().getWindowHandle();
         glfwSetCursorPosCallback(windowHandle, (_windowHandle, xPos, yPos) -> currentPosition.set(xPos, yPos));
         glfwSetCursorEnterCallback(windowHandle, (_windowHandle, inWindow) -> this.inWindow = inWindow);
         glfwSetMouseButtonCallback(windowHandle, (_windowHandle, button, action, mode) -> {
@@ -37,18 +36,17 @@ public final class Input {
             rightButtonPressed = button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS;
             middleButtonPressed = button == GLFW_MOUSE_BUTTON_MIDDLE && action == GLFW_PRESS;
         });
+//        glfwSetScrollCallback(windowHandle, )
     }
 
     public boolean isKeyPressed(int key) {
-        return keys[key];
+        return glfwGetKey(windowHandle, key) == GLFW_PRESS;
     }
 
     public void input() {
-        if (inWindow && previousPosition.x > 0 && previousPosition.y > 0) {
-            var dx = currentPosition.x - previousPosition.x;
-            var dy = currentPosition.y - previousPosition.y;
-            displayVector.set(dx, dy);
-        }
+        displayVector.set(0, 0);
+        if (inWindow && previousPosition.x > 0 && previousPosition.y > 0)
+            displayVector.set(currentPosition.y - previousPosition.y, currentPosition.x - previousPosition.x);
         previousPosition.set(currentPosition);
     }
 

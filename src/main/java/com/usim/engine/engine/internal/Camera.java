@@ -16,7 +16,16 @@ public class Camera {
     }
 
     public Vector3f move(float dx, float dy, float dz) {
-        return position.add(dx, dy, dz);
+        if (dz != 0) {
+            position.x += (float) -Math.sin(rotation.y) * dz;
+            position.z += (float) Math.cos(rotation.y) * dz;
+        }
+        if (dx != 0) {
+            position.x += (float) -Math.sin(rotation.y - 90) * dx;
+            position.z += (float) Math.cos(rotation.y - 90) * dx;
+        }
+        position.y += dy;
+        return position;
     }
 
     public Vector3f setPosition(float x, float y, float z) {
@@ -39,11 +48,11 @@ public class Camera {
         return this.rotation.set(rotation);
     }
 
-    public Vector3f rotation() {
+    public Vector3f getRotation() {
         return rotation;
     }
 
-    public Vector3f position() {
+    public Vector3f getPosition() {
         return position;
     }
 }

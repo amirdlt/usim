@@ -1,14 +1,14 @@
 package com.usim.ulib.swingutils;
 
 import com.usim.ulib.utils.api.StateBase;
+import com.usim.ulib.visualization.canvas.Graph2DCanvas;
+import com.usim.ulib.visualization.canvas.Graph3DCanvas;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 @SuppressWarnings("unused")
 public class MainFrame extends JFrame implements Runnable, StateBase<String, Container> {
@@ -298,6 +298,14 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
 
     protected JEditorPane editorPaneE(String tag) {
         return (JEditorPane) elements.get(tag);
+    }
+
+    protected Graph2DCanvas graph2DCanvasE(String tag) {
+        return (Graph2DCanvas) elements.get(tag);
+    }
+
+    protected Graph3DCanvas graph3DCanvasE(String tag) {
+        return (Graph3DCanvas) elements.get(tag);
     }
 
     public void toggleFullScreen() {

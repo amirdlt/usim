@@ -30,10 +30,10 @@ public class Renderer {
         shader.createVertexShader(Utils.loadResource("/shaders/vertex.vs"));
         shader.createFragmentShader(Utils.loadResource("/shaders/fragment.fs"));
         shader.link();
-        
-        // Create uniforms for world and projection matrices and texture
+
+        // Create uniforms for modelView and projection matrices and texture
         shader.createUniform("projectionMatrix");
-        shader.createUniform("worldMatrix");
+        shader.createUniform("modelViewMatrix");
         shader.createUniform("texture_sampler");
     }
 
@@ -51,21 +51,15 @@ public class Renderer {
 
         shader.bind();
 
-        // Update projection Matrix
-        Matrix4f projectionMatrix = transformation.getProjectionMatrix(DEFAULT_FIELD_OF_VIEW, window.getWidth(), window.getHeight(),
+        var projectionMatrix = transformation.getProjectionMatrix(DEFAULT_FIELD_OF_VIEW, window.getWidth(), window.getHeight(),
                 DEFAULT_Z_NEAR, DEFAULT_Z_FAR);
         shader.setUniform("projectionMatrix", projectionMatrix);
 
-        // Update view Matrix
-        Matrix4f viewMatrix = transformation.getViewMatrix(camera);
+        var viewMatrix = transformation.getViewMatrix(camera);
 
         shader.setUniform("texture_sampler", 0);
-        // Render each gameItem
         for (var entity : entities) {
-            // Set model view matrix for this item
-            Matrix4f modelViewMatrix = transformation.getModelViewMatrix(entity, viewMatrix);
-            shader.setUniform("modelViewMatrix", modelViewMatrix);
-            // Render the mes for this game item
+            shader.setUniform("modelViewMatrix", transformation.getModelViewMatrix(entity, viewMatrix));
             entity.render();
         }
 

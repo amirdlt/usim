@@ -4,12 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Add Camera">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Input.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/MouseInput.java" afterDir="false" />
+    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Add Input">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/shaders/fragment.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/shaders/vertex.vs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Transformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Transformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/DummyGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/DummyGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/swing/EngineRuntimeToolsFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/swing/EngineRuntimeToolsFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/game/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/swingutils/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/swingutils/MainFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +86,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="ReaderModeSettings">
     <option name="enabled" value="false" />
@@ -101,6 +110,32 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.lwjglb.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.engine.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.engine.game.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -196,7 +231,9 @@
       <workItem from="1630678746490" duration="6145000" />
       <workItem from="1630712376488" duration="29621000" />
       <workItem from="1630765231009" duration="32961000" />
-      <workItem from="1630828890404" duration="7550000" />
+      <workItem from="1630828890404" duration="11434000" />
+      <workItem from="1630852328534" duration="3404000" />
+      <workItem from="1630891495066" duration="4393000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="First USim Schema">
       <created>1630752367079</created>
@@ -234,7 +271,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۰۶" />
       <updated>1630840681729</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL‎۰۰۰۰۷" summary="Add Input">
+      <created>1630843734491</created>
+      <option name="number" value="LOCAL‎۰۰۰۰۷" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۰۷" />
+      <updated>1630843734491</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +302,7 @@
     <MESSAGE value="Add EngineRuntimeToolsFrame" />
     <MESSAGE value="Add Elements to EngineRuntimeToolsFrame" />
     <MESSAGE value="Add Camera" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Camera" />
+    <MESSAGE value="Add Input" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Input" />
   </component>
 </project>
