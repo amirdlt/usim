@@ -3,6 +3,7 @@ package com.usim.ulib.swingutils;
 import com.usim.ulib.utils.api.StateBase;
 import com.usim.ulib.visualization.canvas.*;
 import com.usim.ulib.visualization.canvas.Canvas;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
@@ -324,12 +325,20 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
         return (ImageCanvas) elements.get(tag);
     }
 
+    protected <T> List<T> elements(@NotNull Class<T> clazz) {
+        //noinspection unchecked
+        return (List<T>) elements.values().stream().filter(clazz::isInstance).toList();
+    }
+
     protected void updateElements() {}
 
+    private int width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT;
     public void toggleFullScreen() {
         isFullScreen = !isFullScreen;
         setVisible(false);
         if (isFullScreen) {
+            width = getWidth();
+            height = getHeight();
             dispose();
             setUndecorated(true);
             setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -339,7 +348,7 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
             GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(null);
             setUndecorated(false);
             setExtendedState(JFrame.NORMAL);
-            setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+            setSize(width, height);
             setVisible(true);
         }
     }

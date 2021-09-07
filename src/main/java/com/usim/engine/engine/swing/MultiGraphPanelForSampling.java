@@ -10,10 +10,8 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.DoubleSupplier;
 
@@ -22,6 +20,7 @@ class MultiGraphPanelForSampling extends Graph2DCanvas {
     private long updateCount;
     private int samplingCountInOneView;
     private boolean fixedScale;
+    private boolean showBound;
 
     MultiGraphPanelForSampling(int width, int height) {
         super(true);
@@ -32,6 +31,7 @@ class MultiGraphPanelForSampling extends Graph2DCanvas {
         updateCount = 0;
         samplingCountInOneView = 20;
         fixedScale = true;
+        showBound = true;
         init();
     }
 
@@ -45,11 +45,7 @@ class MultiGraphPanelForSampling extends Graph2DCanvas {
         add(new JButton("") {{
             setToolTipText("Clear");
             setBounds(8, 8, 15, 15);
-            addActionListener(e -> {
-                graphs.values().forEach(g -> g.points.clear());
-                updateCount = 0;
-            });
-            MultiGraphPanelForSampling.this.repaint();
+            addActionListener(e -> reset());
         }});
         add(new JButton("") {{
             setToolTipText("Show Stats");
@@ -69,6 +65,7 @@ class MultiGraphPanelForSampling extends Graph2DCanvas {
                     }});
                 }};
                 JOptionPane.showMessageDialog(MultiGraphPanelForSampling.this, pane, "Stats", JOptionPane.PLAIN_MESSAGE);
+                MultiGraphPanelForSampling.this.repaint();
             });
         }});
         add(new JButton("") {{
@@ -87,6 +84,7 @@ class MultiGraphPanelForSampling extends Graph2DCanvas {
                     }}));
                 }};
                 JOptionPane.showMessageDialog(MultiGraphPanelForSampling.this, pane, "Visibility", JOptionPane.PLAIN_MESSAGE);
+                MultiGraphPanelForSampling.this.repaint();
             });
         }});
         add(new JButton("") {{
@@ -97,8 +95,20 @@ class MultiGraphPanelForSampling extends Graph2DCanvas {
                     add(new JCheckBox("Fixed Scale") {{
                         setSelected(fixedScale);
                         setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
-                        addActionListener(e -> fixedScale = isSelected());
+                        addActionListener(e -> {
+                            fixedScale = isSelected();
+                            MultiGraphPanelForSampling.this.repaint();
+                        });
                     }});
+                    add(new JCheckBox("Show Bound") {{
+                        setSelected(showBound);
+                        setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
+                        addActionListener(e -> {
+                            showBound = isSelected();
+                            MultiGraphPanelForSampling.this.repaint();
+                        });
+                    }});
+                    add(new JLabel("#n samples: "));
                     add(new JTextField(String.valueOf(samplingCountInOneView)) {{
                         setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
                         addActionListener(e -> {
@@ -106,6 +116,7 @@ class MultiGraphPanelForSampling extends Graph2DCanvas {
                                 samplingCountInOneView = Integer.parseInt(getText());
                             } catch (Exception ignore) {}
                             setText(String.valueOf(samplingCountInOneView));
+                            MultiGraphPanelForSampling.this.repaint();
                         });
                     }});
                 }};
@@ -126,8 +137,16 @@ class MultiGraphPanelForSampling extends Graph2DCanvas {
         addRender(g);
     }
 
+    public void reset() {
+        try {
+            graphs.values().forEach(g -> g.points.clear());
+        } catch (ConcurrentModificationException ignore) {}
+        updateCount = 0;
+        MultiGraphPanelForSampling.this.repaint();
+    }
+
     public void update() {
-        setXYScale(fixedScale ? getWidth() : getWidth() / (double) samplingCountInOneView, getHeight());
+        setXYScale(fixedScale ? getWidth() : getWidth() / (double) samplingCountInOneView, getHeight() - 8);
         setShiftXY(fixedScale ? getWidth() / 2 : (int) (-getWidth() / 2 + (getWidth() / (double) samplingCountInOneView * updateCount)), -getHeight() / 2);
         graphs.values().forEach(Graph2d::addNewPoint);
         updateCount++;
@@ -137,35 +156,71 @@ class MultiGraphPanelForSampling extends Graph2DCanvas {
     @Override
     public void removeSettingPanel() {}
 
-    public void removeGraph(String name) {
-        getRenderManager().remove(graphs.get(name));
-        graphs.remove(name);
-    }
-
     private double maxX() {
         return updateCount;
     }
 
     private double maxY() {
-        return graphs.values().stream().mapToDouble(g -> g.points.stream().mapToDouble(p -> p.y).filter(Double::isFinite).max().orElse(Double.NaN)).max()
-                .orElse(Double.NaN);
+        try {
+            return graphs.values().stream().mapToDouble(g -> g.points.stream().mapToDouble(p -> p.y).max().orElse(0)).max()
+                    .orElse(0);
+        } catch (ConcurrentModificationException e) {
+            return 0;
+        }
     }
 
     private double maxY(String name) {
-        return graphs.get(name).points.stream().mapToDouble(p -> p.y).filter(Double::isFinite).max().orElse(Double.NaN);
+        try {
+            return graphs.get(name).points.stream().mapToDouble(p -> p.y).max().orElse(0);
+        } catch (ConcurrentModificationException e) {
+            return 0;
+        }
     }
 
     private double minY(String name) {
-        return graphs.get(name).points.stream().mapToDouble(p -> p.y).filter(Double::isFinite).min().orElse(Double.NaN);
+        try {
+            return graphs.get(name).points.stream().mapToDouble(p -> p.y).min().orElse(0);
+        } catch (ConcurrentModificationException e) {
+            return 0;
+        }
     }
 
     private double meanY(String name) {
-        return graphs.get(name).points.stream().mapToDouble(p -> p.y).filter(Double::isFinite).average().orElse(Double.NaN);
+        try {
+            return graphs.get(name).points.stream().mapToDouble(p -> p.y).average().orElse(0);
+        } catch (ConcurrentModificationException e) {
+            return 0;
+        }
     }
 
-    private record Graph2d(DoubleSupplier supplier, Stroke stroke, Color color, List<Point2D> points, MultiGraphPanelForSampling panel, AtomicBoolean visible) implements Render {
+    private final Font boundFont = new Font(Font.SANS_SERIF, Font.PLAIN, 12);
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (!showBound)
+            return;
+        g.setFont(boundFont);
+        try {
+            var max = graphs.values().stream()
+                    .max(Comparator.comparingDouble(e -> e.points.stream().mapToDouble(p -> p.y).max().orElse(0))).orElse(null);
+            var min = graphs.values().stream()
+                    .min(Comparator.comparingDouble(e -> e.points.stream().mapToDouble(p -> p.y).min().orElse(0))).orElse(null);
+            if (max != null) {
+                g.setColor(max.color);
+                g.drawString("max: " + Utils.round(maxY(), 3), 10, getHeight() - 10);
+            }
+            if (min != null) {
+                g.setColor(min.color);
+                g.drawString("min: " + Utils.round(min.points.stream().mapToDouble(p -> p.y).min().orElse(0), 3), 10, getHeight() - 25);
+            }
+        } catch (ConcurrentModificationException ignore) {}
+    }
+
+    private record Graph2d(DoubleSupplier supplier, Stroke stroke, Color color, List<Point2D> points, MultiGraphPanelForSampling panel,
+                           AtomicBoolean visible) implements Render {
         public void addNewPoint() {
-            points.add(new Point2D(panel.updateCount, supplier.getAsDouble()));
+            var y = supplier.getAsDouble();
+            points.add(new Point2D(panel.updateCount, Double.isFinite(y) ? y : 0));
         }
 
         @Override
@@ -177,7 +232,9 @@ class MultiGraphPanelForSampling extends Graph2DCanvas {
             g2d.setColor(color);
             var maxX = panel.fixedScale ? panel.maxX() : 1;
             var maxY = panel.maxY();
-            Graph2DCanvas.simplePlotter2D(points.stream().map(p -> new Point2D(p.x / maxX, p.y / maxY)).toList(), panel, g2d);
+            try {
+                Graph2DCanvas.simplePlotter2D(points.stream().map(p -> new Point2D(p.x / maxX, p.y / maxY)).toList(), panel, g2d);
+            } catch (ConcurrentModificationException ignore) {}
         }
     }
 }

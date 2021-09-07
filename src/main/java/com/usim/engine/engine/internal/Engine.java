@@ -93,33 +93,23 @@ public final class Engine {
             final var inputFactor = targetUps / targetIps == 0 ? 1 : targetUps / targetIps;
             timer.start();
             update = executor.scheduleAtFixedRate(() -> {
-                if (updateCount % inputFactor == 0) {
-                    var t = System.nanoTime();
+                if (updateCount % inputFactor == 0)
                     _input();
-                    inputTime = (System.nanoTime() - t) / (float) MILLION;
-                    inputCount++;
-                }
-                var t = System.nanoTime();
                 _update();
-                updateTime = (System.nanoTime() - t) / (float) MILLION;
                 renderSynchronizer.release();
-                updateCount++;
             }, 0, NANO / targetUps, TimeUnit.NANOSECONDS);
             long rTime = 0;
             final var renderFactor = targetUps / targetFps < 2 ? 1 : targetUps / targetFps;
             while (working && !window.windowShouldClose()) {
                 var t = System.currentTimeMillis();
                 renderSynchronizer.acquire(renderFactor);
-                var tt = System.nanoTime();
                 _render();
-                renderTime = (System.nanoTime() - tt) / (float) MILLION;
                 fps++;
-                renderCount++;
                 totalFrameLoss += frameLoss = renderSynchronizer.availablePermits();
                 rTime += System.currentTimeMillis() - t;
                 if (rTime >= 1_000) {
                     this.fps = fps * 1_000f / rTime;
-                    ups = (fps * renderFactor + frameLoss) * (float) MILLI / rTime;
+                    ups = (fps * renderFactor + frameLoss) * MILLI_F / rTime;
                     ips = ups / inputFactor;
                     renderSynchronizer.drainPermits();
                     fps = 0;
@@ -178,23 +168,29 @@ public final class Engine {
     }
 
     private void _input() {
-        if (!doInput)
-            return;
+        var t = System.nanoTime();
         input.input();
-        logic.input();
+        if (doInput)
+            logic.input();
+        inputTime = (System.nanoTime() - t) / MILLION_F;
+        inputCount++;
     }
 
     private void _update() {
-        if (!doUpdate)
-            return;
-        logic.update();
+        var t = System.nanoTime();
+        if (doUpdate)
+            logic.update();
+        updateTime = (System.nanoTime() - t) / MILLION_F;
+        updateCount++;
     }
 
     private void _render() {
-        if (!doRender)
-            return;
-        logic.render();
+        var tt = System.nanoTime();
+        if (doRender)
+            logic.render();
         window.update();
+        renderTime = (System.nanoTime() - tt) / MILLION_F;
+        renderCount++;
     }
 
     public void start() {
@@ -247,19 +243,19 @@ public final class Engine {
     }
 
     public float getFps() {
-        return fps;
+        return doRender ? fps : 0;
     }
 
     public float getIps() {
-        return ips;
+        return doInput ? ips : 0;
     }
 
     public float getInputTime() {
-        return inputTime;
+        return doInput ? inputTime : 0;
     }
 
     public float getRenderTime() {
-        return renderTime;
+        return doRender ? renderTime : 0;
     }
 
     public Logic getLogic() {
@@ -267,11 +263,23 @@ public final class Engine {
     }
 
     public float getUpdateTime() {
-        return updateTime;
+        return doUpdate ? updateTime : 0;
     }
 
     public float getUps() {
-        return ups;
+        return doUpdate ? ups : 0;
+    }
+
+    public float getAccumulatedFps() {
+        return renderCount / timer.workingSeconds();
+    }
+
+    public float getAccumulatedUps() {
+        return updateCount / timer.workingSeconds();
+    }
+
+    public float getAccumulatedIps() {
+        return inputCount / timer.workingSeconds();
     }
 
     public long getRenderCount() {

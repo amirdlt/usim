@@ -1,5 +1,6 @@
 package com.usim.engine.engine.internal;
 
+import com.usim.ulib.utils.Utils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 
@@ -112,6 +113,6 @@ public final class EngineTimer {
 
     @Override
     public @NotNull String toString() {
-        return "WorkingTime: " + workingSeconds() + "sec | IdleTime: " + idleSeconds() + "sec";
+        return "WorkingTime: " + Utils.round(workingSeconds(), 2) + "sec | IdleTime: " + Utils.round(idleSeconds(), 2) + "sec";
     }
 }

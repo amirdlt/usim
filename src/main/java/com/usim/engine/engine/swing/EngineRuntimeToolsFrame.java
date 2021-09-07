@@ -29,7 +29,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
     }
 
     private void init() {
-        setSize(520, 650);
+        setSize(600, 650);
         setTrayIconPath(Constants.DEFAULT_SWING_ICON_PATH);
         setIconImage(new ImageIcon(Constants.DEFAULT_SWING_ICON_PATH).getImage());
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -54,6 +54,8 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                             engine.setTargetUps(Integer.parseInt(getText()));
                         } catch (NumberFormatException ignore) {}
                         setText(String.valueOf(engine.getTargetUps()));
+                        textFieldE("fps-textField").setText(String.valueOf(engine.getTargetFps()));
+                        textFieldE("ips-textField").setText(String.valueOf(engine.getTargetIps()));
                     });
                 }}));
                 add(new JLabel("IPS: "));
@@ -69,10 +71,29 @@ public class EngineRuntimeToolsFrame extends MainFrame {
             }});
             add(new JSeparator());
             add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
-                add(element("fps-label", new JLabel("FPS: " + Utils.round(engine.getFps(), 2))));
-                add(element("ups-label", new JLabel("| UPS: " + Utils.round(engine.getUps(), 2))));
-                add(element("ips-label", new JLabel("| IPS: " + Utils.round(engine.getIps(), 2))));
+                add(element("fps-label", new JLabel("FPS: " + Utils.round(engine.getFps(), 2)) {{setForeground(Color.RED);}}));
+                add(element("ups-label", new JLabel("| UPS: " + Utils.round(engine.getUps(), 2)) {{setForeground(Color.GREEN);}}));
+                add(element("ips-label", new JLabel("| IPS: " + Utils.round(engine.getIps(), 2)) {{setForeground(Color.BLUE);}}));
+                add(new JCheckBox("Graph") {{setSelected(true); addActionListener(e -> element("ps-graph").setVisible(isSelected()));}});
             }});
+            add(element("ps-graph", new MultiGraphPanelForSampling(350, 120) {{
+                addGraph("fps", 2, Color.RED, engine::getFps);
+                addGraph("ups", 2, Color.GREEN, engine::getUps);
+                addGraph("ips", 2, Color.BLUE, engine::getIps);
+            }}));
+            add(new JSeparator());
+            add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
+                add(new JLabel("Accumulated: "));
+                add(element("fpsAccumulated-label", new JLabel("FPS: " + Utils.round(engine.getAccumulatedFps(), 2)) {{setForeground(Color.RED);}}));
+                add(element("upsAccumulated-label", new JLabel("| UPS: " + Utils.round(engine.getAccumulatedUps(), 2)) {{setForeground(Color.GREEN);}}));
+                add(element("ipsAccumulated-label", new JLabel("| IPS: " + Utils.round(engine.getAccumulatedIps(), 2)) {{setForeground(Color.BLUE);}}));
+                add(new JCheckBox("Graph") {{setSelected(true); addActionListener(e -> element("accumulatedPs-graph").setVisible(isSelected()));}});
+            }});
+            add(element("accumulatedPs-graph", new MultiGraphPanelForSampling(350, 120) {{
+                addGraph("accumulatedFps", 2, Color.RED, engine::getAccumulatedFps);
+                addGraph("accumulatedUps", 2, Color.GREEN, engine::getAccumulatedUps);
+                addGraph("accumulatedIps", 2, Color.BLUE, engine::getAccumulatedIps);
+            }}));
             add(new JSeparator());
             add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                 add(new JLabel("Latencies: "));
@@ -85,6 +106,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                 add(element("inputTime-label", new JLabel("| Input: " + Utils.round(engine.getInputTime(), 2) + " ms") {{
                     setForeground(Color.BLUE);
                 }}));
+                add(new JCheckBox("Graph") {{setSelected(true); addActionListener(e -> element("latencies-graph").setVisible(isSelected()));}});
             }});
             add(element("latencies-graph", new MultiGraphPanelForSampling(350, 120) {{
                 addGraph("renderTime", 2, Color.RED, engine::getRenderTime);
@@ -99,6 +121,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                 }}));
                 add(element("heapUsage-label",
                         new JLabel("Heap Usage: " + Utils.round(Utils.usedHeapSize() / (float) Constants.MEGA, 2))));
+                add(new JCheckBox("Graph") {{setSelected(true); addActionListener(e -> element("resourceUsage-graph").setVisible(isSelected()));}});
             }});
             add(element("resourceUsage-graph", new MultiGraphPanelForSampling(350, 120) {{
                 addGraph("cpuUsage", 2, Color.RED, Utils::cpuUsageByJVM);
@@ -106,10 +129,16 @@ public class EngineRuntimeToolsFrame extends MainFrame {
             add(new JSeparator());
             add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                 add(new JLabel("Counts: "));
-                add(element("renderCount-label", new JLabel("Render: " + engine.getRenderCount())));
-                add(element("updateCount-label", new JLabel("| Update: " + engine.getUpdateCount())));
-                add(element("inputCount-label", new JLabel("| Input: " + engine.getInputCount())));
+                add(element("renderCount-label", new JLabel("Render: " + engine.getRenderCount()) {{setForeground(Color.RED);}}));
+                add(element("updateCount-label", new JLabel("| Update: " + engine.getUpdateCount()) {{setForeground(Color.GREEN);}}));
+                add(element("inputCount-label", new JLabel("| Input: " + engine.getInputCount()) {{setForeground(Color.BLUE);}}));
+                add(new JCheckBox("Graph") {{setSelected(true); addActionListener(e -> element("counts-graph").setVisible(isSelected()));}});
             }});
+            add(element("counts-graph", new MultiGraphPanelForSampling(350, 120) {{
+                addGraph("renderCount", 2, Color.RED, engine::getRenderCount);
+                addGraph("update", 2, Color.GREEN, engine::getUpdateCount);
+                addGraph("inputCount", 2, Color.BLUE, engine::getInputCount);
+            }}));
             add(new JSeparator());
             add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                 add(element("totalFrameLoss-label", new JLabel("Total Frame Loss: " + engine.getTotalFrameLoss())));
@@ -123,7 +152,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
             }});
             add(new JSeparator());
             add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
-                add(new JLabel("Update Sampling Rate (ms): "));
+                add(new JLabel("Sampling Rate (ms): "));
                 add(new JTextField(String.valueOf(updateRate)) {{
                     setPreferredSize(new Dimension(60, 30));
                     addActionListener(e -> {
@@ -144,12 +173,14 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                         setText(running ? "Resume Monitoring" : "Pause Monitoring");
                     });
                 }});
+                add(new JButton("Clear Graphs") {{
+                    addActionListener(e -> elements(MultiGraphPanelForSampling.class).forEach(MultiGraphPanelForSampling::reset));
+                }});
             }});
             add(new JSeparator());
             add(new JPanel(new GridLayout(0, 1)) {{
-                add(element("engineTimer-label", new JLabel("Engine Timer: " + engine.getTimer()) {{
+                add(element("engineTimer-label", new JLabel("Engine Timer: " + engine.getTimer(), JLabel.CENTER) {{
                     setFont(new Font(Font.SANS_SERIF, Font.BOLD, 12));
-                    setHorizontalTextPosition(SwingConstants.RIGHT);
                 }}));
                 add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                     add(new JButton("Pause Engine") {{
@@ -217,9 +248,16 @@ public class EngineRuntimeToolsFrame extends MainFrame {
     @Override
     protected void updateElements() {
         var t = System.nanoTime();
+
         labelE("fps-label").setText("FPS: " + Utils.round(engine.getFps(), 2));
         labelE("ups-label").setText("| UPS: " + Utils.round(engine.getUps(), 2));
         labelE("ips-label").setText("| IPS: " + Utils.round(engine.getIps(), 2));
+        ((MultiGraphPanelForSampling) element("ps-graph")).update();
+
+        labelE("fpsAccumulated-label").setText("FPS: " + Utils.round(engine.getAccumulatedFps(), 2));
+        labelE("upsAccumulated-label").setText("| UPS: " + Utils.round(engine.getAccumulatedUps(), 2));
+        labelE("ipsAccumulated-label").setText("| IPS: " + Utils.round(engine.getAccumulatedIps(), 2));
+        ((MultiGraphPanelForSampling) element("accumulatedPs-graph")).update();
 
         labelE("renderTime-label").setText("Render: " + Utils.round(engine.getRenderTime(), 2) + " ms");
         labelE("updateTime-label").setText("| Update: " + Utils.round(engine.getUpdateTime(), 2) + " ms");
@@ -233,6 +271,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
         labelE("renderCount-label").setText("Render: " + engine.getRenderCount());
         labelE("updateCount-label").setText("| Update: " + engine.getUpdateCount());
         labelE("inputCount-label").setText("| Input: " + engine.getInputCount());
+        ((MultiGraphPanelForSampling) element("counts-graph")).update();
 
         labelE("totalFrameLoss-label").setText("Total Frame Loss: " + engine.getTotalFrameLoss());
         labelE("pureTotalFrameLoss-label").setText("| Total Pure Frame Loss: " + engine.getPureTotalFrameLoss());
