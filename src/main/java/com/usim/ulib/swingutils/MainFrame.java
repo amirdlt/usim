@@ -1,8 +1,8 @@
 package com.usim.ulib.swingutils;
 
 import com.usim.ulib.utils.api.StateBase;
-import com.usim.ulib.visualization.canvas.Graph2DCanvas;
-import com.usim.ulib.visualization.canvas.Graph3DCanvas;
+import com.usim.ulib.visualization.canvas.*;
+import com.usim.ulib.visualization.canvas.Canvas;
 
 import javax.swing.*;
 import java.awt.*;
@@ -307,6 +307,24 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
     protected Graph3DCanvas graph3DCanvasE(String tag) {
         return (Graph3DCanvas) elements.get(tag);
     }
+
+    protected Canvas canvasE(String tag) {
+        return (Canvas) elements.get(tag);
+    }
+
+    protected CoordinatedCanvas coordinatedCanvasE(String tag) {
+        return (CoordinatedCanvas) elements.get(tag);
+    }
+
+    protected CoordinatedScreen coordinatedScreenE(String tag) {
+        return (CoordinatedScreen) elements.get(tag);
+    }
+
+    protected ImageCanvas imageCanvasE(String tag) {
+        return (ImageCanvas) elements.get(tag);
+    }
+
+    protected void updateElements() {}
 
     public void toggleFullScreen() {
         isFullScreen = !isFullScreen;

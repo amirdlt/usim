@@ -26,7 +26,7 @@ public class DummyGame implements Logic {
         window = Engine.window();
         camera = new Camera();
         cameraInc = new Vector3f();
-        input = Engine._input();
+        input = Engine.input();
     }
 
     @Override
@@ -87,5 +87,10 @@ public class DummyGame implements Logic {
         renderer.cleanup();
         for (var entity : entities)
             entity.getMesh().cleanUp();
+    }
+
+    @Override
+    public Camera camera() {
+        return camera;
     }
 }

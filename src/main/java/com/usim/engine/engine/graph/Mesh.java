@@ -145,8 +145,6 @@ public class Mesh {
     public void render() {
         if (texture != null) {
             glActiveTexture(GL_TEXTURE0);
-
-            // Bind the texture
             glBindTexture(GL_TEXTURE_2D, texture.getId());
         }
 
@@ -162,15 +160,12 @@ public class Mesh {
     public void cleanUp() {
         glDisableVertexAttribArray(0);
 
-        // Delete the VBOs
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         vboIdList.forEach(GL15::glDeleteBuffers);
 
-        // Delete the texture
         if (texture != null)
             texture.cleanup();
 
-        // Delete the VAO
         glBindVertexArray(0);
         glDeleteVertexArrays(vaoId);
     }

@@ -2,8 +2,11 @@ package com.usim.engine.engine;
 
 public interface Constants {
     int NANO = 1_000_000_000;
+    float NANO_F = 1_000_000_000;
     int MILLION = 1_000_000;
+    float MILLION_F = 1_000_000;
     int MILLI = 1_000;
+    float MILLI_F = 1_000;
     int MEGA = 1_024 * 1_024;
 
     int DEFAULT_TARGET_FPS = 60;

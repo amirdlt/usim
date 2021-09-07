@@ -20,10 +20,14 @@ public final class Engine {
     private final ScheduledThreadPoolExecutor executor;
     private final Semaphore renderSynchronizer;
     private final Input input;
+    private final EngineTimer timer;
 
     private EngineRuntimeToolsFrame engineRuntimeToolsFrame;
     private boolean working;
     private boolean initialized;
+    private boolean doUpdate;
+    private boolean doRender;
+    private boolean doInput;
     private Logic logic;
     private float renderTime;
     private float updateTime;
@@ -34,10 +38,12 @@ public final class Engine {
     private long renderCount;
     private long inputCount;
     private long updateCount;
-    private int frameLoss;
+    private long frameLoss;
+    private long totalFrameLoss;
     private int targetFps;
     private int targetUps;
     private int targetIps;
+    private Runnable committedCommandsToMainThread;
 
     private Engine(String windowTitle, int width, int height, boolean vSync) {
         window = new Window(windowTitle, width, height, vSync);
@@ -55,22 +61,28 @@ public final class Engine {
         renderCount = 0;
         updateCount = 0;
         inputCount = 0;
-        frameLoss = -1;
+        frameLoss = 0;
+        totalFrameLoss = 0;
         targetFps = DEFAULT_TARGET_FPS;
         targetIps = DEFAULT_TARGET_IPS;
         targetUps = DEFAULT_TARGET_UPS;
         working = false;
         on = false;
         initialized = false;
+        doInput = true;
+        doUpdate = true;
+        doRender = true;
         input = new Input();
+        timer = new EngineTimer();
+        committedCommandsToMainThread = null;
     }
 
-    private void start(int targetFps, int targetUps, int targetIps) {
+    private void _start(int targetFps, int targetUps, int targetIps) {
         if (working)
             return;
-        working = true;
         if (logic == null)
             throw new IllegalStateException("AHD:: Please first set a logic for this engine.");
+        working = true;
         this.targetUps = targetUps;
         this.targetFps = targetFps;
         this.targetIps = targetIps;
@@ -79,30 +91,31 @@ public final class Engine {
             init();
             var fps = 0;
             final var inputFactor = targetUps / targetIps == 0 ? 1 : targetUps / targetIps;
+            timer.start();
             update = executor.scheduleAtFixedRate(() -> {
                 if (updateCount % inputFactor == 0) {
                     var t = System.nanoTime();
-                    input();
+                    _input();
                     inputTime = (System.nanoTime() - t) / (float) MILLION;
                     inputCount++;
                 }
                 var t = System.nanoTime();
-                update();
+                _update();
                 updateTime = (System.nanoTime() - t) / (float) MILLION;
                 renderSynchronizer.release();
                 updateCount++;
             }, 0, NANO / targetUps, TimeUnit.NANOSECONDS);
             long rTime = 0;
-            final var renderFactor = targetUps / targetFps == 0 ? 1 : targetUps / targetFps;
+            final var renderFactor = targetUps / targetFps < 2 ? 1 : targetUps / targetFps;
             while (working && !window.windowShouldClose()) {
                 var t = System.currentTimeMillis();
                 renderSynchronizer.acquire(renderFactor);
                 var tt = System.nanoTime();
-                render();
+                _render();
                 renderTime = (System.nanoTime() - tt) / (float) MILLION;
                 fps++;
                 renderCount++;
-                frameLoss = renderSynchronizer.availablePermits();
+                totalFrameLoss += frameLoss = renderSynchronizer.availablePermits();
                 rTime += System.currentTimeMillis() - t;
                 if (rTime >= 1_000) {
                     this.fps = fps * 1_000f / rTime;
@@ -118,20 +131,26 @@ public final class Engine {
         } finally {
             if (update != null)
                 update.cancel(true);
+            timer.stop();
+            renderTime = 0;
+            inputTime = 0;
+            updateTime = 0;
+            fps = 0;
+            ups = 0;
+            ips = 0;
+            frameLoss = 0;
             working = false;
+            if (committedCommandsToMainThread != null) {
+                committedCommandsToMainThread.run();
+                committedCommandsToMainThread = null;
+            }
             if (window.windowShouldClose())
                 cleanup();
         }
     }
 
-    private void start() {
-        start(targetFps, targetUps, targetIps);
-    }
-
-    private void stop() {
-        if (!working)
-            return;
-        working = false;
+    private void _start() {
+        _start(targetFps, targetUps, targetIps);
     }
 
     private void init() {
@@ -152,26 +171,40 @@ public final class Engine {
         logic.cleanup();
         engineRuntimeToolsFrame.dispose();
         window.cleanup();
+        initialized = false;
+        timer.reset();
         System.err.println("EngineWindowClosed -> System.exit");
         System.exit(0);
     }
 
-    private void input() {
+    private void _input() {
+        if (!doInput)
+            return;
         input.input();
         logic.input();
     }
 
-    private void update() {
+    private void _update() {
+        if (!doUpdate)
+            return;
         logic.update();
     }
 
-    private void render() {
+    private void _render() {
+        if (!doRender)
+            return;
         logic.render();
         window.update();
     }
 
-    private void _start() {
+    public void start() {
         startLoopLock.release();
+    }
+
+    public synchronized void stop() {
+        if (!working)
+            return;
+        working = false;
     }
 
     public void turnon() {
@@ -190,17 +223,23 @@ public final class Engine {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            engine.start();
+            engine._start();
         }
         Thread.currentThread().setPriority(oldPriority);
     }
 
     public void turnoff() {
-        if (!on || engine == null)
+        if (!on)
             return;
         on = false;
-        engine.stop();
+        stop();
         cleanup();
+    }
+
+    public void commitCommandsToMainThread(Runnable commands) {
+        committedCommandsToMainThread = commands;
+        stop();
+        start();
     }
 
     public void setLogic(Logic logic) {
@@ -247,12 +286,20 @@ public final class Engine {
         return updateCount;
     }
 
-    public int getFrameLoss() {
+    public long getFrameLoss() {
         return frameLoss;
     }
 
     public long getTotalFrameLoss() {
+        return totalFrameLoss;
+    }
+
+    public long getPureTotalFrameLoss() {
         return updateCount - renderCount;
+    }
+
+    public EngineTimer getTimer() {
+        return timer;
     }
 
     public int getTargetFps() {
@@ -270,7 +317,7 @@ public final class Engine {
     public void setTargetFps(int targetFps) {
         stop();
         this.targetFps = Math.min(targetFps, targetUps);
-        _start();
+        start();
     }
 
     public void setTargetUps(int targetUps) {
@@ -278,17 +325,45 @@ public final class Engine {
         this.targetUps = targetUps;
         targetFps = Math.min(targetUps, targetFps);
         targetIps = Math.min(targetIps, targetUps);
-        _start();
+        start();
     }
 
     public void setTargetIps(int targetIps) {
         stop();
         this.targetIps = Math.min(targetIps, targetUps);
-        _start();
+        start();
     }
 
     public boolean isWorking() {
         return working;
+    }
+
+    public boolean isOn() {
+        return on;
+    }
+
+    public boolean isDoUpdate() {
+        return doUpdate;
+    }
+
+    public void setDoUpdate(boolean doUpdate) {
+        this.doUpdate = doUpdate;
+    }
+
+    public boolean isDoRender() {
+        return doRender;
+    }
+
+    public void setDoRender(boolean doRender) {
+        this.doRender = doRender;
+    }
+
+    public boolean isDoInput() {
+        return doInput;
+    }
+
+    public void setDoInput(boolean doInput) {
+        this.doInput = doInput;
     }
 
     public Window getWindow() {
@@ -299,8 +374,12 @@ public final class Engine {
         return input;
     }
 
+    public Camera getCamera() {
+        return logic.camera();
+    }
+
     public static @NotNull Engine get(String windowTitle, int width, int height, boolean vSync) {
-        if (engine != null)
+        if (engine != null && engine.on)
             engine.turnoff();
         return engine = new Engine(windowTitle, width, height, vSync);
     }
@@ -313,7 +392,15 @@ public final class Engine {
         return engine == null ? get().window : engine.window;
     }
 
-    public static Input _input() {
+    public static Input input() {
         return engine == null ? get().input : engine.input;
+    }
+
+    public static Camera camera() {
+        return engine == null ? get().logic.camera() : engine.logic.camera();
+    }
+
+    public static @NotNull Engine getEngine() {
+        return get();
     }
 }

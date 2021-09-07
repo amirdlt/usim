@@ -26,7 +26,8 @@ public class CoordinatedCanvas extends Canvas implements CoordinatedScreen {
 
     private Point mousePoint;
 
-    public CoordinatedCanvas(boolean setMouseListener, boolean setKeyListener) {
+    public CoordinatedCanvas(boolean allowChangeLayout, boolean setMouseListener, boolean setKeyListener) {
+        super(allowChangeLayout);
         xScale = 50;
         yScale = 50;
         showAxis = true;
@@ -39,6 +40,10 @@ public class CoordinatedCanvas extends Canvas implements CoordinatedScreen {
             handleKeyListener();
         addRender(this::drawGrid, this::drawAxis);
         camera.setCs(this);
+    }
+
+    public CoordinatedCanvas(boolean setMouseListener, boolean setKeyListener) {
+        this(false, setMouseListener, setKeyListener);
     }
 
     public CoordinatedCanvas() {

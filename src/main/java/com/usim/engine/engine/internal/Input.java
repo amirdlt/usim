@@ -24,7 +24,7 @@ public final class Input {
         leftButtonPressed = false;
         rightButtonPressed = false;
         middleButtonPressed = false;
-        windowHandle = -1;
+        windowHandle = 0;
     }
 
     void init() {

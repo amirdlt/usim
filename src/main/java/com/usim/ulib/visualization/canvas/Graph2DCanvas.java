@@ -86,13 +86,18 @@ public class Graph2DCanvas extends CoordinatedCanvas {
     private final HashMap<Arc2D, HashMap<Integer, Object>> arcs;
     protected final HashMap<String, Function<?, ?>> stringBaseMap;
 
-    public Graph2DCanvas() {
+    public Graph2DCanvas(boolean allowChangeLayout) {
+        super(allowChangeLayout, true, true);
         functions = new HashMap<>();
         pointSets = new HashMap<>();
         arcs = new HashMap<>();
         stringBaseMap = new HashMap<>();
         addRender(this::typicalPlotting, this::showPointSets, this::advancedPlotting, this::showRoots, this::showStationaryPoints);
         setShowGrid(true);
+    }
+
+    public Graph2DCanvas() {
+        this(false);
     }
 
     // Major Function
@@ -439,7 +444,7 @@ public class Graph2DCanvas extends CoordinatedCanvas {
                     (Function2D) p.get(RADIUS_FUNC), (boolean) p.get(FILLED_OVAL), this::screenX, this::screenY, g2d);        }
     }
 
-    public static void simplePlotter2D(List<Point2D> sample, CoordinatedCanvas canvas, Graphics2D g2d) {
+    public static void simplePlotter2D(List<Point2D> sample, CoordinatedScreen canvas, Graphics2D g2d) {
         var xa = new int[sample.size()];
         var ya = new int[sample.size()];
 

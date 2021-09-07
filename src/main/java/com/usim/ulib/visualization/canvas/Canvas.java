@@ -29,13 +29,17 @@ public class Canvas extends JPanel implements Runnable {
     private boolean showInfo;
     private boolean showBgImg;
     protected final Camera camera;
-    private final boolean created;
+    private final boolean fixedLayout;
 
-    public Canvas() {
+    public Canvas(boolean allowChangeLayout) {
         redrawTimer = new Timer(DEFAULT_REDRAW_DELAY, e -> this.run());
         camera = new Camera();
         init();
-        created = true;
+        fixedLayout = !allowChangeLayout;
+    }
+
+    public Canvas() {
+        this(false);
     }
 
     private void init() {
@@ -263,13 +267,15 @@ public class Canvas extends JPanel implements Runnable {
     public final void addSettingPanel() {
         removeSettingPanel();
         var p = getSettingPanel();
+        if (p == null)
+            return;
         p.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 18));
         add(new JScrollPane(p, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.EAST);
         repaint();
         revalidate();
     }
 
-    public final void removeSettingPanel() {
+    public void removeSettingPanel() {
         try {
             remove(0);
         } catch (Exception ignore) {}
@@ -287,8 +293,10 @@ public class Canvas extends JPanel implements Runnable {
 
     @Override
     public void setLayout(LayoutManager mgr) {
-        if (created)
+        if (fixedLayout)
             System.err.println("AHD:: Can't change layout manager of an Canvas");
+        else
+            super.setLayout(mgr);
     }
 
     @Override

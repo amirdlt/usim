@@ -1,5 +1,7 @@
 package com.usim.engine.engine.logic;
 
+import com.usim.engine.engine.internal.Camera;
+
 public interface Logic {
 
     void init();
@@ -11,4 +13,6 @@ public interface Logic {
     void render();
 
     void cleanup();
+
+    Camera camera();
 }

@@ -4,20 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Add Input">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/shaders/fragment.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/shaders/vertex.vs" afterDir="false" />
+    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Fix Camera's Bugs">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/entity/loader/ModelLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/EngineTimer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/WindowManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/swing/MultiGraphPanelForSampling.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Transformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Transformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Mesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Mesh.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Engine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Input.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Renderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/DummyGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/DummyGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/Logic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/swing/EngineRuntimeToolsFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/swing/EngineRuntimeToolsFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/game/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/swingutils/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/swingutils/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/canvas/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/canvas/Canvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/canvas/CoordinatedCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/canvas/CoordinatedCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/canvas/Graph2DCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/canvas/Graph2DCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/canvas/Render.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/canvas/Render.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,9 +71,18 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.base/java/util/concurrent/Future.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.base/java/lang/Object.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.desktop/javax/swing/JOptionPane.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.base/java/lang/Thread.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.base/java/util/stream/DoubleStream.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.base/java/lang/constant/Constable.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.desktop/java/awt/Canvas.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.desktop/javax/swing/JPanel.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.desktop/javax/swing/JWindow.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.desktop/java/beans/JavaBean.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.base/java/lang/System.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.base/java/lang/Object.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.joml/joml/1.10.2/cd7eca78cff0d38f9d0374e198a850c8e7553546/joml-1.10.2-sources.jar!/org/joml/Vector3f.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.spair/imgui-java-app/1.84.1.0/70a45c5c53c94ca3d2deb2a343d65e9b6cb1eb94/imgui-java-app-1.84.1.0.jar!/org/lwjgl/glfw/GLFW.class" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1xXJstHDVkhNhnoXYsjqRHlE3ME" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -110,6 +123,45 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.lwjglb.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.engine.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.engine.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.engine.game.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -233,7 +285,10 @@
       <workItem from="1630765231009" duration="32961000" />
       <workItem from="1630828890404" duration="11434000" />
       <workItem from="1630852328534" duration="3404000" />
-      <workItem from="1630891495066" duration="4393000" />
+      <workItem from="1630891495066" duration="25225000" />
+      <workItem from="1630929039956" duration="9935000" />
+      <workItem from="1630947244495" duration="7821000" />
+      <workItem from="1630961839890" duration="16131000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="First USim Schema">
       <created>1630752367079</created>
@@ -277,7 +332,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۰۷" />
       <updated>1630843734491</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL‎۰۰۰۰۸" summary="Fix Camera's Bugs">
+      <created>1630896155487</created>
+      <option name="number" value="LOCAL‎۰۰۰۰۸" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۰۸" />
+      <updated>1630896155487</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,6 +364,7 @@
     <MESSAGE value="Add Elements to EngineRuntimeToolsFrame" />
     <MESSAGE value="Add Camera" />
     <MESSAGE value="Add Input" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Input" />
+    <MESSAGE value="Fix Camera's Bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Camera's Bugs" />
   </component>
 </project>
