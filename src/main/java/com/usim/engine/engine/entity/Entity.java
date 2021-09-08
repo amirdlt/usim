@@ -28,9 +28,7 @@ public class Entity {
     }
 
     public void setPosition(float x, float y, float z) {
-        this.position.x = x;
-        this.position.y = y;
-        this.position.z = z;
+        position.set(x, y, z);
     }
 
     public float getScale() {
@@ -46,9 +44,7 @@ public class Entity {
     }
 
     public void setRotation(float x, float y, float z) {
-        this.rotation.x = x;
-        this.rotation.y = y;
-        this.rotation.z = z;
+        rotation.set(x, y, z);
     }
     
     public Mesh getMesh() {

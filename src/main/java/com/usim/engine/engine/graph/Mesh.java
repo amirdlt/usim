@@ -1,6 +1,8 @@
 package com.usim.engine.engine.graph;
 
+import com.usim.ulib.utils.annotation.ChangeReference;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Vector3f;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.system.MemoryUtil;
 
@@ -34,9 +36,74 @@ public class Mesh {
     private final int vaoId;
     private final List<Integer> vboIdList;
     private final int vertexCount;
-    private final Texture texture;
+    private Texture texture;
+    private final Vector3f color;
+
+    public Mesh(float @NotNull [] positions, float @NotNull [] textCoords, float @NotNull [] normals, int @NotNull [] indices) {
+        color = new Vector3f(1, 1, 1);
+
+        FloatBuffer posBuffer = null;
+        FloatBuffer textCoordsBuffer = null;
+        FloatBuffer vecNormalsBuffer = null;
+        IntBuffer indicesBuffer = null;
+        try {
+            vertexCount = indices.length;
+            vboIdList = new ArrayList<>();
+
+            vaoId = glGenVertexArrays();
+            glBindVertexArray(vaoId);
+
+            // Position VBO
+            int vboId = glGenBuffers();
+            vboIdList.add(vboId);
+            posBuffer = MemoryUtil.memAllocFloat(positions.length).put(positions).flip();
+            glBindBuffer(GL_ARRAY_BUFFER, vboId);
+            glBufferData(GL_ARRAY_BUFFER, posBuffer, GL_STATIC_DRAW);
+            glEnableVertexAttribArray(0);
+            glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
+
+            // Texture coordinates VBO
+            vboId = glGenBuffers();
+            vboIdList.add(vboId);
+            textCoordsBuffer = MemoryUtil.memAllocFloat(textCoords.length).put(textCoords).flip();
+            glBindBuffer(GL_ARRAY_BUFFER, vboId);
+            glBufferData(GL_ARRAY_BUFFER, textCoordsBuffer, GL_STATIC_DRAW);
+            glEnableVertexAttribArray(1);
+            glVertexAttribPointer(1, 2, GL_FLOAT, false, 0, 0);
+
+            // Vertex normals VBO
+            vboId = glGenBuffers();
+            vboIdList.add(vboId);
+            vecNormalsBuffer = MemoryUtil.memAllocFloat(normals.length).put(normals).flip();
+            glBindBuffer(GL_ARRAY_BUFFER, vboId);
+            glBufferData(GL_ARRAY_BUFFER, vecNormalsBuffer, GL_STATIC_DRAW);
+            glEnableVertexAttribArray(2);
+            glVertexAttribPointer(2, 3, GL_FLOAT, false, 0, 0);
+
+            // Index VBO
+            vboId = glGenBuffers();
+            vboIdList.add(vboId);
+            indicesBuffer = MemoryUtil.memAllocInt(indices.length).put(indices).flip();
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vboId);
+            glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesBuffer, GL_STATIC_DRAW);
+
+            glBindBuffer(GL_ARRAY_BUFFER, 0);
+            glBindVertexArray(0);
+        } finally {
+            if (posBuffer != null)
+                MemoryUtil.memFree(posBuffer);
+            if (textCoordsBuffer != null)
+                MemoryUtil.memFree(textCoordsBuffer);
+            if (vecNormalsBuffer != null)
+                MemoryUtil.memFree(vecNormalsBuffer);
+            if (indicesBuffer != null)
+                MemoryUtil.memFree(indicesBuffer);
+        }
+    }
 
     public Mesh(float @NotNull [] positions, float @NotNull [] textCoords, int @NotNull [] indices, Texture texture) {
+        color = new Vector3f(1, 1, 1);
+
         FloatBuffer posBuffer = null;
         FloatBuffer textCoordsBuffer = null;
         IntBuffer indicesBuffer = null;
@@ -86,6 +153,8 @@ public class Mesh {
     }
 
     public Mesh(float @NotNull [] positions, float @NotNull [] colors, int @NotNull [] indices) {
+        color = null;
+
         FloatBuffer posBuffer = null;
         FloatBuffer colorBuffer = null;
         IntBuffer indicesBuffer = null;
@@ -140,6 +209,27 @@ public class Mesh {
 
     public int getVertexCount() {
         return vertexCount;
+    }
+
+    public boolean isTextured() {
+        return texture != null;
+    }
+
+    public Texture getTexture() {
+        return texture;
+    }
+
+    public void setTexture(Texture texture) {
+        this.texture = texture;
+    }
+
+    @ChangeReference(change = false)
+    public void setColor(Vector3f color) {
+        this.color.set(color);
+    }
+
+    public Vector3f getColor() {
+        return color;
     }
 
     public void render() {

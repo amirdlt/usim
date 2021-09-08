@@ -36,9 +36,8 @@ public class Window {
     void init() {
         GLFWErrorCallback.createPrint(System.err).set();
 
-        if (!glfwInit()) {
-            throw new IllegalStateException("Unable to initialize GLFW");
-        }
+        if (!glfwInit())
+            throw new IllegalStateException("AHD:: Unable to initialize GLFW");
 
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
@@ -48,6 +47,10 @@ public class Window {
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
+        _init();
+    }
+
+    private void _init() {
         windowHandle = glfwCreateWindow(width, height, title, NULL, NULL);
         if (windowHandle == NULL)
             throw new RuntimeException("AHD:: Failed to create the GLFW window");

@@ -31,5 +31,5 @@ public interface Constants {
     float DEFAULT_Z_FAR = 1000f;
 
     float DEFAULT_MOUSE_MOVEMENT_SENSITIVITY = 0.002f;
-    float DEFAULT_CAMERA_MOVEMENT_SENSITIVITY = 0.05f;
+    float DEFAULT_CAMERA_MOVEMENT_SENSITIVITY = 0.5f;
 }

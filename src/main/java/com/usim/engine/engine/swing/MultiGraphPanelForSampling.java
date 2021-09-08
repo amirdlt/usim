@@ -146,7 +146,7 @@ class MultiGraphPanelForSampling extends Graph2DCanvas {
     }
 
     public void update() {
-        setXYScale(fixedScale ? getWidth() : getWidth() / (double) samplingCountInOneView, getHeight() - 8);
+        setXYScale(0.99 * (fixedScale ? getWidth() : getWidth() / (double) samplingCountInOneView), getHeight() * 0.99);
         setShiftXY(fixedScale ? getWidth() / 2 : (int) (-getWidth() / 2 + (getWidth() / (double) samplingCountInOneView * updateCount)), -getHeight() / 2);
         graphs.values().forEach(Graph2d::addNewPoint);
         updateCount++;
@@ -162,7 +162,7 @@ class MultiGraphPanelForSampling extends Graph2DCanvas {
 
     private double maxY() {
         try {
-            return graphs.values().stream().mapToDouble(g -> g.points.stream().mapToDouble(p -> p.y).max().orElse(0)).max()
+            return graphs.values().stream().filter(g -> g.visible.get()).mapToDouble(g -> g.points.stream().mapToDouble(p -> p.y).max().orElse(0)).max()
                     .orElse(0);
         } catch (ConcurrentModificationException e) {
             return 0;
@@ -201,16 +201,16 @@ class MultiGraphPanelForSampling extends Graph2DCanvas {
             return;
         g.setFont(boundFont);
         try {
-            var max = graphs.values().stream()
+            var max = graphs.values().stream().filter(e -> e.visible.get())
                     .max(Comparator.comparingDouble(e -> e.points.stream().mapToDouble(p -> p.y).max().orElse(0))).orElse(null);
-            var min = graphs.values().stream()
+            var min = graphs.values().stream().filter(e -> e.visible.get())
                     .min(Comparator.comparingDouble(e -> e.points.stream().mapToDouble(p -> p.y).min().orElse(0))).orElse(null);
             if (max != null) {
-                g.setColor(max.color);
+                g.setColor(max.color.darker());
                 g.drawString("max: " + Utils.round(maxY(), 3), 10, getHeight() - 10);
             }
             if (min != null) {
-                g.setColor(min.color);
+                g.setColor(min.color.darker());
                 g.drawString("min: " + Utils.round(min.points.stream().mapToDouble(p -> p.y).min().orElse(0), 3), 10, getHeight() - 25);
             }
         } catch (ConcurrentModificationException ignore) {}

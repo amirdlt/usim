@@ -89,7 +89,7 @@ public final class EngineTimer {
 
     public float idleSeconds() {
         synchronized (mutex) {
-            return (idleAccumulator + (startTime == 0 ? System.nanoTime() - endTime : 0)) / NANO_F;
+            return (idleAccumulator + (startTime == 0 && endTime != 0 ? System.nanoTime() - endTime : 0)) / NANO_F;
         }
     }
 

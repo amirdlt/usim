@@ -24,7 +24,7 @@ public class Utils {
             try (Scanner scanner = new Scanner(in, StandardCharsets.UTF_8)) {
                 result = scanner.useDelimiter("\\A").next();
             }
-        } catch (IOException e) {
+        } catch (IOException | NullPointerException e) {
             throw new RuntimeException("AHD:: IOException during load resource.", e);
         }
         return result;
@@ -58,14 +58,10 @@ public class Utils {
             }
         }
 
-        buffer.flip();
-        return buffer;
+        return buffer.flip();
     }
 
     private static @NotNull ByteBuffer resizeBuffer(@NotNull ByteBuffer buffer, int newCapacity) {
-        ByteBuffer newBuffer = BufferUtils.createByteBuffer(newCapacity);
-        buffer.flip();
-        newBuffer.put(buffer);
-        return newBuffer;
+        return BufferUtils.createByteBuffer(newCapacity).put(buffer.flip());
     }
 }

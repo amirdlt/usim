@@ -35,6 +35,9 @@ public class Renderer {
         shader.createUniform("projectionMatrix");
         shader.createUniform("modelViewMatrix");
         shader.createUniform("texture_sampler");
+
+        shader.createUniform("colour");
+        shader.createUniform("useColour");
     }
 
     public void clear() {
@@ -60,6 +63,8 @@ public class Renderer {
         shader.setUniform("texture_sampler", 0);
         for (var entity : entities) {
             shader.setUniform("modelViewMatrix", transformation.getModelViewMatrix(entity, viewMatrix));
+            shader.setUniform("colour", entity.getMesh().getColor());
+            shader.setUniform("useColour", entity.getMesh().isTextured() ? 0 : 1);
             entity.render();
         }
 
@@ -76,9 +81,8 @@ public class Renderer {
     }
 
     public void cleanup() {
-        if (shader != null) {
+        if (shader != null)
             shader.cleanup();
-        }
     }
 
     @FunctionalInterface

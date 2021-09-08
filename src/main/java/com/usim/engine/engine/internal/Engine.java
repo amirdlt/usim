@@ -105,7 +105,7 @@ public final class Engine {
                 renderSynchronizer.acquire(renderFactor);
                 _render();
                 fps++;
-                totalFrameLoss += frameLoss = renderSynchronizer.availablePermits();
+                totalFrameLoss += frameLoss = renderSynchronizer.availablePermits() / renderFactor;
                 rTime += System.currentTimeMillis() - t;
                 if (rTime >= 1_000) {
                     this.fps = fps * 1_000f / rTime;
@@ -159,42 +159,49 @@ public final class Engine {
 
     private void cleanup() {
         logic.cleanup();
-        engineRuntimeToolsFrame.dispose();
         window.cleanup();
+        engineRuntimeToolsFrame.gotoSystemTray();
         initialized = false;
         timer.reset();
-        System.err.println("EngineWindowClosed -> System.exit");
-        System.exit(0);
+//        System.err.println("EngineWindowClosed -> System.exit");
+//        System.exit(0);
     }
 
     private void _input() {
         var t = System.nanoTime();
         input.input();
-        if (doInput)
+        if (doInput) {
             logic.input();
+            inputCount++;
+        }
         inputTime = (System.nanoTime() - t) / MILLION_F;
-        inputCount++;
     }
 
     private void _update() {
         var t = System.nanoTime();
-        if (doUpdate)
+        if (doUpdate) {
             logic.update();
+            updateCount++;
+        }
         updateTime = (System.nanoTime() - t) / MILLION_F;
-        updateCount++;
     }
 
     private void _render() {
         var tt = System.nanoTime();
-        if (doRender)
+        if (doRender) {
             logic.render();
+            renderCount++;
+        }
         window.update();
         renderTime = (System.nanoTime() - tt) / MILLION_F;
-        renderCount++;
     }
 
     public void start() {
-        startLoopLock.release();
+        if (!on) {
+            turnon();
+        } else {
+            startLoopLock.release();
+        }
     }
 
     public synchronized void stop() {
@@ -204,14 +211,12 @@ public final class Engine {
     }
 
     public void turnon() {
-        if (on)
-            return;
         if (!Thread.currentThread().getName().equals("main"))
             throw new RuntimeException("AHD:: Engine must be turned on inside the main thread due to lwjgl constraints.");
+        if (on)
+            return;
         var oldPriority = Thread.currentThread().getPriority();
         Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
-        if (engine == null)
-            get();
         on = true;
         while (on) {
             try {
@@ -219,8 +224,9 @@ public final class Engine {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            engine._start();
+            _start();
         }
+        cleanup();
         Thread.currentThread().setPriority(oldPriority);
     }
 
@@ -228,14 +234,58 @@ public final class Engine {
         if (!on)
             return;
         on = false;
+        var oldRender = doRender;
+        var oldUpdate = doUpdate;
+        var oldInput = doInput;
+        if (!working)
+            start();
         stop();
-        cleanup();
+        doUpdate = oldUpdate;
+        doInput = oldInput;
+        doRender = oldRender;
+    }
+
+    public void rebuildWindow() {
+        if (!on)
+            return;
+//        cleanup();
+        window.cleanup();
+//        start();
+//        try {
+//            startLoopLock.acquire();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        //        var working = this.working;
+//        stop();
+//        window.cleanup();
+//        start();
+//        if (!working)
+//            stop();
     }
 
     public void commitCommandsToMainThread(Runnable commands) {
+        if (!on && !Thread.currentThread().getName().equals("main"))
+            throw new RuntimeException("AHD:: Engine must be turned on inside main thread.");
         committedCommandsToMainThread = commands;
-        stop();
-        start();
+        var oldRender = doRender;
+        var oldUpdate = doUpdate;
+        var oldInput = doInput;
+        if (!on) {
+            doUpdate = doInput = doRender = false;
+            _start();
+            stop();
+        } else if (working) {
+            stop();
+            start();
+        } else {
+            doUpdate = doInput = doRender = false;
+            start();
+            stop();
+        }
+        doUpdate = oldUpdate;
+        doInput = oldInput;
+        doRender = oldRender;
     }
 
     public void setLogic(Logic logic) {

@@ -216,7 +216,7 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
         }, AWTEvent.ACTION_EVENT_MASK + AWTEvent.WINDOW_EVENT_MASK);
     }
 
-    protected void gotoSystemTray() {
+    public void gotoSystemTray() {
         _gotoTray.run();
     }
 
@@ -265,8 +265,9 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
         return (JTable) elements.get(tag);
     }
 
-    protected JComboBox<?> comboBoxE(String tag) {
-        return (JComboBox<?>) elements.get(tag);
+    protected <T> JComboBox<T> comboBoxE(String tag) {
+        //noinspection unchecked
+        return (JComboBox<T>) elements.get(tag);
     }
 
     protected JLabel labelE(String tag) {
@@ -331,6 +332,18 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
     }
 
     protected void updateElements() {}
+
+    protected void showErrorDialog(String message, String title) {
+        JOptionPane.showMessageDialog(this, message, title, JOptionPane.ERROR_MESSAGE);
+    }
+
+    protected void showErrorDialog(String message) {
+        showErrorDialog(message, "Error");
+    }
+
+    protected void showErrorDialog() {
+        showErrorDialog("Error", "Error");
+    }
 
     private int width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT;
     public void toggleFullScreen() {
