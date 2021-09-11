@@ -4,37 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Improve MultiGraphPanelForSampling">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/logic/SampleLogic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/util/Sampling.java" afterDir="false" />
+    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Add Sampling">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/swingutils/ElementBaseContainer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/swingutils/MainPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/entity/loader/ModelLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/entity/loader/ModelLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Mesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/graph/Mesh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/graph/Shader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/graph/Texture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/graph/Transformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/graph/Transformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/internal/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/internal/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/EngineTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/internal/EngineTimer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/internal/Input.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/internal/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/internal/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/internal/WindowManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/internal/WindowManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/DummyGame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/logic/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/logic/Logic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/swing/ComponentBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/swing/ComponentBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/swing/EngineRuntimeToolsFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/swing/EngineRuntimeToolsFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/swing/MultiGraphPanelForSampling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/swing/MultiGraphPanelForSampling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/engine/util/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/util/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/game/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Mapper2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Mapper2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Mapper3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Mapper3D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/functions/utils/Sampling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/functions/utils/Sampling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/graph/Mesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/graph/Mesh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/internal/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/internal/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/internal/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/internal/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/internal/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/internal/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/logic/SampleLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/logic/SampleLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/swing/ComponentBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/swing/ComponentBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/swing/EngineRuntimeToolsFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/swing/EngineRuntimeToolsFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/engine/util/Sampling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/engine/util/Sampling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Arc2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Arc2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Arc3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Arc3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/BinaryFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/BinaryFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/CFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/CFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/ColorFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/ColorFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Function.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Function2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Function2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Function3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Function3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Function4D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Function4D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/FunctionVD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/FunctionVD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/IntMapper2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/IntMapper2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/NoArgFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/NoArgFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Surface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/Surface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/TernaryFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/TernaryFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/UnaryFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/functions/UnaryFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/datatypes/graph/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/functions/unaries/real/AbsoluteValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/functions/unaries/real/AbsoluteValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/functions/utils/FunctionAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/functions/utils/FunctionAnalyser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/functions/utils/FunctionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/functions/utils/FunctionUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/operators/Derivative.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/operators/Derivative.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/operators/Integral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/jmath/operators/Integral.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/swingutils/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/swingutils/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/fragment.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/fragment.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/vertex.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/vertex.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/animatedmodels/GameOfLife3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/animatedmodels/GameOfLife3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/FlatSurface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/FlatSurface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/PointMover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/PointMover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/PointShape3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/PointShape3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/Shape3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usim/ulib/visualization/shapes/shape3d/Shape3D.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +58,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -67,9 +79,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Class" />
-        <option value="Interface" />
         <option value="Record" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -131,10 +143,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
-  </component>
-  <component name="ReaderModeSettings">
-    <option name="enabled" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -148,7 +157,7 @@
       <recent name="com.usim.engine" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main (۳)">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main (۱)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.lwjglb.game.Main" />
       <module name="usim.main" />
@@ -175,7 +184,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (۳)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.engine.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.usim.game.Main" />
       <module name="usim.main" />
       <extension name="coverage">
@@ -214,12 +236,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
+    <configuration name="Main (۳)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.game.Main" />
       <module name="usim.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.usim.engine.game.*" />
+          <option name="PATTERN" value="com.usim.game.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -335,13 +357,9 @@
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Main (۱)" />
-      <item itemvalue="Application.Main (۲)" />
-      <item itemvalue="Application.Main (۳)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main (۳)" />
-        <item itemvalue="Application.Main (۲)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main (۱)" />
         <item itemvalue="Application.Main" />
@@ -369,7 +387,9 @@
       <workItem from="1630947244495" duration="7821000" />
       <workItem from="1630961839890" duration="27020000" />
       <workItem from="1631028726838" duration="31946000" />
-      <workItem from="1631111038713" duration="64792000" />
+      <workItem from="1631111038713" duration="67289000" />
+      <workItem from="1631352377213" duration="21248000" />
+      <workItem from="1631385034049" duration="185000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="First USim Schema">
       <created>1630752367079</created>
@@ -437,7 +457,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۱۱" />
       <updated>1631116388526</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL‎۰۰۰۱۲" summary="Add Sampling">
+      <created>1631345751949</created>
+      <option name="number" value="LOCAL‎۰۰۰۱۲" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۱۲" />
+      <updated>1631345751949</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -466,6 +492,7 @@
     <MESSAGE value="Fix Camera's Bugs" />
     <MESSAGE value="Add EngineTimer" />
     <MESSAGE value="Improve MultiGraphPanelForSampling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improve MultiGraphPanelForSampling" />
+    <MESSAGE value="Add Sampling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Sampling" />
   </component>
 </project>

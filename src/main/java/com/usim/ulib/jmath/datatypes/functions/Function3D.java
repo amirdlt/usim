@@ -1,6 +1,7 @@
 package com.usim.ulib.jmath.datatypes.functions;
 
 import com.usim.ulib.jmath.datatypes.tuples.Point2D;
+import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("unused")
 public interface Function3D extends Function<Double, Point2D> {
@@ -11,7 +12,7 @@ public interface Function3D extends Function<Double, Point2D> {
     default BinaryFunction f() {return new BinaryFunction(this);}
 
     @Override
-    default Double valueAt(Point2D point) {return valueAt(point.x, point.y);}
+    default Double valueAt(@NotNull Point2D point) {return valueAt(point.x, point.y);}
 
     @Override
     default Double atOrigin() {

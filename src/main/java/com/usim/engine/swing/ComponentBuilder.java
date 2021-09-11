@@ -1,6 +1,7 @@
 package com.usim.engine.swing;
 
 import com.usim.ulib.jmath.parser.Function4DParser;
+import com.usim.ulib.swingutils.ElementBaseContainer;
 import com.usim.ulib.swingutils.MainFrame;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -84,7 +85,7 @@ public final class ComponentBuilder {
         }};
     }
 
-    private static @NotNull JPanel createEntityPanel(MainFrame frame, int id) {
+    private static @NotNull JPanel createEntityPanel(ElementBaseContainer frame, int id) {
         return new JPanel() {{
             final var main = this;
             setName("Entity-" + id);
@@ -93,7 +94,7 @@ public final class ComponentBuilder {
                 setFont(titleFont);
             }});
             add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
-                setMaximumSize(new Dimension(420, 40));
+                setPreferredSize(new Dimension(420, 40));
                 add(new JLabel("Surface: "));
                 add(frame.element(main.getName() + "-xSurface-textField", new JTextField("x") {{setPreferredSize(new Dimension(200, 32));}}));
                 add(frame.element(main.getName() + "-ySurface-textField", new JTextField("y") {{setPreferredSize(new Dimension(200, 32));}}));
@@ -107,7 +108,7 @@ public final class ComponentBuilder {
             add(frame.element(getName() + "-new-panel", new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                 add(new JButton("New") {{
                     addActionListener(e -> {
-                        main.remove(frame.element(main.getName() + "-new-panel"));
+                        frame.removeE(main.getName() + "-new-panel");
                         main.add(createEntityPanel(frame, id + 1));
                     });
                 }});
@@ -115,7 +116,7 @@ public final class ComponentBuilder {
         }};
     }
 
-    static @NotNull JPanel createEntityPanel(MainFrame frame) {
+    static @NotNull JPanel createEntityPanel(ElementBaseContainer frame) {
         return createEntityPanel(frame, 0);
     }
 }

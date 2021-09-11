@@ -4,6 +4,7 @@ import com.usim.ulib.visualization.canvas.CoordinatedScreen;
 import com.usim.ulib.jmath.datatypes.functions.Arc3D;
 import com.usim.ulib.jmath.datatypes.tuples.Point3D;
 import com.usim.ulib.jmath.functions.utils.Sampling;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -84,7 +85,7 @@ public final class FlatSurface extends Shape3D {
     }
 
     @Override
-    public void render(Graphics2D g2d) {
+    public void render(@NotNull Graphics2D g2d) {
         Polygon poly = new Polygon();
         for (var p : points) {
             var pp = cs.screen(Point3D.rotateImmutably(p, cs.camera().getAngles())); //AHD:: CRITICAL-CHANGE

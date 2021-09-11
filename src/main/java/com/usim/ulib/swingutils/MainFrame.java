@@ -12,7 +12,7 @@ import java.util.*;
 import java.util.List;
 
 @SuppressWarnings("unused")
-public class MainFrame extends JFrame implements Runnable, StateBase<String, Container> {
+public class MainFrame extends JFrame implements Runnable, StateBase<String, Container>, ElementBaseContainer {
     public static final int DEFAULT_HEIGHT = 720;
     public static final int DEFAULT_WIDTH = DEFAULT_HEIGHT * 16 / 9;
 
@@ -220,118 +220,10 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
         _gotoTray.run();
     }
 
-    public JComponent element(String tag, JComponent component) {
-        elements.put(tag, component);
-        return component;
+    @Override
+    public Map<String, JComponent> elements() {
+        return elements;
     }
-
-    public JComponent element(String tag) {
-        return elements.get(tag);
-    }
-
-    public JButton buttonE(String tag) {
-        return (JButton) elements.get(tag);
-    }
-
-    public JTextField textFieldE(String tag) {
-        return (JTextField) elements.get(tag);
-    }
-
-    public JSlider sliderE(String tag) {
-        return (JSlider) elements.get(tag);
-    }
-
-    public JTabbedPane tabbedPaneE(String tag) {
-        return (JTabbedPane) elements.get(tag);
-    }
-
-    public JTextArea textAreaE(String tag) {
-        return (JTextArea) elements.get(tag);
-    }
-
-    public JTextPane textPaneE(String tag) {
-        return (JTextPane) elements.get(tag);
-    }
-
-    public JScrollPane scrollPaneE(String tag) {
-        return (JScrollPane) elements.get(tag);
-    }
-
-    public JPanel panelE(String tag) {
-        return (JPanel) elements.get(tag);
-    }
-
-    public JTable tableE(String tag) {
-        return (JTable) elements.get(tag);
-    }
-
-    public  <T> JComboBox<T> comboBoxE(String tag) {
-        //noinspection unchecked
-        return (JComboBox<T>) elements.get(tag);
-    }
-
-    public JLabel labelE(String tag) {
-        return (JLabel) elements.get(tag);
-    }
-
-    public JSplitPane splitPaneE(String tag) {
-        return (JSplitPane) elements.get(tag);
-    }
-
-    public JSeparator separatorE(String tag) {
-        return (JSeparator) elements.get(tag);
-    }
-
-    public JList<?> listE(String tag) {
-        return (JList<?>) elements.get(tag);
-    }
-
-    public JCheckBox checkBoxE(String tag) {
-        return (JCheckBox) elements.get(tag);
-    }
-
-    public JMenu menuE(String tag) {
-        return (JMenu) elements.get(tag);
-    }
-
-    public JMenuBar menuBarE(String tag) {
-        return (JMenuBar) elements.get(tag);
-    }
-
-    public JEditorPane editorPaneE(String tag) {
-        return (JEditorPane) elements.get(tag);
-    }
-
-    public Graph2DCanvas graph2DCanvasE(String tag) {
-        return (Graph2DCanvas) elements.get(tag);
-    }
-
-    public Graph3DCanvas graph3DCanvasE(String tag) {
-        return (Graph3DCanvas) elements.get(tag);
-    }
-
-    public Canvas canvasE(String tag) {
-        return (Canvas) elements.get(tag);
-    }
-
-    public CoordinatedCanvas coordinatedCanvasE(String tag) {
-        return (CoordinatedCanvas) elements.get(tag);
-    }
-
-    public CoordinatedScreen coordinatedScreenE(String tag) {
-        return (CoordinatedScreen) elements.get(tag);
-    }
-
-    public ImageCanvas imageCanvasE(String tag) {
-        return (ImageCanvas) elements.get(tag);
-    }
-
-    public <T> List<T> elements(@NotNull Class<T> clazz) {
-        //noinspection unchecked
-        return (List<T>) elements.values().stream().filter(clazz::isInstance).toList();
-    }
-
-    public void updateElements() {}
 
     public void showErrorDialog(String message, String title) {
         JOptionPane.showMessageDialog(this, message, title, JOptionPane.ERROR_MESSAGE);

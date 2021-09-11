@@ -7,6 +7,7 @@ import com.usim.ulib.visualization.canvas.CoordinatedScreen;
 import com.usim.ulib.visualization.shapes.shape3d.Line3D;
 import com.usim.ulib.visualization.shapes.shape3d.Shape3D;
 import com.usim.ulib.jmath.datatypes.tuples.AbstractPoint;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.*;
@@ -105,7 +106,7 @@ public class Graph<T> extends Shape3D implements Iterable<T> {
     }
 
     @Override
-    public void render(Graphics2D g2d) {
+    public void render(@NotNull Graphics2D g2d) {
         if (cs == null || nodes.isEmpty() || !(nodes.get(0).getData() instanceof AbstractPoint))
             return;
         g2d.setStroke(new BasicStroke(2f));

@@ -2,6 +2,7 @@ package com.usim.ulib.jmath.datatypes.functions;
 
 
 import com.usim.ulib.visualization.canvas.Render;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -17,5 +18,5 @@ public interface Function<Y, X> extends Serializable, Render {
     }
 
     @Override
-    default void render(Graphics2D g2d) {}
+    default void render(@NotNull Graphics2D g2d) {}
 }

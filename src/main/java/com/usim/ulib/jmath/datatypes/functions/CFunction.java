@@ -2,6 +2,7 @@ package com.usim.ulib.jmath.datatypes.functions;
 
 import com.usim.ulib.jmath.datatypes.tuples.Point2D;
 import com.usim.ulib.jmath.datatypes.ComplexNumber;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ public interface CFunction extends Function<ComplexNumber, ComplexNumber> {
     default ComplexNumber valueAt(double real, double imaginary) {
         return valueAt(new ComplexNumber(real, imaginary, false));
     }
-    default ComplexNumber valueAt(Point2D c, boolean isPolar) {return valueAt(new ComplexNumber(c.x, c.y, isPolar));}
+    default ComplexNumber valueAt(@NotNull Point2D c, boolean isPolar) {return valueAt(new ComplexNumber(c.x, c.y, isPolar));}
     default ComplexNumber valueAt(Point2D c) {return valueAt(c, false);}
     default Point2D valueAtAsPoint(ComplexNumber z) {return valueAt(z).asPoint();}
     default Point2D valueAtAsPoint(Point2D c, boolean isPolar) {return valueAt(c, isPolar).asPoint();}

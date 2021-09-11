@@ -6,6 +6,7 @@ import com.usim.ulib.visualization.canvas.Render;
 import com.usim.ulib.jmath.datatypes.functions.Function;
 import com.usim.ulib.jmath.datatypes.functions.Mapper3D;
 import com.usim.ulib.jmath.datatypes.tuples.Point3D;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.Timer;
@@ -185,7 +186,7 @@ public class Shape3D implements Render, Comparable<Shape3D>, Serializable, Funct
     }
 
     @Override
-    public void render(Graphics2D g2d) {
+    public void render(@NotNull Graphics2D g2d) {
         if (components.stream().allMatch(Area.class::isInstance))
             return;
         components.stream().sorted().forEach(c -> c.renderIfInView(g2d));

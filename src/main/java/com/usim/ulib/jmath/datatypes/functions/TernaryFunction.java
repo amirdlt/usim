@@ -3,6 +3,7 @@ package com.usim.ulib.jmath.datatypes.functions;
 
 import com.usim.ulib.jmath.datatypes.tuples.Point2D;
 import com.usim.ulib.jmath.datatypes.tuples.Point3D;
+import org.jetbrains.annotations.NotNull;
 
 public class TernaryFunction implements Function4D {
 
@@ -11,7 +12,7 @@ public class TernaryFunction implements Function4D {
     private final Point2D LOW_UP_BOUNDS;
     private final double[] delta;
 
-    public TernaryFunction(Function4D... kernels) {
+    public TernaryFunction(Function4D @NotNull ... kernels) {
         delta = new double[kernels.length];
         LOW_UP_BOUNDS = new Point2D(Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
 

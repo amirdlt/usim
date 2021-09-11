@@ -17,6 +17,7 @@ public class BinaryFunction implements Function3D {
 
     @Override
     public double valueAt(double x, double y) {
+        //noinspection SuspiciousNameCombination
         return xyF.valueAt(kernel.valueAt(xF.valueAt(x), yF.valueAt(y)));
     }
 
@@ -39,7 +40,7 @@ public class BinaryFunction implements Function3D {
     }
 
     public UnaryFunction makeYFix(double yFixValue) {
-        return new UnaryFunction(x -> this.valueAt(x, yFixValue));
+        return new UnaryFunction(x -> valueAt(x, yFixValue));
     }
 
     public UnaryFunction makeXFix(double xFixValue) {
@@ -65,5 +66,9 @@ public class BinaryFunction implements Function3D {
 
     public BinaryFunction partialDerivativeRelativeToY(double delta) {
         return Derivative.partialY(this, delta);
+    }
+
+    public Function3D kernel() {
+        return kernel;
     }
 }

@@ -90,6 +90,8 @@ dependencies {
     runtimeOnly 'org.lwjgl:lwjgl-yoga::natives-windows'
     runtimeOnly 'org.lwjgl:lwjgl-zstd::natives-windows'
 
+    implementation 'io.github.spair:imgui-java-app:1.84.1.0'
+
     implementation 'org.jetbrains:annotations:22.0.0'
 }
 

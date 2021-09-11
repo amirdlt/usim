@@ -22,6 +22,26 @@ public interface Surface extends Function<Point3D, Point2D> {
         return new BinaryFunction((x, y) -> valueAt(x, y).z);
     }
 
+    default Surface partialDerivativeRelativeToX(double deltaX) {
+        var dx = fx().partialDerivativeRelativeToX(deltaX);
+        var dy = fy().partialDerivativeRelativeToX(deltaX);
+        var dz = fz().partialDerivativeRelativeToX(deltaX);
+        return (x, y) -> new Point3D(dx.valueAt(x, y), dy.valueAt(x, y), dz.valueAt(x, y));
+    }
+
+    default Surface partialDerivativeRelativeToY(double deltaY) {
+        var dx = fx().partialDerivativeRelativeToY(deltaY);
+        var dy = fy().partialDerivativeRelativeToY(deltaY);
+        var dz = fz().partialDerivativeRelativeToY(deltaY);
+        return (x, y) -> new Point3D(dx.valueAt(x, y), dy.valueAt(x, y), dz.valueAt(x, y));
+    }
+
+    default Surface unitNormal(double deltaX, double deltaY) {
+        var dx = partialDerivativeRelativeToX(deltaX);
+        var dy = partialDerivativeRelativeToY(deltaY);
+        return (x, y) -> dx.valueAt(x, y).crossProduct(dy.valueAt(x, y)).normalize();
+    }
+
     @Override
     default Point3D valueAt(Point2D p) {
         return valueAt(p.x, p.y);

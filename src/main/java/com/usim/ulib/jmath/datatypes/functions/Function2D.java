@@ -1,5 +1,8 @@
 package com.usim.ulib.jmath.datatypes.functions;
 
+import com.usim.ulib.jmath.operators.Derivative;
+import org.jetbrains.annotations.NotNull;
+
 @SuppressWarnings("unused")
 public interface Function2D extends Function<Double, Double> {
     Function2D NaN = x -> Double.NaN;
@@ -14,7 +17,7 @@ public interface Function2D extends Function<Double, Double> {
     }
 
     @Override
-    default Double valueAt(Double x) {
+    default Double valueAt(@NotNull Double x) {
         return valueAt(x.doubleValue());
     }
 }

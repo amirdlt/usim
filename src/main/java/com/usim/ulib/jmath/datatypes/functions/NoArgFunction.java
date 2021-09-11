@@ -1,5 +1,7 @@
 package com.usim.ulib.jmath.datatypes.functions;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.awt.*;
 
 @FunctionalInterface
@@ -17,7 +19,7 @@ public interface NoArgFunction<Y> extends Function<Y, Void> {
     }
 
     @Override
-    default void render(Graphics2D g2d) {
+    default void render(@NotNull Graphics2D g2d) {
         System.err.println("AHD:: Not Implemented Yet: " + getClass());
     }
 }

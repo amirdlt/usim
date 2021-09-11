@@ -76,10 +76,6 @@ public class Window {
             this.height = height;
             resized = true;
         });
-        glfwSetKeyCallback(windowHandle, (window, key, scancode, action, mods) -> {
-            if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
-                glfwSetWindowShouldClose(window, true);
-        });
         if (glfwGetWindowAttrib(windowHandle, GLFW_MAXIMIZED) == GLFW_FALSE) {
             var videoMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
             if (videoMode != null)

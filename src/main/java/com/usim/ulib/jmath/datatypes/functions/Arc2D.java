@@ -50,7 +50,7 @@ public interface Arc2D extends Function<Point2D, Double> {
     }
 
 //    @Override
-    default void renderWithParams(Graphics2D g2d, Object... params) {
+//    default void renderWithParams(Graphics2D g2d, Object... params) {
 //        CoordinatedCanvasPanel canvas = (CoordinatedCanvasPanel) params[0];
 //        Color color = (Color) params[1];
 //        double l = (double) params[2];
@@ -59,5 +59,5 @@ public interface Arc2D extends Function<Point2D, Double> {
 //        int numOfThreads = (int) params[5];
 //        var sample = Sampling.multiThreadSampling(this, l, u, delta, numOfThreads);
 //        Graph2DPanel.typicalPlotter(sample, color, canvas::screenX, canvas::screenY, g2d);
-    }
+//    }
 }

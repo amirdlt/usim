@@ -6,7 +6,11 @@ import com.usim.engine.util.Utils;
 import com.usim.engine.graph.Shader;
 import com.usim.engine.graph.Transformation;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.TestOnly;
+import org.lwjgl.opengl.GL45C;
+import org.lwjgl.system.MemoryUtil;
 
+import java.nio.FloatBuffer;
 import java.util.*;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -68,6 +72,8 @@ public class Renderer {
         }
 
         shader.unbind();
+
+        drawCurve();
     }
 
     public void importShader(String vertexShaderCode, String fragmentShaderCode, @NotNull List<String> uniforms) {
@@ -82,6 +88,20 @@ public class Renderer {
     public void cleanup() {
         if (shader != null)
             shader.cleanup();
+    }
+
+    @TestOnly
+    private void drawCurve() {
+//        glEnableClientState(GL_VERTEX_ARRAY);
+//        glVertexPointer(3, GL_FLOAT, 0, MemoryUtil.memAllocFloat(15).put(new float[] {
+//                1, 1, 0,
+//                1, 0, 0,
+//                0, 0, 0,
+//                0, 1, 0,
+//                1, 0, 0
+//        }).flip());
+//        glDrawArrays(GL_LINE_STRIP, 0, 5);
+//        glDisableClientState(GL_VERTEX_ARRAY);
     }
 
     @FunctionalInterface

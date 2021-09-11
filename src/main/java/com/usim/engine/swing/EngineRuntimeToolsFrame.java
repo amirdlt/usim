@@ -56,8 +56,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                             addActionListener(e -> {
                                 try {
                                     engine.setTargetFps(Integer.parseInt(getText()));
-                                } catch (NumberFormatException ignore) {
-                                }
+                                } catch (NumberFormatException ignore) {}
                                 setText(String.valueOf(engine.getTargetFps()));
                             });
                         }}));

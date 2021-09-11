@@ -1,6 +1,8 @@
 package com.usim.ulib.jmath.functions.unaries.real;
 
 import com.usim.ulib.jmath.datatypes.functions.UnaryFunction;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("unused")
 public class AbsoluteValue extends UnaryFunction {
@@ -8,7 +10,8 @@ public class AbsoluteValue extends UnaryFunction {
         super(Math::abs);
     }
 
-    public static UnaryFunction f() {
+    @Contract(" -> new")
+    public static @NotNull UnaryFunction f() {
         return new AbsoluteValue();
     }
 }

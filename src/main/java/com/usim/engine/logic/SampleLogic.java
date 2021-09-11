@@ -10,16 +10,12 @@ import com.usim.engine.internal.Engine;
 import com.usim.engine.internal.Input;
 import com.usim.engine.internal.Renderer;
 import com.usim.engine.util.Sampling;
-import com.usim.ulib.jmath.datatypes.functions.Arc3D;
 import com.usim.ulib.jmath.datatypes.functions.Surface;
-import com.usim.ulib.jmath.datatypes.tuples.Point3D;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 import java.io.IOException;
 
-import static com.usim.engine.Constants.MILLION_F;
-import static com.usim.engine.Constants.PI_F;
 import static java.lang.Math.*;
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -57,11 +53,10 @@ public class SampleLogic implements Logic {
         gameItem.setPosition(0, 0, -2);
         gameItem.getMesh().setColor(new Vector3f(1, 0, 1));
 
-        var sample = Sampling.sample(-PI / 2, PI / 2, -PI, PI, 0.5, 0.5,
-                p -> Point3D.of(p.x * p.x, p.y * p.y, p.z * p.z).normalize(),
-                Surface.kleinBottle());
+        var sample = Sampling.sample(-PI / 2, PI / 2, -PI, PI, 0.05, 0.05, Surface.kleinBottle());
 
-        entities = new Entity[] { new Entity(new Mesh(sample.vertices(), sample.colors(), sample.indices())) };
+        //        entities = new Entity[] { new Entity(new Mesh(sample.vertices(), sample.colors(), sample.indices())) };
+        entities = new Entity[] {};
     }
 
     @Override
@@ -95,7 +90,7 @@ public class SampleLogic implements Logic {
     public void cleanup() {
         renderer.cleanup();
         for (var entity : entities)
-            entity.getMesh().cleanUp();
+            entity.getMesh().cleanup();
     }
 
     @Override

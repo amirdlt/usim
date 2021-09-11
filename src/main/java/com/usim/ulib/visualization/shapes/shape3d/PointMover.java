@@ -5,6 +5,7 @@ import com.usim.ulib.visualization.canvas.Graph3DCanvas;
 import com.usim.ulib.jmath.datatypes.functions.Arc3D;
 import com.usim.ulib.jmath.datatypes.tuples.Point3D;
 import com.usim.ulib.swingutils.MainFrame;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
@@ -121,7 +122,7 @@ public class PointMover extends Shape3D {
     }
 
     @Override
-    public void render(Graphics2D g2d) {
+    public void render(@NotNull Graphics2D g2d) {
         if (!showPath && !showHead)
             return;
         var oldColor = g2d.getColor();

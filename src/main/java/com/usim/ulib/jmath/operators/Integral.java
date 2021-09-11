@@ -5,6 +5,8 @@ import com.usim.ulib.jmath.datatypes.functions.*;
 import com.usim.ulib.jmath.datatypes.tuples.Point2D;
 import com.usim.ulib.jmath.functions.utils.Sampling;
 import com.usim.ulib.jmath.functions.unaries.real.ConstantFunction2D;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -132,12 +134,13 @@ public final class Integral implements Operator<UnaryFunction> {
                 yU.valueAt(z), xL.fx(z), xU.fx(z), deltaX, deltaY)).integral(zL, zU, deltaZ);
     }
 
+    @Contract(value = "_, _, _, _ -> new", pure = true)
     @Deprecated
-    public static UnaryFunction byCompositeRule(Function2D f, Function2D l, Function2D u, double delta) {
+    public static @NotNull UnaryFunction byCompositeRule(Function2D f, Function2D l, Function2D u, double delta) {
         return new UnaryFunction(x -> byCompositeRule(f, l.valueAt(x), u.valueAt(x), delta));
     }
 
-    public static UnaryFunction byDefinition(Function2D f, Function2D lowBound, Function2D upBound, double delta) {
+    public static @NotNull UnaryFunction byDefinition(Function2D f, @NotNull Function2D lowBound, Function2D upBound, double delta) {
         if (lowBound.f().isConstant(Double.NEGATIVE_INFINITY) && !upBound.f().isConstant(Double.POSITIVE_INFINITY)) {
             if (upBound.f().isConstant())
                 return ConstantFunction2D.f(infiniteL(f, upBound.valueAt(0), delta));

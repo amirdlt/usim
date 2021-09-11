@@ -2,6 +2,7 @@ package com.usim.ulib.visualization.shapes.shape3d;
 
 import com.usim.ulib.visualization.canvas.CoordinatedScreen;
 import com.usim.ulib.jmath.datatypes.tuples.Point3D;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
@@ -93,7 +94,7 @@ public class PointShape3D extends Shape3D {
     }
 
     @Override
-    public void render(Graphics2D g2d) {
+    public void render(@NotNull Graphics2D g2d) {
         if (!isVisible || !inViewPort())
             return;
 //        if (modelMoverActivated)

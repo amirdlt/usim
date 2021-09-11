@@ -1,5 +1,7 @@
 package com.usim.ulib.jmath.datatypes.functions;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Vector;
 
 @SuppressWarnings("unused")
@@ -7,7 +9,7 @@ public interface FunctionVD extends Function<Double, Vector<Double>> {
     double valueAt(double... params);
 
     @Override
-    default Double valueAt(Vector<Double> params) {
+    default Double valueAt(@NotNull Vector<Double> params) {
         double[] args = new double[params.size()];
         int counter = 0;
         for (var param : params)

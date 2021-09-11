@@ -3,6 +3,7 @@ package com.usim.ulib.jmath.datatypes.functions;
 import com.usim.ulib.jmath.datatypes.tuples.Point2D;
 import com.usim.ulib.jmath.datatypes.tuples.Point3D;
 import com.usim.ulib.jmath.functions.utils.Sampling;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -52,7 +53,7 @@ public interface Arc3D extends Function<Point3D, Double> {
     }
 
     @Override
-    default Point3D valueAt(Double t) {
+    default Point3D valueAt(@NotNull Double t) {
         return valueAt(t.doubleValue());
     }
 
@@ -72,7 +73,7 @@ public interface Arc3D extends Function<Point3D, Double> {
 //        asArc2D().renderWithParams(g2d, canvas, color, l, u, delta, numOfThreads);
 //    }
 
-    static Arc3D toArc3D(Arc2D arc, Point3D offset) {
+    static @NotNull Arc3D toArc3D(@NotNull Arc2D arc, Point3D offset) {
         var x = arc.fx();
         var y = arc.fy();
         return t -> new Point3D(
@@ -82,7 +83,7 @@ public interface Arc3D extends Function<Point3D, Double> {
         );
     }
 
-    static Arc3D circle(Point3D center, double radius) {
+    static @NotNull Arc3D circle(Point3D center, double radius) {
 //        var xc = center.x;
 //        var yc = center.y;
 //        var zc = center.z;
@@ -90,7 +91,7 @@ public interface Arc3D extends Function<Point3D, Double> {
         return toArc3D(Arc2D.circle(new Point2D(), radius), center);
     }
 
-    static Arc3D circle(Point3D center, double radius, Point3D normal) {
+    static @NotNull Arc3D circle(Point3D center, double radius, Point3D normal) {
 //        var tmp = (normal.x + normal.y) / normal.z;
 //        var a = new Point3D(-normal.y * tmp - normal.z, normal.z + normal.x * tmp, normal.x - normal.y).normalize();
 //        var b = new Point3D(1, 1, -tmp).normalize();
@@ -102,7 +103,7 @@ public interface Arc3D extends Function<Point3D, Double> {
 //        );
     }
     
-    static Arc3D rotatedArc2D(Arc2D arc, Point3D offset, Point3D normal) {
+    static @NotNull Arc3D rotatedArc2D(@NotNull Arc2D arc, Point3D offset, @NotNull Point3D normal) {
         var tmp = (normal.x + normal.y) / normal.z;
         var a = new Point3D(-normal.y * tmp - normal.z, normal.z + normal.x * tmp, normal.x - normal.y).normalize();
         var b = new Point3D(1, 1, -tmp).normalize();
@@ -115,7 +116,7 @@ public interface Arc3D extends Function<Point3D, Double> {
         );
     }
     
-    static Arc3D rotatedArc2D(Arc2D arc, Point3D normal) {
+    static @NotNull Arc3D rotatedArc2D(Arc2D arc, Point3D normal) {
         return rotatedArc2D(arc, new Point3D(), normal);
     }
 }

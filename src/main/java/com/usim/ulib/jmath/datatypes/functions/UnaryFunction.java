@@ -194,6 +194,10 @@ public class UnaryFunction implements Function2D {
         return asPolarArc(true);
     }
 
+    public Function2D kernel() {
+        return kernel;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

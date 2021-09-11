@@ -39,11 +39,11 @@ public final class Derivative implements Operator<UnaryFunction> {
     }
 
     public static BinaryFunction partialX(Function3D f, double delta) {
-        return new BinaryFunction((x, y) -> derivative(new BinaryFunction(f).makeYFix(y), delta).valueAt(x));
+        return new BinaryFunction((x, y) -> derivative(xx -> f.valueAt(x, y), delta).valueAt(x));
     }
 
     public static BinaryFunction partialY(Function3D f, double delta) {
-        return new BinaryFunction((x, y) -> derivative(new BinaryFunction(f).makeXFix(x), delta).valueAt(x));
+        return new BinaryFunction((x, y) -> derivative(yy -> f.valueAt(x, yy), delta).valueAt(x));
     }
 
     public static UnaryFunction derivative(List<Point2D> sample, double delta) {

@@ -1,6 +1,7 @@
 package com.usim.ulib.jmath.datatypes.functions;
 
 import com.usim.ulib.jmath.datatypes.tuples.Point3D;
+import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("unused")
 public interface Function4D extends Function<Double, Point3D> {
@@ -9,7 +10,7 @@ public interface Function4D extends Function<Double, Point3D> {
     double valueAt(double x, double y, double z);
 
     @Override
-    default Double valueAt(Point3D point) {
+    default Double valueAt(@NotNull Point3D point) {
         return valueAt(point.x, point.y, point.z);
     }
 

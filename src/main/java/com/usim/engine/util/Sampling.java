@@ -12,36 +12,55 @@ public final class Sampling {
 
     @Contract("_, _, _, _, _, _, _, _ -> new")
     @SuppressWarnings("DuplicatedCode")
-    public static @NotNull Sample sample(double xL, double xU, double yL, double yU, double deltaX, double deltaY, Mapper3D colorFromPosition, Surface surface) {
+    public static @NotNull Sample sample(double xL, double xU, double yL, double yU, double deltaX, double deltaY,
+            Mapper3D colorFromPosition, Surface surface) {
         var nx = (int) Math.ceil((xU - xL) / deltaX + 1);
         var ny = (int) Math.ceil((yU - yL) / deltaY + 1);
         var nz = nx * ny;
         var zz = new float[nz * 3];
         var x = xL - deltaX;
+        var normals = new float[zz.length];
+        var normal = surface.unitNormal(deltaX, deltaY);
         var index = 0;
         while ((x += deltaX) < xU) {
             var y = yL - deltaY;
             while ((y += deltaY) < yU) {
                 var p = surface.valueAt(x, y);
+                var n = normal.valueAt(x, y);
+                normals[index] = (float) n.x;
                 zz[index++] = (float) p.x;
+                normals[index] = (float) n.y;
                 zz[index++] = (float) p.y;
+                normals[index] = (float) n.z;
                 zz[index++] = (float) p.z;
             }
             var p = surface.valueAt(x, yU);
+            var n = normal.valueAt(x, yU);
+            normals[index] = (float) n.x;
             zz[index++] = (float) p.x;
+            normals[index] = (float) n.y;
             zz[index++] = (float) p.y;
+            normals[index] = (float) n.z;
             zz[index++] = (float) p.z;
         }
         var y = yL - deltaY;
         while ((y += deltaY) < yU) {
             var p = surface.valueAt(xU, y);
+            var n = normal.valueAt(xU, y);
+            normals[index] = (float) n.x;
             zz[index++] = (float) p.x;
+            normals[index] = (float) n.y;
             zz[index++] = (float) p.y;
+            normals[index] = (float) n.z;
             zz[index++] = (float) p.z;
         }
         var p = surface.valueAt(xU, yU);
+        var n = normal.valueAt(xU, yU);
+        normals[index] = (float) n.x;
         zz[index++] = (float) p.x;
+        normals[index] = (float) n.y;
         zz[index++] = (float) p.y;
+        normals[index] = (float) n.z;
         zz[index] = (float) p.z;
         index = 0;
         var indices = new int[nz * 6];
@@ -61,7 +80,7 @@ public final class Sampling {
             colors[i++] = (float) c.y;
             colors[i++] = (float) c.z;
         }
-        return new Sample(zz, colors, null, indices);
+        return new Sample(zz, colors, normals, indices);
     }
 
     @Contract("_, _, _, _, _, _, _ -> new")

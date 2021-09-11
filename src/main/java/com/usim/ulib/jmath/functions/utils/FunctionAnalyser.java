@@ -3,6 +3,7 @@ package com.usim.ulib.jmath.functions.utils;
 import com.usim.ulib.jmath.datatypes.functions.Function2D;
 import com.usim.ulib.jmath.datatypes.functions.UnaryFunction;
 import com.usim.ulib.jmath.datatypes.tuples.Point2D;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public class FunctionAnalyser {
-    public static List<Point2D> stationaryPoints(Function2D f, double l, double u, double delta) {
+    public static @NotNull List<Point2D> stationaryPoints(Function2D f, double l, double u, double delta) {
         u = Math.max(Math.max(u, l), l = Math.min(u, l));
         List<Point2D> res = new ArrayList<>();
         final var derivative = new UnaryFunction(f).derivative(delta);
@@ -20,7 +21,7 @@ public class FunctionAnalyser {
         return res;
     }
 
-    public static List<Point2D> intersectionPoints(Function2D f1, Function2D f2, double l, double u, double delta) {
+    public static @NotNull List<Point2D> intersectionPoints(Function2D f1, Function2D f2, double l, double u, double delta) {
         u = Math.max(Math.max(u, l), l = Math.min(u, l));
         Function2D nf = x -> f1.valueAt(x) - f2.valueAt(x);
         List<Point2D> res = new ArrayList<>();
@@ -29,7 +30,7 @@ public class FunctionAnalyser {
         return res;
     }
 
-    public static Point2D highestPoint(Function2D f, double l, double u, double delta) {
+    public static @NotNull Point2D highestPoint(@NotNull Function2D f, double l, double u, double delta) {
         u = Math.max(Math.max(u, l), l = Math.min(u, l));
         double x = l, dummy;
         var res = new Point2D(l, f.valueAt(l));
@@ -41,7 +42,7 @@ public class FunctionAnalyser {
         return res;
     }
 
-    public static Point2D lowestPoint(Function2D f, double l, double u, double delta) {
+    public static @NotNull Point2D lowestPoint(@NotNull Function2D f, double l, double u, double delta) {
         u = Math.max(Math.max(u, l), l = Math.min(u, l));
         double x = l, dummy;
         var res = new Point2D(l, f.valueAt(l));

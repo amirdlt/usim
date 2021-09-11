@@ -1,6 +1,7 @@
 package com.usim.ulib.jmath.datatypes.functions;
 
 import com.usim.ulib.jmath.datatypes.tuples.Point2D;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
@@ -11,7 +12,7 @@ public interface ColorFunction extends Function<Color, Point2D> {
     Color valueAt(double x, double y);
 
     @Override
-    default Color valueAt(Point2D p) {
+    default Color valueAt(@NotNull Point2D p) {
         return valueAt(p.x, p.y);
     }
 
