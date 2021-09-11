@@ -10,6 +10,10 @@ public interface Mapper3D extends Function<Point3D, Point3D> {
 
     default Point3D map(Point3D p) {return valueAt(p);}
 
+    default Point3D valueAt(double x, double y, double z) {
+        return map(x, y, z);
+    }
+
     default Function4D fx() {
         return (x, y, z) -> valueAt(new Point3D(x, y, z)).x;
     }

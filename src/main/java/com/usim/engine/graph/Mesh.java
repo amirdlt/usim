@@ -1,4 +1,4 @@
-package com.usim.engine.engine.graph;
+package com.usim.engine.graph;
 
 import com.usim.ulib.utils.annotation.ChangeReference;
 import org.jetbrains.annotations.NotNull;
@@ -153,7 +153,7 @@ public class Mesh {
     }
 
     public Mesh(float @NotNull [] positions, float @NotNull [] colors, int @NotNull [] indices) {
-        color = null;
+        color = new Vector3f(0.8f);
 
         FloatBuffer posBuffer = null;
         FloatBuffer colorBuffer = null;
@@ -181,8 +181,8 @@ public class Mesh {
             colorBuffer = MemoryUtil.memAllocFloat(colors.length).put(colors).flip();
             glBindBuffer(GL_ARRAY_BUFFER, vboId);
             glBufferData(GL_ARRAY_BUFFER, colorBuffer, GL_STATIC_DRAW);
-            glEnableVertexAttribArray(1);
-            glVertexAttribPointer(1, 3, GL_FLOAT, false, 0, 0);
+            glEnableVertexAttribArray(3);
+            glVertexAttribPointer(3, 3, GL_FLOAT, false, 0, 0);
 
             // Index VBO
             vboId = glGenBuffers();

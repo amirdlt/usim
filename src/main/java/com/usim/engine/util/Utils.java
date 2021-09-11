@@ -1,4 +1,4 @@
-package com.usim.engine.engine.util;
+package com.usim.engine.util;
 
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.BufferUtils;

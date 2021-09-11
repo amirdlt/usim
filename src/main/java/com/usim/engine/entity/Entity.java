@@ -1,8 +1,6 @@
-package com.usim.engine.engine.entity;
+package com.usim.engine.entity;
 
-import com.usim.engine.engine.graph.Mesh;
-import com.usim.engine.engine.graph.Shader;
-import org.jetbrains.annotations.NotNull;
+import com.usim.engine.graph.Mesh;
 import org.joml.Vector3f;
 
 public class Entity {

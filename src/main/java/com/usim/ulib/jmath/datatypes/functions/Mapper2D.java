@@ -1,6 +1,7 @@
 package com.usim.ulib.jmath.datatypes.functions;
 
 import com.usim.ulib.jmath.datatypes.tuples.Point2D;
+import org.jetbrains.annotations.NotNull;
 
 @FunctionalInterface
 public interface Mapper2D extends Function<Point2D, Point2D> {
@@ -9,7 +10,7 @@ public interface Mapper2D extends Function<Point2D, Point2D> {
     Point2D map(double x, double y);
 
     @Override
-    default Point2D valueAt(Point2D p) {
+    default Point2D valueAt(@NotNull Point2D p) {
         return map(p.x, p.y);
     }
 

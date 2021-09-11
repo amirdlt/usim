@@ -1,6 +1,6 @@
-package com.usim.engine.engine.logic;
+package com.usim.engine.logic;
 
-import com.usim.engine.engine.internal.Camera;
+import com.usim.engine.internal.Camera;
 
 public interface Logic {
 
@@ -13,6 +13,8 @@ public interface Logic {
     void render();
 
     void cleanup();
+
+    void saveState();
 
     Camera camera();
 }

@@ -1,4 +1,4 @@
-package com.usim.engine.engine;
+package com.usim.engine;
 
 public interface Constants {
     int NANO = 1_000_000_000;
@@ -11,6 +11,7 @@ public interface Constants {
     int MEGA = 1_024 * KILO;
     int GIGA = 1_024 * MEGA;
     long TERA = 1_024L * GIGA;
+    float PI_F = (float) Math.PI;
 
     int DEFAULT_TARGET_FPS = 60;
     int DEFAULT_TARGET_UPS = 60;
@@ -31,5 +32,5 @@ public interface Constants {
     float DEFAULT_Z_FAR = 1000f;
 
     float DEFAULT_MOUSE_MOVEMENT_SENSITIVITY = 0.002f;
-    float DEFAULT_CAMERA_MOVEMENT_SENSITIVITY = 0.5f;
+    float DEFAULT_CAMERA_MOVEMENT_SENSITIVITY = 0.05f;
 }

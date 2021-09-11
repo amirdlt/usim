@@ -1,20 +1,18 @@
-package com.usim.engine.engine.internal;
+package com.usim.engine.internal;
 
-import static com.usim.engine.engine.Constants.DEFAULT_GLFW_ICON_PATH;
-import static com.usim.engine.engine.util.Utils.ioResourceToByteBuffer;
+import static com.usim.engine.util.Utils.ioResourceToByteBuffer;
 import static org.lwjgl.glfw.GLFW.*;
+
+import com.usim.engine.Constants;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWImage;
-import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.stb.STBImage;
-
-import javax.swing.*;
 
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 
-import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL45C.*;
 import static org.lwjgl.system.MemoryUtil.*;
 
 public class Window {
@@ -46,35 +44,9 @@ public class Window {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+        glfwWindowHint(GLFW_SAMPLES, 4);
 
         _init();
-    }
-
-    private void _init() {
-        windowHandle = glfwCreateWindow(width, height, title, NULL, NULL);
-        if (windowHandle == NULL)
-            throw new RuntimeException("AHD:: Failed to create the GLFW window");
-
-        glfwSetFramebufferSizeCallback(windowHandle, (window, width, height) -> {
-            this.width = width;
-            this.height = height;
-            resized = true;
-        });
-
-        glfwSetKeyCallback(windowHandle, (window, key, scancode, action, mods) -> {
-            if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
-                glfwSetWindowShouldClose(window, true);
-        });
-
-        var videoMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-        if (videoMode != null)
-            glfwSetWindowPos(
-                    windowHandle,
-                    (videoMode.width() - width) / 2,
-                    (videoMode.height() - height) / 2
-            );
-
-        glfwMakeContextCurrent(windowHandle);
 
         glfwSwapInterval(vSync ? 1 : 0);
 
@@ -84,8 +56,36 @@ public class Window {
 
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glEnable(GL_DEPTH_TEST);
+        glEnable(GL_MULTISAMPLE);
 
-        setIcon(DEFAULT_GLFW_ICON_PATH);
+        setIcon(Constants.DEFAULT_GLFW_ICON_PATH);
+    }
+
+    public void rebuild() {
+        cleanup();
+        _init();
+        glfwShowWindow(windowHandle);
+    }
+
+    private void _init() {
+        windowHandle = glfwCreateWindow(width, height, title, NULL, NULL);
+        if (windowHandle == NULL)
+            throw new RuntimeException("AHD:: Failed to create the GLFW window");
+        glfwSetFramebufferSizeCallback(windowHandle, (window, width, height) -> {
+            this.width = width;
+            this.height = height;
+            resized = true;
+        });
+        glfwSetKeyCallback(windowHandle, (window, key, scancode, action, mods) -> {
+            if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
+                glfwSetWindowShouldClose(window, true);
+        });
+        if (glfwGetWindowAttrib(windowHandle, GLFW_MAXIMIZED) == GLFW_FALSE) {
+            var videoMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+            if (videoMode != null)
+                glfwSetWindowPos(windowHandle, (videoMode.width() - width) / 2, (videoMode.height() - height) / 2);
+        }
+        glfwMakeContextCurrent(windowHandle);
     }
 
     public void setIcon(String path) {
@@ -102,22 +102,14 @@ public class Window {
             throw new RuntimeException(e);
         }
 
-        try ( GLFWImage.Buffer icons = GLFWImage.malloc(2) ) {
+        try (GLFWImage.Buffer icons = GLFWImage.malloc(2)) {
             ByteBuffer pixels16 = STBImage.stbi_load_from_memory(icon16, w, h, comp, 4);
             assert pixels16 != null;
-            icons
-                    .position(0)
-                    .width(w.get(0))
-                    .height(h.get(0))
-                    .pixels(pixels16);
+            icons.position(0).width(w.get(0)).height(h.get(0)).pixels(pixels16);
 
             ByteBuffer pixels32 = STBImage.stbi_load_from_memory(icon32, w, h, comp, 4);
             assert pixels32 != null;
-            icons
-                    .position(1)
-                    .width(w.get(0))
-                    .height(h.get(0))
-                    .pixels(pixels32);
+            icons.position(1).width(w.get(0)).height(h.get(0)).pixels(pixels32);
 
             icons.position(0);
             glfwSetWindowIcon(windowHandle, icons);

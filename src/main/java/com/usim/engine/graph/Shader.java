@@ -1,4 +1,4 @@
-package com.usim.engine.engine.graph;
+package com.usim.engine.graph;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
-import static com.usim.engine.engine.Constants.GL_LOG_MAX_LENGTH;
+import static com.usim.engine.Constants.GL_LOG_MAX_LENGTH;
 import static org.lwjgl.opengl.GL20.*;
 
 import org.joml.Vector3f;

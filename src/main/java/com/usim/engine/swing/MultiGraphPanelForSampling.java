@@ -1,4 +1,4 @@
-package com.usim.engine.engine.swing;
+package com.usim.engine.swing;
 
 import com.usim.ulib.jmath.datatypes.tuples.Point2D;
 import com.usim.ulib.utils.Utils;

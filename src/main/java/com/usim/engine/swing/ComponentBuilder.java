@@ -1,5 +1,7 @@
-package com.usim.engine.engine.swing;
+package com.usim.engine.swing;
 
+import com.usim.ulib.jmath.parser.Function4DParser;
+import com.usim.ulib.swingutils.MainFrame;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -8,6 +10,7 @@ import java.awt.*;
 import java.util.*;
 
 public final class ComponentBuilder {
+    private final static Font titleFont = new Font(Font.SANS_SERIF, Font.BOLD, 16);
 
     private ComponentBuilder() {}
 
@@ -30,6 +33,7 @@ public final class ComponentBuilder {
                     if (arg instanceof NumberBasedArg numberBasedArg) {
                         put(numberBasedArg.name, new JTextField(numberBasedArg.name) {{
                             setName(numberBasedArg.name);
+                            setPreferredSize(new Dimension(80, 32));
                             setToolTipText("from: " + numberBasedArg.from + " to: " + numberBasedArg.to);
                         }});
                     } else if (arg instanceof OptionBasedArg optionBasedArg) {
@@ -55,7 +59,7 @@ public final class ComponentBuilder {
                                 return;
                             }
                             try {
-                                args.put(textField.getName(), Double.parseDouble(textField.getText()));
+                                args.put(textField.getName(), Function4DParser.parser(textField.getText()).atOrigin());
                             } catch (NumberFormatException ex) {
                                 inAppropriateArgValueAlert.run();
                                 return;
@@ -78,5 +82,40 @@ public final class ComponentBuilder {
                 });
             }});
         }};
+    }
+
+    private static @NotNull JPanel createEntityPanel(MainFrame frame, int id) {
+        return new JPanel() {{
+            final var main = this;
+            setName("Entity-" + id);
+            setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+            add(new JLabel(getName(), JLabel.CENTER) {{
+                setFont(titleFont);
+            }});
+            add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
+                setMaximumSize(new Dimension(420, 40));
+                add(new JLabel("Surface: "));
+                add(frame.element(main.getName() + "-xSurface-textField", new JTextField("x") {{setPreferredSize(new Dimension(200, 32));}}));
+                add(frame.element(main.getName() + "-ySurface-textField", new JTextField("y") {{setPreferredSize(new Dimension(200, 32));}}));
+                add(frame.element(main.getName() + "-zSurface-textField", new JTextField("z") {{setPreferredSize(new Dimension(200, 32));}}));
+                add(frame.element(main.getName() + "-xLowBound-textField", new JTextField("z") {{setPreferredSize(new Dimension(200, 32));}}));
+                add(frame.element(main.getName() + "-xUpBound-textField", new JTextField("z") {{setPreferredSize(new Dimension(200, 32));}}));
+                add(frame.element(main.getName() + "-xDelta-textField", new JTextField("z") {{setPreferredSize(new Dimension(200, 32));}}));
+                add(frame.element(main.getName() + "-yDelta-textField", new JTextField("z") {{setPreferredSize(new Dimension(200, 32));}}));
+                add(frame.element(main.getName() + "-yUpBound-textField", new JTextField("z") {{setPreferredSize(new Dimension(200, 32));}}));
+            }});
+            add(frame.element(getName() + "-new-panel", new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
+                add(new JButton("New") {{
+                    addActionListener(e -> {
+                        main.remove(frame.element(main.getName() + "-new-panel"));
+                        main.add(createEntityPanel(frame, id + 1));
+                    });
+                }});
+            }}));
+        }};
+    }
+
+    static @NotNull JPanel createEntityPanel(MainFrame frame) {
+        return createEntityPanel(frame, 0);
     }
 }

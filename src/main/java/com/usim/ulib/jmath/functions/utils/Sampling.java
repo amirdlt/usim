@@ -1,15 +1,14 @@
 package com.usim.ulib.jmath.functions.utils;
 
-import com.usim.ulib.jmath.datatypes.functions.Arc2D;
-import com.usim.ulib.jmath.datatypes.functions.Arc3D;
-import com.usim.ulib.jmath.datatypes.functions.Function2D;
+import com.usim.ulib.jmath.datatypes.functions.*;
 import com.usim.ulib.jmath.datatypes.tuples.AbstractPoint;
 import com.usim.ulib.jmath.datatypes.tuples.Pair;
 import com.usim.ulib.jmath.datatypes.tuples.Point2D;
 import com.usim.ulib.jmath.datatypes.tuples.Point3D;
-import com.usim.ulib.jmath.datatypes.functions.UnaryFunction;
 import com.usim.ulib.jmath.functions.unaries.real.ConstantFunction2D;
 import com.usim.ulib.jmath.functions.unaries.real.LinearFunction;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,7 +16,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({ "unused", "DuplicatedCode", "SuspiciousNameCombination" })
 public final class Sampling {
     public static List<Point2D> sample(Function2D f, double l, double u, double delta) {
         u = Math.max(Math.max(u, l), l = Math.min(u, l));
@@ -50,8 +49,9 @@ public final class Sampling {
                 double dummy;
                 for (int j = start + 1; j <= end; j++)
                     try {
-                        allPoints[j] =  new Point2D(dummy = finalL + j * delta, f.valueAt(dummy));
-                    } catch (IndexOutOfBoundsException ignore) {}
+                        allPoints[j] = new Point2D(dummy = finalL + j * delta, f.valueAt(dummy));
+                    } catch (IndexOutOfBoundsException ignore) {
+                    }
             });
 
             threads.add(t);
@@ -69,7 +69,8 @@ public final class Sampling {
         return new ArrayList<>(Arrays.asList(allPoints));
     }
 
-    public static List<Point2D> multiThreadSampling(Arc2D arc, double l, double u, double delta, int numOfThreads) {
+    @Contract("_, _, _, _, _ -> new")
+    public static @NotNull List<Point2D> multiThreadSampling(@NotNull Arc2D arc, double l, double u, double delta, int numOfThreads) {
         u = Math.max(Math.max(u, l), l = Math.min(u, l));
 
         Point2D[] allPoints = new Point2D[(int) ((u - l) / delta) + 1];
@@ -87,7 +88,8 @@ public final class Sampling {
                 for (int j = start + 1; j <= end; j++)
                     try {
                         allPoints[j] = arc.valueAt(finalL + j * delta);
-                    } catch (IndexOutOfBoundsException ignore) {}
+                    } catch (IndexOutOfBoundsException ignore) {
+                    }
             });
 
             threads.add(t);
@@ -105,7 +107,8 @@ public final class Sampling {
         return new ArrayList<>(Arrays.asList(allPoints));
     }
 
-    public static List<Point3D> multiThreadSampling(Arc3D arc, double l, double u, double delta, int numOfThreads) {
+    @Contract("_, _, _, _, _ -> new")
+    public static @NotNull List<Point3D> multiThreadSampling(Arc3D arc, double l, double u, double delta, int numOfThreads) {
         u = Math.max(Math.max(u, l), l = Math.min(u, l));
 
         Point3D[] allPoints = new Point3D[(int) ((u - l) / delta) + 1];
@@ -121,8 +124,9 @@ public final class Sampling {
             Thread t = new Thread(() -> {
                 for (int j = start + 1; j < end; j++)
                     try {
-                        allPoints[j] =  arc.valueAt(finalL + j * delta);
-                    } catch (IndexOutOfBoundsException ignore) {}
+                        allPoints[j] = arc.valueAt(finalL + j * delta);
+                    } catch (IndexOutOfBoundsException ignore) {
+                    }
             });
 
             threads.add(t);
@@ -141,7 +145,7 @@ public final class Sampling {
     }
 
     @Deprecated
-    public static UnaryFunction regularSampleToFunction(List<Point2D> points) {
+    public static @NotNull UnaryFunction regularSampleToFunction(List<Point2D> points) {
         if (points == null || points.isEmpty())
             return ConstantFunction2D.zero();
         var points_ = new ArrayList<>(points);
@@ -162,7 +166,7 @@ public final class Sampling {
         });
     }
 
-    public static UnaryFunction sampleToFunction(List<Point2D> points) {
+    public static @NotNull UnaryFunction sampleToFunction(List<Point2D> points) {
         if (points == null || points.isEmpty())
             return ConstantFunction2D.NaN();
         var points_ = new ArrayList<>(points);
@@ -193,7 +197,7 @@ public final class Sampling {
         });
     }
 
-    public static Arc2D sampleToArc(List<Point2D> points, double l, double u) {
+    public static @NotNull Arc2D sampleToArc(@NotNull List<Point2D> points, double l, double u) {
         final var delta = (u - l) / (points.size() - 1);
         ArrayList<Point2D> xSample = new ArrayList<>();
         ArrayList<Point2D> ySample = new ArrayList<>();
@@ -212,7 +216,8 @@ public final class Sampling {
         return t -> new Point2D(fx.valueAt(t), fy.valueAt(t));
     }
 
-    public static Pair<List<Double>, List<Double>> sample_(Function2D f, double lowBound, double upBound, double stepLen) {
+    @Contract("_, _, _, _ -> new")
+    public static @NotNull Pair<List<Double>, List<Double>> sample_(Function2D f, double lowBound, double upBound, double stepLen) {
         lowBound = Math.min(Math.min(lowBound, upBound), upBound = Math.max(lowBound, upBound));
         double x = lowBound - stepLen;
         List<Double> xa = new ArrayList<>();
@@ -230,7 +235,8 @@ public final class Sampling {
         return new Pair<>(xa, ya);
     }
 
-    public static List<Point2D> sampleOf2DRectangularRegion(double xStart, double xEnd, double yStart, double yEnd, double deltaX, double deltaY) {
+    public static @NotNull List<Point2D> sampleOf2DRectangularRegion(double xStart, double xEnd, double yStart, double yEnd, double deltaX,
+            double deltaY) {
         List<Point2D> res = new ArrayList<>();
         double y = yStart - deltaY;
         var xSample = sample(xStart, xEnd, deltaX);
@@ -242,13 +248,13 @@ public final class Sampling {
         return res;
     }
 
-    public static List<Point2D> sampleOf2DRectangularRegion(List<Double> xSample, List<Double> ySample) {
+    public static @NotNull List<Point2D> sampleOf2DRectangularRegion(List<Double> xSample, @NotNull List<Double> ySample) {
         List<Point2D> res = new ArrayList<>();
         ySample.forEach(y -> xSample.forEach(x -> res.add(new Point2D(x, y))));
         return res;
     }
 
-    public static List<Double> sample(double l, double u, double delta) {
+    public static @NotNull List<Double> sample(double l, double u, double delta) {
         List<Double> res = new ArrayList<>();
         double x = l - delta;
         while ((x += delta) < u)
@@ -257,10 +263,10 @@ public final class Sampling {
         return res;
     }
 
-    public static double lengthOfOrderedSample(List<AbstractPoint> points) {
+    public static double lengthOfOrderedSample(@NotNull List<AbstractPoint> points) {
         double res = 0;
         for (int i = 0; i < points.size() - 1; i++)
-            res += points.get(i).distanceFrom(points.get(i+1));
+            res += points.get(i).distanceFrom(points.get(i + 1));
         return res;
     }
 

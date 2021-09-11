@@ -1,16 +1,15 @@
-package com.usim.engine.engine.internal;
+package com.usim.engine.internal;
 
-import com.usim.engine.engine.entity.Entity;
-import com.usim.engine.engine.util.Utils;
-import com.usim.engine.engine.graph.Shader;
-import com.usim.engine.engine.graph.Transformation;
+import com.usim.engine.Constants;
+import com.usim.engine.entity.Entity;
+import com.usim.engine.util.Utils;
+import com.usim.engine.graph.Shader;
+import com.usim.engine.graph.Transformation;
 import org.jetbrains.annotations.NotNull;
-import org.joml.Matrix4f;
 
 import java.util.*;
 
 import static org.lwjgl.opengl.GL11.*;
-import static com.usim.engine.engine.Constants.*;
 
 public class Renderer {
     private final Transformation transformation;
@@ -20,7 +19,7 @@ public class Renderer {
 
     public Renderer() {
         transformation = new Transformation();
-        window = Engine.window();
+        window = Engine.getEngine().getWindow();
         shaders = new HashMap<>();
     }
 
@@ -54,8 +53,8 @@ public class Renderer {
 
         shader.bind();
 
-        var projectionMatrix = transformation.getProjectionMatrix(DEFAULT_FIELD_OF_VIEW, window.getWidth(), window.getHeight(),
-                DEFAULT_Z_NEAR, DEFAULT_Z_FAR);
+        var projectionMatrix = transformation.getProjectionMatrix(Constants.DEFAULT_FIELD_OF_VIEW, window.getWidth(), window.getHeight(),
+                Constants.DEFAULT_Z_NEAR, Constants.DEFAULT_Z_FAR);
         shader.setUniform("projectionMatrix", projectionMatrix);
 
         var viewMatrix = transformation.getViewMatrix(camera);

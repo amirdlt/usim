@@ -1,7 +1,7 @@
-package com.usim.engine.engine.graph;
+package com.usim.engine.graph;
 
-import com.usim.engine.engine.entity.Entity;
-import com.usim.engine.engine.internal.Camera;
+import com.usim.engine.entity.Entity;
+import com.usim.engine.internal.Camera;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 

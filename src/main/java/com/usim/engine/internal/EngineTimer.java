@@ -1,4 +1,4 @@
-package com.usim.engine.engine.internal;
+package com.usim.engine.internal;
 
 import com.usim.ulib.utils.Utils;
 import org.jetbrains.annotations.NotNull;
@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Unmodifiable;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.usim.engine.engine.Constants.*;
+import static com.usim.engine.Constants.*;
 
 public final class EngineTimer {
     private record TimeRange(long start, long end) {}

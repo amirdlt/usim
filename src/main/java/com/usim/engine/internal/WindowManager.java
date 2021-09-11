@@ -1,4 +1,4 @@
-package com.usim.engine.engine.internal;
+package com.usim.engine.internal;
 
 import java.util.HashMap;
 import java.util.Map;

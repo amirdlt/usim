@@ -220,128 +220,128 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
         _gotoTray.run();
     }
 
-    protected JComponent element(String tag, JComponent component) {
+    public JComponent element(String tag, JComponent component) {
         elements.put(tag, component);
         return component;
     }
 
-    protected JComponent element(String tag) {
+    public JComponent element(String tag) {
         return elements.get(tag);
     }
 
-    protected JButton buttonE(String tag) {
+    public JButton buttonE(String tag) {
         return (JButton) elements.get(tag);
     }
 
-    protected JTextField textFieldE(String tag) {
+    public JTextField textFieldE(String tag) {
         return (JTextField) elements.get(tag);
     }
 
-    protected JSlider sliderE(String tag) {
+    public JSlider sliderE(String tag) {
         return (JSlider) elements.get(tag);
     }
 
-    protected JTabbedPane tabbedPaneE(String tag) {
+    public JTabbedPane tabbedPaneE(String tag) {
         return (JTabbedPane) elements.get(tag);
     }
 
-    protected JTextArea textAreaE(String tag) {
+    public JTextArea textAreaE(String tag) {
         return (JTextArea) elements.get(tag);
     }
 
-    protected JTextPane textPaneE(String tag) {
+    public JTextPane textPaneE(String tag) {
         return (JTextPane) elements.get(tag);
     }
 
-    protected JScrollPane scrollPaneE(String tag) {
+    public JScrollPane scrollPaneE(String tag) {
         return (JScrollPane) elements.get(tag);
     }
 
-    protected JPanel panelE(String tag) {
+    public JPanel panelE(String tag) {
         return (JPanel) elements.get(tag);
     }
 
-    protected JTable tableE(String tag) {
+    public JTable tableE(String tag) {
         return (JTable) elements.get(tag);
     }
 
-    protected <T> JComboBox<T> comboBoxE(String tag) {
+    public  <T> JComboBox<T> comboBoxE(String tag) {
         //noinspection unchecked
         return (JComboBox<T>) elements.get(tag);
     }
 
-    protected JLabel labelE(String tag) {
+    public JLabel labelE(String tag) {
         return (JLabel) elements.get(tag);
     }
 
-    protected JSplitPane splitPaneE(String tag) {
+    public JSplitPane splitPaneE(String tag) {
         return (JSplitPane) elements.get(tag);
     }
 
-    protected JSeparator separatorE(String tag) {
+    public JSeparator separatorE(String tag) {
         return (JSeparator) elements.get(tag);
     }
 
-    protected JList<?> listE(String tag) {
+    public JList<?> listE(String tag) {
         return (JList<?>) elements.get(tag);
     }
 
-    protected JCheckBox checkBoxE(String tag) {
+    public JCheckBox checkBoxE(String tag) {
         return (JCheckBox) elements.get(tag);
     }
 
-    protected JMenu menuE(String tag) {
+    public JMenu menuE(String tag) {
         return (JMenu) elements.get(tag);
     }
 
-    protected JMenuBar menuBarE(String tag) {
+    public JMenuBar menuBarE(String tag) {
         return (JMenuBar) elements.get(tag);
     }
 
-    protected JEditorPane editorPaneE(String tag) {
+    public JEditorPane editorPaneE(String tag) {
         return (JEditorPane) elements.get(tag);
     }
 
-    protected Graph2DCanvas graph2DCanvasE(String tag) {
+    public Graph2DCanvas graph2DCanvasE(String tag) {
         return (Graph2DCanvas) elements.get(tag);
     }
 
-    protected Graph3DCanvas graph3DCanvasE(String tag) {
+    public Graph3DCanvas graph3DCanvasE(String tag) {
         return (Graph3DCanvas) elements.get(tag);
     }
 
-    protected Canvas canvasE(String tag) {
+    public Canvas canvasE(String tag) {
         return (Canvas) elements.get(tag);
     }
 
-    protected CoordinatedCanvas coordinatedCanvasE(String tag) {
+    public CoordinatedCanvas coordinatedCanvasE(String tag) {
         return (CoordinatedCanvas) elements.get(tag);
     }
 
-    protected CoordinatedScreen coordinatedScreenE(String tag) {
+    public CoordinatedScreen coordinatedScreenE(String tag) {
         return (CoordinatedScreen) elements.get(tag);
     }
 
-    protected ImageCanvas imageCanvasE(String tag) {
+    public ImageCanvas imageCanvasE(String tag) {
         return (ImageCanvas) elements.get(tag);
     }
 
-    protected <T> List<T> elements(@NotNull Class<T> clazz) {
+    public <T> List<T> elements(@NotNull Class<T> clazz) {
         //noinspection unchecked
         return (List<T>) elements.values().stream().filter(clazz::isInstance).toList();
     }
 
-    protected void updateElements() {}
+    public void updateElements() {}
 
-    protected void showErrorDialog(String message, String title) {
+    public void showErrorDialog(String message, String title) {
         JOptionPane.showMessageDialog(this, message, title, JOptionPane.ERROR_MESSAGE);
     }
 
-    protected void showErrorDialog(String message) {
+    public void showErrorDialog(String message) {
         showErrorDialog(message, "Error");
     }
 
-    protected void showErrorDialog() {
+    public void showErrorDialog() {
         showErrorDialog("Error", "Error");
     }
 

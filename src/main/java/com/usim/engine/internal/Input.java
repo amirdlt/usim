@@ -1,4 +1,4 @@
-package com.usim.engine.engine.internal;
+package com.usim.engine.internal;
 
 import org.joml.Vector2d;
 import org.joml.Vector2f;
@@ -28,7 +28,7 @@ public final class Input {
     }
 
     void init() {
-        windowHandle = Engine.window().getWindowHandle();
+        windowHandle = Engine.getEngine().getWindow().getWindowHandle();
         glfwSetCursorPosCallback(windowHandle, (_windowHandle, xPos, yPos) -> currentPosition.set(xPos, yPos));
         glfwSetCursorEnterCallback(windowHandle, (_windowHandle, inWindow) -> this.inWindow = inWindow);
         glfwSetMouseButtonCallback(windowHandle, (_windowHandle, button, action, mode) -> {

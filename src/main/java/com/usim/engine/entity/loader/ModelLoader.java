@@ -1,15 +1,12 @@
-package com.usim.engine.engine.entity.loader;
+package com.usim.engine.entity.loader;
 
-import com.usim.engine.engine.graph.Mesh;
+import com.usim.engine.graph.Mesh;
 import com.usim.ulib.utils.Utils;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ModelLoader {

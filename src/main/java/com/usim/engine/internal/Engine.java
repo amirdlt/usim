@@ -1,13 +1,13 @@
-package com.usim.engine.engine.internal;
+package com.usim.engine.internal;
 
-import com.usim.engine.engine.logic.Logic;
-import com.usim.engine.engine.swing.EngineRuntimeToolsFrame;
+import com.usim.engine.logic.Logic;
+import com.usim.engine.swing.EngineRuntimeToolsFrame;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.util.concurrent.*;
 
-import static com.usim.engine.engine.Constants.*;
+import static com.usim.engine.Constants.*;
 
 @SuppressWarnings("unused")
 public final class Engine {
@@ -160,17 +160,18 @@ public final class Engine {
     private void cleanup() {
         logic.cleanup();
         window.cleanup();
-        engineRuntimeToolsFrame.gotoSystemTray();
+        engineRuntimeToolsFrame.dispose();
         initialized = false;
         timer.reset();
-//        System.err.println("EngineWindowClosed -> System.exit");
-//        System.exit(0);
+        startLoopLock.drainPermits();
+        System.err.println("EngineWindowClosed -> System.exit");
+        System.exit(0);
     }
 
     private void _input() {
         var t = System.nanoTime();
-        input.input();
         if (doInput) {
+            input.input();
             logic.input();
             inputCount++;
         }
@@ -210,6 +211,9 @@ public final class Engine {
         working = false;
     }
 
+    /**
+     * need to be run in main thread
+     */
     public void turnon() {
         if (!Thread.currentThread().getName().equals("main"))
             throw new RuntimeException("AHD:: Engine must be turned on inside the main thread due to lwjgl constraints.");
@@ -245,23 +249,14 @@ public final class Engine {
         doRender = oldRender;
     }
 
+    /**
+     * needs to be invoked inside main thread
+     */
     public void rebuildWindow() {
-        if (!on)
-            return;
-//        cleanup();
-        window.cleanup();
-//        start();
-//        try {
-//            startLoopLock.acquire();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-        //        var working = this.working;
-//        stop();
-//        window.cleanup();
-//        start();
-//        if (!working)
-//            stop();
+        logic.cleanup();
+        window.rebuild();
+        logic.init();
+        input.init();
     }
 
     public void commitCommandsToMainThread(Runnable commands) {
@@ -436,29 +431,13 @@ public final class Engine {
         return logic.camera();
     }
 
-    public static @NotNull Engine get(String windowTitle, int width, int height, boolean vSync) {
+    public static @NotNull Engine build(String windowTitle, int width, int height, boolean vSync) {
         if (engine != null && engine.on)
             engine.turnoff();
         return engine = new Engine(windowTitle, width, height, vSync);
     }
 
-    public static @NotNull Engine get() {
-        return engine != null ? engine : get(DEFAULT_GLFW_WINDOW_NAME, DEFAULT_GLFW_WINDOW_WIDTH, DEFAULT_GLFW_WINDOW_HEIGHT, false);
-    }
-
-    public static Window window() {
-        return engine == null ? get().window : engine.window;
-    }
-
-    public static Input input() {
-        return engine == null ? get().input : engine.input;
-    }
-
-    public static Camera camera() {
-        return engine == null ? get().logic.camera() : engine.logic.camera();
-    }
-
     public static @NotNull Engine getEngine() {
-        return get();
+        return engine != null ? engine : build(DEFAULT_GLFW_WINDOW_NAME, DEFAULT_GLFW_WINDOW_WIDTH, DEFAULT_GLFW_WINDOW_HEIGHT, false);
     }
 }

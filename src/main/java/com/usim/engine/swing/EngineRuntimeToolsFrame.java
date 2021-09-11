@@ -1,7 +1,7 @@
-package com.usim.engine.engine.swing;
+package com.usim.engine.swing;
 
-import com.usim.engine.engine.Constants;
-import com.usim.engine.engine.internal.Engine;
+import com.usim.engine.Constants;
+import com.usim.engine.internal.Engine;
 import com.usim.ulib.swingutils.MainFrame;
 import com.usim.ulib.utils.Utils;
 
@@ -16,8 +16,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import static org.lwjgl.glfw.GLFW.*;
-import static org.lwjgl.opengl.GL11C.*;
-import static com.usim.engine.engine.swing.ComponentBuilder.*;
+import static org.lwjgl.opengl.GL45C.*;
 
 public class EngineRuntimeToolsFrame extends MainFrame {
     private final Engine engine;
@@ -30,7 +29,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
 
     public EngineRuntimeToolsFrame() {
         super("AHD:: Engine Runtime Tools");
-        engine = Engine.get();
+        engine = Engine.getEngine();
         updater = new ScheduledThreadPoolExecutor(1);
         updateFuture = null;
         updateRate = 500;
@@ -47,7 +46,8 @@ public class EngineRuntimeToolsFrame extends MainFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         add(new JPanel(new BorderLayout()) {{
             add(element("main-tabbedPane", new JTabbedPane() {{
-                element("stats-panel", new JPanel() {{
+                add("Stats", new JScrollPane(element("stats-panel", new JPanel() {{
+                    setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
                     setBorder(BorderFactory.createLineBorder(Color.YELLOW, 2));
                     add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                         add(new JLabel("Targets: FPS: "));
@@ -199,8 +199,6 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                         addGraph("cpuUsage", 2, Color.RED, Utils::cpuUsageByJVM);
                     }}));
                     add(new JSeparator());
-                    add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{}});
-                    add(new JSeparator());
                     add(new JPanel(new GridLayout(0, 1)) {{
                         setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
                         add(element("cameraPosition-label", new JLabel("Camera Position: " + engine.getCamera().getPosition())));
@@ -288,25 +286,65 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                             }});
                         }});
                     }});
-                }}).setLayout(new BoxLayout(element("stats-panel"), BoxLayout.Y_AXIS));
-                add("Stats", new JScrollPane(element("stats-panel")));
-                element("engineSettings-panel", new JPanel() {{
-                    add(createFunctionCallerPanel("glPolygonMode",
+                }})));
+                add("Engine Settings", new JScrollPane(element("engineSettings-panel", new JPanel() {{
+                    setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+                    add(ComponentBuilder.createFunctionCallerPanel("glPolygonMode",
                             args -> engine.commitCommandsToMainThread(() -> glPolygonMode((int) args.get("face"), (int) args.get("mode"))),
-                            () -> showErrorDialog("Bad Argument"),
-                            new OptionBasedArg<>("face", Map.of("GL_FRONT", GL_FRONT, "GL_BACK", GL_BACK, "GL_FRONT_AND_BACK", GL_FRONT_AND_BACK)),
-                            new OptionBasedArg<>("mode", Map.of("GL_POINT", GL_POINT, "GL_LINE", GL_LINE, "GL_FILL", GL_FILL))
-                    ));
-                    add(createFunctionCallerPanel("glfwSwapIntervals",
+                            () -> showErrorDialog("Bad Argument(s)"),
+                            new ComponentBuilder.OptionBasedArg<>("face", Map.of("GL_FRONT", GL_FRONT, "GL_BACK", GL_BACK, "GL_FRONT_AND_BACK", GL_FRONT_AND_BACK)),
+                            new ComponentBuilder.OptionBasedArg<>("mode", Map.of("GL_POINT", GL_POINT, "GL_LINE", GL_LINE, "GL_FILL", GL_FILL))));
+                    add(ComponentBuilder.createFunctionCallerPanel("glEnable & glDisable", args -> engine.commitCommandsToMainThread(() -> {
+                                if ((boolean) args.get("flag"))
+                                    glEnable((int) args.get("state"));
+                                else
+                                    glDisable((int) args.get("state"));
+                            }), () -> showErrorDialog("Bad Argument(s)"),
+                            new ComponentBuilder.OptionBasedArg<>("state", new HashMap<>() {{
+                                put("GL_BLEND", GL_BLEND);
+                                put("GL_CLIP_DISTANCE0", GL_CLIP_DISTANCE0);
+                                put("GL_COLOR_LOGIC_OP", GL_COLOR_LOGIC_OP);
+                                put("GL_CULL_FACE", GL_CULL_FACE);
+                                put("GL_DEBUG_OUTPUT", GL_DEBUG_OUTPUT);
+                                put("GL_DEBUG_OUTPUT_SYNCHRONOUS", GL_DEBUG_OUTPUT_SYNCHRONOUS);
+                                put("GL_DEPTH_CLAMP", GL_DEPTH_CLAMP);
+                                put("GL_DEPTH_TEST", GL_DEPTH_TEST);
+                                put("GL_DITHER", GL_DITHER);
+                                put("GL_FRAMEBUFFER_SRGB", GL_FRAMEBUFFER_SRGB);
+                                put("GL_LINE_SMOOTH", GL_LINE_SMOOTH);
+                                put("GL_MULTISAMPLE", GL_MULTISAMPLE);
+                                put("GL_POLYGON_OFFSET_FILL", GL_POLYGON_OFFSET_FILL);
+                                put("GL_POLYGON_OFFSET_LINE", GL_POLYGON_OFFSET_LINE);
+                                put("GL_POLYGON_OFFSET_POINT", GL_POLYGON_OFFSET_POINT);
+                                put("GL_POLYGON_SMOOTH", GL_POLYGON_SMOOTH);
+                                put("GL_PRIMITIVE_RESTART", GL_PRIMITIVE_RESTART);
+                                put("GL_PRIMITIVE_RESTART_FIXED_INDEX", GL_PRIMITIVE_RESTART_FIXED_INDEX);
+                                put("GL_RASTERIZER_DISCARD", GL_RASTERIZER_DISCARD);
+                                put("GL_SAMPLE_ALPHA_TO_COVERAGE", GL_SAMPLE_ALPHA_TO_COVERAGE);
+                                put("GL_SAMPLE_ALPHA_TO_ONE", GL_SAMPLE_ALPHA_TO_ONE);
+                                put("GL_SAMPLE_COVERAGE", GL_SAMPLE_COVERAGE);
+                                put("GL_SAMPLE_SHADING", GL_SAMPLE_SHADING);
+                                put("GL_SAMPLE_MASK", GL_SAMPLE_MASK);
+                                put("GL_SCISSOR_TEST", GL_SCISSOR_TEST);
+                                put("GL_STENCIL_TEST", GL_STENCIL_TEST);
+                                put("GL_TEXTURE_CUBE_MAP_SEAMLESS", GL_TEXTURE_CUBE_MAP_SEAMLESS);
+                                put("GL_PROGRAM_POINT_SIZE", GL_PROGRAM_POINT_SIZE);
+                            }}),
+                            new ComponentBuilder.OptionBasedArg<>("flag", Map.of("Enable", true, "Disable", false))));
+                    add(ComponentBuilder.createFunctionCallerPanel("glLineWidth",
+                            args -> engine.commitCommandsToMainThread(() -> glLineWidth(((Double) args.get("width")).floatValue())),
+                            () -> showErrorDialog("Bad Arg(s)"),
+                            new ComponentBuilder.NumberBasedArg<>("width", 0, Float.MAX_VALUE)));
+                    add(ComponentBuilder.createFunctionCallerPanel("glfwSwapIntervals",
                             args -> engine.commitCommandsToMainThread(() -> glfwSwapInterval(((Double) args.get("interval")).intValue())),
-                            () -> showErrorDialog("Bad Argument"), new NumberBasedArg<>("interval", 0, Integer.MAX_VALUE)));
-                    add(createFunctionCallerPanel("glfwWindowHint",
+                            () -> showErrorDialog("Bad Argument"), new ComponentBuilder.NumberBasedArg<>("interval", 0, Integer.MAX_VALUE)));
+                    add(ComponentBuilder.createFunctionCallerPanel("glfwWindowHint",
                             args -> engine.commitCommandsToMainThread(() -> {
                                 glfwWindowHint((int) args.get("hint"), (int) args.get("value"));
                                 engine.rebuildWindow();
                             }),
-                            () -> showErrorDialog("Bad Argument"),
-                            new OptionBasedArg<>("hint", new HashMap<>() {{
+                            () -> showErrorDialog("Bad Argument(s)"),
+                            new ComponentBuilder.OptionBasedArg<>("hint", new HashMap<>() {{
                                 put("GLFW_RESIZABLE", GLFW_RESIZABLE);
                                 put("GLFW_VISIBLE", GLFW_VISIBLE);
                                 put("GLFW_DECORATED", GLFW_DECORATED);
@@ -327,14 +365,35 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                                 put("GLFW_COCOA_RETINA_FRAMEBUFFER", GLFW_COCOA_RETINA_FRAMEBUFFER);
                                 put("GLFW_COCOA_GRAPHICS_SWITCHING", GLFW_COCOA_GRAPHICS_SWITCHING);
                             }}),
-                            new OptionBasedArg<>("value", Map.of("TRUE", GLFW_TRUE, "FALSE", GLFW_FALSE))
-                    ));
+                            new ComponentBuilder.OptionBasedArg<>("value", Map.of("TRUE", GLFW_TRUE, "FALSE", GLFW_FALSE))));
+                    add(ComponentBuilder.createFunctionCallerPanel("glfwWindowHint",
+                            args -> engine.commitCommandsToMainThread(() -> {
+                                glfwWindowHint((int) args.get("hint"), ((Double) args.get("value")).intValue());
+                                engine.rebuildWindow();
+                            }),
+                            () -> showErrorDialog("Bad Argument(s)"),
+                            new ComponentBuilder.OptionBasedArg<>("hint", new HashMap<>() {{
+                                put("GLFW_RED_BITS", GLFW_RED_BITS);
+                                put("GLFW_GREEN_BITS", GLFW_GREEN_BITS);
+                                put("GLFW_BLUE_BITS", GLFW_BLUE_BITS);
+                                put("GLFW_ALPHA_BITS", GLFW_ALPHA_BITS);
+                                put("GLFW_DEPTH_BITS", GLFW_DEPTH_BITS);
+                                put("GLFW_STENCIL_BITS", GLFW_STENCIL_BITS);
+                                put("GLFW_ACCUM_RED_BITS", GLFW_ACCUM_RED_BITS);
+                                put("GLFW_ACCUM_GREEN_BITS", GLFW_ACCUM_GREEN_BITS);
+                                put("GLFW_ACCUM_BLUE_BITS", GLFW_ACCUM_BLUE_BITS);
+                                put("GLFW_ACCUM_ALPHA_BITS", GLFW_ACCUM_ALPHA_BITS);
+                                put("GLFW_AUX_BUFFERS", GLFW_AUX_BUFFERS);
+                                put("GLFW_SAMPLES", GLFW_SAMPLES);
+                                put("GLFW_REFRESH_RATE", GLFW_REFRESH_RATE);
+                            }}),
+                            new ComponentBuilder.NumberBasedArg<>("value", 0, Integer.MAX_VALUE)));
                     add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                         add(new JButton("Turn off") {{addActionListener(e -> engine.turnoff());}});
                     }});
-                }}).setLayout(new BoxLayout(element("engineSettings-panel"), BoxLayout.Y_AXIS));
-                add("Engine Settings", new JScrollPane(element("engineSettings-panel")));
-            }}));
+                }})));
+                add("Entity", new JScrollPane(ComponentBuilder.createEntityPanel(EngineRuntimeToolsFrame.this)));
+            }}), BorderLayout.CENTER);
         }});
         graphs.addAll(elements(MultiGraphPanelForSampling.class));
         startUpdater();
@@ -360,7 +419,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
     }
 
     @Override
-    protected void updateElements() {
+    public void updateElements() {
         var t = System.nanoTime();
 
         graphs.forEach(MultiGraphPanelForSampling::update);

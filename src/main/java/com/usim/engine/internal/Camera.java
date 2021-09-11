@@ -1,4 +1,4 @@
-package com.usim.engine.engine.internal;
+package com.usim.engine.internal;
 
 import org.joml.Vector3f;
 
