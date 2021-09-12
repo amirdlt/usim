@@ -1,4 +1,3 @@
-//file:noinspection GradlePackageUpdate
 plugins {
     id 'java'
 }
