@@ -675,6 +675,14 @@ public final class Utils {
         return sb.toString().trim();
     }
 
+    public static @NotNull String getFileAsStringElseEmpty(String path) {
+        try {
+            return getFileAsString(path);
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
     public static @NotNull String setSystemVolume(int volume) throws IOException {
         if (volume < 0 || volume > 100)
             throw new RuntimeException("Error: " + volume + " is not a valid number. Choose a number between 0 and 100");

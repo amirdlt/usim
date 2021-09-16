@@ -1,4 +1,4 @@
-package ahd.usim.engine.swing;
+package ahd.usim.engine.gui.swing;
 
 import ahd.usim.ulib.utils.Utils;
 import ahd.usim.ulib.visualization.canvas.Graph2DCanvas;

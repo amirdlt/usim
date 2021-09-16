@@ -1,12 +1,14 @@
-package ahd.usim.engine.swing;
+package ahd.usim.engine.gui.swing;
 
 import ahd.usim.engine.internal.Engine;
 import ahd.usim.ulib.swingutils.MainFrame;
-import ahd.usim.ulib.utils.Utils;
 import ahd.usim.engine.Constants;
+import ahd.usim.ulib.utils.Utils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL45C.*;
-import static ahd.usim.engine.swing.ComponentBuilder.*;
+import static ahd.usim.engine.gui.swing.ComponentBuilder.*;
 
 public class EngineRuntimeToolsFrame extends MainFrame {
     private final Engine engine;
@@ -41,7 +43,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
     }
 
     private void init() {
-        setSize(600, 650);
+        setSize(720, 620);
         setTrayIconPath(Constants.DEFAULT_SWING_ICON_PATH);
         setIconImage(new ImageIcon(Constants.DEFAULT_SWING_ICON_PATH).getImage());
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -50,42 +52,6 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                 add("Stats", new JScrollPane(element("stats-panel", new JPanel() {{
                     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
                     setBorder(BorderFactory.createLineBorder(Color.YELLOW, 2));
-                    add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
-                        add(new JLabel("Targets: FPS: "));
-                        add(element("fps-textField", new JTextField(String.valueOf(engine.getTargetFps())) {{
-                            setPreferredSize(new Dimension(80, 30));
-                            addActionListener(e -> {
-                                try {
-                                    engine.setTargetFps(Integer.parseInt(getText()));
-                                } catch (NumberFormatException ignore) {}
-                                setText(String.valueOf(engine.getTargetFps()));
-                            });
-                        }}));
-                        add(new JLabel("UPS: "));
-                        add(element("ups-textField", new JTextField(String.valueOf(engine.getTargetUps())) {{
-                            setPreferredSize(new Dimension(80, 30));
-                            addActionListener(e -> {
-                                try {
-                                    engine.setTargetUps(Integer.parseInt(getText()));
-                                } catch (NumberFormatException ignore) {
-                                }
-                                setText(String.valueOf(engine.getTargetUps()));
-                                textFieldE("fps-textField").setText(String.valueOf(engine.getTargetFps()));
-                                textFieldE("ips-textField").setText(String.valueOf(engine.getTargetIps()));
-                            });
-                        }}));
-                        add(new JLabel("IPS: "));
-                        add(element("ips-textField", new JTextField(String.valueOf(engine.getTargetIps())) {{
-                            setPreferredSize(new Dimension(80, 30));
-                            addActionListener(e -> {
-                                try {
-                                    engine.setTargetIps(Integer.parseInt(getText()));
-                                } catch (NumberFormatException ignore) {
-                                }
-                                setText(String.valueOf(engine.getTargetIps()));
-                            });
-                        }}));
-                    }});
                     add(new JSeparator());
                     add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                         add(new JLabel("Real Time: "));
@@ -199,12 +165,6 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                         addGraph("cpuUsage", 2, Color.RED, Utils::cpuUsageByJVM);
                     }}));
                     add(new JSeparator());
-                    add(new JPanel(new GridLayout(0, 1)) {{
-                        setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
-                        add(element("cameraPosition-label", new JLabel("Camera Position: " + engine.getCamera().getPosition())));
-                        add(element("cameraRotation-label", new JLabel("Camera Rotation: " + engine.getCamera().getRotation())));
-                    }});
-                    add(new JSeparator());
                     add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                         add(new JLabel("Sampling Rate (ms): "));
                         add(new JTextField(String.valueOf(updateRate)) {{
@@ -289,11 +249,50 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                 }})));
                 add("Engine Settings", new JScrollPane(element("engineSettings-panel", new JPanel() {{
                     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+                    setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+                    add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
+                        add(new JLabel("Targets: FPS: "));
+                        add(element("fps-textField", new JTextField(String.valueOf(engine.getTargetFps())) {{
+                            setPreferredSize(new Dimension(80, 30));
+                            addActionListener(e -> {
+                                try {
+                                    engine.setTargetFps(Integer.parseInt(getText()));
+                                } catch (NumberFormatException ignore) {}
+                                setText(String.valueOf(engine.getTargetFps()));
+                            });
+                        }}));
+                        add(new JLabel("UPS: "));
+                        add(element("ups-textField", new JTextField(String.valueOf(engine.getTargetUps())) {{
+                            setPreferredSize(new Dimension(80, 30));
+                            addActionListener(e -> {
+                                try {
+                                    engine.setTargetUps(Integer.parseInt(getText()));
+                                } catch (NumberFormatException ignore) {
+                                }
+                                setText(String.valueOf(engine.getTargetUps()));
+                                textFieldE("fps-textField").setText(String.valueOf(engine.getTargetFps()));
+                                textFieldE("ips-textField").setText(String.valueOf(engine.getTargetIps()));
+                            });
+                        }}));
+                        add(new JLabel("IPS: "));
+                        add(element("ips-textField", new JTextField(String.valueOf(engine.getTargetIps())) {{
+                            setPreferredSize(new Dimension(80, 30));
+                            addActionListener(e -> {
+                                try {
+                                    engine.setTargetIps(Integer.parseInt(getText()));
+                                } catch (NumberFormatException ignore) {
+                                }
+                                setText(String.valueOf(engine.getTargetIps()));
+                            });
+                        }}));
+                    }});
+                    add(new JSeparator());
                     add(createFunctionCallerPanel("glPolygonMode",
                             args -> engine.commitCommandsToMainThread(() -> glPolygonMode((int) args.get("face"), (int) args.get("mode"))),
                             () -> showErrorDialog("Bad Argument(s)"),
                             new OptionBasedArg<>("face", Map.of("GL_FRONT", GL_FRONT, "GL_BACK", GL_BACK, "GL_FRONT_AND_BACK", GL_FRONT_AND_BACK)),
                             new OptionBasedArg<>("mode", Map.of("GL_POINT", GL_POINT, "GL_LINE", GL_LINE, "GL_FILL", GL_FILL))));
+                    add(new JSeparator());
                     add(createFunctionCallerPanel("glEnable & glDisable", args -> engine.commitCommandsToMainThread(() -> {
                                 if ((boolean) args.get("flag"))
                                     glEnable((int) args.get("state"));
@@ -328,20 +327,91 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                                 put("GL_SCISSOR_TEST", GL_SCISSOR_TEST);
                                 put("GL_STENCIL_TEST", GL_STENCIL_TEST);
                                 put("GL_TEXTURE_CUBE_MAP_SEAMLESS", GL_TEXTURE_CUBE_MAP_SEAMLESS);
+                                put("GL_LINE_WIDTH", GL_LINE_WIDTH);
                                 put("GL_PROGRAM_POINT_SIZE", GL_PROGRAM_POINT_SIZE);
                             }}),
                             new OptionBasedArg<>("flag", Map.of("Enable", true, "Disable", false))));
+                    add(new JSeparator());
                     add(createFunctionCallerPanel("glLineWidth",
                             args -> engine.commitCommandsToMainThread(() -> glLineWidth(((Double) args.get("width")).floatValue())),
                             () -> showErrorDialog("Bad Arg(s)"),
                             new NumberBasedArg<>("width", 0, Float.MAX_VALUE)));
-//                    add(createFunctionCallerPanel("glBlendFunc", args -> engine.commitCommandsToMainThread(() -> glBlendFunc()),
-//                            () -> showErrorDialog("Bad Argument"),
-//
-//                    ));
+                    add(new JSeparator());
+                    // noinspection DuplicatedCode,SpellCheckingInspection
+                    add(createFunctionCallerPanel("glBlendFunc",
+                            args -> engine.commitCommandsToMainThread(() ->
+                                    glBlendFunc((Integer) args.get("sfactor"), (Integer) args.get("dfactor"))),
+                            () -> showErrorDialog("Bad Argument"),
+                            new OptionBasedArg<>("sfactor", new HashMap<>() {{
+                                put("GL_ZERO", GL_ZERO);
+                                put("GL_ONE", GL_ONE);
+                                put("GL_SRC_COLOR", GL_SRC_COLOR);
+                                put("GL_ONE_MINUS_SRC_COLOR", GL_ONE_MINUS_SRC_COLOR);
+                                put("GL_DST_COLOR", GL_DST_COLOR);
+                                put("GL_ONE_MINUS_DST_COLOR", GL_ONE_MINUS_DST_COLOR);
+                                put("GL_SRC_ALPHA", GL_SRC_ALPHA);
+                                put("GL_ONE_MINUS_SRC_ALPHA", GL_ONE_MINUS_SRC_ALPHA);
+                                put("GL_DST_ALPHA", GL_DST_ALPHA);
+                                put("GL_ONE_MINUS_DST_ALPHA", GL_ONE_MINUS_DST_ALPHA);
+                                put("GL_CONSTANT_COLOR", GL_CONSTANT_COLOR);
+                                put("GL_ONE_MINUS_CONSTANT_COLOR", GL_ONE_MINUS_CONSTANT_COLOR);
+                                put("GL_CONSTANT_ALPHA", GL_CONSTANT_ALPHA);
+                                put("GL_ONE_MINUS_CONSTANT_ALPHA", GL_ONE_MINUS_CONSTANT_ALPHA);
+                                put("GL_SRC_ALPHA_SATURATE", GL_SRC_ALPHA_SATURATE);
+                                put("GL_SRC1_COLOR", GL_SRC1_COLOR);
+                                put("GL_ONE_MINUS_SRC1_COLOR", GL_ONE_MINUS_SRC1_COLOR);
+                                put("GL_SRC1_ALPHA", GL_SRC1_ALPHA);
+                                put("GL_ONE_MINUS_SRC1_ALPHA", GL_ONE_MINUS_SRC1_ALPHA);
+                            }}),
+                            new OptionBasedArg<>("dfactor", new HashMap<>() {{
+                                put("GL_ZERO", GL_ZERO);
+                                put("GL_ONE", GL_ONE);
+                                put("GL_SRC_COLOR", GL_SRC_COLOR);
+                                put("GL_ONE_MINUS_SRC_COLOR", GL_ONE_MINUS_SRC_COLOR);
+                                put("GL_DST_COLOR", GL_DST_COLOR);
+                                put("GL_ONE_MINUS_DST_COLOR", GL_ONE_MINUS_DST_COLOR);
+                                put("GL_SRC_ALPHA", GL_SRC_ALPHA);
+                                put("GL_ONE_MINUS_SRC_ALPHA", GL_ONE_MINUS_SRC_ALPHA);
+                                put("GL_DST_ALPHA", GL_DST_ALPHA);
+                                put("GL_ONE_MINUS_DST_ALPHA", GL_ONE_MINUS_DST_ALPHA);
+                                put("GL_CONSTANT_COLOR", GL_CONSTANT_COLOR);
+                                put("GL_ONE_MINUS_CONSTANT_COLOR", GL_ONE_MINUS_CONSTANT_COLOR);
+                                put("GL_CONSTANT_ALPHA", GL_CONSTANT_ALPHA);
+                                put("GL_ONE_MINUS_CONSTANT_ALPHA", GL_ONE_MINUS_CONSTANT_ALPHA);
+                                put("GL_SRC_ALPHA_SATURATE", GL_SRC_ALPHA_SATURATE);
+                                put("GL_SRC1_COLOR", GL_SRC1_COLOR);
+                                put("GL_ONE_MINUS_SRC1_COLOR", GL_ONE_MINUS_SRC1_COLOR);
+                                put("GL_SRC1_ALPHA", GL_SRC1_ALPHA);
+                                put("GL_ONE_MINUS_SRC1_ALPHA", GL_ONE_MINUS_SRC1_ALPHA);
+                            }})
+                    ));
+                    add(new JSeparator());
+                    add(createFunctionCallerPanel("glColorMask", args -> engine.commitCommandsToMainThread(
+                            () -> glColorMask((boolean) args.get("red"), (boolean) args.get("green"), (boolean) args.get("blue"),
+                                    (boolean) args.get("alpha"))), () -> showErrorDialog("Bad Arg(s)"),
+                            new OptionBasedArg<>("red", Map.of("TRUE", true, "FALSE", false)),
+                            new OptionBasedArg<>("green", Map.of("TRUE", true, "FALSE", false)),
+                            new OptionBasedArg<>("blue", Map.of("TRUE", true, "FALSE", false)),
+                            new OptionBasedArg<>("alpha", Map.of("TRUE", true, "FALSE", false))));
+                    add(new JSeparator());
+                    add(createFunctionCallerPanel("glDepthFunc",
+                            args -> engine.commitCommandsToMainThread(() -> glDepthFunc((int) args.get("func"))),
+                            () -> showErrorDialog("Bad Arg(s)"),
+                            new OptionBasedArg<>("func", Map.of(
+                                    "GL_NEVER", GL_NEVER,
+                                    "GL_ALWAYS", GL_ALWAYS,
+                                    "GL_LESS", GL_LESS,
+                                    "GL_LEQUAL", GL_LEQUAL,
+                                    "GL_EQUAL", GL_EQUAL,
+                                    "GL_GREATER", GL_GREATER,
+                                    "GL_GEQUAL", GL_GEQUAL,
+                                    "GL_NOTEQUAL", GL_NOTEQUAL
+                            ))));
+                    add(new JSeparator());
                     add(createFunctionCallerPanel("glfwSwapIntervals",
                             args -> engine.commitCommandsToMainThread(() -> glfwSwapInterval(((Double) args.get("interval")).intValue())),
                             () -> showErrorDialog("Bad Argument"), new NumberBasedArg<>("interval", 0, Integer.MAX_VALUE)));
+                    add(new JSeparator());
                     add(createFunctionCallerPanel("glfwWindowHint",
                             args -> engine.commitCommandsToMainThread(() -> {
                                 glfwWindowHint((int) args.get("hint"), (int) args.get("value"));
@@ -370,6 +440,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                                 put("GLFW_COCOA_GRAPHICS_SWITCHING", GLFW_COCOA_GRAPHICS_SWITCHING);
                             }}),
                             new OptionBasedArg<>("value", Map.of("TRUE", GLFW_TRUE, "FALSE", GLFW_FALSE))));
+                    add(new JSeparator());
                     add(createFunctionCallerPanel("glfwWindowHint",
                             args -> engine.commitCommandsToMainThread(() -> {
                                 glfwWindowHint((int) args.get("hint"), ((Double) args.get("value")).intValue());
@@ -392,11 +463,33 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                                 put("GLFW_REFRESH_RATE", GLFW_REFRESH_RATE);
                             }}),
                             new NumberBasedArg<>("value", 0, Integer.MAX_VALUE)));
+                    add(new JSeparator());
                     add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                         add(new JButton("Turn off") {{addActionListener(e -> engine.turnoff());}});
                     }});
                 }})));
                 add("Entity", new JScrollPane(createEntityPanel(EngineRuntimeToolsFrame.this)));
+                add("Vertex Shader", createTextEditor(code -> {
+
+                }, () -> Utils.getFileAsStringElseEmpty(Constants.VERTEX_SHADER_FILE_RESOURCE_PATH),
+                        code -> engine.commitCommandsToMainThread(() -> engine.getLogic().renderer().getShader().createVertexShader(code)),
+                        Utils.getFileAsStringElseEmpty(Constants.VERTEX_SHADER_FILE_RESOURCE_PATH)));
+                add("Fragment Shader", createTextEditor(code -> {
+
+                }, () -> Utils.getFileAsStringElseEmpty(Constants.FRAGMENT_SHADER_FILE_RESOURCE_PATH),
+                        code -> engine.getLogic().renderer().getShader().createFragmentShader(code),
+                        Utils.getFileAsStringElseEmpty(Constants.FRAGMENT_SHADER_FILE_RESOURCE_PATH)));
+                add("Camera", new JScrollPane(new JPanel() {{
+                    setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+                    add(new JPanel(new GridLayout(0, 1)) {{
+                        setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
+                        add(element("cameraPosition-label", new JLabel("Camera Position: " +
+                                engine.getCamera().getPosition().toString(DecimalFormat.getInstance()), JLabel.CENTER)));
+                        add(element("cameraRotation-label", new JLabel(
+                                "Camera Rotation: " + engine.getCamera().getRotation().toString(DecimalFormat.getInstance()), JLabel.CENTER)));
+                    }});
+
+                }}));
             }}), BorderLayout.CENTER);
         }});
         graphs.addAll(elements(MultiGraphPanelForSampling.class));
@@ -451,8 +544,8 @@ public class EngineRuntimeToolsFrame extends MainFrame {
         labelE("pureTotalFrameLoss-label").setText("| Pure Frame Loss: " + engine.getPureTotalFrameLoss());
 
 
-        labelE("cameraPosition-label").setText("Camera Position: " + engine.getCamera().getPosition());
-        labelE("cameraRotation-label").setText("Camera Rotation: " + engine.getCamera().getRotation());
+        labelE("cameraPosition-label").setText("Camera Position: " + engine.getCamera().getPosition().toString(DecimalFormat.getInstance()));
+        labelE("cameraRotation-label").setText("Camera Rotation: " + engine.getCamera().getRotation().toString(DecimalFormat.getInstance()));
 
         labelE("updateLatency-label").setText("Latency: " + Utils.round(updateLatency, 2) + " ms");
         labelE("sampleCount-label").setText("| Sample Counts: " + ++updateCount);

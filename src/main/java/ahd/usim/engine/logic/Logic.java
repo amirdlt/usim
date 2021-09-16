@@ -1,6 +1,7 @@
 package ahd.usim.engine.logic;
 
 import ahd.usim.engine.internal.Camera;
+import ahd.usim.engine.internal.Renderer;
 
 public interface Logic {
 
@@ -15,6 +16,8 @@ public interface Logic {
     void cleanup();
 
     void saveState();
+
+    Renderer renderer();
 
     Camera camera();
 }

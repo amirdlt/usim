@@ -1,6 +1,6 @@
 package ahd.usim.engine.entity;
 
-import ahd.usim.engine.graph.Mesh;
+import ahd.usim.engine.entity.mesh.Mesh;
 import org.joml.Vector3f;
 
 public class Entity {

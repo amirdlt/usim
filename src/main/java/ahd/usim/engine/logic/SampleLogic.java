@@ -3,12 +3,15 @@ package ahd.usim.engine.logic;
 import ahd.usim.engine.Constants;
 import ahd.usim.engine.entity.Entity;
 import ahd.usim.engine.entity.loader.ModelLoader;
-import ahd.usim.engine.graph.Mesh;
-import ahd.usim.engine.graph.Texture;
+import ahd.usim.engine.entity.material.Material;
+import ahd.usim.engine.entity.mesh.ImmutableMesh;
+import ahd.usim.engine.entity.mesh.Mesh;
+import ahd.usim.engine.entity.material.Texture;
 import ahd.usim.engine.internal.Camera;
 import ahd.usim.engine.internal.Engine;
 import ahd.usim.engine.internal.Input;
 import ahd.usim.engine.internal.Renderer;
+import ahd.usim.engine.internal.light.PointLight;
 import ahd.usim.engine.util.Sampling;
 import ahd.usim.ulib.jmath.datatypes.functions.Surface;
 import org.joml.Vector2f;
@@ -16,8 +19,8 @@ import org.joml.Vector3f;
 
 import java.io.IOException;
 
-import static java.lang.Math.*;
 import static org.lwjgl.glfw.GLFW.*;
+import static java.lang.Math.*;
 
 public class SampleLogic implements Logic {
 
@@ -26,6 +29,10 @@ public class SampleLogic implements Logic {
     private final Camera camera;
     private final Vector3f cameraInc;
     private final Input input;
+
+    private Vector3f ambientLight;
+
+    private PointLight pointLight;
 
 
     public SampleLogic() {
@@ -41,22 +48,35 @@ public class SampleLogic implements Logic {
         //Mesh mesh = OBJLoader.loadMesh("/models/bunny.obj");
         Mesh mesh = null;
         try {
-            mesh = ModelLoader.loadMesh("E:\\Programming Projects\\Java Projects\\usim\\src\\main\\resources\\models\\bunny.obj");
+            mesh = ModelLoader.loadMesh(Constants.DEFAULT_RESOURCE_ROOT_PATH + "models/bunny.obj");
         } catch (IOException e) {
             e.printStackTrace();
         }
         Texture texture = new Texture("textures/grassblock.png");
+        Material material = new Material(1f, texture);
+
         assert mesh != null;
-        mesh.setTexture(texture);
+        mesh.setMaterial(material);
         var gameItem = new Entity(mesh);
         gameItem.setScale(0.5f);
         gameItem.setPosition(0, 0, -2);
-        gameItem.getMesh().setColor(new Vector3f(1, 0, 1));
+        entities = new Entity[]{gameItem};
 
         var sample = Sampling.sample(-PI / 2, PI / 2, -PI, PI, 0.01, 0.1, Surface.kleinBottle());
+//        var sample = Sampling.sample(0, .1, 0, .1, 0.01, 0.01, (x, y) -> Point3D.of(x, y, x + y));
+//        var sample = Sampling.sample(-PI, PI, 0.01, t -> Point3D.of(sin(t * 5) + 1, cos(t * 10) + 1, -t));
 
-                entities = new Entity[] { new Entity(new Mesh(sample.vertices(), sample.colors(), sample.indices())) };
-//        entities = new Entity[] {};
+//                entities = new Entity[] { new Entity(new Mesh(sample.vertices(), null, sample.colors(), sample.normals(), sample.indices())) };
+//                entities = new Entity[] { new Entity(new ImmutableMesh(sample.vertices(), sample.colors(), null, sample.indices())) };
+        entities = new Entity[] {gameItem};
+
+        ambientLight = new Vector3f(0.3f, 0.3f, 0.3f);
+        Vector3f lightColour = new Vector3f(1, 1, 1);
+        Vector3f lightPosition = new Vector3f(0, 0, 1);
+        float lightIntensity = 1.0f;
+        pointLight = new PointLight(lightColour, lightPosition, lightIntensity);
+        PointLight.Attenuation att = new PointLight.Attenuation(0.0f, 0.0f, 1.0f);
+        pointLight.setAttenuation(att);
     }
 
     @Override
@@ -76,14 +96,23 @@ public class SampleLogic implements Logic {
             Vector2f rotVec = input.getDisplayVector();
             camera.rotate(rotVec.x * Constants.DEFAULT_MOUSE_MOVEMENT_SENSITIVITY, rotVec.y * Constants.DEFAULT_MOUSE_MOVEMENT_SENSITIVITY, 0);
         }
-        for (Entity entity : entities) {
-            entity.getRotation().add(0.001f, 0.001f, 0.001f);
-        }
+//        for (Entity entity : entities) {
+////            entity.getRotation().add(0.001f, 0.001f, 0.001f);
+////            entity.getMesh().updateVertices(Mesh.ArrayTask.bouncing);
+//
+//            entity.getMesh().updateVerticesAndColors((vertices, colors, normals) -> {
+//                for (int i = 0; i < colors.length; i++) {
+//                    var rand = Math.random();
+////                    colors[i] += (rand < 0.5 ? rand < 0.25 ? -1 : 1 : 0) * 0.1f;
+//                    vertices[i] += (rand < 0.5 ? rand < 0.25 ? -1 : 1 : 0) * 0.001f;
+//                }
+//            });
+//        }
     }
 
     @Override
     public void render() {
-        renderer.render(entities, camera);
+        renderer.render(entities, camera, ambientLight, pointLight);
     }
 
     @Override
@@ -96,6 +125,11 @@ public class SampleLogic implements Logic {
     @Override
     public void saveState() {
 
+    }
+
+    @Override
+    public Renderer renderer() {
+        return renderer;
     }
 
     @Override

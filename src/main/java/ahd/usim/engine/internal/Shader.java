@@ -1,16 +1,19 @@
-package ahd.usim.engine.graph;
+package ahd.usim.engine.internal;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 import ahd.usim.engine.Constants;
+import ahd.usim.engine.entity.material.Material;
+import ahd.usim.engine.internal.light.PointLight;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
 import static org.lwjgl.opengl.GL20.*;
 
 import org.joml.Vector3f;
+import org.joml.Vector4f;
 import org.lwjgl.system.MemoryStack;
 
 public class Shader {
@@ -22,6 +25,7 @@ public class Shader {
     private final Map<String, Integer> uniforms;
 
     public Shader() {
+        vertexShaderId = fragmentShaderId = 0;
         programId = glCreateProgram();
         if (programId == 0)
             throw new RuntimeException("AHD:: Could not create Shader");
@@ -31,8 +35,25 @@ public class Shader {
     public void createUniform(String uniformName) {
         int uniformLocation = glGetUniformLocation(programId, uniformName);
         if (uniformLocation < 0)
-            throw new RuntimeException("AHD:: Could not find uniform:" + uniformName);
+            throw new RuntimeException("AHD:: Could not find uniform: " + uniformName);
         uniforms.put(uniformName, uniformLocation);
+    }
+
+    public void createPointLightUniform(String uniformName) {
+        createUniform(uniformName + ".color");
+        createUniform(uniformName + ".position");
+        createUniform(uniformName + ".intensity");
+        createUniform(uniformName + ".attenuation.constant");
+        createUniform(uniformName + ".attenuation.linear");
+        createUniform(uniformName + ".attenuation.exponent");
+    }
+
+    public void createMaterialUniform(String uniformName) {
+        createUniform(uniformName + ".ambient");
+        createUniform(uniformName + ".diffuse");
+        createUniform(uniformName + ".specular");
+        createUniform(uniformName + ".hasTexture");
+        createUniform(uniformName + ".reflectance");
     }
 
     public void setUniform(String uniformName, @NotNull Matrix4f value) {
@@ -45,19 +66,55 @@ public class Shader {
         glUniform1i(uniforms.get(uniformName), value);
     }
 
-    public void setUniform(String uniformName, Vector3f value) {
+    public void setUniform(String uniformName, float value) {
+        glUniform1f(uniforms.get(uniformName), value);
+    }
+
+    public void setUniform(String uniformName, @NotNull Vector3f value) {
         glUniform3f(uniforms.get(uniformName), value.x, value.y, value.z);
     }
 
+    public void setUniform(String uniformName, @NotNull Vector4f value) {
+        glUniform4f(uniforms.get(uniformName), value.x, value.y, value.z, value.w);
+    }
+
+    public void setUniform(String uniformName, @NotNull PointLight pointLight) {
+        setUniform(uniformName + ".color", pointLight.getColor());
+        setUniform(uniformName + ".position", pointLight.getPosition());
+        setUniform(uniformName + ".intensity", pointLight.getIntensity());
+        PointLight.Attenuation att = pointLight.getAttenuation();
+        setUniform(uniformName + ".attenuation.constant", att.constant());
+        setUniform(uniformName + ".attenuation.linear", att.linear());
+        setUniform(uniformName + ".attenuation.exponent", att.exponent());
+    }
+
+    public void setUniform(String uniformName, @NotNull Material material) {
+        setUniform(uniformName + ".ambient", material.getAmbientColor());
+        setUniform(uniformName + ".diffuse", material.getDiffuseColor());
+        setUniform(uniformName + ".specular", material.getSpecularColor());
+        setUniform(uniformName + ".hasTexture", material.isTextured() ? 1 : 0);
+        setUniform(uniformName + ".reflectance", material.getReflectance());
+    }
+
     public void createVertexShader(String shaderCode) {
+        if (vertexShaderId != 0) {
+            glDetachShader(programId, vertexShaderId);
+            glDeleteShader(vertexShaderId);
+            vertexShaderId = 0;
+        }
         vertexShaderId = createShader(shaderCode, GL_VERTEX_SHADER);
     }
 
     public void createFragmentShader(String shaderCode) {
+        if (fragmentShaderId != 0) {
+            glDetachShader(programId, fragmentShaderId);
+            glDeleteShader(fragmentShaderId);
+            fragmentShaderId = 0;
+        }
         fragmentShaderId = createShader(shaderCode, GL_FRAGMENT_SHADER);
     }
 
-    protected int createShader(String shaderCode, int shaderType) {
+    private int createShader(String shaderCode, int shaderType) {
         int shaderId = glCreateShader(shaderType);
         if (shaderId == 0)
             throw new RuntimeException("AHD:: Error creating shader. Type: " + shaderType);
@@ -85,10 +142,8 @@ public class Shader {
             glDetachShader(programId, fragmentShaderId);
 
         glValidateProgram(programId);
-        if (glGetProgrami(programId, GL_VALIDATE_STATUS) == 0) {
+        if (glGetProgrami(programId, GL_VALIDATE_STATUS) == 0)
             System.err.println("Warning validating Shader code: " + glGetProgramInfoLog(programId, Constants.GL_LOG_MAX_LENGTH));
-        }
-
     }
 
     public void bind() {
@@ -101,9 +156,8 @@ public class Shader {
 
     public void cleanup() {
         unbind();
-        if (programId != 0) {
+        if (programId != 0)
             glDeleteProgram(programId);
-        }
     }
 
     @Override

@@ -1,6 +1,5 @@
-package ahd.usim.engine.graph;
+package ahd.usim.engine.entity.material;
 
-import java.io.FileNotFoundException;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import org.lwjgl.system.MemoryStack;

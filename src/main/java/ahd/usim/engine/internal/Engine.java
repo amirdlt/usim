@@ -1,7 +1,7 @@
 package ahd.usim.engine.internal;
 
 import ahd.usim.engine.logic.Logic;
-import ahd.usim.engine.swing.EngineRuntimeToolsFrame;
+import ahd.usim.engine.gui.swing.EngineRuntimeToolsFrame;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -10,7 +10,7 @@ import java.util.concurrent.*;
 import static ahd.usim.engine.Constants.*;
 
 @SuppressWarnings("unused")
-public final class Engine {
+public final class Engine implements Cleanable {
     private static Engine engine = null;
 
     private boolean on;
@@ -77,15 +77,12 @@ public final class Engine {
         committedCommandsToMainThread = null;
     }
 
-    private void _start(int targetFps, int targetUps, int targetIps) {
+    private void _start() {
         if (working)
             return;
         if (logic == null)
             throw new IllegalStateException("AHD:: Please first set a logic for this engine.");
         working = true;
-        this.targetUps = targetUps;
-        this.targetFps = targetFps;
-        this.targetIps = targetIps;
         ScheduledFuture<?> update = null;
         try {
             init();
@@ -96,7 +93,6 @@ public final class Engine {
                 if (updateCount % inputFactor == 0)
                     _input();
                 _update();
-                renderSynchronizer.release();
             }, 0, NANO / targetUps, TimeUnit.NANOSECONDS);
             long rTime = 0;
             final var renderFactor = targetUps / targetFps < 2 ? 1 : targetUps / targetFps;
@@ -108,7 +104,7 @@ public final class Engine {
                 totalFrameLoss += frameLoss = renderSynchronizer.availablePermits() / renderFactor;
                 rTime += System.currentTimeMillis() - t;
                 if (rTime >= 1_000) {
-                    this.fps = fps * 1_000f / rTime;
+                    this.fps = fps * MILLI_F / rTime;
                     ups = (fps * renderFactor + frameLoss) * MILLI_F / rTime;
                     ips = ups / inputFactor;
                     renderSynchronizer.drainPermits();
@@ -130,6 +126,7 @@ public final class Engine {
             ips = 0;
             frameLoss = 0;
             working = false;
+            renderSynchronizer.drainPermits();
             if (committedCommandsToMainThread != null) {
                 committedCommandsToMainThread.run();
                 committedCommandsToMainThread = null;
@@ -137,10 +134,6 @@ public final class Engine {
             if (window.windowShouldClose())
                 cleanup();
         }
-    }
-
-    private void _start() {
-        _start(targetFps, targetUps, targetIps);
     }
 
     private void init() {
@@ -157,7 +150,8 @@ public final class Engine {
         }
     }
 
-    private void cleanup() {
+    @Override
+    public void cleanup() {
         logic.cleanup();
         window.cleanup();
         engineRuntimeToolsFrame.dispose();
@@ -172,7 +166,11 @@ public final class Engine {
         var t = System.nanoTime();
         if (doInput) {
             input.input();
-            logic.input();
+            try {
+                logic.input();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             inputCount++;
         }
         inputTime = (System.nanoTime() - t) / MILLION_F;
@@ -181,10 +179,15 @@ public final class Engine {
     private void _update() {
         var t = System.nanoTime();
         if (doUpdate) {
-            logic.update();
+            try {
+                logic.update();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             updateCount++;
         }
         updateTime = (System.nanoTime() - t) / MILLION_F;
+        renderSynchronizer.release();
     }
 
     private void _render() {
@@ -368,23 +371,29 @@ public final class Engine {
     }
 
     public void setTargetFps(int targetFps) {
+        var working = this.working;
         stop();
         this.targetFps = Math.min(targetFps, targetUps);
-        start();
+        if (working)
+            start();
     }
 
     public void setTargetUps(int targetUps) {
+        var working = this.working;
         stop();
         this.targetUps = targetUps;
         targetFps = Math.min(targetUps, targetFps);
         targetIps = Math.min(targetIps, targetUps);
-        start();
+        if (working)
+            start();
     }
 
     public void setTargetIps(int targetIps) {
+        var working = this.working;
         stop();
         this.targetIps = Math.min(targetIps, targetUps);
-        start();
+        if (working)
+            start();
     }
 
     public boolean isWorking() {

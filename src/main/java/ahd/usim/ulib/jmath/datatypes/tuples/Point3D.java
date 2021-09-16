@@ -194,7 +194,7 @@ public class Point3D extends SortableTuple<Double> implements Comparable<Point3D
 
     public Point3D normalize() {
         var magnitude = distanceFromOrigin();
-        if (magnitude == 1)
+        if (magnitude == 1 || magnitude == 0)
             return this;
         x /= magnitude;
         y /= magnitude;

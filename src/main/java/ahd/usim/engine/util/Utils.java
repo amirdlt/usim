@@ -17,6 +17,7 @@ import java.util.Scanner;
 
 public class Utils {
 
+    @Deprecated
     public static String loadResource(String fileName) {
         String result;
         try (var in = Utils.class.getResourceAsStream(fileName)) {

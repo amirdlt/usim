@@ -1,12 +1,19 @@
-package ahd.usim.engine.swing;
+package ahd.usim.engine.gui.swing;
 
 import ahd.usim.ulib.jmath.parser.Function4DParser;
 import ahd.usim.ulib.swingutils.ElementBaseContainer;
+import ahd.usim.ulib.swingutils.MainPanel;
+import ahd.usim.ulib.utils.consumer.StringConsumer;
+import ahd.usim.ulib.utils.supplier.StringSupplier;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.Theme;
+import org.fife.ui.rtextarea.RTextScrollPane;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.*;
 
 public final class ComponentBuilder {
@@ -95,14 +102,30 @@ public final class ComponentBuilder {
             add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                 setPreferredSize(new Dimension(420, 40));
                 add(new JLabel("Surface: "));
-                add(frame.element(main.getName() + "-xSurface-textField", new JTextField("x") {{setPreferredSize(new Dimension(200, 32));}}));
-                add(frame.element(main.getName() + "-ySurface-textField", new JTextField("y") {{setPreferredSize(new Dimension(200, 32));}}));
-                add(frame.element(main.getName() + "-zSurface-textField", new JTextField("z") {{setPreferredSize(new Dimension(200, 32));}}));
-                add(frame.element(main.getName() + "-xLowBound-textField", new JTextField("z") {{setPreferredSize(new Dimension(200, 32));}}));
-                add(frame.element(main.getName() + "-xUpBound-textField", new JTextField("z") {{setPreferredSize(new Dimension(200, 32));}}));
-                add(frame.element(main.getName() + "-xDelta-textField", new JTextField("z") {{setPreferredSize(new Dimension(200, 32));}}));
-                add(frame.element(main.getName() + "-yDelta-textField", new JTextField("z") {{setPreferredSize(new Dimension(200, 32));}}));
-                add(frame.element(main.getName() + "-yUpBound-textField", new JTextField("z") {{setPreferredSize(new Dimension(200, 32));}}));
+                add(frame.element(main.getName() + "-xSurface-textField", new JTextField("x") {{
+                    setPreferredSize(new Dimension(200, 32));
+                }}));
+                add(frame.element(main.getName() + "-ySurface-textField", new JTextField("y") {{
+                    setPreferredSize(new Dimension(200, 32));
+                }}));
+                add(frame.element(main.getName() + "-zSurface-textField", new JTextField("z") {{
+                    setPreferredSize(new Dimension(200, 32));
+                }}));
+                add(frame.element(main.getName() + "-xLowBound-textField", new JTextField("z") {{
+                    setPreferredSize(new Dimension(200, 32));
+                }}));
+                add(frame.element(main.getName() + "-xUpBound-textField", new JTextField("z") {{
+                    setPreferredSize(new Dimension(200, 32));
+                }}));
+                add(frame.element(main.getName() + "-xDelta-textField", new JTextField("z") {{
+                    setPreferredSize(new Dimension(200, 32));
+                }}));
+                add(frame.element(main.getName() + "-yDelta-textField", new JTextField("z") {{
+                    setPreferredSize(new Dimension(200, 32));
+                }}));
+                add(frame.element(main.getName() + "-yUpBound-textField", new JTextField("z") {{
+                    setPreferredSize(new Dimension(200, 32));
+                }}));
             }});
             add(frame.element(getName() + "-new-panel", new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                 add(new JButton("New") {{
@@ -117,5 +140,35 @@ public final class ComponentBuilder {
 
     static @NotNull JPanel createEntityPanel(ElementBaseContainer frame) {
         return createEntityPanel(frame, 0);
+    }
+
+    static @NotNull JPanel createTextEditor(StringConsumer saveAction, StringSupplier refreshAction, StringConsumer applyAction, String initialText) {
+        return new JPanel() {{
+            setLayout(new BorderLayout());
+            final var textArea = new RSyntaxTextArea(initialText) {{
+                setCodeFoldingEnabled(true);
+                setSyntaxEditingStyle(SYNTAX_STYLE_C);
+                setAntiAliasingEnabled(true);
+                try {
+                    Theme.load(getClass().getResourceAsStream("/org/fife/ui/rsyntaxtextarea/themes/dark.xml")).apply(this);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                var font = getFont();
+                setFont(new Font(font.getFontName(), font.getStyle(), 14));
+            }};
+            add(new RTextScrollPane(textArea));
+            add(new JPanel(new FlowLayout(FlowLayout.RIGHT)) {{
+                add(new JButton("Apply") {{
+                    addActionListener(e -> applyAction.consume(textArea.getText()));
+                }});
+                add(new JButton("Reload") {{
+                    addActionListener(e -> textArea.setText(refreshAction.getText()));
+                }});
+                add(new JButton("Save") {{
+                    addActionListener(e -> saveAction.consume(textArea.getText()));
+                }});
+            }}, BorderLayout.SOUTH);
+        }};
     }
 }

@@ -1,4 +1,4 @@
-package ahd.usim.engine.graph;
+package ahd.usim.engine.internal;
 
 import ahd.usim.engine.internal.Camera;
 import ahd.usim.engine.entity.Entity;

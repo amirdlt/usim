@@ -1,9 +1,11 @@
 package ahd.usim.engine.entity.loader;
 
+import ahd.usim.engine.entity.mesh.ImmutableMesh;
+import ahd.usim.engine.entity.mesh.Mesh;
 import ahd.usim.ulib.utils.Utils;
-import ahd.usim.engine.graph.Mesh;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
+import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -132,10 +134,7 @@ public class ModelLoader {
                         indices, textCoordArr, normArr);
             }
         }
-        int[] indicesArr = new int[indices.size()];
-        indicesArr = indices.stream().mapToInt((Integer v) -> v).toArray();
-        Mesh mesh = new Mesh(posArr, textCoordArr, normArr, indicesArr);
-        return mesh;
+        return new ImmutableMesh(posArr, null, textCoordArr, normArr, indices.stream().mapToInt((Integer v) -> v).toArray(), GL11.GL_TRIANGLES);
     }
 
     private static void processFaceVertex(IdxGroup indices, List<Vector2f> textCoordList,

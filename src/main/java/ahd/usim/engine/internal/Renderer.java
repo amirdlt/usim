@@ -1,50 +1,46 @@
 package ahd.usim.engine.internal;
 
-import ahd.usim.engine.Constants;
 import ahd.usim.engine.entity.Entity;
-import ahd.usim.engine.graph.Shader;
-import ahd.usim.engine.graph.Transformation;
-import ahd.usim.engine.util.Utils;
-import org.jetbrains.annotations.NotNull;
+import ahd.usim.engine.internal.light.PointLight;
+import ahd.usim.ulib.utils.Utils;
 import org.jetbrains.annotations.TestOnly;
-
-import java.util.*;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
 import static org.lwjgl.opengl.GL11.*;
+import static ahd.usim.engine.Constants.*;
 
 public class Renderer {
     private final Transformation transformation;
     private Shader shader;
-    private final Map<Shader, List<Entity>> shaders;
     private final Window window;
 
     public Renderer() {
         transformation = new Transformation();
         window = Engine.getEngine().getWindow();
-        shaders = new HashMap<>();
     }
 
     public void init() {
-        // Create shader
         shader = new Shader();
-        shader.createVertexShader(Utils.loadResource("/shaders/vertex.vs"));
-        shader.createFragmentShader(Utils.loadResource("/shaders/fragment.fs"));
+        shader.createVertexShader(Utils.getFileAsStringElseEmpty(VERTEX_SHADER_FILE_RESOURCE_PATH));
+        shader.createFragmentShader(Utils.getFileAsStringElseEmpty(FRAGMENT_SHADER_FILE_RESOURCE_PATH));
         shader.link();
 
-        // Create uniforms for modelView and projection matrices and texture
-        shader.createUniform("projectionMatrix");
-        shader.createUniform("modelViewMatrix");
-        shader.createUniform("texture_sampler");
+        shader.createUniform(PROJECTION_MATRIX_UNIFORM_NAME);
+        shader.createUniform(MODEL_VIEW_MATRIX_UNIFORM_NAME);
+        shader.createUniform(TEXTURE_SAMPLER_UNIFORM_NAME);
 
-        shader.createUniform("colour");
-        shader.createUniform("useColour");
+        shader.createMaterialUniform("material");
+        shader.createUniform("specularPower");
+        shader.createUniform("ambientLight");
+        shader.createPointLightUniform("pointLight");
     }
 
     public void clear() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
-    public void render(Entity[] entities, Camera camera) {
+    public void render(Entity[] entities, Camera camera, Vector3f ambientLight, PointLight pointLight) {
         clear();
 
         if (window.isResized()) {
@@ -54,17 +50,30 @@ public class Renderer {
 
         shader.bind();
 
-        var projectionMatrix = transformation.getProjectionMatrix(Constants.DEFAULT_FIELD_OF_VIEW, window.getWidth(), window.getHeight(),
-                Constants.DEFAULT_Z_NEAR, Constants.DEFAULT_Z_FAR);
+        var projectionMatrix = transformation.getProjectionMatrix(DEFAULT_FIELD_OF_VIEW, window.getWidth(), window.getHeight(),
+                DEFAULT_Z_NEAR, DEFAULT_Z_FAR);
         shader.setUniform("projectionMatrix", projectionMatrix);
 
         var viewMatrix = transformation.getViewMatrix(camera);
 
-        shader.setUniform("texture_sampler", 0);
+        // Update Light Uniforms
+        shader.setUniform("ambientLight", ambientLight);
+        shader.setUniform("specularPower", 10f);
+        // Get a copy of the light object and transform its position to view coordinates
+        PointLight currPointLight = new PointLight(pointLight);
+        Vector3f lightPos = currPointLight.getPosition();
+        Vector4f aux = new Vector4f(lightPos, 1);
+        aux.mul(viewMatrix);
+        lightPos.x = aux.x;
+        lightPos.y = aux.y;
+        lightPos.z = aux.z;
+        shader.setUniform("pointLight", currPointLight);
+
+        shader.setUniform(TEXTURE_SAMPLER_UNIFORM_NAME, 0);
         for (var entity : entities) {
-            shader.setUniform("modelViewMatrix", transformation.getModelViewMatrix(entity, viewMatrix));
-            shader.setUniform("colour", entity.getMesh().getColor());
-            shader.setUniform("useColour", entity.getMesh().isTextured() ? 0 : 1);
+            shader.setUniform(MODEL_VIEW_MATRIX_UNIFORM_NAME, transformation.getModelViewMatrix(entity, viewMatrix));
+            shader.setUniform("material", entity.getMesh().getMaterial());
+
             entity.render();
         }
 
@@ -73,18 +82,17 @@ public class Renderer {
         drawCurve();
     }
 
-    public void importShader(String vertexShaderCode, String fragmentShaderCode, @NotNull List<String> uniforms) {
-        shaders.put(new Shader() {{
-            createVertexShader(vertexShaderCode);
-            createFragmentShader(fragmentShaderCode);
-            link();
-            uniforms.forEach(this::createUniform);
-        }}, new ArrayList<>());
-    }
-
     public void cleanup() {
         if (shader != null)
             shader.cleanup();
+    }
+
+    public Shader getShader() {
+        return shader;
+    }
+
+    public void setShader(Shader shader) {
+        this.shader = shader;
     }
 
     @TestOnly
@@ -99,10 +107,5 @@ public class Renderer {
 //        }).flip());
 //        glDrawArrays(GL_LINE_STRIP, 0, 5);
 //        glDisableClientState(GL_VERTEX_ARRAY);
-    }
-
-    @FunctionalInterface
-    public interface UniformSetter {
-        Object valueOf(String uniformName);
     }
 }

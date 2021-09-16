@@ -1,5 +1,7 @@
 package ahd.usim.engine;
 
+import org.joml.Vector3f;
+
 public interface Constants {
     int NANO = 1_000_000_000;
     float NANO_F = 1_000_000_000;
@@ -21,8 +23,10 @@ public interface Constants {
     int DEFAULT_GLFW_WINDOW_WIDTH = 1280;
     int DEFAULT_GLFW_WINDOW_HEIGHT = 720;
 
-    String DEFAULT_GLFW_ICON_PATH = ".\\src\\main\\resources\\icons\\usim-icon.png";
-    String DEFAULT_SWING_ICON_PATH = ".\\src\\main\\resources\\icons\\usim-icon.png";
+    String DEFAULT_RESOURCE_ROOT_PATH = ".\\src\\main\\resources\\";
+
+    String DEFAULT_GLFW_ICON_PATH = DEFAULT_RESOURCE_ROOT_PATH + "icons\\usim-icon.png";
+    String DEFAULT_SWING_ICON_PATH = DEFAULT_RESOURCE_ROOT_PATH + "icons\\usim-icon.png";
 
 
     int GL_LOG_MAX_LENGTH = 1024;
@@ -33,4 +37,16 @@ public interface Constants {
 
     float DEFAULT_MOUSE_MOVEMENT_SENSITIVITY = 0.002f;
     float DEFAULT_CAMERA_MOVEMENT_SENSITIVITY = 0.05f;
+
+    Vector3f DEFAULT_MESH_COLOR = new Vector3f(1);
+    Vector3f DEFAULT_AMBIENT_COLOR = new Vector3f(1);
+    Vector3f DEFAULT_DIFFUSE_COLOR = new Vector3f(1);
+    Vector3f DEFAULT_SPECULAR_COLOR = new Vector3f(1);
+
+    String VERTEX_SHADER_FILE_RESOURCE_PATH = DEFAULT_RESOURCE_ROOT_PATH + "shaders\\vertex.vs";
+    String FRAGMENT_SHADER_FILE_RESOURCE_PATH = DEFAULT_RESOURCE_ROOT_PATH + "shaders\\fragment.fs";
+
+    String PROJECTION_MATRIX_UNIFORM_NAME = "projectionMatrix";
+    String MODEL_VIEW_MATRIX_UNIFORM_NAME = "modelViewMatrix";
+    String TEXTURE_SAMPLER_UNIFORM_NAME = "texture_sampler";
 }
