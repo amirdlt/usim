@@ -1,6 +1,7 @@
 package ahd.usim.engine.internal;
 
-import ahd.usim.engine.logic.Logic;
+import ahd.usim.engine.internal.api.Cleanable;
+import ahd.usim.engine.internal.api.Logic;
 import ahd.usim.engine.gui.swing.EngineRuntimeToolsFrame;
 import org.jetbrains.annotations.NotNull;
 
@@ -142,7 +143,7 @@ public final class Engine implements Cleanable {
         initialized = true;
         window.init();
         input.init();
-        logic.init();
+        logic.initialize();
         if (engineRuntimeToolsFrame == null) {
             SwingUtilities.invokeLater(engineRuntimeToolsFrame = new EngineRuntimeToolsFrame());
         } else if (!engineRuntimeToolsFrame.isVisible()) {
@@ -258,7 +259,7 @@ public final class Engine implements Cleanable {
     public void rebuildWindow() {
         logic.cleanup();
         window.rebuild();
-        logic.init();
+        logic.initialize();
         input.init();
     }
 

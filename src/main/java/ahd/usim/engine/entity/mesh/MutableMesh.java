@@ -3,6 +3,7 @@ package ahd.usim.engine.entity.mesh;
 import ahd.usim.engine.Constants;
 import ahd.usim.engine.entity.material.Material;
 import ahd.usim.engine.entity.material.Texture;
+import ahd.usim.ulib.utils.annotation.ChangeReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -25,14 +26,8 @@ import static org.lwjgl.opengl.GL15.GL_DYNAMIC_DRAW;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 import static org.lwjgl.opengl.GL45C.*;
 
-public class MutableMesh implements Mesh {
+public class MutableMesh extends AbstractMesh {
     private int change;
-    private final int vaoId;
-    private int drawingMode;
-    private Material material;
-    private final Map<Integer, Integer> vboIds;
-    private Vector3f color;
-    private final int vertexCount;
 
     private float[] colors;
     private float[] vertices;
@@ -42,15 +37,12 @@ public class MutableMesh implements Mesh {
             float @Nullable [] normals, int @NotNull [] indices,
             @MagicConstant(intValues = { GL_POINTS, GL_LINES, GL_LINE_LOOP, GL_LINE_STRIP, GL_TRIANGLES, GL_TRIANGLE_STRIP,
                     GL_TRIANGLE_FAN, GL_QUADS, GL_QUAD_STRIP, GL_POLYGON }) int drawingMode) {
+        super(indices.length);
+
         change = -1;
 
-        vboIds = new HashMap<>();
         this.drawingMode = drawingMode;
 
-        vaoId = glGenVertexArrays();
-
-        vertexCount = indices.length;
-        color = Constants.DEFAULT_MESH_COLOR;
         if (colors == null) {
             colors = new float[vertices.length];
             Arrays.fill(colors, 1);
@@ -85,6 +77,7 @@ public class MutableMesh implements Mesh {
         return colors;
     }
 
+    @ChangeReference
     public void setColors(float[] colors) {
         this.colors = colors;
         change = Math.max(0, change) | COLORS_MASK;
@@ -106,51 +99,6 @@ public class MutableMesh implements Mesh {
     public void setNormals(float[] normals) {
         this.normals = normals;
         change = Math.max(0, change) | NORMALS_MASK;
-    }
-
-    @Override
-    public int vertexCount() {
-        return vertexCount;
-    }
-
-    @Override
-    public int vaoId() {
-        return vaoId;
-    }
-
-    @Override
-    public Map<Integer, Integer> vboIds() {
-        return vboIds;
-    }
-
-    @Override
-    public int getDrawingMode() {
-        return drawingMode;
-    }
-
-    @Override
-    public Material getMaterial() {
-        return material;
-    }
-
-    @Override
-    public void setMaterial(Material material) {
-        this.material = material;
-    }
-
-    @Override
-    public void setDrawingMode(int mode) {
-        drawingMode = mode;
-    }
-
-    @Override
-    public Vector3f getColor() {
-        return color;
-    }
-
-    @Override
-    public void setColor(Vector3f color) {
-        this.color = color;
     }
 
     @Override

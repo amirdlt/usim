@@ -24,9 +24,10 @@ public class PointLight {
         this.attenuation = attenuation;
     }
 
+    @SuppressWarnings("CopyConstructorMissesField")
     @Contract(pure = true)
     public PointLight(@NotNull PointLight pointLight) {
-        this(pointLight.color, pointLight.position, pointLight.intensity, pointLight.attenuation);
+        this(new Vector3f(pointLight.color), new Vector3f(pointLight.position), pointLight.intensity, pointLight.attenuation);
     }
 
     public Vector3f getColor() {

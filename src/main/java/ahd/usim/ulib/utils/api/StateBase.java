@@ -1,5 +1,7 @@
 package ahd.usim.ulib.utils.api;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -13,18 +15,13 @@ public interface StateBase<K, V> {
     default List<K> stateKeys() {
         return new ArrayList<>(stateMap().keySet());
     }
-    default List<K> statesOf(V value) {
-        var res = new ArrayList<K>();
-        for (var kv : stateMap().entrySet())
-            if (value.equals(kv.getValue()))
-                res.add(kv.getKey());
-        return res;
+    default List<K> statesOf(@NotNull V value) {
+        //noinspection unchecked
+        return (List<K>) stateMap().values().stream().filter(value::equals).toList();
     }
-    default K oneOfStatesOf(V value) {
-        for (var kv : stateMap().entrySet())
-            if (value.equals(kv.getValue()))
-                return kv.getKey();
-        throw new RuntimeException("AHD:: There is no key with this value");
+    default K oneOfStatesOf(@NotNull V value) {
+        //noinspection unchecked
+        return (K) stateMap().values().stream().filter(value::equals).findAny().orElse(null);
     }
     default int numOfStates() {
         return stateMap().size();

@@ -472,12 +472,12 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                 add("Vertex Shader", createTextEditor(code -> {
 
                 }, () -> Utils.getFileAsStringElseEmpty(Constants.VERTEX_SHADER_FILE_RESOURCE_PATH),
-                        code -> engine.commitCommandsToMainThread(() -> engine.getLogic().renderer().getShader().createVertexShader(code)),
+                        code -> engine.commitCommandsToMainThread(() -> {}),
                         Utils.getFileAsStringElseEmpty(Constants.VERTEX_SHADER_FILE_RESOURCE_PATH)));
                 add("Fragment Shader", createTextEditor(code -> {
 
                 }, () -> Utils.getFileAsStringElseEmpty(Constants.FRAGMENT_SHADER_FILE_RESOURCE_PATH),
-                        code -> engine.getLogic().renderer().getShader().createFragmentShader(code),
+                        code -> {},
                         Utils.getFileAsStringElseEmpty(Constants.FRAGMENT_SHADER_FILE_RESOURCE_PATH)));
                 add("Camera", new JScrollPane(new JPanel() {{
                     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

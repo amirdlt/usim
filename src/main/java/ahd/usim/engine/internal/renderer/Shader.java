@@ -1,4 +1,4 @@
-package ahd.usim.engine.internal;
+package ahd.usim.engine.internal.renderer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import ahd.usim.engine.Constants;
 import ahd.usim.engine.entity.material.Material;
+import ahd.usim.engine.internal.api.Rebuild;
 import ahd.usim.engine.internal.light.PointLight;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
@@ -16,20 +17,16 @@ import org.joml.Vector3f;
 import org.joml.Vector4f;
 import org.lwjgl.system.MemoryStack;
 
-public class Shader {
-    private final int programId;
+public class Shader implements Rebuild {
+    private int programId;
 
     private int vertexShaderId;
     private int fragmentShaderId;
 
-    private final Map<String, Integer> uniforms;
+    private Map<String, Integer> uniforms;
 
     public Shader() {
-        vertexShaderId = fragmentShaderId = 0;
-        programId = glCreateProgram();
-        if (programId == 0)
-            throw new RuntimeException("AHD:: Could not create Shader");
-        uniforms = new HashMap<>();
+        initialize();
     }
 
     public void createUniform(String uniformName) {
@@ -154,6 +151,7 @@ public class Shader {
         glUseProgram(0);
     }
 
+    @Override
     public void cleanup() {
         unbind();
         if (programId != 0)
@@ -173,5 +171,14 @@ public class Shader {
     @Override
     public int hashCode() {
         return Objects.hash(programId);
+    }
+
+    @Override
+    public void initialize() {
+        vertexShaderId = fragmentShaderId = 0;
+        programId = glCreateProgram();
+        if (programId == 0)
+            throw new RuntimeException("AHD:: Could not create Shader");
+        uniforms = new HashMap<>();
     }
 }

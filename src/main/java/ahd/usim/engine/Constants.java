@@ -43,8 +43,8 @@ public interface Constants {
     Vector3f DEFAULT_DIFFUSE_COLOR = new Vector3f(1);
     Vector3f DEFAULT_SPECULAR_COLOR = new Vector3f(1);
 
-    String VERTEX_SHADER_FILE_RESOURCE_PATH = DEFAULT_RESOURCE_ROOT_PATH + "shaders\\vertex.vs";
-    String FRAGMENT_SHADER_FILE_RESOURCE_PATH = DEFAULT_RESOURCE_ROOT_PATH + "shaders\\fragment.fs";
+    String VERTEX_SHADER_FILE_RESOURCE_PATH = DEFAULT_RESOURCE_ROOT_PATH + "shaders\\vertex.glsl";
+    String FRAGMENT_SHADER_FILE_RESOURCE_PATH = DEFAULT_RESOURCE_ROOT_PATH + "shaders\\fragment.glsl";
 
     String PROJECTION_MATRIX_UNIFORM_NAME = "projectionMatrix";
     String MODEL_VIEW_MATRIX_UNIFORM_NAME = "modelViewMatrix";

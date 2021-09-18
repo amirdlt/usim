@@ -1,6 +1,6 @@
 package ahd.usim.engine.entity.material;
 
-import ahd.usim.engine.internal.Cleanable;
+import ahd.usim.engine.internal.api.Cleanable;
 import org.joml.Vector3f;
 
 import static ahd.usim.engine.Constants.*;

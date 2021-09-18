@@ -1,8 +1,10 @@
 package ahd.usim.engine.entity.loader;
 
+import ahd.usim.engine.entity.mesh.AbstractMesh;
 import ahd.usim.engine.entity.mesh.ImmutableMesh;
-import ahd.usim.engine.entity.mesh.Mesh;
 import ahd.usim.ulib.utils.Utils;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.lwjgl.opengl.GL11;
@@ -65,7 +67,7 @@ public class ModelLoader {
 //        return null;
 //    }
 
-    public static Mesh loadMesh(String fileName) throws IOException {
+    public static @NotNull AbstractMesh loadMesh(String fileName) throws IOException {
         var lines = Utils.getFileAsString(fileName).split("\n");
 
         List<Vector3f> vertices = new ArrayList<>();
@@ -111,7 +113,8 @@ public class ModelLoader {
         return reorderLists(vertices, textures, normals, faces);
     }
 
-    private static Mesh reorderLists(List<Vector3f> posList, List<Vector2f> textCoordList,
+    @Contract("_, _, _, _ -> new")
+    private static @NotNull AbstractMesh reorderLists(@NotNull List<Vector3f> posList, List<Vector2f> textCoordList,
             List<Vector3f> normList, List<Face> facesList) {
 
         List<Integer> indices = new ArrayList<>();
@@ -137,8 +140,8 @@ public class ModelLoader {
         return new ImmutableMesh(posArr, null, textCoordArr, normArr, indices.stream().mapToInt((Integer v) -> v).toArray(), GL11.GL_TRIANGLES);
     }
 
-    private static void processFaceVertex(IdxGroup indices, List<Vector2f> textCoordList,
-            List<Vector3f> normList, List<Integer> indicesList,
+    private static void processFaceVertex(@NotNull IdxGroup indices, List<Vector2f> textCoordList,
+            List<Vector3f> normList, @NotNull List<Integer> indicesList,
             float[] texCoordArr, float[] normArr) {
 
         // Set index for vertex coordinates
@@ -175,7 +178,7 @@ public class ModelLoader {
             idxGroups[2] = parseLine(v3);
         }
 
-        private IdxGroup parseLine(String line) {
+        private @NotNull IdxGroup parseLine(@NotNull String line) {
             IdxGroup idxGroup = new IdxGroup();
 
             String[] lineTokens = line.split("/");

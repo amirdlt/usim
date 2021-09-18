@@ -12,6 +12,7 @@ import org.lwjgl.stb.STBImage;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 
+import static org.lwjgl.opengl.GL11.glViewport;
 import static org.lwjgl.opengl.GL45C.*;
 import static org.lwjgl.system.MemoryUtil.*;
 
@@ -20,7 +21,6 @@ public class Window {
     private int width;
     private int height;
     private long windowHandle;
-    private boolean resized;
     private boolean vSync;
 
     Window(String title, int width, int height, boolean vSync) {
@@ -28,7 +28,6 @@ public class Window {
         this.width = width;
         this.height = height;
         this.vSync = vSync;
-        resized = false;
     }
 
     void init() {
@@ -74,7 +73,10 @@ public class Window {
         glfwSetFramebufferSizeCallback(windowHandle, (window, width, height) -> {
             this.width = width;
             this.height = height;
-            resized = true;
+            try {
+                GL.getCapabilities();
+                glViewport(0, 0, width, height);
+            } catch (IllegalStateException ignore) {}
         });
         if (glfwGetWindowAttrib(windowHandle, GLFW_MAXIMIZED) == GLFW_FALSE) {
             var videoMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
@@ -144,14 +146,6 @@ public class Window {
 
     public int getHeight() {
         return height;
-    }
-
-    public boolean isResized() {
-        return resized;
-    }
-
-    public void setResized(boolean resized) {
-        this.resized = resized;
     }
 
     public boolean isVSync() {

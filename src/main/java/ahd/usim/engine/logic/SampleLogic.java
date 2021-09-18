@@ -4,13 +4,12 @@ import ahd.usim.engine.Constants;
 import ahd.usim.engine.entity.Entity;
 import ahd.usim.engine.entity.loader.ModelLoader;
 import ahd.usim.engine.entity.material.Material;
-import ahd.usim.engine.entity.mesh.ImmutableMesh;
-import ahd.usim.engine.entity.mesh.Mesh;
 import ahd.usim.engine.entity.material.Texture;
+import ahd.usim.engine.entity.mesh.AbstractMesh;
 import ahd.usim.engine.internal.Camera;
 import ahd.usim.engine.internal.Engine;
 import ahd.usim.engine.internal.Input;
-import ahd.usim.engine.internal.Renderer;
+import ahd.usim.engine.internal.DefaultRenderer;
 import ahd.usim.engine.internal.light.PointLight;
 import ahd.usim.engine.util.Sampling;
 import ahd.usim.ulib.jmath.datatypes.functions.Surface;
@@ -18,13 +17,14 @@ import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static java.lang.Math.*;
 
-public class SampleLogic implements Logic {
+public class SampleLogic extends AbstractLogic {
 
-    private final Renderer renderer;
+    private final DefaultRenderer renderer;
     private Entity[] entities;
     private final Camera camera;
     private final Vector3f cameraInc;
@@ -34,21 +34,20 @@ public class SampleLogic implements Logic {
 
     private PointLight pointLight;
 
-
     public SampleLogic() {
-        renderer = new Renderer();
+        renderer = new DefaultRenderer();
         camera = new Camera();
         cameraInc = new Vector3f();
         input = Engine.getEngine().getInput();
     }
 
     @Override
-    public void init() {
+    public void initialize() {
         renderer.init();
         //Mesh mesh = OBJLoader.loadMesh("/models/bunny.obj");
-        Mesh mesh = null;
+        AbstractMesh mesh = null;
         try {
-            mesh = ModelLoader.loadMesh(Constants.DEFAULT_RESOURCE_ROOT_PATH + "models/bunny.obj");
+            mesh = ModelLoader.loadMesh(Constants.DEFAULT_RESOURCE_ROOT_PATH + "models/cube.obj");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,7 +59,14 @@ public class SampleLogic implements Logic {
         var gameItem = new Entity(mesh);
         gameItem.setScale(0.5f);
         gameItem.setPosition(0, 0, -2);
-        entities = new Entity[]{gameItem};
+        var en = new ArrayList<Entity>();
+        int count = 0;
+//        while (count++ < 100)
+//            en.add(new Entity(mesh) {{getPosition().set(Math.random() * 20, Math.random() * 20, Math.random() * -20); getMesh().setMaterial(material);}});
+////        entities = new Entity[]{
+////                gameItem
+////        };
+//        entities = en.toArray(Entity[]::new);
 
         var sample = Sampling.sample(-PI / 2, PI / 2, -PI, PI, 0.01, 0.1, Surface.kleinBottle());
 //        var sample = Sampling.sample(0, .1, 0, .1, 0.01, 0.01, (x, y) -> Point3D.of(x, y, x + y));
@@ -73,7 +79,7 @@ public class SampleLogic implements Logic {
         ambientLight = new Vector3f(0.3f, 0.3f, 0.3f);
         Vector3f lightColour = new Vector3f(1, 1, 1);
         Vector3f lightPosition = new Vector3f(0, 0, 1);
-        float lightIntensity = 1.0f;
+        float lightIntensity = 1f;
         pointLight = new PointLight(lightColour, lightPosition, lightIntensity);
         PointLight.Attenuation att = new PointLight.Attenuation(0.0f, 0.0f, 1.0f);
         pointLight.setAttenuation(att);
@@ -88,6 +94,7 @@ public class SampleLogic implements Logic {
         );
     }
 
+    Vector3f tmp = new Vector3f();
     @Override
     public void update() {
         camera.move(cameraInc.x * Constants.DEFAULT_CAMERA_MOVEMENT_SENSITIVITY, cameraInc.y * Constants.DEFAULT_CAMERA_MOVEMENT_SENSITIVITY,
@@ -96,6 +103,8 @@ public class SampleLogic implements Logic {
             Vector2f rotVec = input.getDisplayVector();
             camera.rotate(rotVec.x * Constants.DEFAULT_MOUSE_MOVEMENT_SENSITIVITY, rotVec.y * Constants.DEFAULT_MOUSE_MOVEMENT_SENSITIVITY, 0);
         }
+        pointLight.getPosition().set(2  * (float) Math.sin(tmp.x), tmp.y, 2 * (float) Math.cos(tmp.z) - 2);
+        camera.getPosition().set(2  * (float) Math.sin(tmp.x += 0.01), tmp.y, 2 * (float) Math.cos(tmp.z += 0.01) + 2);
 //        for (Entity entity : entities) {
 ////            entity.getRotation().add(0.001f, 0.001f, 0.001f);
 ////            entity.getMesh().updateVertices(Mesh.ArrayTask.bouncing);
@@ -125,11 +134,6 @@ public class SampleLogic implements Logic {
     @Override
     public void saveState() {
 
-    }
-
-    @Override
-    public Renderer renderer() {
-        return renderer;
     }
 
     @Override
