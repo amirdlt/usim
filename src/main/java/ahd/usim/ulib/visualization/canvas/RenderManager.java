@@ -5,6 +5,7 @@ import ahd.usim.ulib.utils.Utils;
 import ahd.usim.ulib.visualization.shapes.shape3d.Area;
 import ahd.usim.ulib.visualization.shapes.shape3d.FlatSurface;
 import ahd.usim.ulib.visualization.shapes.shape3d.Shape3D;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -56,7 +57,7 @@ public class RenderManager extends ArrayList<Render> implements Render {
     public void addTick(Runnable... ticks) {
         addRender(Arrays.stream(ticks).map(t -> new Render() {
             @Override
-            public void render(Graphics2D g2d) {}
+            public void render(@NotNull Graphics2D g2d) {}
 
             @Override
             public void tick() {
@@ -79,7 +80,7 @@ public class RenderManager extends ArrayList<Render> implements Render {
     }
 
     @Override
-    public void render(Graphics2D g2d) {
+    public void render(@NotNull Graphics2D g2d) {
         var t = System.currentTimeMillis();
 //        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         renderAction(g2d);

@@ -9,6 +9,7 @@ import ahd.usim.engine.entity.material.Material;
 import ahd.usim.engine.internal.api.Rebuild;
 import ahd.usim.engine.internal.light.PointLight;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
 
 import static org.lwjgl.opengl.GL20.*;
@@ -24,6 +25,8 @@ public class Shader implements Rebuild {
     private int fragmentShaderId;
 
     private Map<String, Integer> uniforms;
+
+    private boolean isCleaned;
 
     public Shader() {
         initialize();
@@ -154,8 +157,16 @@ public class Shader implements Rebuild {
     @Override
     public void cleanup() {
         unbind();
+        if (isCleaned)
+            return;
         if (programId != 0)
             glDeleteProgram(programId);
+        isCleaned = true;
+    }
+
+    @Override
+    public boolean isCleaned() {
+        return isCleaned;
     }
 
     @Override
@@ -180,5 +191,6 @@ public class Shader implements Rebuild {
         if (programId == 0)
             throw new RuntimeException("AHD:: Could not create Shader");
         uniforms = new HashMap<>();
+        isCleaned = false;
     }
 }

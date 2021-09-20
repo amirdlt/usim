@@ -2,15 +2,18 @@ package ahd.usim.engine.entity.material;
 
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
+
+import ahd.usim.engine.internal.api.Cleanable;
 import org.lwjgl.system.MemoryStack;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL30.glGenerateMipmap;
 import static org.lwjgl.stb.STBImage.*;
 
-public class Texture {
+public class Texture implements Cleanable {
 
     private final int id;
+    private boolean isCleaned;
 
     public Texture(String fileName) {
         this(loadTexture(fileName));
@@ -18,6 +21,7 @@ public class Texture {
 
     public Texture(int id) {
         this.id = id;
+        isCleaned = false;
     }
 
     public int getId() {
@@ -60,5 +64,11 @@ public class Texture {
 
     public void cleanup() {
         glDeleteTextures(id);
+        isCleaned = true;
+    }
+
+    @Override
+    public boolean isCleaned() {
+        return isCleaned;
     }
 }

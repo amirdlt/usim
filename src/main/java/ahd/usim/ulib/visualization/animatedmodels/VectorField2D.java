@@ -3,6 +3,7 @@ package ahd.usim.ulib.visualization.animatedmodels;
 import ahd.usim.ulib.visualization.canvas.CoordinatedScreen;
 import ahd.usim.ulib.visualization.canvas.Render;
 import ahd.usim.ulib.jmath.datatypes.tuples.Point2D;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
@@ -56,7 +57,7 @@ public class VectorField2D implements Render {
     }
 
     @Override
-    public void render(Graphics2D g2d) {
+    public void render(@NotNull Graphics2D g2d) {
         for (double x = vectorLen/2; x + vectorLen/2 <= width; x += vectorLen * 1.1)
             for (double y = vectorLen/2; y + vectorLen/2 <= height; y += vectorLen * 1.1) {
                 g2d.setColor(new Point2D(x, y).distanceFrom(direction) < vectorLen*5 ? Color.GREEN : Color.RED);

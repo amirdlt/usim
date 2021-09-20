@@ -1,6 +1,7 @@
-package ahd.usim.engine.internal;
+package ahd.usim.engine.internal.renderer;
 
 import ahd.usim.engine.entity.Entity;
+import ahd.usim.engine.internal.Camera;
 import ahd.usim.engine.internal.light.PointLight;
 import ahd.usim.engine.internal.renderer.Shader;
 import ahd.usim.engine.internal.renderer.Transformation;
@@ -37,7 +38,7 @@ public class DefaultRenderer {
     }
 
     public void clear() {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     }
 
     public void render(Entity @NotNull [] entities, Camera camera, Vector3f ambientLight, PointLight pointLight) {

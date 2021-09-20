@@ -5,6 +5,7 @@ import ahd.usim.ulib.visualization.canvas.CoordinatedCanvas;
 import ahd.usim.ulib.visualization.canvas.Render;
 import ahd.usim.ulib.jmath.datatypes.functions.CFunction;
 import ahd.usim.ulib.jmath.datatypes.functions.ComplexFunction;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
@@ -34,7 +35,7 @@ public class ComplexFunctionVisualization implements Render {
     }
 
     @Override
-    public void render(Graphics2D g2d) {
+    public void render(@NotNull Graphics2D g2d) {
         if (function == null)
             return;
         final var w = cc.getWidth();

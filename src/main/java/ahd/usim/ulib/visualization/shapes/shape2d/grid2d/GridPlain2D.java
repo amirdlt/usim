@@ -4,6 +4,7 @@ import ahd.usim.ulib.utils.Utils;
 import ahd.usim.ulib.visualization.canvas.CoordinatedScreen;
 import ahd.usim.ulib.visualization.canvas.Render;
 import ahd.usim.ulib.jmath.datatypes.tuples.Point2D;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -145,7 +146,7 @@ public class GridPlain2D implements Render {
     }
 
     @Override
-    public void render(Graphics2D g2d) {
+    public void render(@NotNull Graphics2D g2d) {
         for (var row : gridTiles)
             Arrays.stream(row).forEach(tile -> tile.renderIfInView(g2d));
         drawGrid(g2d);

@@ -5,6 +5,7 @@ import ahd.usim.ulib.visualization.canvas.Graph2DCanvas;
 import ahd.usim.ulib.visualization.canvas.Render;
 import ahd.usim.ulib.jmath.datatypes.functions.Arc2D;
 import ahd.usim.ulib.jmath.functions.utils.Sampling;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -135,7 +136,7 @@ public class Shape2D implements Render {
     }
 
     @Override
-    public void render(Graphics2D g2d) {
+    public void render(@NotNull Graphics2D g2d) {
         for (var b : bounds) {
             var sample = Sampling.multiThreadSampling(b, tL, tU, deltaOfSampling, numOfThreadsForSampling);
             if (isFill) {

@@ -62,7 +62,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                             setForeground(Color.GREEN);
                         }}));
                         add(element("ips-label", new JLabel("| IPS: " + Utils.round(engine.getIps(), 2)) {{
-                            setForeground(Color.BLUE);
+                            setForeground(Color.CYAN);
                         }}));
                         add(new JCheckBox("Graph") {{
                             setSelected(true);
@@ -72,7 +72,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                     add(element("ps-graph", new MultiGraphPanelForSampling(350, 120) {{
                         addGraph("fps", 2, Color.RED, engine::getFps);
                         addGraph("ups", 2, Color.GREEN, engine::getUps);
-                        addGraph("ips", 2, Color.BLUE, engine::getIps);
+                        addGraph("ips", 2, Color.CYAN, engine::getIps);
                     }}));
                     add(new JSeparator());
                     add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
@@ -84,7 +84,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                             setForeground(Color.GREEN);
                         }}));
                         add(element("ipsAccumulated-label", new JLabel("| IPS: " + Utils.round(engine.getAccumulatedIps(), 2)) {{
-                            setForeground(Color.BLUE);
+                            setForeground(Color.CYAN);
                         }}));
                         add(new JCheckBox("Graph") {{
                             setSelected(true);
@@ -94,7 +94,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                     add(element("accumulatedPs-graph", new MultiGraphPanelForSampling(350, 120) {{
                         addGraph("accumulatedFps", 2, Color.RED, engine::getAccumulatedFps);
                         addGraph("accumulatedUps", 2, Color.GREEN, engine::getAccumulatedUps);
-                        addGraph("accumulatedIps", 2, Color.BLUE, engine::getAccumulatedIps);
+                        addGraph("accumulatedIps", 2, Color.CYAN, engine::getAccumulatedIps);
                     }}));
                     add(new JSeparator());
                     add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
@@ -106,12 +106,6 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                             setForeground(Color.GREEN);
                         }}));
                         add(element("inputCount-label", new JLabel("| Input: " + engine.getInputCount()) {{
-                            setForeground(Color.BLUE);
-                        }}));
-                        add(element("totalFrameLoss-label", new JLabel("| Frame Loss: " + engine.getTotalFrameLoss()) {{
-                            setForeground(Color.YELLOW);
-                        }}));
-                        add(element("pureTotalFrameLoss-label", new JLabel("| Pure Frame Loss: " + engine.getPureTotalFrameLoss()) {{
                             setForeground(Color.CYAN);
                         }}));
                         add(new JCheckBox("Graph") {{
@@ -121,10 +115,29 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                     }});
                     add(element("counts-graph", new MultiGraphPanelForSampling(350, 120) {{
                         addGraph("renderCount", 2, Color.RED, engine::getRenderCount);
-                        addGraph("update", 2, Color.GREEN, engine::getUpdateCount);
-                        addGraph("inputCount", 2, Color.BLUE, engine::getInputCount);
+                        addGraph("updateCount", 2, Color.GREEN, engine::getUpdateCount);
+                        addGraph("inputCount", 2, Color.CYAN, engine::getInputCount);
+                    }}));
+                    add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
+                        add(new JLabel("Counts: "));
+                        add(element("totalFrameLoss-label", new JLabel("Frame Loss: " + engine.getTotalFrameLoss()) {{
+                            setForeground(Color.YELLOW);
+                        }}));
+                        add(element("pureTotalFrameLoss-label", new JLabel("| Pure Frame Loss: " + engine.getPureTotalFrameLoss()) {{
+                            setForeground(Color.CYAN);
+                        }}));
+                        add(element("asyncUpdate-label", new JLabel("| Async Update: " + engine.getUpdateAsyncCount()) {{
+                            setForeground(Color.ORANGE.darker());
+                        }}));
+                        add(new JCheckBox("Graph") {{
+                            setSelected(true);
+                            addActionListener(e -> element("async-counts-graph").setVisible(isSelected()));
+                        }});
+                    }});
+                    add(element("async-counts-graph", new MultiGraphPanelForSampling(350, 120) {{
                         addGraph("totalFrameLossCount", 2, Color.YELLOW, engine::getTotalFrameLoss);
                         addGraph("totalPureFrameLossCount", 2, Color.CYAN, engine::getPureTotalFrameLoss);
+                        addGraph("updateAsyncCount", 2, Color.ORANGE.darker(), engine::getUpdateAsyncCount);
                     }}));
                     add(new JSeparator());
                     add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
@@ -136,7 +149,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                             setForeground(Color.GREEN);
                         }}));
                         add(element("inputTime-label", new JLabel("| Input: " + Utils.round(engine.getInputTime(), 2) + " ms") {{
-                            setForeground(Color.BLUE);
+                            setForeground(Color.CYAN);
                         }}));
                         add(new JCheckBox("Graph") {{
                             setSelected(true);
@@ -146,7 +159,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                     add(element("latencies-graph", new MultiGraphPanelForSampling(350, 120) {{
                         addGraph("renderTime", 2, Color.RED, engine::getRenderTime);
                         addGraph("updateTime", 2, Color.GREEN, engine::getUpdateTime);
-                        addGraph("inputTime", 2, Color.BLUE, engine::getInputTime);
+                        addGraph("inputTime", 2, Color.CYAN, engine::getInputTime);
                     }}));
                     add(new JSeparator());
                     add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
@@ -465,6 +478,17 @@ public class EngineRuntimeToolsFrame extends MainFrame {
                             new NumberBasedArg<>("value", 0, Integer.MAX_VALUE)));
                     add(new JSeparator());
                     add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
+                        add(new JCheckBox("Use Render Synchronizer") {{
+                            setSelected(engine.isUseRenderSynchronizer());
+                            addActionListener(e -> engine.setUseRenderSynchronizer(isSelected()));
+                        }});
+                        add(new JCheckBox("Use Update Synchronizer") {{
+                            setSelected(engine.isUseUpdateSynchronizer());
+                            addActionListener(e -> engine.setUseUpdateSynchronizer(isSelected()));
+                        }});
+                    }});
+                    add(new JSeparator());
+                    add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                         add(new JButton("Turn off") {{addActionListener(e -> engine.turnoff());}});
                     }});
                 }})));
@@ -542,7 +566,7 @@ public class EngineRuntimeToolsFrame extends MainFrame {
         labelE("inputCount-label").setText("| Input: " + engine.getInputCount());
         labelE("totalFrameLoss-label").setText("| Frame Loss: " + engine.getTotalFrameLoss());
         labelE("pureTotalFrameLoss-label").setText("| Pure Frame Loss: " + engine.getPureTotalFrameLoss());
-
+        labelE("asyncUpdate-label").setText("| Async Update: " + engine.getUpdateAsyncCount());
 
         labelE("cameraPosition-label").setText("Camera Position: " + engine.getCamera().getPosition().toString(DecimalFormat.getInstance()));
         labelE("cameraRotation-label").setText("Camera Rotation: " + engine.getCamera().getRotation().toString(DecimalFormat.getInstance()));

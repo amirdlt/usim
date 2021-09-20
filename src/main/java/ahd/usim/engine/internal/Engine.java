@@ -1,8 +1,10 @@
 package ahd.usim.engine.internal;
 
-import ahd.usim.engine.internal.api.Cleanable;
 import ahd.usim.engine.internal.api.Logic;
 import ahd.usim.engine.gui.swing.EngineRuntimeToolsFrame;
+import ahd.usim.engine.internal.api.Rebuild;
+import ahd.usim.ulib.utils.annotation.Constraint;
+import ahd.usim.ulib.utils.annotation.NotFinal;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -11,7 +13,7 @@ import java.util.concurrent.*;
 import static ahd.usim.engine.Constants.*;
 
 @SuppressWarnings("unused")
-public final class Engine implements Cleanable {
+public final class Engine implements Rebuild {
     private static Engine engine = null;
 
     private boolean on;
@@ -20,6 +22,8 @@ public final class Engine implements Cleanable {
     private final Window window;
     private final ScheduledThreadPoolExecutor executor;
     private final Semaphore renderSynchronizer;
+    private int inputSynchronizer;
+    private final @NotFinal Semaphore updateSynchronizer;
     private final Input input;
     private final EngineTimer timer;
 
@@ -29,6 +33,8 @@ public final class Engine implements Cleanable {
     private boolean doUpdate;
     private boolean doRender;
     private boolean doInput;
+    private boolean useRenderSynchronizer;
+    private boolean useUpdateSynchronizer;
     private Logic logic;
     private float renderTime;
     private float updateTime;
@@ -36,11 +42,15 @@ public final class Engine implements Cleanable {
     private float fps;
     private float ups;
     private float ips;
+    private int _fps;
+    private int _ups;
+    private int _ips;
     private long renderCount;
     private long inputCount;
     private long updateCount;
     private long frameLoss;
     private long totalFrameLoss;
+    private long updateAsyncCount;
     private int targetFps;
     private int targetUps;
     private int targetIps;
@@ -52,17 +62,19 @@ public final class Engine implements Cleanable {
         engineRuntimeToolsFrame = null;
         executor = new ScheduledThreadPoolExecutor(1);
         renderSynchronizer = new Semaphore(0);
+        updateSynchronizer = new Semaphore(0);
         startLoopLock = new Semaphore(1);
-        renderTime = Float.NaN;
-        inputTime = Float.NaN;
-        updateTime = Float.NaN;
-        fps = Float.NaN;
-        ups = Float.NaN;
-        ips = Float.NaN;
+        renderTime = 0;
+        inputTime = 0;
+        updateTime = 0;
+        fps = _fps = 0;
+        ups = _ups = 0;
+        ips = _ips = 0;
         renderCount = 0;
         updateCount = 0;
         inputCount = 0;
         frameLoss = 0;
+        updateAsyncCount = 0;
         totalFrameLoss = 0;
         targetFps = DEFAULT_TARGET_FPS;
         targetIps = DEFAULT_TARGET_IPS;
@@ -75,6 +87,8 @@ public final class Engine implements Cleanable {
         doRender = true;
         input = new Input();
         timer = new EngineTimer();
+        useRenderSynchronizer = true;
+        useUpdateSynchronizer = false;
         committedCommandsToMainThread = null;
     }
 
@@ -84,32 +98,35 @@ public final class Engine implements Cleanable {
         if (logic == null)
             throw new IllegalStateException("AHD:: Please first set a logic for this engine.");
         working = true;
+        renderSynchronizer.drainPermits();
+        updateSynchronizer.drainPermits();
+        renderSynchronizer.release(targetUps);
+        inputSynchronizer = targetUps;
+//        updateSynchronizer_ = 0;
         ScheduledFuture<?> update = null;
+        inputCount++;
         try {
-            init();
-            var fps = 0;
-            final var inputFactor = targetUps / targetIps == 0 ? 1 : targetUps / targetIps;
+            initialize();
             timer.start();
             update = executor.scheduleAtFixedRate(() -> {
-                if (updateCount % inputFactor == 0)
+                try {
                     _input();
-                _update();
+                    _update();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }, 0, NANO / targetUps, TimeUnit.NANOSECONDS);
             long rTime = 0;
-            final var renderFactor = targetUps / targetFps < 2 ? 1 : targetUps / targetFps;
             while (working && !window.windowShouldClose()) {
                 var t = System.currentTimeMillis();
-                renderSynchronizer.acquire(renderFactor);
                 _render();
-                fps++;
-                totalFrameLoss += frameLoss = renderSynchronizer.availablePermits() / renderFactor;
+                totalFrameLoss += frameLoss = renderSynchronizer.availablePermits();
                 rTime += System.currentTimeMillis() - t;
                 if (rTime >= 1_000) {
-                    this.fps = fps * MILLI_F / rTime;
-                    ups = (fps * renderFactor + frameLoss) * MILLI_F / rTime;
-                    ips = ups / inputFactor;
-                    renderSynchronizer.drainPermits();
-                    fps = 0;
+                    fps = _fps * MILLI_F / rTime;
+                    ups = _ups * MILLI_F / rTime;
+                    ips = _ips * MILLI_F / rTime;
+                    _fps = _ups = _ips = 0;
                     rTime = 0;
                 }
             }
@@ -127,17 +144,17 @@ public final class Engine implements Cleanable {
             ips = 0;
             frameLoss = 0;
             working = false;
-            renderSynchronizer.drainPermits();
             if (committedCommandsToMainThread != null) {
                 committedCommandsToMainThread.run();
                 committedCommandsToMainThread = null;
             }
-            if (window.windowShouldClose())
+            if (window.windowShouldClose() || !on)
                 cleanup();
         }
     }
 
-    private void init() {
+    @Override
+    public void initialize() {
         if (initialized)
             return;
         initialized = true;
@@ -153,6 +170,8 @@ public final class Engine implements Cleanable {
 
     @Override
     public void cleanup() {
+        if (!initialized)
+            return;
         logic.cleanup();
         window.cleanup();
         engineRuntimeToolsFrame.dispose();
@@ -163,39 +182,52 @@ public final class Engine implements Cleanable {
         System.exit(0);
     }
 
+    @Override
+    public boolean isCleaned() {
+        return on && !initialized;
+    }
+
     private void _input() {
+        if (inputSynchronizer < targetUps)
+            return;
+        else
+            inputSynchronizer -= targetUps;
         var t = System.nanoTime();
         if (doInput) {
             input.input();
-            try {
-                logic.input();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            logic.input();
             inputCount++;
+            _ips++;
         }
         inputTime = (System.nanoTime() - t) / MILLION_F;
     }
 
-    private void _update() {
+    private void _update() throws InterruptedException {
+        if (useUpdateSynchronizer)
+            if (!updateSynchronizer.tryAcquire((long) (updateTime * 2), TimeUnit.MILLISECONDS))
+                updateAsyncCount++;
         var t = System.nanoTime();
         if (doUpdate) {
-            try {
-                logic.update();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            logic.update();
             updateCount++;
+            _ups++;
+            if (useRenderSynchronizer)
+                renderSynchronizer.release(targetFps);
+            inputSynchronizer += targetIps;
         }
         updateTime = (System.nanoTime() - t) / MILLION_F;
-        renderSynchronizer.release();
     }
 
     private void _render() {
+        if (useRenderSynchronizer)
+            renderSynchronizer.acquireUninterruptibly(targetUps);
         var tt = System.nanoTime();
         if (doRender) {
             logic.render();
             renderCount++;
+            _fps++;
+            if (useUpdateSynchronizer)
+                updateSynchronizer.release();
         }
         window.update();
         renderTime = (System.nanoTime() - tt) / MILLION_F;
@@ -215,9 +247,7 @@ public final class Engine implements Cleanable {
         working = false;
     }
 
-    /**
-     * need to be run in main thread
-     */
+    @Constraint(reasons = "ThreadMustBeMain")
     public void turnon() {
         if (!Thread.currentThread().getName().equals("main"))
             throw new RuntimeException("AHD:: Engine must be turned on inside the main thread due to lwjgl constraints.");
@@ -227,11 +257,7 @@ public final class Engine implements Cleanable {
         Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
         on = true;
         while (on) {
-            try {
-                startLoopLock.acquire();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            startLoopLock.acquireUninterruptibly();
             _start();
         }
         cleanup();
@@ -253,9 +279,7 @@ public final class Engine implements Cleanable {
         doRender = oldRender;
     }
 
-    /**
-     * needs to be invoked inside main thread
-     */
+    @Constraint(reasons = "TheadMustBeMain")
     public void rebuildWindow() {
         logic.cleanup();
         window.rebuild();
@@ -287,7 +311,7 @@ public final class Engine implements Cleanable {
         doRender = oldRender;
     }
 
-    public void setLogic(Logic logic) {
+    public void setLogic(@NotNull Logic logic) {
         this.logic = logic;
     }
 
@@ -309,6 +333,10 @@ public final class Engine implements Cleanable {
 
     public Logic getLogic() {
         return logic;
+    }
+
+    public long getUpdateAsyncCount() {
+        return updateAsyncCount;
     }
 
     public float getUpdateTime() {
@@ -441,6 +469,39 @@ public final class Engine implements Cleanable {
         return logic.camera();
     }
 
+    public boolean isUseRenderSynchronizer() {
+        return useRenderSynchronizer;
+    }
+
+    public void setUseRenderSynchronizer(boolean useRenderSynchronizer) {
+        if (this.useRenderSynchronizer == useRenderSynchronizer)
+            return;
+        this.useRenderSynchronizer = useRenderSynchronizer;
+        if (!useRenderSynchronizer)
+            renderSynchronizer.release(targetUps);
+        var working = this.working;
+        stop();
+        if (working)
+            start();
+    }
+
+    public boolean isUseUpdateSynchronizer() {
+        return useUpdateSynchronizer;
+    }
+
+    public void setUseUpdateSynchronizer(boolean useUpdateSynchronizer) {
+        if (this.useUpdateSynchronizer == useUpdateSynchronizer)
+            return;
+        this.useUpdateSynchronizer = useUpdateSynchronizer;
+        updateSynchronizer.release();
+        renderSynchronizer.release(targetUps);
+
+        var working = this.working;
+        stop();
+        if (working)
+            start();
+    }
+
     public static @NotNull Engine build(String windowTitle, int width, int height, boolean vSync) {
         if (engine != null && engine.on)
             engine.turnoff();
@@ -449,5 +510,12 @@ public final class Engine implements Cleanable {
 
     public static @NotNull Engine getEngine() {
         return engine != null ? engine : build(DEFAULT_GLFW_WINDOW_NAME, DEFAULT_GLFW_WINDOW_WIDTH, DEFAULT_GLFW_WINDOW_HEIGHT, false);
+    }
+
+    @Override
+    @Constraint(reasons = "ThreadMustBeMain")
+    public void rebuild() {
+        turnoff();
+        turnon();
     }
 }

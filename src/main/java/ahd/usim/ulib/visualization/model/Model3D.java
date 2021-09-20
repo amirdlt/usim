@@ -1,6 +1,7 @@
 package ahd.usim.ulib.visualization.model;
 
 import ahd.usim.ulib.jmath.datatypes.tuples.Point3D;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.List;
@@ -18,7 +19,7 @@ public class Model3D implements Model<Point3D> {
     }
 
     @Override
-    public void render(Graphics2D g2d) {
+    public void render(@NotNull Graphics2D g2d) {
 
     }
 }

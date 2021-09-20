@@ -4,11 +4,8 @@ import ahd.usim.engine.entity.material.Material;
 import ahd.usim.engine.internal.api.Cleanable;
 import ahd.usim.engine.internal.api.Updatable;
 import ahd.usim.engine.internal.api.Visible;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.GL15;
-import org.lwjgl.opengl.GL45C;
-import org.lwjgl.opengl.GL45C.*;
 import org.lwjgl.system.MemoryUtil;
 
 import java.nio.FloatBuffer;
@@ -24,6 +21,7 @@ import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glDeleteVertexArrays;
 import static org.lwjgl.opengl.GL30C.glGenVertexArrays;
 
+@SuppressWarnings("unused")
 public abstract class AbstractMesh implements Updatable, Visible, Cleanable {
 
     public static final int
@@ -48,7 +46,7 @@ public abstract class AbstractMesh implements Updatable, Visible, Cleanable {
     protected int drawingMode;
 
     private boolean isCleaned;
-    private int meshUseCount;
+    private volatile int meshUseCount;
     private final Object mutex = new Object();
 
     protected AbstractMesh(int vertexCount) {
@@ -62,7 +60,7 @@ public abstract class AbstractMesh implements Updatable, Visible, Cleanable {
     }
 
     protected void registerVbo(float @Nullable [] data,
-            int glslLayoutLocation, int perVertexSize, boolean normalized, int mask, int usage) {
+            int glslLayoutLocation, int perVertexSize, @SuppressWarnings("SameParameterValue") boolean normalized, int mask, int usage) {
         if (data == null)
             return;
         glBindVertexArray(vaoId);
@@ -109,7 +107,11 @@ public abstract class AbstractMesh implements Updatable, Visible, Cleanable {
     }
 
     public void setMaterial(Material material) {
+        if (this.material != null)
+            this.material.detach();
         this.material = material;
+        if (material != null)
+            material.attach();
     }
 
     public int getDrawingMode() {
@@ -126,6 +128,7 @@ public abstract class AbstractMesh implements Updatable, Visible, Cleanable {
         }
     }
 
+    @Override
     public boolean isCleaned() {
         return isCleaned;
     }
@@ -134,13 +137,12 @@ public abstract class AbstractMesh implements Updatable, Visible, Cleanable {
     public void render() {
         update();
 
-        var material = getMaterial();
         if (material != null)
             material.activateTexture();
 
         glBindVertexArray(vaoId);
 
-        glDrawElements(getDrawingMode(), vertexCount, GL_UNSIGNED_INT, 0);
+        glDrawElements(drawingMode, vertexCount, GL_UNSIGNED_INT, 0);
 
         glBindVertexArray(0);
     }
@@ -148,7 +150,7 @@ public abstract class AbstractMesh implements Updatable, Visible, Cleanable {
     @Override
     public final void cleanup() {
         synchronized (mutex) {
-            if (--meshUseCount > 0)
+            if (--meshUseCount > 0 || isCleaned)
                 return;
             glDisableVertexAttribArray(0);
 

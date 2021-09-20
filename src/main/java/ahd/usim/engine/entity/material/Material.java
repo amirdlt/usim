@@ -17,6 +17,11 @@ public class Material implements Cleanable {
     private float reflectance;
     private Texture texture;
 
+    private boolean isCleaned;
+
+    private final Object mutex = new Object();
+    private volatile int materialUseCount;
+
     public Material() {
         this(0, null);
     }
@@ -35,6 +40,8 @@ public class Material implements Cleanable {
         this.ambientColor = ambientColor;
         this.reflectance = reflectance;
         this.texture = texture;
+        materialUseCount = 0;
+        isCleaned = false;
     }
 
     public Vector3f getDiffuseColor() {
@@ -82,13 +89,37 @@ public class Material implements Cleanable {
     }
 
     public void activateTexture() {
+        if (texture == null || texture.isCleaned())
+            return;
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture.getId());
     }
 
+    public void attach() {
+        synchronized (mutex) {
+            materialUseCount++;
+        }
+    }
+
+    public void detach() {
+        synchronized (mutex) {
+            materialUseCount--;
+        }
+    }
+
     @Override
-    public void cleanup() {
-        if (texture != null)
-            texture.cleanup();
+    public final void cleanup() {
+        synchronized (mutex) {
+            if (--materialUseCount > 0 || isCleaned)
+                return;
+            if (texture != null)
+                texture.cleanup();
+            isCleaned = true;
+        }
+    }
+
+    @Override
+    public boolean isCleaned() {
+        return isCleaned;
     }
 }

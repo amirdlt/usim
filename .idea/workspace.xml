@@ -5,41 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="More Dev">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/api/Initiative.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/api/Logic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/api/Rebuild.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/api/Renderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/renderer/AbstractRenderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/logic/AbstractLogic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/utils/annotation/Critical.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/light/DirectionalLight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/light/SpotLight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/utils/annotation/Constraint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/loader/ModelLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/loader/ModelLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/material/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/material/Material.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/material/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/material/Texture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/mesh/AbstractMesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/mesh/AbstractMesh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/mesh/ImmutableMesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/mesh/ImmutableMesh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/mesh/IncrementalMesh.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/mesh/Mesh.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/mesh/MutableMesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/mesh/MutableMesh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/ComponentBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/ComponentBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/EngineRuntimeToolsFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/EngineRuntimeToolsFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Cleanable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/api/Cleanable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/DefaultRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/renderer/DefaultRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Mutable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/api/Updatable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/DefaultRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/renderer/Shader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Transformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/renderer/Transformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Visible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/api/Visible.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/api/Cleanable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/api/Cleanable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/light/PointLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/light/PointLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/logic/Logic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/renderer/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/renderer/Shader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/logic/SampleLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/logic/SampleLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/utils/annotation/NotFinal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/utils/annotation/NotFinal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/utils/api/StateBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/utils/api/StateBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/fragment-cube-smiple.fs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/fragment.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/fragment.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/vertex-cube-simple.vs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/vertex.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/vertex.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/ComplexFunctionVisualization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/ComplexFunctionVisualization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/Mapper2DVisualization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/Mapper2DVisualization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/PathFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/PathFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/PuzzleGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/PuzzleGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/RayCasting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/RayCasting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/Snake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/VectorField2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/VectorField2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/canvas/RenderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/canvas/RenderManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/model/Model2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/model/Model2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/model/Model3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/model/Model3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/shapes/shape2d/Shape2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/shapes/shape2d/Shape2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/shapes/shape2d/grid2d/GridPlain2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/shapes/shape2d/grid2d/GridPlain2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/fragment.glsl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +73,8 @@
       <list>
         <option value="Record" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="AnnotationType" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -127,7 +124,7 @@
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fifesoft/rsyntaxtextarea/3.1.3/70f1ec0ee9811c796bacaa6fb42c18b867cb950c/rsyntaxtextarea-3.1.3-sources.jar!/org/fife/ui/rtextarea/LineNumberList.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.desktop/java/awt/Container.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.base/java/lang/System.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/DefaultRenderer.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/renderer/DefaultRenderer.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Window.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$USER_HOME$/.jdks/openjdk-16.0.2/lib/src.zip!/java.base/java/lang/annotation/Documented.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-opengl/3.2.3/2d7ad358a5133db65ee8b1c97cf1f1a426597598/lwjgl-opengl-3.2.3-sources.jar!/org/lwjgl/opengl/GL15.java" root0="SKIP_INSPECTION" />
@@ -152,6 +149,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2689655" />
@@ -540,7 +538,7 @@
       <workItem from="1631531574107" duration="60490000" />
       <workItem from="1631769272864" duration="19708000" />
       <workItem from="1631855372273" duration="27866000" />
-      <workItem from="1631942076882" duration="10015000" />
+      <workItem from="1631942076882" duration="59979000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="First USim Schema">
       <created>1630752367079</created>
@@ -632,7 +630,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۱۵" />
       <updated>1631827869561</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL‎۰۰۰۱۶" summary="More Dev">
+      <created>1631993219866</created>
+      <option name="number" value="LOCAL‎۰۰۰۱۶" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۱۶" />
+      <updated>1631993219866</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

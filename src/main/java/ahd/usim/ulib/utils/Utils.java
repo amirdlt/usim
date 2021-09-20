@@ -676,16 +676,24 @@ public final class Utils {
     }
 
     public static @NotNull String getFileAsStringElseEmpty(String path) {
+        return getFileAsStringOrElse(path, "");
+    }
+
+    public static @Nullable String getFileAsStringElseNull(String path) {
+        return getFileAsStringOrElse(path, null);
+    }
+
+    public static String getFileAsStringOrElse(String path, String stringIfExceotionOccured) {
         try {
             return getFileAsString(path);
         } catch (IOException e) {
-            return "";
+            return stringIfExceotionOccured;
         }
     }
 
     public static @NotNull String setSystemVolume(int volume) throws IOException {
         if (volume < 0 || volume > 100)
-            throw new RuntimeException("Error: " + volume + " is not a valid number. Choose a number between 0 and 100");
+            throw new IllegalArgumentException("Error: " + volume + " is not a valid number. Choose a number between 0 and 100");
         return doNirCMD("setsysvolume " + (655.35 * volume)) + doNirCMD("mutesysvolume 0");
     }
 

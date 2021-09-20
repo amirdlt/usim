@@ -61,4 +61,9 @@ public class PointLight {
     public void setAttenuation(Attenuation attenuation) {
         this.attenuation = attenuation;
     }
+
+    @Contract("_, _, _ -> new")
+    public static @NotNull Attenuation attenuation(float constant, float linear, float exponent) {
+        return new Attenuation(constant, linear, exponent);
+    }
 }

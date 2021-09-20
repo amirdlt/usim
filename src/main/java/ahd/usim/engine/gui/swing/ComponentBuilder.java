@@ -91,7 +91,8 @@ public final class ComponentBuilder {
         }};
     }
 
-    private static @NotNull JPanel createEntityPanel(ElementBaseContainer frame, int id) {
+    @Contract("_, _ -> new")
+    private static @NotNull JPanel createEntityPanel(@NotNull ElementBaseContainer frame, int id) {
         return new JPanel() {{
             final var main = this;
             setName("Entity-" + id);

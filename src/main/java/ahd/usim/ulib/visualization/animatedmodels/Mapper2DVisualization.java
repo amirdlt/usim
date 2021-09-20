@@ -4,6 +4,7 @@ import ahd.usim.ulib.utils.Utils;
 import ahd.usim.ulib.visualization.canvas.CoordinatedCanvas;
 import ahd.usim.ulib.visualization.canvas.Render;
 import ahd.usim.ulib.jmath.datatypes.functions.Mapper2D;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
@@ -33,7 +34,7 @@ public class Mapper2DVisualization implements Render {
     }
 
     @Override
-    public void render(Graphics2D g2d) {
+    public void render(@NotNull Graphics2D g2d) {
         if (mapper == null)
             return;
         final var w = cc.getWidth();
