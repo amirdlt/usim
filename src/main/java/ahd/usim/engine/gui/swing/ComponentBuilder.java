@@ -2,7 +2,6 @@ package ahd.usim.engine.gui.swing;
 
 import ahd.usim.ulib.jmath.parser.Function4DParser;
 import ahd.usim.ulib.swingutils.ElementBaseContainer;
-import ahd.usim.ulib.swingutils.MainPanel;
 import ahd.usim.ulib.utils.consumer.StringConsumer;
 import ahd.usim.ulib.utils.supplier.StringSupplier;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;

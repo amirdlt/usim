@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("unused")
 public interface ElementBaseContainer {
     Map<String, JComponent> elements();
 
@@ -78,6 +79,9 @@ public interface ElementBaseContainer {
     default JMenuBar menuBarE(String tag) {
         return (JMenuBar) element(tag);
     }
+    default JMenuItem menuItemE(String tag) {
+        return (JMenuItem) element(tag);
+    }
     default JEditorPane editorPaneE(String tag) {
         return (JEditorPane) element(tag);
     }
@@ -108,6 +112,15 @@ public interface ElementBaseContainer {
     }
     default JPasswordField passwordFieldE(String tag) {
         return (JPasswordField) element(tag);
+    }
+    default JDesktopPane desktopPaneE(String tag) {
+        return (JDesktopPane) element(tag);
+    }
+    default JInternalFrame internalFrameE(String tag) {
+        return (JInternalFrame) element(tag);
+    }
+    default boolean checkType(String tag, @NotNull Class<?> expectedType) {
+        return expectedType.isInstance(element(tag));
     }
     default void updateElements() {}
 }

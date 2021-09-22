@@ -41,7 +41,7 @@ import java.util.function.IntUnaryOperator;
 
 import static ahd.usim.ulib.utils.Utils.TextFileInfo.*;
 
-@SuppressWarnings({ "unused", "SpellCheckingInspection" })
+@SuppressWarnings({ "unused", "SpellCheckingInspection", "CommentedOutCode", "GrazieInspection" })
 @NotFinal
 public final class Utils {
 
@@ -73,7 +73,7 @@ public final class Utils {
             e.printStackTrace();
         }
         robot = rbt;
-        unsafeExecutor = Executors.newFixedThreadPool(10);
+        unsafeExecutor = Executors.newFixedThreadPool(3);
     }
 
     ///////////////////
@@ -710,7 +710,12 @@ public final class Utils {
             sb.append(s).append('\n');
         stdError.close();
         stdInput.close();
+        proc.destroy();
         return sb.toString();
+    }
+
+    public static Process getCmdProcess(@NotNull String command) throws IOException {
+        return Runtime.getRuntime().exec(command);
     }
 
     public static @NotNull String doNirCMD(String command) throws IOException {
@@ -1084,6 +1089,7 @@ public final class Utils {
     }
 
     /////////////// Recursive Caller
+    @SuppressWarnings("UnusedReturnValue")
     public static RecursiveTriangleConsumer recursiveTriangularTask(RecursiveTriangleConsumer job, int depth, List<Integer> legalPos, Point3D p1,
             Point3D p2, Point3D p3) {
         return recursiveTriangularTask0(job, depth, 0, legalPos, p1, p2, p3);

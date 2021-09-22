@@ -4,39 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="More Dev">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/light/DirectionalLight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/light/SpotLight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/utils/annotation/Constraint.java" afterDir="false" />
+    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Fix Synchronization of update and render threads">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/EngineRuntimeToolsPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/CmdToolPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/loader/ModelLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/loader/ModelLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/material/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/material/Material.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/material/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/material/Texture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/mesh/AbstractMesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/mesh/AbstractMesh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/mesh/MutableMesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/mesh/MutableMesh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/ComponentBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/ComponentBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/EngineRuntimeToolsFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/EngineRuntimeToolsFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/DefaultRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/renderer/DefaultRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/api/Cleanable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/api/Cleanable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Window.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/light/PointLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/light/PointLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/renderer/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/renderer/Shader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/logic/SampleLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/logic/SampleLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/ElementBaseContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/ElementBaseContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/MainPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/utils/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/ComplexFunctionVisualization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/ComplexFunctionVisualization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/Mapper2DVisualization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/Mapper2DVisualization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/PathFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/PathFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/PuzzleGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/PuzzleGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/RayCasting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/RayCasting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/Snake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/VectorField2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/animatedmodels/VectorField2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/canvas/RenderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/canvas/RenderManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/model/Model2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/model/Model2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/model/Model3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/model/Model3D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/shapes/shape2d/Shape2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/shapes/shape2d/Shape2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/shapes/shape2d/grid2d/GridPlain2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/visualization/shapes/shape2d/grid2d/GridPlain2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/fragment.glsl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,91 +188,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (۳)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.usim.game.Main" />
-      <module name="usim.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.usim.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
-      <module name="usim.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.usim.engine.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
-      <module name="usim.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.usim.engine.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.usim.game.Main" />
-      <module name="usim.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.usim.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (۳)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="usim.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
-      <module name="usim.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.usim.engine.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
-      <module name="usim.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.usim.engine.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ahd.usim.tmp.Main" />
       <module name="usim.main" />
@@ -373,6 +269,104 @@
     <configuration name="Main (۳)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="usim.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.engine.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ahd.usim.tmp.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ahd.usim.tmp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (۳)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.engine.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.engine.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (۳)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="usim.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.usim.engine.game.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.usim.engine.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -538,7 +532,8 @@
       <workItem from="1631531574107" duration="60490000" />
       <workItem from="1631769272864" duration="19708000" />
       <workItem from="1631855372273" duration="27866000" />
-      <workItem from="1631942076882" duration="59979000" />
+      <workItem from="1631942076882" duration="69758000" />
+      <workItem from="1632289532327" duration="30948000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="First USim Schema">
       <created>1630752367079</created>
@@ -636,7 +631,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۱۶" />
       <updated>1631993219866</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL‎۰۰۰۱۷" summary="Fix Synchronization of update and render threads">
+      <created>1632176199612</created>
+      <option name="number" value="LOCAL‎۰۰۰۱۷" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۱۷" />
+      <updated>1632176199612</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -668,6 +669,7 @@
     <MESSAGE value="Fix Bugs in Renderer" />
     <MESSAGE value="Implement PointLight" />
     <MESSAGE value="More Dev" />
-    <option name="LAST_COMMIT_MESSAGE" value="More Dev" />
+    <MESSAGE value="Fix Synchronization of update and render threads" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Synchronization of update and render threads" />
   </component>
 </project>

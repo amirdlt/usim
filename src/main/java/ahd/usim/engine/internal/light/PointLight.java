@@ -4,7 +4,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 
-public class PointLight {
+public class PointLight implements Cloneable {
     public record Attenuation(float constant, float linear, float exponent) {}
 
     private Vector3f color;
@@ -60,6 +60,19 @@ public class PointLight {
 
     public void setAttenuation(Attenuation attenuation) {
         this.attenuation = attenuation;
+    }
+
+    @Override
+    public PointLight clone() {
+        PointLight clone;
+        try {
+            clone = (PointLight) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+        clone.setPosition(new Vector3f(position));
+        clone.setColor(new Vector3f(color));
+        return clone;
     }
 
     @Contract("_, _, _ -> new")

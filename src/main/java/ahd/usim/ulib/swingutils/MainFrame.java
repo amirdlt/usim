@@ -1,10 +1,20 @@
 package ahd.usim.ulib.swingutils;
 
+import ahd.usim.ulib.utils.Utils;
 import ahd.usim.ulib.utils.api.StateBase;
+import ahd.usim.ulib.visualization.canvas.Canvas;
+import com.formdev.flatlaf.*;
+import com.formdev.flatlaf.intellijthemes.FlatAllIJThemes;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkIJTheme;
+import com.formdev.flatlaf.ui.FlatRootPaneUI;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.List;
 
@@ -13,24 +23,44 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
     public static final int DEFAULT_HEIGHT = 720;
     public static final int DEFAULT_WIDTH = DEFAULT_HEIGHT * 16 / 9;
 
+    public final String INITIAL_STATE_KEY;
+    public final Container INITIAL_STATE_VALUE;
+
     private final Map<String, Container> stateMap;
     private final Map<String, JComponent> elements;
 
     private boolean isDark;
     private boolean isFullScreen;
 
+    private final boolean isFrameBuilt;
+
     private String currentState;
+
+    private final UIManager.LookAndFeelInfo[] allThemesInfo;
 
     public MainFrame(String title, boolean dark) {
         super(title);
+
+        INITIAL_STATE_KEY = "initial";
+        INITIAL_STATE_VALUE = getContentPane();
 
         stateMap = new HashMap<>();
         elements = new HashMap<>();
         isDark = dark;
         isFullScreen = false;
-        currentState = "initial";
+
+        allThemesInfo = new ArrayList<UIManager.LookAndFeelInfo>() {{
+            addAll(List.of(new UIManager.LookAndFeelInfo(FlatDarkLaf.NAME, FlatDarkLaf.class.getName()),
+                    new UIManager.LookAndFeelInfo(FlatLightLaf.NAME, FlatLightLaf.class.getName()),
+                    new UIManager.LookAndFeelInfo(FlatIntelliJLaf.NAME, FlatIntelliJLaf.class.getName()),
+                    new UIManager.LookAndFeelInfo(FlatDarculaLaf.NAME, FlatDarculaLaf.class.getName())));
+            addAll(Arrays.asList(UIManager.getInstalledLookAndFeels()));
+            addAll(Arrays.asList(FlatAllIJThemes.INFOS));
+        }}.toArray(UIManager.LookAndFeelInfo[]::new);
 
         init();
+
+        isFrameBuilt = true;
     }
 
     public MainFrame(String title) {
@@ -48,6 +78,30 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
         setLocationRelativeTo(null);
         setLocationByPlatform(false);
 
+        currentState = INITIAL_STATE_KEY;
+        addState(currentState, INITIAL_STATE_VALUE);
+
+        initFlatLaf();
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                closeAction();
+            }
+        });
+
+        handleMenuBar();
+        handleSystemTray();
+
+    }
+
+    private void initFlatLaf() {
+        setLookAndFeel(new FlatGitHubDarkIJTheme());
+        getRootPane().setUI(new FlatRootPaneUI());
+    }
+
+    @Deprecated
+    private void initNimbusLaf() {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -60,18 +114,9 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
         }
 
         handleNimbusProperties();
-
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                closeAction();
-            }
-        });
-
-        handleMenuBar();
-        handleSystemTray();
     }
 
+    @Deprecated
     private void handleNimbusProperties() {
         if (isDark) {
             UIManager.put("control", Color.DARK_GRAY.darker());
@@ -140,7 +185,114 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
         menuBar.add(analyzeMenu);
         menuBar.add(helpMenu);
 
-        setJMenuBar(menuBar);
+//        setJMenuBar(menuBar);
+
+        setJMenuBar(new JMenuBar() {{
+            add(new JMenu("File") {{
+                setMnemonic(KeyEvent.VK_F);
+                add(new JMenuItem("Call Garbage Collector") {{
+                    addActionListener(e -> System.gc());
+                }});
+                add(new JMenuItem("CMD") {{
+                    addActionListener(e -> new JDialog(MainFrame.this) {{
+                        setLocation(MainFrame.this.getLocation());
+                        setTitle("CMD Command Executor");
+                        setSize(400, 600);
+                        setLayout(new BorderLayout());
+                        var res = new JTextArea() {{
+                            setEditable(false);
+                            setLineWrap(true);
+                        }};
+                        add(new JScrollPane(res), BorderLayout.CENTER);
+                        add(new JTextField("Command...") {{
+                            addActionListener(e -> {
+                                try {
+                                    res.setText(Utils.doCMD(getText()));
+                                } catch (IOException ex) {
+                                    setText(ex.toString());
+                                }
+                                setText("Command...");
+                            });
+                        }}, BorderLayout.NORTH);
+                        setVisible(true);
+                    }});
+                }});
+            }});
+            add(new JMenu("View") {{
+                setMnemonic(KeyEvent.VK_V);
+                add(new JMenuItem("Full Screen") {{
+                    setAccelerator(KeyStroke.getKeyStroke("F11"));
+                    addActionListener(e -> toggleFullScreen());
+                }});
+                add(new JMenu("Themes") {{
+                    add(element("currentTheme-menuItem", new JMenuItem("Current: " + UIManager.getLookAndFeel().getName()) {{
+                        addActionListener(e -> setThemeByIndex((int) (Math.random() * allThemesInfo.length)));
+                        setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.ALT_DOWN_MASK | KeyEvent.CTRL_DOWN_MASK));
+                    }}));
+                    add(new JMenu("Flat Core Themes") {{
+                        add(new JMenuItem("Flat Dark") {{
+                            addActionListener(e -> setLookAndFeel(new FlatDarkLaf()));
+                        }});
+                        add(new JMenuItem("Flat Light") {{
+                            addActionListener(e -> setLookAndFeel(new FlatLightLaf()));
+                        }});
+                        add(new JMenuItem("Flat IntelliJ") {{
+                            addActionListener(e -> setLookAndFeel(new FlatIntelliJLaf()));
+                        }});
+                        add(new JMenuItem("Flat Darcula") {{
+                            addActionListener(e -> setLookAndFeel(new FlatDarculaLaf()));
+                        }});
+                    }});
+                    add(new JMenu("JDK Native Installed") {{
+                        for (var info : UIManager.getInstalledLookAndFeels())
+                            add(new JMenuItem(info.getName()) {{
+                                addActionListener(e -> setLookAndFeel(info.getClassName()));
+                            }});
+                    }});
+                    add(new JMenu("IntelliJ Themes") {{
+                        var dark = new JMenu("Dark Themes");
+                        var light = new JMenu("Light Themes");
+                        for (var info : FlatAllIJThemes.INFOS)
+                            (info.isDark() ? dark : light).add(new JMenuItem(info.getName()) {{
+                                addActionListener(e -> setLookAndFeel(info.getClassName()));
+                            }});
+                        add(dark);
+                        add(light);
+                    }});
+                }});
+                add(new JMenuItem("Go to System Tray") {{
+                    addActionListener(e -> gotoSystemTray());
+                    setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, InputEvent.CTRL_DOWN_MASK));
+                }});
+                add(new JMenuItem("Toggle Fullscreen") {{
+                    addActionListener(e -> toggleFullScreen());
+                }});
+            }});
+            add(new JMenu("Help") {{
+                add(new JMenuItem("Help") {{
+                    addActionListener(
+                            e -> JOptionPane.showMessageDialog(MainFrame.this, "Please contact: AmirhosseinDolatkhah2000@gmail.com"));
+                }});
+            }});
+        }});
+    }
+
+    protected void setLookAndFeel(LookAndFeel lookAndFeel) {
+        try {
+            UIManager.setLookAndFeel(lookAndFeel);
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+        SwingUtilities.updateComponentTreeUI(this);
+        getAllComponents(this, Canvas.class).forEach(c -> c.setBackground(c.getBackGround().darker()));
+    }
+
+    protected void setLookAndFeel(String className) {
+        try {
+            setLookAndFeel((LookAndFeel) Class.forName(className).getDeclaredConstructor().newInstance());
+        } catch (InstantiationException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException | IllegalAccessException | ClassCastException e) {
+            e.printStackTrace();
+        }
     }
 
     private Runnable _gotoTray;
@@ -204,13 +356,26 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
                 main.setVisible(false);
             } catch (AWTException ignore) {}
         };
-        getJMenuBar().getMenu(4).getItem(0).addActionListener(e -> _gotoTray.run());
+//        getJMenuBar().getMenu(4).getItem(0).addActionListener(e -> _gotoTray.run());
 
         trayIcon.addActionListener(e -> tray.remove(trayIcon));
 
         Toolkit.getDefaultToolkit().addAWTEventListener(event -> {
             if (main.isVisible()) tray.remove(trayIcon);
-        }, AWTEvent.ACTION_EVENT_MASK + AWTEvent.WINDOW_EVENT_MASK);
+        }, AWTEvent.WINDOW_EVENT_MASK);
+    }
+
+    protected void setThemeByIndex(int index) {
+        while (index < 0)
+            index += allThemesInfo.length;
+        while (index >= allThemesInfo.length)
+            index -= allThemesInfo.length;
+        try {
+            setLookAndFeel(allThemesInfo[index].getClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        menuItemE("currentTheme-menuItem").setText("Current: " + UIManager.getLookAndFeel().getName());
     }
 
     public void gotoSystemTray() {
@@ -255,6 +420,7 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
         }
     }
 
+    @Deprecated
     public void toggleDarkTheme() {
         isDark = !isDark;
         handleNimbusProperties();
@@ -275,13 +441,15 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
             toggleFullScreen();
     }
 
+    @Deprecated
     public void setDark(boolean dark) {
         if (dark != isDark)
             toggleDarkTheme();
     }
 
+    @Deprecated
     public boolean isDark() {
-        return isDark;
+        return isDark || FlatLaf.isLafDark();
     }
 
     public String getTrayIconPath() {
@@ -291,6 +459,13 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
     public void setTrayIconPath(String trayIconPath) {
         this.trayIconPath = trayIconPath;
         handleSystemTray();
+    }
+
+    @Override
+    protected void setRootPane(JRootPane root) {
+        if (isFrameBuilt)
+            throw new RuntimeException("AHD:: Cannot change root pane of the main frame");
+        super.setRootPane(root);
     }
 
     @Override
@@ -330,13 +505,20 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
         revalidate();
     }
 
-    public static List<Component> getAllComponents(Container container) {
+    public static @NotNull List<Component> getAllComponents(@NotNull Container container) {
+        return getAllComponents(container, Component.class);
+    }
+
+    public static <T> @NotNull List<T> getAllComponents(@NotNull Container container, Class<T> type) {
         Component[] components = container.getComponents();
-        List<Component> componentList = new ArrayList<>();
+        List<T> componentList = new ArrayList<>();
         for (Component component : components) {
-            componentList.add(component);
+            if (type.isInstance(component)) {
+                //noinspection unchecked
+                componentList.add((T) component);
+            }
             if (component instanceof Container)
-                componentList.addAll(getAllComponents((Container) component));
+                componentList.addAll(getAllComponents((Container) component, type));
         }
 
         return componentList;

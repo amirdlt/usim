@@ -50,14 +50,6 @@ public class Window {
         glfwSwapInterval(vSync ? 1 : 0);
 
         glfwShowWindow(windowHandle);
-
-        GL.createCapabilities();
-
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-        glEnable(GL_DEPTH_TEST);
-        glEnable(GL_MULTISAMPLE);
-
-        setIcon(Constants.DEFAULT_GLFW_ICON_PATH);
     }
 
     public void rebuild() {
@@ -84,6 +76,15 @@ public class Window {
                 glfwSetWindowPos(windowHandle, (videoMode.width() - width) / 2, (videoMode.height() - height) / 2);
         }
         glfwMakeContextCurrent(windowHandle);
+        //////
+
+        GL.createCapabilities();
+
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glEnable(GL_DEPTH_TEST);
+        glEnable(GL_MULTISAMPLE);
+
+        setIcon(Constants.DEFAULT_GLFW_ICON_PATH);
     }
 
     public void setIcon(String path) {
