@@ -94,9 +94,12 @@ dependencies {
 
     implementation 'org.jetbrains:annotations:22.0.0'
 
-//    implementation('com.github.weisj:darklaf-core:2.7.3')
     implementation('com.formdev:flatlaf:1.6')
     implementation('com.formdev:flatlaf-intellij-themes:1.6')
+
+    // https://mvnrepository.com/artifact/com.miglayout/miglayout-swing
+    implementation 'com.miglayout:miglayout-swing:11.0'
+
 }
 
 test {

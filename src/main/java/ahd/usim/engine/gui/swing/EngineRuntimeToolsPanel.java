@@ -2,20 +2,20 @@ package ahd.usim.engine.gui.swing;
 
 import ahd.usim.engine.Constants;
 import ahd.usim.engine.internal.Engine;
-import ahd.usim.ulib.swingutils.MainPanel;
+import ahd.usim.ulib.swingutils.ElementBasedPanel;
 import ahd.usim.ulib.utils.Utils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import static ahd.usim.engine.Constants.DEFAULT_GLFW_WINDOW_HEIGHT;
+import static ahd.usim.engine.Constants.DEFAULT_GLFW_WINDOW_WIDTH;
 import static ahd.usim.engine.gui.swing.ComponentBuilder.*;
 import static ahd.usim.engine.gui.swing.ComponentBuilder.createTextEditor;
 import static org.lwjgl.glfw.GLFW.*;
@@ -44,7 +44,7 @@ import static org.lwjgl.opengl.GL33C.GL_SRC1_COLOR;
 import static org.lwjgl.opengl.GL40C.GL_SAMPLE_SHADING;
 import static org.lwjgl.opengl.GL43C.*;
 
-public class EngineRuntimeToolsPanel extends MainPanel {
+public class EngineRuntimeToolsPanel extends ElementBasedPanel {
     private final Engine engine;
     private final ScheduledThreadPoolExecutor updater;
     private ScheduledFuture<?> updateFuture;
@@ -446,6 +446,8 @@ public class EngineRuntimeToolsPanel extends MainPanel {
                             args -> engine.commitCommandsToMainThread(() -> glfwSwapInterval(((Double) args.get("interval")).intValue())),
                             () -> showErrorDialog("Bad Argument"), new ComponentBuilder.NumberBasedArg<>("interval", 0, Integer.MAX_VALUE)));
                     add(new JSeparator());
+//                    add(createFunctionCallerPanel("glfwSetWindowAttrib"))
+//                    add(new JSeparator());
                     add(createFunctionCallerPanel("glfwWindowHint",
                             args -> engine.commitCommandsToMainThread(() -> {
                                 glfwWindowHint((int) args.get("hint"), (int) args.get("value"));
@@ -511,6 +513,16 @@ public class EngineRuntimeToolsPanel extends MainPanel {
                     add(new JSeparator());
                     add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                         add(new JButton("Turn off") {{addActionListener(e -> engine.turnoff());}});
+                    }});
+                    // temp
+                    add(new JSeparator());
+                    add(new JButton("Get Swing Dialog") {{
+                        addActionListener(e -> new JDialog() {{
+                            setSize(DEFAULT_GLFW_WINDOW_WIDTH, DEFAULT_GLFW_WINDOW_HEIGHT);
+                            setLayout(new BorderLayout());
+                            add(new GlfwPanel(this));
+                            SwingUtilities.invokeLater(() -> this.setVisible(true));
+                        }});
                     }});
                 }})));
                 add("Entity", new JScrollPane(createEntityPanel(EngineRuntimeToolsPanel.this)));

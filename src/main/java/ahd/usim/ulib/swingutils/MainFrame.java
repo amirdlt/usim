@@ -152,41 +152,6 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
     }
 
     private void handleMenuBar() {
-        JMenuBar menuBar = new JMenuBar();
-
-        JMenu helpMenu = new JMenu("Help");
-        JMenu toolsMenu = new JMenu("Tools");
-        JMenu fileMenu = new JMenu("File");
-        JMenu viewMenu = new JMenu("View");
-        JMenu analyzeMenu = new JMenu("Analyze");
-
-        JMenuItem toggleDarkTheme = new JMenuItem("Toggle Dark Theme");
-        toggleDarkTheme.addActionListener(e -> toggleDarkTheme());
-        toggleDarkTheme.setAccelerator(KeyStroke.getKeyStroke('t', InputEvent.ALT_DOWN_MASK));
-        viewMenu.add(toggleDarkTheme);
-
-        JMenuItem fullScreen = new JMenuItem("Full Screen");
-        fullScreen.addActionListener(e -> toggleFullScreen());
-        fullScreen.setAccelerator(KeyStroke.getKeyStroke("F11"));
-        viewMenu.add(fullScreen);
-
-        JMenuItem quit = new JMenuItem("Quit");
-        quit.addActionListener(e -> closeAction());
-        quit.setAccelerator(KeyStroke.getKeyStroke('Q', InputEvent.ALT_DOWN_MASK));
-        fileMenu.add(quit);
-
-        JMenuItem tray = new JMenuItem("System Tray");
-        tray.setAccelerator(KeyStroke.getKeyStroke('W', InputEvent.CTRL_DOWN_MASK));
-        helpMenu.add(tray);
-
-        menuBar.add(fileMenu);
-        menuBar.add(toolsMenu);
-        menuBar.add(viewMenu);
-        menuBar.add(analyzeMenu);
-        menuBar.add(helpMenu);
-
-//        setJMenuBar(menuBar);
-
         setJMenuBar(new JMenuBar() {{
             add(new JMenu("File") {{
                 setMnemonic(KeyEvent.VK_F);
@@ -194,28 +159,13 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
                     addActionListener(e -> System.gc());
                 }});
                 add(new JMenuItem("CMD") {{
-                    addActionListener(e -> new JDialog(MainFrame.this) {{
+                    addActionListener(e -> SwingUtilities.invokeLater(() -> new JDialog(MainFrame.this) {{
+                        setSize(400, 550);
                         setLocation(MainFrame.this.getLocation());
                         setTitle("CMD Command Executor");
-                        setSize(400, 600);
                         setLayout(new BorderLayout());
-                        var res = new JTextArea() {{
-                            setEditable(false);
-                            setLineWrap(true);
-                        }};
-                        add(new JScrollPane(res), BorderLayout.CENTER);
-                        add(new JTextField("Command...") {{
-                            addActionListener(e -> {
-                                try {
-                                    res.setText(Utils.doCMD(getText()));
-                                } catch (IOException ex) {
-                                    setText(ex.toString());
-                                }
-                                setText("Command...");
-                            });
-                        }}, BorderLayout.NORTH);
-                        setVisible(true);
-                    }});
+                        add(new CmdToolPanel());
+                    }}.setVisible(true)));
                 }});
             }});
             add(new JMenu("View") {{

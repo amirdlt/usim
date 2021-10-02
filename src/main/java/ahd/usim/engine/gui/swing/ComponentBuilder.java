@@ -150,6 +150,7 @@ public final class ComponentBuilder {
                 setSyntaxEditingStyle(SYNTAX_STYLE_C);
                 setAntiAliasingEnabled(true);
                 try {
+                    //noinspection SpellCheckingInspection
                     Theme.load(getClass().getResourceAsStream("/org/fife/ui/rsyntaxtextarea/themes/dark.xml")).apply(this);
                 } catch (IOException e) {
                     e.printStackTrace();

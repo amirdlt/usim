@@ -68,7 +68,8 @@ public class Window {
             try {
                 GL.getCapabilities();
                 glViewport(0, 0, width, height);
-            } catch (IllegalStateException ignore) {}
+            } catch (IllegalStateException ignore) {
+            }
         });
         if (glfwGetWindowAttrib(windowHandle, GLFW_MAXIMIZED) == GLFW_FALSE) {
             var videoMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
@@ -169,5 +170,26 @@ public class Window {
 
     public long getWindowHandle() {
         return windowHandle;
+    }
+
+    public void setPosition(int x, int y) {
+        glfwSetWindowPos(windowHandle, x, y);
+    }
+
+    public void setSize(int width, int height) {
+        glfwSetWindowSize(windowHandle, width, height);
+    }
+
+    public void setBounds(int x, int y, int width, int height) {
+        setPosition(x, y);
+        setSize(width, height);
+    }
+
+    public void setAlwaysOnTop(boolean onTop) {
+//        glfwSetWindowAttrib();
+    }
+
+    public void requestFocus() {
+        glfwFocusWindow(windowHandle);
     }
 }
