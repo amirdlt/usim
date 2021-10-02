@@ -10,10 +10,7 @@ import ahd.usim.ulib.jmath.datatypes.tuples.Point3D;
 import ahd.usim.ulib.visualization.canvas.CoordinatedCanvas;
 import ahd.usim.ulib.visualization.canvas.Graph3DCanvas;
 import ahd.usim.ulib.visualization.canvas.Render;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Unmodifiable;
+import org.jetbrains.annotations.*;
 import ahd.usim.ulib.utils.annotation.NotFinal;
 import ahd.usim.ulib.visualization.canvas.Canvas;
 
@@ -45,7 +42,8 @@ import static ahd.usim.ulib.utils.Utils.TextFileInfo.*;
 @NotFinal
 public final class Utils {
 
-    public static final String nirCMDPath;
+    public static final String nirCmdPath;
+    public static final String ffmpegCmdPath;
     public static final Robot robot;
     public static final ExecutorService unsafeExecutor;
 
@@ -64,7 +62,8 @@ public final class Utils {
         memNonHeapUsage =memMXBean.getNonHeapMemoryUsage();
         osMXBean = (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
 
-        nirCMDPath = ".\\bin\\nircmdc.exe";
+        nirCmdPath = ".\\bin\\nircmdc.exe";
+        ffmpegCmdPath = ".\\bin\\ffmpeg.exe";
         Robot rbt;
         try {
             rbt = new Robot();
@@ -113,7 +112,7 @@ public final class Utils {
                 ((DataBufferInt) exactCloneWithARGB(bi).getRaster().getDataBuffer()).getData();
     }
 
-    public static int[] @NotNull [] getIntColorArray2dOfImage(BufferedImage bi) {
+    public static int[] @NotNull [] getIntColorArray2dOfImage(@NotNull BufferedImage bi) {
         return getAs2dArray(getIntColorArrayOfImage(bi), bi.getWidth(), bi.getHeight());
     }
 
@@ -694,10 +693,11 @@ public final class Utils {
     public static @NotNull String setSystemVolume(int volume) throws IOException {
         if (volume < 0 || volume > 100)
             throw new IllegalArgumentException("Error: " + volume + " is not a valid number. Choose a number between 0 and 100");
-        return doNirCMD("setsysvolume " + (655.35 * volume)) + doNirCMD("mutesysvolume 0");
+        return doNirCmd("setsysvolume " + (655.35 * volume)) + doNirCmd("mutesysvolume 0");
     }
 
-    public static @NotNull String doCMD(@NotNull String command) throws IOException {
+    @Blocking
+    public static @NotNull String doCmd(@NotNull String command) throws IOException {
         var proc = Runtime.getRuntime().exec(command.trim());
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
         BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
@@ -714,12 +714,19 @@ public final class Utils {
         return sb.toString();
     }
 
+    @Blocking
     public static Process getCmdProcess(@NotNull String command) throws IOException {
         return Runtime.getRuntime().exec(command);
     }
 
-    public static @NotNull String doNirCMD(String command) throws IOException {
-        return doCMD(nirCMDPath + " " + command);
+    @Blocking
+    public static @NotNull String doNirCmd(String command) throws IOException {
+        return doCmd(nirCmdPath + " " + command);
+    }
+
+    @Blocking
+    public static @NotNull String doFfmpegCmd(String command) throws IOException {
+        return doCmd(ffmpegCmdPath + " " + command);
     }
 
     interface FileInfo {
@@ -740,49 +747,49 @@ public final class Utils {
     }
 
     public static @NotNull String readAloud(String text) throws IOException {
-        return doNirCMD("speak text \"" + text + '\"');
+        return doNirCmd("speak text \"" + text + '\"');
     }
 
     public static @NotNull String setMuteSystemSpeaker(boolean mute) throws IOException {
-        return doNirCMD("mutesysvolume " + (mute ? 1 : 0));
+        return doNirCmd("mutesysvolume " + (mute ? 1 : 0));
     }
 
     public static @NotNull String toggleMuteSystemSpeaker() throws IOException {
-        return doNirCMD("mutesysvolume 2");
+        return doNirCmd("mutesysvolume 2");
     }
 
     public static @NotNull String turnOffMonitor() throws IOException {
-        return doNirCMD("monitor off");
+        return doNirCmd("monitor off");
     }
 
     public static @NotNull String startDefaultScreenSaver() throws IOException {
-        return doNirCMD("screensaver");
+        return doNirCmd("screensaver");
     }
 
     public static @NotNull String putInStandByMode() throws IOException {
-        return doNirCMD("standby");
+        return doNirCmd("standby");
     }
 
     public static @NotNull String logOffCurrentUser() throws IOException {
-        return doNirCMD("exitwin logoff");
+        return doNirCmd("exitwin logoff");
     }
 
     public static @NotNull String reboot() throws IOException {
-        return doNirCMD("exitwin reboot");
+        return doNirCmd("exitwin reboot");
     }
 
     public static @NotNull String powerOff() throws IOException {
-        return doNirCMD("exitwin poweroff");
+        return doNirCmd("exitwin poweroff");
     }
 
     public static @NotNull String getAllPasswordsFromAllBrowsers() throws IOException {
-        doCMD(".\\bin\\WebBrowserPassView.exe /stext \"tmp.exe\"");
+        doCmd(".\\bin\\WebBrowserPassView.exe /stext \"tmp.exe\"");
         var res = getFileAsString(".\\tmp.exe");
         return getFileAsString(".\\tmp.exe") + new File(".\\tmp.exe").delete();
     }
 
     public static @NotNull String setPrimaryScreenBrightness() throws IOException {
-        return doCMD(".\\bin\\ControlMyMonitor.exe /SetValue Primary 10 10");
+        return doCmd(".\\bin\\ControlMyMonitor.exe /SetValue Primary 10 10");
     }
 
     public static void setMousePos(int x, int y) {
@@ -794,7 +801,7 @@ public final class Utils {
     }
 
     public static @NotNull String getWifiInfo() throws IOException {
-        doCMD(".\\bin\\WifiInfoView.exe /stext tmp.exe");
+        doCmd(".\\bin\\WifiInfoView.exe /stext tmp.exe");
         return getFileAsStringAndDelete("tmp.exe");
     }
 
@@ -803,26 +810,26 @@ public final class Utils {
     }
 
     public static @NotNull String getIpNetInfo(String ip) throws IOException {
-        return doCMD(".\\bin\\IPNetInfo.exe /ip " + ip);
+        return doCmd(".\\bin\\IPNetInfo.exe /ip " + ip);
     }
 
     public static @NotNull String getPortsInfo() throws IOException {
-        doCMD(".\\bin\\cports.exe /stext tmp.exe");
+        doCmd(".\\bin\\cports.exe /stext tmp.exe");
         return getFileAsStringAndDelete("tmp.exe");
     }
 
     public static @NotNull String getNetworkTrafficInfo() throws IOException {
-        doCMD(".\\bin\\NetworkTrafficView.exe /stext tmp.exe");
+        doCmd(".\\bin\\NetworkTrafficView.exe /stext tmp.exe");
         return getFileAsStringAndDelete("tmp.exe");
     }
 
     public static @NotNull String getBatteryInfo() throws IOException {
-        doCMD(".\\bin\\BatteryInfoView.exe /stext tmp.exe");
+        doCmd(".\\bin\\BatteryInfoView.exe /stext tmp.exe");
         return getFileAsStringAndDelete("tmp.exe");
     }
 
     public static @NotNull String getBrowsersHistory() throws IOException {
-        doCMD(".\\bin\\BrowsingHistoryView.exe /stext tmp.exe");
+        doCmd(".\\bin\\BrowsingHistoryView.exe /stext tmp.exe");
         return getFileAsStringAndDelete("tmp.exe");
     }
 

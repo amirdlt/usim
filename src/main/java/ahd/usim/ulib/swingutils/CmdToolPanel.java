@@ -47,7 +47,7 @@ public class CmdToolPanel extends ElementBasedPanel {
                                     working = true;
                                     append(waitingMessage);
                                     try {
-                                        return Utils.doCMD(getText().substring(0, getText().length() - waitingMessage.length()));
+                                        return Utils.doCmd(getText().substring(0, getText().length() - waitingMessage.length()));
                                     } catch (IOException ex) {
                                         return ex.toString();
                                     }

@@ -5,22 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="More Dev">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/GLPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/GlfwPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/tmp/MigLayoutTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/ElementBasedPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/FixedImagePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/ImageConsumerPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/utils/supplier/ImageSupplier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/ComponentBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/ComponentBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/EngineRuntimeToolsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/EngineRuntimeToolsPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/IPNetInfo.cfg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/CmdToolPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/CmdToolPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/swingutils/MainPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/ulib/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -541,7 +529,7 @@
       <workItem from="1632814359914" duration="7877000" />
       <workItem from="1632922207572" duration="12851000" />
       <workItem from="1633000801679" duration="9897000" />
-      <workItem from="1633181905270" duration="534000" />
+      <workItem from="1633181905270" duration="3089000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="First USim Schema">
       <created>1630752367079</created>
@@ -651,7 +639,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۱۸" />
       <updated>1632327185854</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL‎۰۰۰۱۹" summary="More Dev">
+      <created>1633182763589</created>
+      <option name="number" value="LOCAL‎۰۰۰۱۹" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۱۹" />
+      <updated>1633182763589</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
