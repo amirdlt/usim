@@ -1,5 +1,6 @@
 package ahd.usim.engine.logic;
 
+import ahd.ulib.jmath.datatypes.functions.Surface;
 import ahd.usim.engine.Constants;
 import ahd.usim.engine.entity.Entity;
 import ahd.usim.engine.entity.loader.ModelLoader;
@@ -13,7 +14,6 @@ import ahd.usim.engine.internal.Input;
 import ahd.usim.engine.internal.renderer.DefaultRenderer;
 import ahd.usim.engine.internal.light.PointLight;
 import ahd.usim.engine.util.Sampling;
-import ahd.usim.ulib.jmath.datatypes.functions.Surface;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 

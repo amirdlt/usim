@@ -1,9 +1,9 @@
 package ahd.usim.engine.util;
 
-import ahd.usim.ulib.jmath.datatypes.functions.Arc3D;
-import ahd.usim.ulib.jmath.datatypes.functions.Mapper3D;
-import ahd.usim.ulib.jmath.datatypes.functions.Surface;
-import ahd.usim.ulib.jmath.datatypes.tuples.Point3D;
+import ahd.ulib.jmath.datatypes.functions.Arc3D;
+import ahd.ulib.jmath.datatypes.functions.Mapper3D;
+import ahd.ulib.jmath.datatypes.functions.Surface;
+import ahd.ulib.jmath.datatypes.tuples.Point3D;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

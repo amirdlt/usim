@@ -1,10 +1,10 @@
 package ahd.usim.engine.entity;
 
+import ahd.ulib.utils.annotation.ChangeReference;
 import ahd.usim.engine.entity.mesh.AbstractMesh;
 import ahd.usim.engine.internal.api.Cleanable;
 import ahd.usim.engine.internal.api.Updatable;
 import ahd.usim.engine.internal.api.Visible;
-import ahd.usim.ulib.utils.annotation.ChangeReference;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 

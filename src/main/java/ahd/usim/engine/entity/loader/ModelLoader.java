@@ -1,6 +1,6 @@
 package ahd.usim.engine.entity.loader;
 
-import ahd.usim.ulib.utils.Utils;
+import ahd.ulib.utils.Utils;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

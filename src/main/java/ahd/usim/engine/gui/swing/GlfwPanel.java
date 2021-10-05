@@ -1,8 +1,8 @@
 package ahd.usim.engine.gui.swing;
 
+import ahd.ulib.swingutils.ElementBasedPanel;
 import ahd.usim.engine.internal.Engine;
 import ahd.usim.engine.internal.Window;
-import ahd.usim.ulib.swingutils.ElementBasedPanel;
 
 import java.awt.*;
 import java.awt.event.ComponentAdapter;

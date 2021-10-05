@@ -1,9 +1,9 @@
 package ahd.usim.engine.gui.swing;
 
-import ahd.usim.ulib.utils.Utils;
-import ahd.usim.ulib.visualization.canvas.Graph2DCanvas;
-import ahd.usim.ulib.visualization.canvas.Render;
-import ahd.usim.ulib.jmath.datatypes.tuples.Point2D;
+import ahd.ulib.jmath.datatypes.tuples.Point2D;
+import ahd.ulib.utils.Utils;
+import ahd.ulib.visualization.canvas.Graph2DCanvas;
+import ahd.ulib.visualization.canvas.Render;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

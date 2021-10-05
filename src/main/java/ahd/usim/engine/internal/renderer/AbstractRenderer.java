@@ -1,8 +1,8 @@
 package ahd.usim.engine.internal.renderer;
 
+import ahd.ulib.utils.annotation.NotFinal;
 import ahd.usim.engine.internal.api.Renderer;
 import ahd.usim.engine.internal.api.Visible;
-import ahd.usim.ulib.utils.annotation.NotFinal;
 
 public abstract class AbstractRenderer implements Renderer {
 

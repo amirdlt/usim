@@ -1,9 +1,9 @@
 package ahd.usim.engine.gui.swing;
 
+import ahd.ulib.swingutils.ElementBasedPanel;
+import ahd.ulib.utils.Utils;
 import ahd.usim.engine.Constants;
 import ahd.usim.engine.internal.Engine;
-import ahd.usim.ulib.swingutils.ElementBasedPanel;
-import ahd.usim.ulib.utils.Utils;
 
 import javax.swing.*;
 import java.awt.*;

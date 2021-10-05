@@ -1,0 +1,92 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="usim:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/usim_jar</output-path>
+    <root id="archive" name="usim.jar">
+      <element id="module-output" name="usim.main" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-jemalloc/3.2.3/b6fd0932171ba3f2eaa4547beddca3a3e645342d/lwjgl-jemalloc-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-xxhash/3.2.3/35ec9a63662e7d28a1cc00669df8c5ec64185aec/lwjgl-xxhash-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-lmdb/3.2.3/d5ed1de28d1e34d95594cbaccc1b2419b2d77115/lwjgl-lmdb-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-xxhash/3.2.3/3adacbf7d5318ce06db0e7d709b21dd18d9b21a5/lwjgl-xxhash-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-vma/3.2.3/b8f6485a6e7e5785877474999e1e8451731bad09/lwjgl-vma-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-yoga/3.2.3/a4c9545692479ec63ddbcda835fb4d655fffba52/lwjgl-yoga-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-zstd/3.2.3/984dbd3021acb4f92d0c57290d256d959c470664/lwjgl-zstd-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-ovr/3.2.3/57eca39073f7dbb76b6ad10db04e25857824fb27/lwjgl-ovr-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apiguardian/apiguardian-api/1.1.0/fc9dff4bb36d627bdc553de77e1f17efd790876c/apiguardian-api-1.1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-bgfx/3.2.3/433883c4040fa8df47244dffa1d42c96ce2143de/lwjgl-bgfx-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-par/3.2.3/b60677b2948f930736aa2bff952fe8380bfe9fbe/lwjgl-par-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl/3.2.3/17a59ba0fe8d474ec9dbe0d5db40d2cfe59c4c08/lwjgl-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-shaderc/3.2.3/3612d4ed5466d100b7cf31f188530c3bdaa23145/lwjgl-shaderc-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-libdivide/3.2.3/58c515f934b8b3fd64897d436a9aaea518ac180a/lwjgl-libdivide-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fifesoft/rsyntaxtextarea/3.1.3/a7241c9fbc9db1a8e24c51fff1247788de3164f3/rsyntaxtextarea-3.1.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-opengles/3.2.3/f4614f177bd78d2f185fc95769af18ad489b8c7/lwjgl-opengles-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-nuklear/3.2.3/45bfab23e975201bf3cb81287be6034adec64a86/lwjgl-nuklear-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-libdivide/3.2.3/222031dea15051a625f6e83bc5c3cc44e5bbf310/lwjgl-libdivide-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.7.2/f4b4079732a9c537983324cfa4e46655f21d2c56/junit-jupiter-api-5.7.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-llvm/3.2.3/e8158cf5bdeca77489ed9c3a4b17bc4e32494803/lwjgl-llvm-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-opengl/3.2.3/e81cfc73ec8708e5e791ed770e4ec3edfc1bbab1/lwjgl-opengl-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl/3.2.3/27f32cd35349684745951e04388e8e00d681cdcd/lwjgl-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-nanovg/3.2.3/718be4a13691d1cd276fa852326e9e837d65204e/lwjgl-nanovg-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-yoga/3.2.3/e80bd1d6e279467b93fd8a08d4616543717e6a34/lwjgl-yoga-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-opengl/3.2.3/bdd534a323d0c8f54969b95e424b6ac8984f7d6e/lwjgl-opengl-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-ovr/3.2.3/9ec2d14f80432fcf4f0625c659f7f3d530cab8d2/lwjgl-ovr-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-jawt/3.2.3/b93ceb43c55c28651e178af42e1f344e1e9d8bf3/lwjgl-jawt-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-opengles/3.2.3/77a9ef18a071cb0219bcfa8c9199cee935d0c974/lwjgl-opengles-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-openvr/3.2.3/bf1d57df45723c50ec659df9118e90f23efc02e5/lwjgl-openvr-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-nanovg/3.2.3/2fbe5c2849bcf182ba3c6c09828f032a64cd47ec/lwjgl-nanovg-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-nfd/3.2.3/c44fee1043c022cf6614a28872d44cf114ca7737/lwjgl-nfd-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-tinyfd/3.2.3/d7d0760c9c904e7810fef96449ae03f33d4caee0/lwjgl-tinyfd-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-cuda/3.2.3/fb91f3aaa29e69eee7f1314a63d3e3068ad138e4/lwjgl-cuda-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.2.0/28c11eb91f9b6d8e200631d46e20a7f407f2a046/opentest4j-1.2.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-assimp/3.2.3/f62aa07a20afbdd3097efc296c4841e0d29700eb/lwjgl-assimp-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-openvr/3.2.3/ea19076fc886f2e8a95b50a7f95401606b5282ff/lwjgl-openvr-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-lmdb/3.2.3/d83c11e033018cc1c3d9172ab38a4558e599c38b/lwjgl-lmdb-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-meow/3.2.3/4b679d2fcc56d5d8b7ab45ed42568bf6ee5fda5b/lwjgl-meow-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-lz4/3.2.3/c96b98bc49957ac334a3ae713e3bf28ac79b8ab8/lwjgl-lz4-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-rpmalloc/3.2.3/5d7a954d9d6cf45752424cee9580de1d2b991dd6/lwjgl-rpmalloc-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/22.0.0/fb9bebc90794c7602e73d6ed0cb165a0c650be62/annotations-22.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-remotery/3.2.3/c4f0af089b9a0463f8f69ef8e64d24afd8581379/lwjgl-remotery-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-meow/3.2.3/3b9fb951066bcc91257e15cafdec8dcc56eace33/lwjgl-meow-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-llvm/3.2.3/c7c6412ec449d3bdf674ac4a56fc3af75a0c6b68/lwjgl-llvm-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-openal/3.2.3/106742e805803ab9eab8e343f0fb31a3d263903c/lwjgl-openal-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.formdev/flatlaf-intellij-themes/1.6/3412060e15744d5b1f03a12555a1fd1b4c79ade4/flatlaf-intellij-themes-1.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.formdev/flatlaf/1.6/8057260b08a5340bac2aeab02eab6034569d03ec/flatlaf-1.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-par/3.2.3/92d96fe3a3345f4c18ca0e682de41b20ec64b70c/lwjgl-par-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-sse/3.2.3/65532c27110fc26cc1c7281a0e573c25639833e4/lwjgl-sse-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-openal/3.2.3/ec898e8ce11b5886f4f532a1536283ef2817758d/lwjgl-openal-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-odbc/3.2.3/891c336a725361ef4b72893ac86d763a178ef39d/lwjgl-odbc-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-tootle/3.2.3/1691325908ace5b1eb7a07df591f7028c820d617/lwjgl-tootle-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-tinyexr/3.2.3/ac1a3a3624a5c97a843e98cfec02912c50693f78/lwjgl-tinyexr-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-tinyfd/3.2.3/d5edf89c7b6ca1ea20865a6ba0a09bfc5efb29c1/lwjgl-tinyfd-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-zstd/3.2.3/48fc900c0bf0d2d6f17d1e39ae62b06ddaea0d01/lwjgl-zstd-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-opencl/3.2.3/3061cd1e012ede64c606f64a5a3cf956dad7dc07/lwjgl-opencl-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-vma/3.2.3/e522dc95fc3236342776def8a7d2db5f36e22d62/lwjgl-vma-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-sse/3.2.3/feb5cadf9093cb59a476321e2d0ba060c173b679/lwjgl-sse-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-egl/3.2.3/45ad689a4346fac69d4e8696fa02aaa98f0ea196/lwjgl-egl-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-opus/3.2.3/26500e97754cb05a7ba10e058679621c75bcf105/lwjgl-opus-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-nfd/3.2.3/32782f5f5c57769efb82af864e70b819c77bc891/lwjgl-nfd-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.miglayout/miglayout-core/11.0/99ecf243c6a64a038a568dbf8421928db9b5c3b2/miglayout-core-11.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-rpmalloc/3.2.3/b9daea15f7250fa6e9dd8e4c207cd9470c8cb460/lwjgl-rpmalloc-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-bgfx/3.2.3/f589da97dd3cfa96f42c8c812a0a028cf28223b8/lwjgl-bgfx-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-jemalloc/3.2.3/3423fd0d4c7c1916c8f46b2075c4c2df02f22675/lwjgl-jemalloc-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-stb/3.2.3/40eccaa4fa86fc815f2e17946a392fb5fdcc286a/lwjgl-stb-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-tinyexr/3.2.3/6418951119fea1e19cf317c684787799b43f6384/lwjgl-tinyexr-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-lz4/3.2.3/8b94f94afedf76ed7cdbe66553974a55a1234ca5/lwjgl-lz4-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.miglayout/miglayout-swing/11.0/ea244be3c4a16c541413c4febdee539b348c744b/miglayout-swing-11.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.7.2/2573770b46b8a199ed5f6b0f96fb99e468bfe891/junit-platform-engine-1.7.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-glfw/3.2.3/b4d8a3477cdc2edcf7a5f1e822926be846223f54/lwjgl-glfw-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.7.2/9415680a889f00b8205a094c5c487bc69dc7077d/junit-jupiter-engine-5.7.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-assimp/3.2.3/4e60aeb75f0343c4a9ede4ef8b6b32ca702a00a3/lwjgl-assimp-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.joml/joml/1.10.2/194a5217c25777c5f9f9de354de7c2c894e618c9/joml-1.10.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-remotery/3.2.3/8d40a57175f204eca88c9a65cdccc38095e605b7/lwjgl-remotery-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.7.2/34adfea6c13fc4a996cf38cdad80800ce850d198/junit-platform-commons-1.7.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.joml/joml-primitives/1.10.0/b3ae3ae0dfee0bf5aef9f7964205cca0f3c6ea07/joml-primitives-1.10.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-stb/3.2.3/817b21ec286f0ba3dcedb56a3bd275e6a9345be9/lwjgl-stb-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-vulkan/3.2.3/34a69f76173952424e85943a2dc7d9efd3d8ff9c/lwjgl-vulkan-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-glfw/3.2.3/5e520d5c290c8b012545a8d34fa5db5ab051ea53/lwjgl-glfw-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-tootle/3.2.3/4b39ad490787c0c078c81a26ca78d052200ff6ac/lwjgl-tootle-3.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-shaderc/3.2.3/7743c77f38d298e466bdd201a0fce24bd43d0fb1/lwjgl-shaderc-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-nuklear/3.2.3/ccb63f09670e43e58969b567ef42e02275be555a/lwjgl-nuklear-3.2.3-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-opus/3.2.3/a14c270d0fa7dc32155f4fe3b3599e22bd52dc89/lwjgl-opus-3.2.3.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

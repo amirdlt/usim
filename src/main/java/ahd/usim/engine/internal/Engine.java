@@ -1,14 +1,11 @@
 package ahd.usim.engine.internal;
 
-import ahd.usim.engine.gui.swing.EngineRuntimeToolsPanel;
+import ahd.ulib.utils.annotation.Constraint;
+import ahd.ulib.utils.annotation.NotFinal;
 import ahd.usim.engine.internal.api.Logic;
 import ahd.usim.engine.gui.swing.EngineRuntimeToolsFrame;
 import ahd.usim.engine.internal.api.Rebuild;
-import ahd.usim.ulib.utils.annotation.Constraint;
-import ahd.usim.ulib.utils.annotation.NotFinal;
 import org.jetbrains.annotations.NotNull;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL46C;
 
 import javax.swing.*;
 import java.util.concurrent.*;

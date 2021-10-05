@@ -1,6 +1,6 @@
 package ahd.usim.engine.internal;
 
-import ahd.usim.ulib.utils.Utils;
+import ahd.ulib.utils.Utils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 

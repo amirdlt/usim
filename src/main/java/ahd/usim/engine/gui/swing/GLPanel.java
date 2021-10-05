@@ -1,6 +1,6 @@
 package ahd.usim.engine.gui.swing;
 
-import ahd.usim.ulib.swingutils.ElementBasedPanel;
+import ahd.ulib.swingutils.ElementBasedPanel;
 import org.lwjgl.opengl.GL46C;
 
 import java.awt.*;

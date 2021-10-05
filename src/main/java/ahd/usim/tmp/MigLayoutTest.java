@@ -1,8 +1,8 @@
 package ahd.usim.tmp;
 
-import ahd.usim.ulib.swingutils.MainFrame;
-import ahd.usim.ulib.swingutils.ElementBasedPanel;
-import ahd.usim.ulib.utils.Utils;
+import ahd.ulib.swingutils.ElementBasedPanel;
+import ahd.ulib.swingutils.MainFrame;
+import ahd.ulib.utils.Utils;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;

@@ -1,6 +1,6 @@
 package ahd.usim.engine.entity.mesh;
 
-import ahd.usim.ulib.utils.annotation.ChangeReference;
+import ahd.ulib.utils.annotation.ChangeReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

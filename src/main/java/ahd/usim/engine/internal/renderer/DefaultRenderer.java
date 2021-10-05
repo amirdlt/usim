@@ -1,11 +1,9 @@
 package ahd.usim.engine.internal.renderer;
 
+import ahd.ulib.utils.Utils;
 import ahd.usim.engine.entity.Entity;
 import ahd.usim.engine.internal.Camera;
 import ahd.usim.engine.internal.light.PointLight;
-import ahd.usim.engine.internal.renderer.Shader;
-import ahd.usim.engine.internal.renderer.Transformation;
-import ahd.usim.ulib.utils.Utils;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 import org.joml.Vector4f;

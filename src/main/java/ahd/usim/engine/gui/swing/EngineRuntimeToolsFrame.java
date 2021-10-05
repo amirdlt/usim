@@ -1,6 +1,6 @@
 package ahd.usim.engine.gui.swing;
 
-import ahd.usim.ulib.swingutils.MainFrame;
+import ahd.ulib.swingutils.MainFrame;
 import ahd.usim.engine.Constants;
 
 import javax.swing.*;
