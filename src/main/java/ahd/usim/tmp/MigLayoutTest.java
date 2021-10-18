@@ -49,7 +49,17 @@ public class MigLayoutTest {
 //                setPreferredSize(new Dimension(200, 100));
             }});
 
+            add(new JLabel("Hello " + index++) {{
+                setBorder(BorderFactory.createLineBorder(Utils.randomColor()));
+            }}, "dock west");
 
+            add(new JLabel("Hello " + index++) {{
+                setBorder(BorderFactory.createLineBorder(Utils.randomColor()));
+            }}, "dock north");
+
+            add(new JLabel("Hello " + index++) {{
+                setBorder(BorderFactory.createLineBorder(Utils.randomColor()));
+            }}, "dock east");
 
         }});
 

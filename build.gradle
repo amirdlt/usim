@@ -91,9 +91,6 @@ dependencies {
     implementation('com.formdev:flatlaf:1.6')
     implementation('com.formdev:flatlaf-intellij-themes:1.6')
     implementation 'com.miglayout:miglayout-swing:11.0'
-
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 }
 
 test {

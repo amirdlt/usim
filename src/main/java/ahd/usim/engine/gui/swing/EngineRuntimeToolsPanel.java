@@ -4,9 +4,16 @@ import ahd.ulib.swingutils.ElementBasedPanel;
 import ahd.ulib.utils.Utils;
 import ahd.usim.engine.Constants;
 import ahd.usim.engine.internal.Engine;
+import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeCellRenderer;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.DecimalFormat;
 import java.util.*;
 import java.util.List;
@@ -547,6 +554,29 @@ public class EngineRuntimeToolsPanel extends ElementBasedPanel {
                     }});
 
                 }}));
+                add("Shader Manager", new JPanel() {{
+                    setLayout(new MigLayout());
+                    add(new JScrollPane((new JTree(new DefaultMutableTreeNode() {{
+                        add(new DefaultMutableTreeNode("Vertex Shader"));
+                        add(new DefaultMutableTreeNode("Fragment Shader"));
+                        add(new DefaultMutableTreeNode("Geometry Shader"));
+                    }}) {{
+                        addMouseListener(new MouseAdapter() {
+                            @Override
+                            public void mouseClicked(MouseEvent e) {
+                                var path = getPathForLocation(e.getX(), e.getY());
+                                if (path == null)
+                                    return;
+                                System.out.println(path);
+                            }
+                        });
+                        setCellRenderer(new DefaultTreeCellRenderer() {
+                            {
+                                setLeafIcon(new ImageIcon(Constants.DEFAULT_RESOURCE_ROOT_PATH + "icons/usim-icon.png"));
+                            }
+                        });
+                    }})), "left");
+                }});
             }}), BorderLayout.CENTER);
         }});
         graphs.addAll(elements(MultiGraphPanelForSampling.class));

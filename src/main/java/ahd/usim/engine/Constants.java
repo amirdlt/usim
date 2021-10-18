@@ -9,10 +9,10 @@ public interface Constants {
     float MILLION_F = 1_000_000;
     int MILLI = 1_000;
     float MILLI_F = 1_000;
-    int KILO = 1024;
-    int MEGA = 1_024 * KILO;
-    int GIGA = 1_024 * MEGA;
-    long TERA = 1_024L * GIGA;
+    int KILO = 1 << 10;
+    int MEGA = 1 << 20;
+    int GIGA = 1 << 30;
+    long TERA = (long) 1 << 40;
     float PI_F = (float) Math.PI;
 
     int DEFAULT_TARGET_FPS = 60;
@@ -29,7 +29,7 @@ public interface Constants {
     String DEFAULT_SWING_ICON_PATH = DEFAULT_RESOURCE_ROOT_PATH + "icons\\usim-icon.png";
 
 
-    int GL_LOG_MAX_LENGTH = 1024;
+    int GL_LOG_MAX_LENGTH = 1 << 10;
 
     float DEFAULT_FIELD_OF_VIEW = (float) Math.PI / 3;
     float DEFAULT_Z_NEAR = 0.01f;

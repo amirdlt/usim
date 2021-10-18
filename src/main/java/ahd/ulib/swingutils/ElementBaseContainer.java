@@ -4,6 +4,7 @@ import ahd.ulib.visualization.canvas.*;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.List;
 import java.util.Map;
 
@@ -115,6 +116,9 @@ public interface ElementBaseContainer {
     }
     default JDesktopPane desktopPaneE(String tag) {
         return (JDesktopPane) element(tag);
+    }
+    default JTree treeE(String tag) {
+        return (JTree) element(tag);
     }
     default JInternalFrame internalFrameE(String tag) {
         return (JInternalFrame) element(tag);

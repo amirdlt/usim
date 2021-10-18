@@ -1,6 +1,7 @@
 package ahd.usim.engine.internal;
 
 import static ahd.usim.engine.util.Utils.ioResourceToByteBuffer;
+import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 
 import ahd.usim.engine.Constants;
@@ -165,6 +166,7 @@ public class Window {
     }
 
     public void cleanup() {
+        glfwFreeCallbacks(windowHandle);
         glfwDestroyWindow(windowHandle);
     }
 

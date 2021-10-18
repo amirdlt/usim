@@ -3,6 +3,7 @@ package ahd.usim.engine.gui.swing;
 import ahd.ulib.swingutils.ElementBasedPanel;
 import ahd.usim.engine.internal.Engine;
 import ahd.usim.engine.internal.Window;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
@@ -13,7 +14,7 @@ public class GlfwPanel extends ElementBasedPanel {
     private final Window window;
     private final java.awt.Window owner;
 
-    public GlfwPanel(java.awt.Window owner) {
+    public GlfwPanel(java.awt.@NotNull Window owner) {
         window = Engine.getEngine().getWindow();
         this.owner = owner;
         owner.addComponentListener(new ComponentAdapter() {
@@ -41,6 +42,5 @@ public class GlfwPanel extends ElementBasedPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         window.setBounds(owner.getX() + getX(), owner.getY() + getY() + 150, getWidth(), getHeight());
-        
     }
 }
