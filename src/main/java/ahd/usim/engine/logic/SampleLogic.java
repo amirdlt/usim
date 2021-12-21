@@ -46,8 +46,8 @@ public class SampleLogic extends AbstractLogic {
         renderer.init();
         //Mesh mesh = OBJLoader.loadMesh("/models/bunny.obj");
         var meshInfo = ModelLoader.loadObjMesh(Constants.DEFAULT_RESOURCE_ROOT_PATH + "models/cube.obj");
-        Texture texture = new Texture("textures/grassblock.png");
-        Material material = new Material(1f, texture);
+//        Texture texture = new Texture("textures/grassblock.png");
+        Material material = new Material(1f, null);
 
         var mesh = new MutableMesh(meshInfo.vertices(), meshInfo.textureCoordinates(), null, meshInfo.normals(), meshInfo.indices());
 

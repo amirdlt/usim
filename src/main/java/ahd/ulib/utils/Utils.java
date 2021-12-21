@@ -12,7 +12,6 @@ import ahd.ulib.visualization.canvas.CoordinatedCanvas;
 import ahd.ulib.visualization.canvas.Graph3DCanvas;
 import ahd.ulib.visualization.canvas.Render;
 import com.sun.management.OperatingSystemMXBean;
-import com.twelvemonkeys.imageio.plugins.jpeg.JPEGImageWriter;
 import org.jetbrains.annotations.*;
 
 import javax.imageio.ImageIO;
@@ -39,7 +38,7 @@ import java.util.function.IntUnaryOperator;
 
 import static ahd.ulib.utils.Utils.TextFileInfo.*;
 
-@SuppressWarnings({ "unused", "SpellCheckingInspection", "CommentedOutCode", "GrazieInspection" })
+@SuppressWarnings({ "unused", "SpellCheckingInspection", "CommentedOutCode"})
 @NotFinal
 public final class Utils {
 

@@ -10,15 +10,251 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Package restructure">
+      <change afterPath="$PROJECT_DIR$/src/main/pyhton/bridge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/pyhton/news_fetcher.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/usim.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/usim.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/pyhton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/pyhton/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/logic/SampleLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/logic/SampleLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lwjgl/demo/cuda/OpenGLExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lwjgl/demo/cuda/SequencePTX.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/bgfx/CREDITS" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/bgfx/CREDITS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/boundingboxes.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/boundingboxes.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/boundingboxes.gs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/boundingboxes.gs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/boundingboxes.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/boundingboxes.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/chunk-points.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/chunk-points.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/chunk.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/chunk.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/chunk.gs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/chunk.gs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/chunk.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/chunk.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/collectdrawcalls.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/collectdrawcalls.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/selection.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/selection.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/selection.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/game/voxelgame/selection.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/models/mikelovesrobots_mmmm/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/models/mikelovesrobots_mmmm/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/models/mikelovesrobots_mmmm/README" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/models/mikelovesrobots_mmmm/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/assimp/magnet.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/assimp/magnet.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/assimp/magnet.mtl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/assimp/magnet.mtl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/assimp/magnet.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/assimp/magnet.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/assimp/magnet.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/assimp/magnet.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/color.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/color.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/depth-edge-fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/depth-edge-fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/depth-edge-vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/depth-edge-vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/normal-fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/normal-fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/normal-vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/normal-vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/quadDepth.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/quadDepth.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/quadDepth.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/quadDepth.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/rasterDepth.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/rasterDepth.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/rasterDepth.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/rasterDepth.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/sobel-edge-fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/sobel-edge-fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/sobel-edge-vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/sobel-edge-vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/sobel-outline-fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/sobel-outline-fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/sobel-outline-vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/fbo/sobel-outline-vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/fs110.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/fs110.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/gs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/gs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/gs110.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/gs110.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/silhouette-fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/silhouette-fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/silhouette-gs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/silhouette-gs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/silhouette-vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/silhouette-vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/vs110.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/geometry/vs110.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/instancing/CREDITS" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/instancing/CREDITS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/instancing/grass.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/instancing/grass.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/instancing/grass.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/instancing/grass.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/instancing/ground.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/instancing/ground.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/instancing/ground.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/instancing/ground.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/alphagrass/kdtreeseparate32grass.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/alphagrass/kdtreeseparate32grass.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/alphagrass/quad.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/alphagrass/quad.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/alphagrass/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/alphagrass/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/cubetracemerged/compute.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/cubetracemerged/compute.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/cubetracemerged/quad.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/cubetracemerged/quad.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/cubetracemerged/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/cubetracemerged/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/feedbackSsboTriangle.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/feedbackSsboTriangle.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/gl33kdtreetrace/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/gl33kdtreetrace/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/gl33kdtreetrace/raytracing.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/gl33kdtreetrace/raytracing.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/hybrid.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/hybrid.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/hybridSsbo.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/hybridSsbo.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/hybridSsboTriangle.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/hybridSsboTriangle.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/hybridSsboUbo.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/hybridSsboUbo.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/linearlytransformedcosines/quad.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/linearlytransformedcosines/quad.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/linearlytransformedcosines/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/linearlytransformedcosines/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/linearlytransformedcosines/raytracing.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/linearlytransformedcosines/raytracing.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/photonmap.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/photonmap.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/photonmapBindless.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/photonmapBindless.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/quad.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/quad.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/quad.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/quad.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/quad110.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/quad110.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/quad110.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/quad110.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/random.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/random.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/random20.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/random20.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/randomAtomic.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/randomAtomic.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/randomCommon.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/randomCommon.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raster.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raster.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raster.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raster.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/rasterInstanced.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/rasterInstanced.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/rasterInstancedUbo.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/rasterInstancedUbo.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/rasterPhotonMap.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/rasterPhotonMap.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/rasterPhotonMap.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/rasterPhotonMap.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/rasterPhotonMapBindless.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/rasterPhotonMapBindless.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raytracing.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raytracing.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raytracing.glslcs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raytracing.glslcs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raytracing110.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raytracing110.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raytracingAtomic.glslcs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raytracingAtomic.glslcs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raytracingSsbo.glslcs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raytracingSsbo.glslcs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raytracingUbo.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/raytracingUbo.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/ssboTriangleStacklessKdTree.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/ssboTriangleStacklessKdTree.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/transformFeedback.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/transformFeedback.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial1/quad.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial1/quad.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial1/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial1/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial1/raytracing.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial1/raytracing.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial2/quad.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial2/quad.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial2/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial2/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial2/random.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial2/random.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial2/raytracing.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial2/raytracing.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial3/quad.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial3/quad.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial3/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial3/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial3/random.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial3/random.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial3/raytracing.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial3/raytracing.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4/quad.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4/quad.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4/random.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4/random.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4/raytracing.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4/raytracing.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_2/quad.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_2/quad.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_2/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_2/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_2/random.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_2/random.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_2/raytracing.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_2/raytracing.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_3/quad.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_3/quad.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_3/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_3/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_3/random.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_3/random.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_3/raytracing.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial4_3/raytracing.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial5/atrous.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial5/atrous.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial5/atrous.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial5/atrous.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial5/quad.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial5/quad.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial5/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial5/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial5/random.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial5/random.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial5/raytracing.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial5/raytracing.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6/geometry.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6/geometry.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6/quad.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6/quad.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6/raytracing.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6/raytracing.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6_2/geometry.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6_2/geometry.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6_2/quad.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6_2/quad.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6_2/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6_2/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6_2/raytracing.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial6_2/raytracing.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/SPONZA_MODEL_LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/SPONZA_MODEL_LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/geometry.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/geometry.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/quad.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/quad.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/random.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/random.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/raster.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/raster.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/raster.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/raster.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/raytracing.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial7/raytracing.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/atrous.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/atrous.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/atrous.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/atrous.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/cubes.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/cubes.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/quad.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/quad.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/random.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/random.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/raster.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/raster.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/rasterAndTrace.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/rasterAndTrace.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/rasterDepth.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/rasterDepth.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/rasterDepth.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8/rasterDepth.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/cubes.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/cubes.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/quad.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/quad.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/quad.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/quad.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/random.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/random.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/raster.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/raster.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/rasterAndTrace.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/rasterAndTrace.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/reproject.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/reproject.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/reproject.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/tutorial8_2/reproject.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping/lightmap.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping/lightmap.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping/lightmap.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping/lightmap.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping/random.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping/random.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping/raster.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping/raster.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping/raster.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping/raster.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping/trace.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping/trace.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping2/lightmap.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping2/lightmap.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping2/lightmap.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping2/lightmap.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping2/random.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping2/random.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping2/raster.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping2/raster.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping2/raster.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping2/raster.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping2/trace.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/raytracing/voxellightmapping2/trace.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/gameoflife/iteration.cs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/gameoflife/iteration.cs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/gameoflife/patterns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/gameoflife/patterns.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/gameoflife/render.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/gameoflife/render.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/gameoflife/render.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/gameoflife/render.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticesbspline.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticesbspline.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticesbspline.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticesbspline.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticesgrid.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticesgrid.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticesgrid.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticesgrid.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticespolygon.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticespolygon.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticespolygon.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticespolygon.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticesprojectedgrid.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticesprojectedgrid.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticesprojectedgrid.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/noverticesprojectedgrid.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/planet.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/planet.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/planet.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/planet.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/simple.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/simple.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/simple.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shader/simple.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/omni2dShadow-fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/omni2dShadow-fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/omni2dShadow-gs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/omni2dShadow-gs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/omni2dShadow-vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/omni2dShadow-vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/omni2dShadowShade-fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/omni2dShadowShade-fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/omni2dShadowShade-vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/omni2dShadowShade-vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/shadowMapping-fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/shadowMapping-fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/shadowMapping-vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/shadowMapping-vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/shadowMappingShade-fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/shadowMappingShade-fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/shadowMappingShade-vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/shadow/shadowMappingShade-vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/CREDITS" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/CREDITS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/cubemap.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/cubemap.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/cubemap.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/cubemap.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/cubemapBH.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/cubemapBH.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/cubemapBH.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/cubemapBH.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/cubemapBack.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/cubemapBack.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/cubemapBack.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/cubemapBack.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/environment.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/environment.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/environment.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/environment.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/teapot.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/teapot.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/teapot.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/teapot.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/texture2dArrayMipmap.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/texture2dArrayMipmap.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/texture2dArrayMipmap.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/texture2dArrayMipmap.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/texturedQuad.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/texturedQuad.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/texturedQuad.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/texturedQuad.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/texturedSphere.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/texturedSphere.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/texturedSphere.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/textures/texturedSphere.vs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/uniformarray-fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/uniformarray-fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/uniformarray-vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/opengl/uniformarray-vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/coloredRotatingTriangle.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/coloredRotatingTriangle.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/coloredRotatingTriangle.vert" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/coloredRotatingTriangle.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/coloredTriangle.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/coloredTriangle.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/coloredTriangle.vert" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/coloredTriangle.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/instancedSpheres.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/instancedSpheres.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/instancedSpheres.vert" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/instancedSpheres.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/hybridmagicavoxel/raster.fs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/hybridmagicavoxel/raster.fs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/hybridmagicavoxel/raster.vs.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/hybridmagicavoxel/raster.vs.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/hybridmagicavoxel/raygen.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/hybridmagicavoxel/raygen.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/hybridmagicavoxel/raymiss.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/hybridmagicavoxel/raymiss.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/reflectivemagicavoxel/closesthit.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/reflectivemagicavoxel/closesthit.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/reflectivemagicavoxel/raygen.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/reflectivemagicavoxel/raygen.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/reflectivemagicavoxel/raymiss.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/reflectivemagicavoxel/raymiss.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/signeddistancecubes/closesthit.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/signeddistancecubes/closesthit.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/signeddistancecubes/intersect.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/signeddistancecubes/intersect.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/signeddistancecubes/raygen.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/signeddistancecubes/raygen.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/signeddistancecubes/raymiss.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/signeddistancecubes/raymiss.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simplesphere/closesthit.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simplesphere/closesthit.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simplesphere/intersect.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simplesphere/intersect.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simplesphere/raygen.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simplesphere/raygen.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simplesphere/raymiss.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simplesphere/raymiss.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simpletriangle/closesthit.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simpletriangle/closesthit.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simpletriangle/raygen.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simpletriangle/raygen.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simpletriangle/raymiss.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simpletriangle/raymiss.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simpletrianglerayquery/compute.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/raytracing/simpletrianglerayquery/compute.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/triangle.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/triangle.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/triangle.vert" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/triangle.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/twoRotatingTriangles.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/twoRotatingTriangles.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/twoRotatingTriangles.vert" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lwjgl/demo/vulkan/twoRotatingTriangles.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/fragment.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/vertex.glsl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +308,7 @@
         <option value="AnnotationType" />
         <option value="Interface" />
         <option value="module-info" />
+        <option value="Python Script" />
         <option value="Class" />
       </list>
     </option>
@@ -99,15 +336,18 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/renderer/DefaultRenderer.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/tmp/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/renderer/DefaultRenderer.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Window.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/EngineRuntimeToolsFrame.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/tmp/MigLayoutTest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/logic/SampleLogic.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/Entity.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/Constants.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Camera.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/build.gradle" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Engine.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/loader/ModelLoader.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -128,7 +368,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="jdk.selected.JAVA_MODULE" value="openjdk-16" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.2720105" />
@@ -137,11 +377,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\amirh\IdeaProjects\usim\src\main\resources" />
+      <recent name="C:\Users\amirh\IdeaProjects\usim\src\main\pyhton" />
+      <recent name="C:\Users\amirh\IdeaProjects\usim\src\main\java\ahd\uoth" />
       <recent name="E:\Programming Projects\Java Projects\usim" />
       <recent name="E:\Programming Projects\Java Projects\usim\src\main\java" />
-      <recent name="E:\Programming Projects\Java Projects\usim\src\main\java\ahd\uimp" />
-      <recent name="E:\Programming Projects\Java Projects\ulib2\src\main\java\ahd\usim\ulib" />
-      <recent name="E:\Programming Projects\Java Projects\ulib2\src\main\java\ahd\usim" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Programming Projects\Java Projects\usim\src\main\resources" />
@@ -152,13 +392,13 @@
       <recent name="com.usim.engine" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.FreeCameraDemo">
-    <configuration name="ArcballCameraDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.lwjgl.demo.opengl.camera.ArcballCameraDemo" />
+  <component name="RunManager" selected="Application.Main (۲)">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ahd.usim.tmp.Main" />
       <module name="usim.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.lwjgl.demo.opengl.camera.*" />
+          <option name="PATTERN" value="ahd.usim.tmp.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -166,51 +406,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FreeCameraDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.lwjgl.demo.opengl.camera.FreeCameraDemo" />
+    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ahd.usim.tmp.Main" />
       <module name="usim.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.lwjgl.demo.opengl.camera.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GameOfLife" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.lwjgl.demo.opengl.shader.GameOfLife" />
-      <module name="usim.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.lwjgl.demo.opengl.shader.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Intro5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.lwjgl.demo.intro.Intro5" />
-      <module name="usim.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.lwjgl.demo.intro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (۳)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.usim.game.Main" />
-      <module name="usim.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.usim.game.*" />
+          <option name="PATTERN" value="ahd.usim.tmp.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -290,12 +491,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ahd.usim.game.Main" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ahd.uoth.ex1.Main" />
       <module name="usim.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ahd.usim.game.*" />
+          <option name="PATTERN" value="ahd.uoth.ex1.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -303,26 +504,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (۳)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="usim.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Java Projects.ulib" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (۲)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ahd.usim.tmp.Main" />
+    <configuration name="MigLayoutTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ahd.usim.tmp.MigLayoutTest" />
       <module name="usim.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ahd.usim.tmp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ahd.uoth.Test" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ahd.uoth.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -352,17 +552,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="news_fetcher" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="usim.main" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/main/pyhton" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/main/pyhton/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/main/pyhton/news_fetcher.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -372,19 +575,20 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.Intro5" />
-      <item itemvalue="Application.ArcballCameraDemo" />
-      <item itemvalue="Application.FreeCameraDemo" />
-      <item itemvalue="Application.GameOfLife" />
-      <item itemvalue="Python.main" />
+      <item itemvalue="Application.Main (۲)" />
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Main (1)" />
+      <item itemvalue="Application.MigLayoutTest" />
+      <item itemvalue="Python.news_fetcher" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
-        <item itemvalue="Application.GameOfLife" />
-        <item itemvalue="Application.FreeCameraDemo" />
-        <item itemvalue="Application.ArcballCameraDemo" />
-        <item itemvalue="Application.Intro5" />
+        <item itemvalue="Application.MigLayoutTest" />
+        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Python.news_fetcher" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -469,7 +673,22 @@
       <workItem from="1635721848394" duration="4625000" />
       <workItem from="1639779169263" duration="1246000" />
       <workItem from="1639780904068" duration="9027000" />
-      <workItem from="1639818067521" duration="1831000" />
+      <workItem from="1639818067521" duration="5050000" />
+      <workItem from="1639836538475" duration="2119000" />
+      <workItem from="1639841237186" duration="1463000" />
+      <workItem from="1639852468468" duration="6931000" />
+      <workItem from="1639869732679" duration="405000" />
+      <workItem from="1639899503947" duration="26000" />
+      <workItem from="1639904297691" duration="7000000" />
+      <workItem from="1639928919237" duration="654000" />
+      <workItem from="1639949734226" duration="1872000" />
+      <workItem from="1639984962840" duration="595000" />
+      <workItem from="1640005287995" duration="8297000" />
+      <workItem from="1640038909947" duration="3545000" />
+      <workItem from="1640074641296" duration="1151000" />
+      <workItem from="1640081944738" duration="452000" />
+      <workItem from="1640083411959" duration="474000" />
+      <workItem from="1640110851905" duration="1462000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="First USim Schema">
       <created>1630752367079</created>
@@ -603,7 +822,14 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۲" />
       <updated>1634539608095</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Package restructure">
+      <created>1639823073347</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1639823073347</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
