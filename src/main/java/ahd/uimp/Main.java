@@ -3,9 +3,16 @@ package ahd.uimp;
 import ahd.ulib.swingutils.ElementBasedPanel;
 import ahd.ulib.swingutils.MainFrame;
 import ahd.ulib.utils.Utils;
+import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import net.miginfocom.swing.MigLayout;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -15,8 +22,11 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
-import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 
 public class Main {
 
@@ -103,8 +113,169 @@ public class Main {
             }}, ".\\out\\portal\\portalset3\\" + ++index, "jpeg");
     }
 
-    public static void main(String[] args) {
+    public static void main32(String[] args) {
         var message = "Hello, Implementation world";
         System.out.println(message);
+    }
+
+    public static void main65(String[] args) throws IOException {
+        try (final WebClient webClient = new WebClient(BrowserVersion.CHROME)) {
+            final HtmlPage page = webClient.getPage("https://htmlunit.sourceforge.io/");
+            System.out.println(page.getTitleText());
+        }
+    }
+
+    // script view
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new MainFrame() {{
+            add(element("mainTabbedPane", new JTabbedPane() {{
+                add("ISAC", element("isacPanel", new JPanel(new BorderLayout()) {{
+                    add(new JPanel(new GridLayout(0, 1)) {{
+                        add(new JTabbedPane() {{
+                            setBorder(BorderFactory.createLineBorder(Color.GRAY, 4));
+                            add("Authentication", new JPanel(new BorderLayout()) {{
+                                add(element("isacPanelAuthentication", new JTextArea()), BorderLayout.CENTER);
+                            }});
+                        }});
+                        add(new JPanel(new GridLayout(0, 1)) {{
+                            add(new JScrollPane(element("isacPanelResponse", new JTextArea())));
+                        }});
+                    }}, BorderLayout.CENTER);
+                    add(new JPanel(new FlowLayout(FlowLayout.RIGHT)) {{
+                        add(new JButton("Submit") {{
+                            final var client = new WebClient();
+                            addActionListener(e -> {
+                                try {
+                                    textAreaE("isacPanelResponse").setText(
+                                            client.getPage(textFieldE("isacPanelURL").getText()).
+                                                    getWebResponse().getContentAsString());
+                                } catch (IOException ex) {
+                                    ex.printStackTrace();
+                                }
+                            });
+                        }});
+                    }}, BorderLayout.NORTH);
+                    add(new JPanel(new MigLayout()) {{
+                        add(element("isacPanelURL", new JTextField()), "width 200px");
+                    }}, BorderLayout.EAST);
+                }}));
+                add("Paint", element("paintPanel", new JPanel(new BorderLayout()) {
+                    private final ArrayDeque<List<Point>> points = new ArrayDeque<>();
+                    static record Config(Stroke stroke, Color color) {}
+                    private final ArrayList<Config> configs = new ArrayList<>();
+
+                    {
+                        config("paintPanelPenColor", Color.WHITE);
+                        config("paintPanelPenStroke", new BasicStroke(1.5f));
+                        config("paintPanelPenState", "pen");
+                        addMouseMotionListener(new MouseAdapter() {
+                            @SuppressWarnings("ConstantConditions")
+                            @Override
+                            public void mouseDragged(MouseEvent e) {
+                                var list = points.peekLast();
+                                var center = asManualTypeC("paintPanelPenPosition", Point.class);
+                                var current = e.getPoint();
+                                switch (asStringC("paintPanelPenState")) {
+                                    case "pen" -> list.add(current);
+                                    case "circle" -> {
+                                        list.clear();
+                                        var radius = center.distance(current);
+                                        var x = -0.1;
+                                        while ((x += 0.1) < 2 * Math.PI)
+                                            list.add(new Point((int) (center.x + radius * Math.cos(x)), (int) (center.y + radius * Math.sin(x))));
+                                        list.add(new Point(center.x + (int) radius, center.y));
+                                    }
+                                    case "rectangle" -> {
+                                        list.clear();
+                                        var sideA = 2 * (center.x - e.getX());
+                                        var sideB = 2 * (center.y - e.getY());
+                                        list.add(current);
+                                        list.add(new Point(current.x, current.y + sideB));
+                                        list.add(new Point(current.x + sideA, current.y + sideB));
+                                        list.add(new Point(current.x + sideA, current.y));
+                                        list.add(current);
+                                    }
+                                    case "triangle" -> {
+                                        list.clear();
+                                        var side = current.x - center.x + current.y - center.y;
+                                        list.add(current);
+                                        list.add(new Point(current.x + side / 2, current.y + side));
+                                        list.add(new Point(current.x + side, current.y));
+                                        list.add(current);
+                                    }
+                                    default -> {}
+                                }
+                                repaint();
+                            }
+                        });
+                        addMouseListener(new MouseAdapter() {
+                            @Override
+                            public void mousePressed(MouseEvent e) {
+                                if (e.getButton() != MouseEvent.BUTTON1)
+                                    return;
+                                points.add(new ArrayList<>());
+                                configs.add(new Config(asManualTypeC("paintPanelPenStroke", Stroke.class),
+                                        asManualTypeC("paintPanelPenColor", Color.class)));
+                                config("paintPanelPenPosition", e.getPoint());
+                            }
+                        });
+                        add(new JPanel(new FlowLayout(FlowLayout.LEFT)) {{
+                            add(new JSlider(1, 1500) {{
+                                setValue(60);
+                                addChangeListener(e -> {
+                                    config("paintPanelPenStroke", new BasicStroke(getValue() / 30.f));
+                                    element("paintPanel").repaint();
+                                });
+                            }});
+                            add(new JButton("Pen Color") {{
+                                addActionListener(e -> {
+                                    var color = JColorChooser.
+                                            showDialog(element("paintPanel"),
+                                                    "Pen Color", asManualTypeC("paintPanelPenColor", Color.class));
+                                    config("paintPanelPenColor", color);
+                                    setForeground(color);
+                                    element("paintPanel").repaint();
+                                });
+                            }});
+                            add(new JButton("Pen") {{
+                                addActionListener(e -> config("paintPanelPenState", "pen"));
+                            }});
+                            add(new JButton("Circle") {{
+                                addActionListener(e -> config("paintPanelPenState", "circle"));
+                            }});
+                            add(new JButton("Rectangle") {{
+                                addActionListener(e -> config("paintPanelPenState", "rectangle"));
+                            }});
+                            add(new JButton("Triangle") {{
+                                addActionListener(e -> config("paintPanelPenState", "triangle"));
+                            }});
+                            add(new JButton("Clear") {{
+                                addActionListener(e -> {
+                                    points.clear();
+                                    element("paintPanel").repaint();
+                                });
+                            }});
+                        }}, BorderLayout.SOUTH);
+                    }
+
+                    @Override
+                    public void paintComponent(Graphics g) {
+                        super.paintComponent(g);
+                        var g2d = (Graphics2D) g;
+                        var oldStroke = g2d.getStroke();
+                        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                        var count = 0;
+                        for (var points : this.points) {
+                            var conf = configs.get(count++);
+                            g2d.setStroke(conf.stroke);
+                            g2d.setColor(conf.color);
+                            for (int i = 0; i < points.size() - 1; i++)
+                                g2d.drawLine(points.get(i).x, points.get(i).y, points.get(i + 1).x, points.get(i + 1).y);
+                        }
+                        g2d.setStroke(oldStroke);
+                    }
+                }));
+            }}), BorderLayout.CENTER);
+        }});
     }
 }

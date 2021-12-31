@@ -1,5 +1,6 @@
 package ahd.ulib.swingutils;
 
+import ahd.ulib.utils.api.ConfigBase;
 import ahd.ulib.utils.api.StateBase;
 import ahd.ulib.visualization.canvas.Canvas;
 import com.formdev.flatlaf.*;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.*;
 
 @SuppressWarnings("unused")
-public class MainFrame extends JFrame implements Runnable, StateBase<String, Container>, ElementBaseContainer {
+public class MainFrame extends JFrame implements Runnable, StateBase<String, Container>, ElementBaseContainer, ConfigBase<String, Object> {
     public static final int DEFAULT_HEIGHT = 720;
     public static final int DEFAULT_WIDTH = DEFAULT_HEIGHT * 16 / 9;
 
@@ -24,6 +25,7 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
     public final Container INITIAL_STATE_VALUE;
 
     private final Map<String, Container> stateMap;
+    private final Map<String, Object> configMap;
     private final Map<String, JComponent> elements;
 
     private boolean isDark;
@@ -43,6 +45,7 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
 
         stateMap = new HashMap<>();
         elements = new HashMap<>();
+        configMap = new HashMap<>();
         isDark = dark;
         isFullScreen = false;
 
@@ -474,5 +477,10 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
     @Override
     public final void run() {
         setVisible(true);
+    }
+
+    @Override
+    public Map<String, Object> config() {
+        return configMap;
     }
 }

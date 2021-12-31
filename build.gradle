@@ -99,6 +99,8 @@ dependencies {
 
     implementation 'org.slf4j:slf4j-simple:1.7.32'
 
+    implementation 'net.sourceforge.htmlunit:htmlunit:2.56.0'
+
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
 }
 
