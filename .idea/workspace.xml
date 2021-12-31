@@ -9,20 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Update LWJGL to v3.3.0">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/python.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/api/ConfigBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/usim.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/uimp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/uimp/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/pyhton/bridge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/bridge/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/pyhton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/pyhton/news_fetcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/news_fetcher.py" afterDir="false" />
-    </list>
+    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Add a script paradigm view of UI in swing" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -439,6 +426,7 @@
       <workItem from="1640781964971" duration="46000" />
       <workItem from="1640790592382" duration="7295000" />
       <workItem from="1640846078641" duration="8000" />
+      <workItem from="1640991207517" duration="882000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="First USim Schema">
       <created>1630752367079</created>
@@ -586,7 +574,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640112674931</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Add a script paradigm view of UI in swing">
+      <created>1640994065131</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1640994065131</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -625,7 +620,8 @@
     <MESSAGE value="Fix doCmd in Utils class" />
     <MESSAGE value="Package restructure" />
     <MESSAGE value="Update LWJGL to v3.3.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update LWJGL to v3.3.0" />
+    <MESSAGE value="Add a script paradigm view of UI in swing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add a script paradigm view of UI in swing" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
