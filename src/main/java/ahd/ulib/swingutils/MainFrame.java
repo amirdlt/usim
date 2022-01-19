@@ -26,7 +26,9 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
 
     private final Map<String, Container> stateMap;
     private final Map<String, Object> configMap;
-    private final Map<String, JComponent> elements;
+    private final Map<String, Object> elements;
+    private final Map<String, ComponentBuilder> builders;
+    private final Map<String, ComponentPolicy> policyMap;
 
     private boolean isDark;
     private boolean isFullScreen;
@@ -46,6 +48,8 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
         stateMap = new HashMap<>();
         elements = new HashMap<>();
         configMap = new HashMap<>();
+        builders = new HashMap<>();
+        policyMap = new HashMap<>();
         isDark = dark;
         isFullScreen = false;
 
@@ -92,7 +96,6 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
 
         handleMenuBar();
         handleSystemTray();
-
     }
 
     private void initFlatLaf() {
@@ -175,7 +178,7 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
                     addActionListener(e -> toggleFullScreen());
                 }});
                 add(new JMenu("Themes") {{
-                    add(element("currentTheme-menuItem", new JMenuItem("Current: " + UIManager.getLookAndFeel().getName()) {{
+                    add(elementE("currentTheme-menuItem", new JMenuItem("Current: " + UIManager.getLookAndFeel().getName()) {{
                         addActionListener(e -> setThemeByIndex((int) (Math.random() * allThemesInfo.length)));
                         setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.ALT_DOWN_MASK | KeyEvent.CTRL_DOWN_MASK));
                     }}));
@@ -333,7 +336,7 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
     }
 
     @Override
-    public Map<String, JComponent> elements() {
+    public Map<String, Object> elements() {
         return elements;
     }
 
@@ -409,6 +412,46 @@ public class MainFrame extends JFrame implements Runnable, StateBase<String, Con
     public void setTrayIconPath(String trayIconPath) {
         this.trayIconPath = trayIconPath;
         handleSystemTray();
+    }
+
+    public Map<String, ComponentBuilder> registerBuilder(String key, ComponentBuilder builder) {
+        builders.put(key, builder);
+        return builders;
+    }
+
+    public Map<String, ComponentPolicy> registerPolicy(String key, ComponentPolicy policy) {
+        policyMap.put(key, policy);
+        return policyMap;
+    }
+
+    public JComponent affectPolicy(String policyKey, JComponent component) {
+        return policyMap.get(policyKey).affectPolicy(component);
+    }
+
+    public void affectPolicy(String policyKey, String @NotNull ... elements) {
+        for (var e : elements)
+            policyMap.get(policyKey).affectPolicy(elementE(e));
+    }
+
+    public JComponent buildComponent(String key) {
+        return builders.get(key).build();
+    }
+
+    public <T> T configC(@NotNull String address, Class<T> resultType) {
+        return configC(address, "\\.", resultType);
+    }
+
+    public <T> T configC(@NotNull String address, String delimiter, Class<T> resultType) {
+        return configC(resultType, address.split(delimiter));
+    }
+
+    public <T> T configC(@NotNull String address, String delimiter, T conf) {
+        //noinspection unchecked
+        return (T) configC(conf, address.split(delimiter));
+    }
+
+    public <T> T configC(String address, T conf) {
+        return configC(address, "\\.", conf);
     }
 
     @Override

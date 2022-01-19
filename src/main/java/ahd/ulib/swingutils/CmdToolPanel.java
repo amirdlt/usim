@@ -22,7 +22,7 @@ public class CmdToolPanel extends ElementBasedPanel {
         setLayout(new BorderLayout());
 
         add(new JPanel(new BorderLayout()) {{
-            add(new JSplitPane(JSplitPane.VERTICAL_SPLIT, new RTextScrollPane(element("commandInput-textArea", new RSyntaxTextArea() {{
+            add(new JSplitPane(JSplitPane.VERTICAL_SPLIT, new RTextScrollPane(elementE("commandInput-textArea", new RSyntaxTextArea() {{
                 setSyntaxEditingStyle(SYNTAX_STYLE_WINDOWS_BATCH);
                 setAntiAliasingEnabled(true);
                 setMinimumSize(new Dimension(280, 125));
@@ -75,7 +75,7 @@ public class CmdToolPanel extends ElementBasedPanel {
                 setFont(new Font(font.getFontName(), font.getStyle(), 14));
             }})) {{
                 setAutoscrolls(true);
-            }}, element("commandOutputScrollPane-scrollPane", new JScrollPane(element("commandOutput-textArea", new JTextArea() {{
+            }}, elementE("commandOutputScrollPane-scrollPane", new JScrollPane(elementE("commandOutput-textArea", new JTextArea() {{
                 setLineWrap(true);
                 setEditable(false);
             }})) {{

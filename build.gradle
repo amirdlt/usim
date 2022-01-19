@@ -9,12 +9,14 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation platform('org.lwjgl:lwjgl-bom:3.3.0')
+//sourceCompatibility = JavaVersion.VERSION_17
+//targetCompatibility = JavaVersion.VERSION_17
 
+dependencies {
+    // lwjgl and its utils
+    implementation platform('org.lwjgl:lwjgl-bom:3.3.0')
     implementation 'org.joml:joml:1.10.2'
     runtimeOnly 'org.joml:joml-primitives:1.10.0'
-
     implementation 'org.lwjgl:lwjgl:3.3.0'
     implementation 'org.lwjgl:lwjgl-assimp:3.3.0'
     implementation 'org.lwjgl:lwjgl-bgfx:3.3.0'
@@ -85,21 +87,47 @@ dependencies {
     runtimeOnly 'org.lwjgl:lwjgl-xxhash::natives-windows'
     runtimeOnly 'org.lwjgl:lwjgl-yoga::natives-windows'
     runtimeOnly 'org.lwjgl:lwjgl-zstd::natives-windows'
+    // lwjgl and its utils
 
-    implementation 'com.fifesoft:rsyntaxtextarea:3.1.4'
-    implementation 'org.jetbrains:annotations:22.0.0'
+
+    // swing utils
+    implementation 'com.fifesoft:rsyntaxtextarea:3.1.6'
     implementation 'com.formdev:flatlaf:1.6.5'
     implementation 'com.formdev:flatlaf-intellij-themes:1.6.5'
     implementation 'com.miglayout:miglayout-swing:11.0'
+    implementation 'uk.co.caprica:vlcj:4.7.1'
+    // end of swing utils
 
+
+    // network utils
     implementation 'org.pcap4j:pcap4j-core:1.8.2'
     implementation 'org.pcap4j:pcap4j-packetfactory-static:1.8.2'
-
-    implementation 'org.apache.pdfbox:pdfbox:3.0.0-RC1'
-
-    implementation 'org.slf4j:slf4j-simple:1.7.32'
-
     implementation 'net.sourceforge.htmlunit:htmlunit:2.56.0'
+    // end of network utils
+
+
+    // common utils
+    implementation 'org.apache.pdfbox:pdfbox:3.0.0-RC1'
+    implementation 'org.slf4j:slf4j-simple:1.7.32'
+    implementation 'org.apache.commons:commons-csv:1.9.0'
+    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'org.jetbrains:annotations:22.0.0'
+    implementation 'com.github.sarxos:webcam-capture:0.3.12'
+    // end of common utils
+
+
+    // temp libs
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'commons-io:commons-io:2.11.0'
+    implementation 'commons-cli:commons-cli:1.5.0'
+    implementation 'io.humble:humble-video-all:0.3.0'
+    implementation 'net.sf.saxon:Saxon-HE:10.6'
+    implementation 'com.google.guava:guava:31.0.1-jre'
+    implementation 'net.java.dev.glazedlists:glazedlists_java15:1.9.1'
+    implementation 'uk.co.caprica:native-streams:2.0.0'
+    implementation 'org.apache.xmlgraphics:batik-svg-dom:1.14'
+    implementation 'net.bramp.ffmpeg:ffmpeg:0.6.2'
+    // end of temp libs
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
 }

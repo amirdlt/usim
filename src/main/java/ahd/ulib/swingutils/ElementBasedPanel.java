@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ElementBasedPanel extends JPanel implements ElementBaseContainer {
-    private final Map<String, JComponent> elements;
+    private final Map<String, Object> elements;
 
     public ElementBasedPanel() {
         super(new BorderLayout());
@@ -28,7 +28,7 @@ public class ElementBasedPanel extends JPanel implements ElementBaseContainer {
     }
 
     @Override
-    public Map<String, JComponent> elements() {
+    public Map<String, Object> elements() {
         return elements;
     }
 }

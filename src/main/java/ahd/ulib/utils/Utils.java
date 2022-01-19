@@ -26,11 +26,15 @@ import java.io.*;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
 import java.lang.management.MemoryUsage;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.DoubleSupplier;
 import java.util.function.IntBinaryOperator;
@@ -44,8 +48,11 @@ public final class Utils {
 
     public static final String nirCmdPath;
     public static final String ffmpegCmdPath;
+    public static final String ffprobeCmdPath;
     public static final Robot robot;
-    public static final ExecutorService unsafeExecutor;
+    public static final ScheduledExecutorService unsafeExecutor;
+
+    public static final String defaultResourceRootPath;
 
     public static final int NANO = 1000000000;
     public static final int MILLIS = 1000000;
@@ -64,6 +71,10 @@ public final class Utils {
 
         nirCmdPath = ".\\bin\\nircmdc.exe";
         ffmpegCmdPath = ".\\bin\\ffmpeg.exe";
+        ffprobeCmdPath = ".\\bin\\ffprobe.exe";
+
+        defaultResourceRootPath = ".\\src\\main\\resources\\";
+
         Robot rbt;
         try {
             rbt = new Robot();
@@ -72,7 +83,7 @@ public final class Utils {
             e.printStackTrace();
         }
         robot = rbt;
-        unsafeExecutor = Executors.newFixedThreadPool(3);
+        unsafeExecutor = Executors.newScheduledThreadPool(3);
     }
 
     ///////////////////
@@ -242,6 +253,19 @@ public final class Utils {
 
     public static @NotNull BufferedImage readImage(String path) throws IOException {
         return exactCloneWithARGB(ImageIO.read(new File(path)));
+    }
+
+    public static @Nullable BufferedImage readImageFromUrl(String url) {
+        try {
+            return ImageIO.read(new URL(url));
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+    public static @Nullable Icon getIconFromUrl(String url) {
+        var bi = readImageFromUrl(url);
+        return bi == null ? null : new ImageIcon(bi);
     }
 
     private static @NotNull BufferedImage exactCloneWithARGB(@NotNull BufferedImage source) {
@@ -727,6 +751,14 @@ public final class Utils {
     @Blocking
     public static @NotNull String doFfmpegCmd(String command) throws IOException {
         return doCmd(ffmpegCmdPath + " " + command);
+    }
+
+    public static @Nullable URL getPathAsUrl(String path) {
+        try {
+            return Path.of(path).toUri().toURL();
+        } catch (MalformedURLException e) {
+            return null;
+        }
     }
 
     interface FileInfo {

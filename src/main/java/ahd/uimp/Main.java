@@ -1,31 +1,39 @@
 package ahd.uimp;
 
 import ahd.ulib.swingutils.ElementBasedPanel;
+import ahd.ulib.swingutils.JSyntaxTextArea;
 import ahd.ulib.swingutils.MainFrame;
 import ahd.ulib.utils.Utils;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import net.miginfocom.swing.MigLayout;
-import org.apache.http.impl.client.HttpClientBuilder;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
+import org.fife.ui.rsyntaxtextarea.SyntaxScheme;
+import org.fife.ui.rtextarea.RTextScrollPane;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.net.URI;
+import java.net.UnknownHostException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 public class Main {
@@ -33,7 +41,7 @@ public class Main {
     public static void sendRequestExample() {
         SwingUtilities.invokeLater(new MainFrame() {{
             setTitle("Test Http Request");
-            add(element("main", new ElementBasedPanel() {{
+            add(elementE("main", new ElementBasedPanel() {{
                 add(new JButton("send") {{
                     addActionListener(e -> {
                         try {
@@ -128,17 +136,18 @@ public class Main {
     // script view
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new MainFrame() {{
-            add(element("mainTabbedPane", new JTabbedPane() {{
-                add("ISAC", element("isacPanel", new JPanel(new BorderLayout()) {{
+//            Utils.unsafeExecutor.scheduleAtFixedRate(this::logC, 1, 1, TimeUnit.SECONDS);
+            add(elementE("mainTabbedPane", new JTabbedPane() {{
+                add("ISAC", elementE("isacPanel", new JPanel(new BorderLayout()) {{
                     add(new JPanel(new GridLayout(0, 1)) {{
                         add(new JTabbedPane() {{
                             setBorder(BorderFactory.createLineBorder(Color.GRAY, 4));
                             add("Authentication", new JPanel(new BorderLayout()) {{
-                                add(element("isacPanelAuthentication", new JTextArea()), BorderLayout.CENTER);
+                                add(elementE("isacPanelAuthentication", new JTextArea()), BorderLayout.CENTER);
                             }});
                         }});
                         add(new JPanel(new GridLayout(0, 1)) {{
-                            add(new JScrollPane(element("isacPanelResponse", new JTextArea())));
+                            add(new JScrollPane(elementE("isacPanelResponse", new JTextArea())));
                         }});
                     }}, BorderLayout.CENTER);
                     add(new JPanel(new FlowLayout(FlowLayout.RIGHT)) {{
@@ -156,18 +165,19 @@ public class Main {
                         }});
                     }}, BorderLayout.NORTH);
                     add(new JPanel(new MigLayout()) {{
-                        add(element("isacPanelURL", new JTextField()), "width 200px");
+                        add(elementE("isacPanelURL", new JTextField()), "width 200px");
+
                     }}, BorderLayout.EAST);
                 }}));
-                add("Paint", element("paintPanel", new JPanel(new BorderLayout()) {
+                add("Paint", elementE("paintPanel", new JPanel(new BorderLayout()) {
                     private final ArrayDeque<List<Point>> points = new ArrayDeque<>();
                     static record Config(Stroke stroke, Color color) {}
                     private final ArrayList<Config> configs = new ArrayList<>();
 
                     {
-                        config("paintPanelPenColor", Color.WHITE);
-                        config("paintPanelPenStroke", new BasicStroke(1.5f));
-                        config("paintPanelPenState", "pen");
+                        configC("paintPanelPenColor", Color.WHITE);
+                        configC("paintPanelPenStroke", new BasicStroke(1.5f));
+                        configC("paintPanelPenState", "pen");
                         addMouseMotionListener(new MouseAdapter() {
                             @SuppressWarnings("ConstantConditions")
                             @Override
@@ -216,43 +226,43 @@ public class Main {
                                 points.add(new ArrayList<>());
                                 configs.add(new Config(asManualTypeC("paintPanelPenStroke", Stroke.class),
                                         asManualTypeC("paintPanelPenColor", Color.class)));
-                                config("paintPanelPenPosition", e.getPoint());
+                                configC("paintPanelPenPosition", e.getPoint());
                             }
                         });
                         add(new JPanel(new FlowLayout(FlowLayout.LEFT)) {{
                             add(new JSlider(1, 1500) {{
                                 setValue(60);
                                 addChangeListener(e -> {
-                                    config("paintPanelPenStroke", new BasicStroke(getValue() / 30.f));
-                                    element("paintPanel").repaint();
+                                    configC("paintPanelPenStroke", new BasicStroke(getValue() / 30.f));
+                                    elementE("paintPanel").repaint();
                                 });
                             }});
                             add(new JButton("Pen Color") {{
                                 addActionListener(e -> {
                                     var color = JColorChooser.
-                                            showDialog(element("paintPanel"),
+                                            showDialog(elementE("paintPanel"),
                                                     "Pen Color", asManualTypeC("paintPanelPenColor", Color.class));
-                                    config("paintPanelPenColor", color);
+                                    configC("paintPanelPenColor", color);
                                     setForeground(color);
-                                    element("paintPanel").repaint();
+                                    elementE("paintPanel").repaint();
                                 });
                             }});
                             add(new JButton("Pen") {{
-                                addActionListener(e -> config("paintPanelPenState", "pen"));
+                                addActionListener(e -> configC("paintPanelPenState", "pen"));
                             }});
                             add(new JButton("Circle") {{
-                                addActionListener(e -> config("paintPanelPenState", "circle"));
+                                addActionListener(e -> configC("paintPanelPenState", "circle"));
                             }});
                             add(new JButton("Rectangle") {{
-                                addActionListener(e -> config("paintPanelPenState", "rectangle"));
+                                addActionListener(e -> configC("paintPanelPenState", "rectangle"));
                             }});
                             add(new JButton("Triangle") {{
-                                addActionListener(e -> config("paintPanelPenState", "triangle"));
+                                addActionListener(e -> configC("paintPanelPenState", "triangle"));
                             }});
                             add(new JButton("Clear") {{
                                 addActionListener(e -> {
                                     points.clear();
-                                    element("paintPanel").repaint();
+                                    elementE("paintPanel").repaint();
                                 });
                             }});
                         }}, BorderLayout.SOUTH);
@@ -275,6 +285,41 @@ public class Main {
                         g2d.setStroke(oldStroke);
                     }
                 }));
+//                add("Intrusion", elementE("intrusionPanel", new JPanel(new BorderLayout()) {{
+//                    Utils.unsafeExecutor.execute(() -> {
+//                        Socket socket;
+//                        while (true) {
+//                            try {
+//                                socket = new Socket("127.0.0.1", 1255);
+//                                break;
+//                            } catch (IOException e) {
+//                                Utils.sleep(1_000);
+//                                System.err.println("Could not connect to intrusion backend");
+//                            }
+//                        }
+//                        config("intrusionPanelSocket", socket);
+//                        try (var stream = socket.getInputStream()) {
+//                            var chars = new byte[1 << 16];
+//                            while (stream.read(chars) != -1)
+//                                textAreaE("intrusionPanelResult").append(new String(chars));
+//                        } catch (IOException ignore) {}
+//                    });
+//                    add(new JPanel(new BorderLayout()) {{
+//                        add(elementE("intrusionPanelInput", new JTextField()), BorderLayout.CENTER);
+//                        add(elementE("intrusionPanelGo", new JButton("Go") {{
+//                            addActionListener(e -> {
+//                                try {
+//                                    var stream = asManualTypeC("intrusionPanelSocket", Socket.class).getOutputStream();
+//                                    stream.write(textFieldE("intrusionPanelInput").getText().getBytes());
+//                                    stream.flush();
+//                                } catch (IOException ignore) {
+//                                }
+//                            });
+//                        }}), BorderLayout.EAST);
+//                    }}, BorderLayout.NORTH);
+//                    add(new RTextScrollPane(elementE("intrusionPanelResult", new JSyntaxTextArea(SyntaxConstants.SYNTAX_STYLE_JSON))), BorderLayout.CENTER);
+//
+//                }}));
             }}), BorderLayout.CENTER);
         }});
     }

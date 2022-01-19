@@ -102,32 +102,32 @@ public final class ComponentBuilder {
             add(new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                 setPreferredSize(new Dimension(420, 40));
                 add(new JLabel("Surface: "));
-                add(frame.element(main.getName() + "-xSurface-textField", new JTextField("x") {{
+                add(frame.elementE(main.getName() + "-xSurface-textField", new JTextField("x") {{
                     setPreferredSize(new Dimension(200, 32));
                 }}));
-                add(frame.element(main.getName() + "-ySurface-textField", new JTextField("y") {{
+                add(frame.elementE(main.getName() + "-ySurface-textField", new JTextField("y") {{
                     setPreferredSize(new Dimension(200, 32));
                 }}));
-                add(frame.element(main.getName() + "-zSurface-textField", new JTextField("z") {{
+                add(frame.elementE(main.getName() + "-zSurface-textField", new JTextField("z") {{
                     setPreferredSize(new Dimension(200, 32));
                 }}));
-                add(frame.element(main.getName() + "-xLowBound-textField", new JTextField("z") {{
+                add(frame.elementE(main.getName() + "-xLowBound-textField", new JTextField("z") {{
                     setPreferredSize(new Dimension(200, 32));
                 }}));
-                add(frame.element(main.getName() + "-xUpBound-textField", new JTextField("z") {{
+                add(frame.elementE(main.getName() + "-xUpBound-textField", new JTextField("z") {{
                     setPreferredSize(new Dimension(200, 32));
                 }}));
-                add(frame.element(main.getName() + "-xDelta-textField", new JTextField("z") {{
+                add(frame.elementE(main.getName() + "-xDelta-textField", new JTextField("z") {{
                     setPreferredSize(new Dimension(200, 32));
                 }}));
-                add(frame.element(main.getName() + "-yDelta-textField", new JTextField("z") {{
+                add(frame.elementE(main.getName() + "-yDelta-textField", new JTextField("z") {{
                     setPreferredSize(new Dimension(200, 32));
                 }}));
-                add(frame.element(main.getName() + "-yUpBound-textField", new JTextField("z") {{
+                add(frame.elementE(main.getName() + "-yUpBound-textField", new JTextField("z") {{
                     setPreferredSize(new Dimension(200, 32));
                 }}));
             }});
-            add(frame.element(getName() + "-new-panel", new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
+            add(frame.elementE(getName() + "-new-panel", new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
                 add(new JButton("New") {{
                     addActionListener(e -> {
                         frame.removeE(main.getName() + "-new-panel");
