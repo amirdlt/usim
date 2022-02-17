@@ -8,4 +8,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface ChangeReference {
     boolean change() default true;
+
+    boolean changeAsyncAllowed() default true;
 }

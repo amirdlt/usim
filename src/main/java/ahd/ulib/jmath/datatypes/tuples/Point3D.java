@@ -22,6 +22,7 @@ public class Point3D extends SortableTuple<Double> implements Comparable<Point3D
     public static final int FUNCTION_COMPARATOR = 4;
 
     public static final Point3D NaN = of(Double.NaN, Double.NaN, Double.NaN);
+    public static final Point3D Zero = of(Double.NaN, Double.NaN, Double.NaN);
 
     public double x;
     public double y;
@@ -52,13 +53,12 @@ public class Point3D extends SortableTuple<Double> implements Comparable<Point3D
 
     @Override
     public double getCoordinate(int numOfCoordinate) {
-        //noinspection EnhancedSwitchMigration
-        switch (numOfCoordinate) {
-            case CoordinateX: return x;
-            case CoordinateY: return y;
-            case CoordinateZ: return z;
-        }
-        return Double.NaN;
+        return switch (numOfCoordinate) {
+            case CoordinateX -> x;
+            case CoordinateY -> y;
+            case CoordinateZ -> z;
+            default -> Double.NaN;
+        };
     }
 
     @Override
@@ -73,17 +73,20 @@ public class Point3D extends SortableTuple<Double> implements Comparable<Point3D
 
     @Override
     public void setCoordinate(int numOfCoordinate, double newValue) {
-        //noinspection EnhancedSwitchMigration
         switch (numOfCoordinate) {
-            case CoordinateX: x = newValue; break;
-            case CoordinateY: y = newValue; break;
-            case CoordinateZ: z = newValue; break;
+            case CoordinateX -> x = newValue;
+            case CoordinateY -> y = newValue;
+            case CoordinateZ -> z = newValue;
         }
     }
 
     @Override
     public double squareOfDistanceFromOrigin() {
         return x * x + y * y + z * z;
+    }
+
+    public double squareOfDistanceFrom(@NotNull Point3D p) {
+        return (p.x - x) * (p.x - x) + (p.y - y) * (p.y - y) + (p.z - z) * (p.z - z);
     }
 
     public Point3D set(@NotNull Point3D p) {
@@ -248,6 +251,13 @@ public class Point3D extends SortableTuple<Double> implements Comparable<Point3D
         return new Point3D(this).addVector(-x, -y, -z).distanceFromOrigin();
     }
 
+    public Point3D scale(double scalar) {
+        x *= scalar;
+        y *= scalar;
+        z *= scalar;
+        return this;
+    }
+
     public double pointToValue(Function4D f) {
         return f.valueAt(this);
     }
@@ -388,7 +398,7 @@ public class Point3D extends SortableTuple<Double> implements Comparable<Point3D
         return immutable(point);
     }
 
-    @Deprecated
+    @Deprecated(forRemoval = true)
     private static double[][] matrixToConvertDirection(Point3D srcVector, Point3D dstVector) {
         var a = new Point3D(srcVector).normalize();
         var b = new Point3D(dstVector).normalize();

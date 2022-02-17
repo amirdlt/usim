@@ -23,7 +23,6 @@ public class MainPanel extends JRootPane implements StateBase<String, Container>
     private String currentState;
 
     public MainPanel() {
-        setLayout(new BorderLayout());
         stateMap = new HashMap<>(Map.of(currentState = "initial", getContentPane()));
         configMap = new HashMap<>();
         elements = new HashMap<>();

@@ -354,7 +354,7 @@ public class Canvas extends JPanel implements Runnable {
         while (delta-- >= 1)
             camera.tick();
 
-        if (flag)
+//        if (flag)
             repaint();
 
         loopCounter++;

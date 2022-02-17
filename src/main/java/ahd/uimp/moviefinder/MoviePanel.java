@@ -1,6 +1,7 @@
 package ahd.uimp.moviefinder;
 
 import ahd.ulib.swingutils.MainPanel;
+import ahd.ulib.swingutils.SwingUtils;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -86,6 +87,8 @@ public class MoviePanel extends MainPanel {
                                                 setMaximumSize(new Dimension(200, 200));
                                             }});
                                             add(new JButton("Play") {{
+                                                setContentAreaFilled(false);
+                                                setBorder(SwingUtils.getRoundedBorder(60));
                                                 addActionListener(e -> player.mediaPlayer().media().play("https://imdb-video.media-imdb.com/vi306231833/1434659607842-pgv4ql-1551719203043.mp4?Expires=1642680569&Signature=KFwKR9sA1hgCXqIyvNLzEc1cgBWDgFHTnKbpViIHHeI38kJXuK9U2tY5t9QYgP61zdSqlDNRVKfNAfGWZyvgNYbaAsLaalvnRB19k3Xw0NqgtFJy2vvmvATGe5LIUHyVSb2zzDT8Irg9zkqX49yW9Pkuw6bElcwmszuxSbgcQF6l~K8aSN0Jpts4oClkIyzhXWWuULlRHDYLbsSbV797szc13b5lhSHRCePXfsZJQEWLhDdWF46YCs8-E-c4XBeQ0~huH~GWP1~D~Iuf8hUxnniJjaAgHPxPQEsIa15mAtipS205e5jljNQvcHXIbPRfkl0Ryej0W3BhyVk1L5ZxoQ__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA"));
                                             }});
                                         }}));

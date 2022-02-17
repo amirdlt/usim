@@ -12,6 +12,11 @@ import ahd.ulib.visualization.canvas.CoordinatedCanvas;
 import ahd.ulib.visualization.canvas.Graph3DCanvas;
 import ahd.ulib.visualization.canvas.Render;
 import com.sun.management.OperatingSystemMXBean;
+import net.bramp.ffmpeg.FFmpeg;
+import net.bramp.ffmpeg.FFmpegExecutor;
+import net.bramp.ffmpeg.FFprobe;
+import net.bramp.ffmpeg.builder.FFmpegBuilder;
+import net.bramp.ffmpeg.probe.FFmpegProbeResult;
 import org.jetbrains.annotations.*;
 
 import javax.imageio.ImageIO;
@@ -49,6 +54,9 @@ public final class Utils {
     public static final String nirCmdPath;
     public static final String ffmpegCmdPath;
     public static final String ffprobeCmdPath;
+    private static final FFmpeg ffmpeg;
+    private static final FFprobe ffprobe;
+    private static final FFmpegExecutor ffmpegExecutor;
     public static final Robot robot;
     public static final ScheduledExecutorService unsafeExecutor;
 
@@ -72,6 +80,28 @@ public final class Utils {
         nirCmdPath = ".\\bin\\nircmdc.exe";
         ffmpegCmdPath = ".\\bin\\ffmpeg.exe";
         ffprobeCmdPath = ".\\bin\\ffprobe.exe";
+
+        FFmpeg _ffmpeg;
+        FFprobe _ffprobe;
+        try {
+            _ffmpeg = new FFmpeg(ffmpegCmdPath);
+            _ffprobe = new FFprobe(ffprobeCmdPath);
+        } catch (IOException e) {
+            _ffmpeg = null;
+            _ffprobe = null;
+        }
+
+        ffmpeg = _ffmpeg;
+        ffprobe = _ffprobe;
+
+        FFmpegExecutor _ffmpegExecutor;
+        try {
+            _ffmpegExecutor = new FFmpegExecutor();
+        } catch (IOException e) {
+            _ffmpegExecutor = null;
+        }
+
+        ffmpegExecutor = _ffmpegExecutor;
 
         defaultResourceRootPath = ".\\src\\main\\resources\\";
 
@@ -676,6 +706,22 @@ public final class Utils {
     }
 
     //////////////////////
+    public static void runFfmpegJob(FFmpegBuilder builder) {
+        ffmpegExecutor.createJob(builder).run();
+    }
+
+    public static void runFfmpegTwoPassJob(FFmpegBuilder builder) {
+        ffmpegExecutor.createTwoPassJob(builder).run();
+    }
+
+    public static FFmpegProbeResult getFfprobe(String filePath) {
+        try {
+            return ffprobe.probe(filePath);
+        } catch (IOException e) {
+            throw new RuntimeException("AHD:: ffprope error.", e);
+        }
+    }
+
     public static void recordVoice(String absPath, long millis) {
 
     }
@@ -684,8 +730,8 @@ public final class Utils {
 
     }
 
-    public static BufferedImage screenShot() throws AWTException {
-        return new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+    public static BufferedImage screenShot() {
+        return robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
     }
 
     public static @NotNull String getFileAsString(String path) throws IOException {

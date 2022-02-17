@@ -9,150 +9,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Add a script paradigm view of UI in swing">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/uimp/LinkScraper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/uimp/MovieBox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/uimp/moviefinder/Database.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/uimp/moviefinder/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/uimp/moviefinder/MovieApi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/uimp/moviefinder/MoviePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/ComponentBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/ComponentPolicy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/JSyntaxTextArea.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/MediaPlayerPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/api/ImmutablePath.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/mapper/StringMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/VideoOutput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/VlcjPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/VlcjPlayerFullScreenStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/event/AfterExitFullScreenEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/event/BeforeEnterFullScreenEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/event/PausedEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/event/PlayingEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/event/RendererAddedEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/event/RendererDeletedEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/event/ShowDebugEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/event/ShowEffectsEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/event/ShowMessagesEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/event/ShutdownEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/event/SnapshotImageEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/event/StoppedEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/event/TickEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/time/Time.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/BaseFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/BasePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/BorderedStandardLabel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/MouseMovementDetector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/OnDemandMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/SliderControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/SmallStandardLabel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/StandardLabel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/Resource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/StandardAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/AspectRatioAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/AudioDeviceAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/AudioTrackAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/ChapterAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/CropAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/MediaPlayerAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/MediaPlayerActions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/MuteAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/NextChapterAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/PauseAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/PlayAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/PreviousChapterAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/RateAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/RendererAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/SkipAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/SnapshotAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/StereoModeAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/StopAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/SubtitleTrackAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/TitleAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/VideoTrackAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/VolumeAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/action/mediaplayer/ZoomAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/debug/DebugFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/debug/DebugMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/debug/DebugMessageTableFormat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/effects/EffectsFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/effects/audio/AudioEffectsPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/effects/audio/EqualizerPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/effects/video/VideoAdjustPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/effects/video/VideoEffectsPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/image/ImagePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/AboutDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/AudioDeviceMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/AudioTrackMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/ChapterMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/ControlsPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/MainFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/MediaTransferHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/PositionPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/RecentMediaMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/StatusBar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/SubtitleTrackMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/TitleTrackMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/TrackMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/VideoContentPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/VideoMouseMovementDetector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/main/VideoTrackMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/messages/LogLevelComboBoxModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/messages/NativeLogFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/messages/NativeLogMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/messages/NativeLogTableFormat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/caprica/vlcjplayer/view/snapshot/SnapshotView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/README.icons" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/actions/decrease-volume.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/actions/effects.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/actions/exit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/actions/file.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/actions/increase-volume.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/actions/info.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/actions/messages.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/actions/mute.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/actions/play.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/actions/skip-back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/actions/skip-forward.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/actions/snapshot.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/actions/stop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/buttons/extended.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/buttons/fullscreen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/buttons/next.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/buttons/pause.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/buttons/play.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/buttons/previous.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/buttons/snapshot.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/buttons/stop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/buttons/volume-high.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/buttons/volume-muted.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/strings/vlcj-player.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/vlcj-logo-frame.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/vlcj-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Update">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/SwingUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/physics/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/physics/SimpleReference.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/physics/core/AbstractReference.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/physics/core/ForceUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/physics/core/Particle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/uimp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/uimp/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/CmdToolPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/CmdToolPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/ElementBaseContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/ElementBaseContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/uimp/moviefinder/MoviePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/uimp/moviefinder/MoviePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/jmath/datatypes/tuples/Point3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/jmath/datatypes/tuples/Point3D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/ElementBasedPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/ElementBasedPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/MainPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/MediaPlayerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/MediaPlayerPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/annotation/Critical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/annotation/Critical.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/api/ConfigBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/api/ConfigBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/ComponentBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/ComponentBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/EngineRuntimeToolsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/EngineRuntimeToolsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/annotation/ChangeReference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/annotation/ChangeReference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/visualization/canvas/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/visualization/canvas/Canvas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +141,7 @@
     <property name="extract.method.default.visibility" value="private" />
     <property name="jdk.selected.JAVA_MODULE" value="openjdk-17" />
     <property name="jdk.selected.PYTHON_MODULE" value="Python 2.7 (usim)" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/SnailJumper-master" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.2720105" />
@@ -276,11 +150,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\amirh\IdeaProjects\usim\bin" />
       <recent name="C:\Users\amirh\IdeaProjects\usim\src\main\java" />
       <recent name="C:\Users\amirh\IdeaProjects\usim" />
       <recent name="C:\Users\amirh\IdeaProjects\usim\src\main\java\ahd\uimp\db" />
       <recent name="C:\Users\amirh\IdeaProjects\usim\src\main\java\ahd\uimp" />
-      <recent name="C:\Users\amirh\IdeaProjects\usim\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\amirh\IdeaProjects\usim\python" />
@@ -292,11 +166,36 @@
       <recent name="com.usim.engine" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MediaPlayerPanel">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="LinkScraper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ahd.uimp.LinkScraper" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ahd.uimp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ahd.usim.physics.Main" />
+      <module name="usim.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ahd.usim.physics.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ahd.uimp.moviefinder.Main" />
       <module name="usim.main" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;D:\Entertainment\music\Alireza JJ, Sijal, &amp; Nassim - -+3-30 Tehran Maserati- Ft Behzad Leito OFFICIAL VIDEO.mp4&quot;" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ahd.uimp.moviefinder.*" />
@@ -307,12 +206,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MediaPlayerPanel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ahd.ulib.swingutils.MediaPlayerPanel" />
+    <configuration name="MigLayoutTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ahd.usim.tmp.MigLayoutTest" />
       <module name="usim.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ahd.ulib.swingutils.*" />
+          <option name="PATTERN" value="ahd.usim.tmp.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -326,32 +225,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ahd.uimp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="VlcjPlayer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="uk.co.caprica.vlcjplayer.VlcjPlayer" />
-      <module name="usim.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="uk.co.caprica.vlcjplayer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="VoxelGameGL" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.lwjgl.demo.game.VoxelGameGL" />
-      <module name="usim.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.lwjgl.demo.game.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -383,17 +256,17 @@
     </configuration>
     <list>
       <item itemvalue="Application.MovieBox" />
-      <item itemvalue="Application.VoxelGameGL" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.VlcjPlayer" />
-      <item itemvalue="Application.MediaPlayerPanel" />
+      <item itemvalue="Application.MigLayoutTest" />
+      <item itemvalue="Application.Main (1)" />
+      <item itemvalue="Application.LinkScraper" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MediaPlayerPanel" />
-        <item itemvalue="Application.VlcjPlayer" />
+        <item itemvalue="Application.LinkScraper" />
+        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.MigLayoutTest" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.VoxelGameGL" />
         <item itemvalue="Application.MovieBox" />
       </list>
     </recent_temporary>
@@ -553,7 +426,30 @@
       <workItem from="1642563392923" duration="246000" />
       <workItem from="1642567796859" duration="1249000" />
       <workItem from="1642581377622" duration="619000" />
-      <workItem from="1642589914715" duration="21743000" />
+      <workItem from="1642589914715" duration="25780000" />
+      <workItem from="1642619420522" duration="4389000" />
+      <workItem from="1642654193551" duration="1275000" />
+      <workItem from="1642697616465" duration="637000" />
+      <workItem from="1642729712277" duration="52000" />
+      <workItem from="1642751189274" duration="465000" />
+      <workItem from="1642877897795" duration="7198000" />
+      <workItem from="1642939496383" duration="1789000" />
+      <workItem from="1642997323063" duration="7864000" />
+      <workItem from="1643034519078" duration="9878000" />
+      <workItem from="1643050505995" duration="2166000" />
+      <workItem from="1643069691378" duration="1878000" />
+      <workItem from="1643095694302" duration="360000" />
+      <workItem from="1643128924654" duration="2988000" />
+      <workItem from="1643153439872" duration="534000" />
+      <workItem from="1643189230887" duration="24513000" />
+      <workItem from="1643264596992" duration="3432000" />
+      <workItem from="1643268472732" duration="278000" />
+      <workItem from="1643288966509" duration="1249000" />
+      <workItem from="1643359636035" duration="3617000" />
+      <workItem from="1643797990759" duration="669000" />
+      <workItem from="1643968863607" duration="3051000" />
+      <workItem from="1644296196001" duration="3672000" />
+      <workItem from="1645113430632" duration="1374000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="First USim Schema">
       <created>1630752367079</created>
@@ -715,7 +611,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640994209731</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Update">
+      <created>1642615353951</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1642615353951</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -755,7 +658,8 @@
     <MESSAGE value="Package restructure" />
     <MESSAGE value="Update LWJGL to v3.3.0" />
     <MESSAGE value="Add a script paradigm view of UI in swing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add a script paradigm view of UI in swing" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
