@@ -37,7 +37,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.*;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.atomic.AtomicReference;
@@ -768,7 +767,7 @@ public final class Utils {
 
     @Blocking
     public static @NotNull String doCmd(@NotNull String command) throws IOException {
-        var proc = Runtime.getRuntime().exec(command.trim());
+        var proc = Runtime.getRuntime().exec(new String[]{command.trim()});
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
         BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
         var sb = new StringBuilder("out>");
@@ -786,7 +785,7 @@ public final class Utils {
 
     @Blocking
     public static Process getCmdProcess(@NotNull String command) throws IOException {
-        return Runtime.getRuntime().exec(command);
+        return Runtime.getRuntime().exec(new String[]{command});
     }
 
     @Blocking
@@ -1142,7 +1141,7 @@ public final class Utils {
         var sb = new StringBuilder("copy /b \"");
         for (var f : mp3Files)
             sb.append(f).append("\" \"");
-        Runtime.getRuntime().exec(sb.substring(0, sb.length() - 1) + destination);
+        Runtime.getRuntime().exec(new String[]{sb.substring(0, sb.length() - 1) + destination});
     }
 
     /////////// show text table
