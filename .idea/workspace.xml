@@ -10,23 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecc62a72-0df0-46a6-bfdf-bcdd82151e06" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/SwingUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/physics/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/physics/SimpleReference.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/physics/core/AbstractReference.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/physics/core/ForceUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ahd/usim/physics/core/Particle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/uimp/moviefinder/MoviePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/uimp/moviefinder/MoviePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/jmath/datatypes/tuples/Point3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/jmath/datatypes/tuples/Point3D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/ElementBasedPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/ElementBasedPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/MainPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/MediaPlayerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/swingutils/MediaPlayerPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/annotation/ChangeReference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/utils/annotation/ChangeReference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ahd/ulib/visualization/canvas/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ahd/ulib/visualization/canvas/Canvas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,18 +95,18 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/tmp/Main.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/renderer/DefaultRenderer.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Window.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/gui/swing/EngineRuntimeToolsFrame.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/tmp/MigLayoutTest.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/logic/SampleLogic.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/Entity.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/Constants.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Camera.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/build.gradle" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Engine.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/logic/SampleLogic.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/Entity.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Window.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/entity/loader/ModelLoader.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/renderer/DefaultRenderer.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/tmp/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ahd/usim/engine/internal/Engine.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -146,7 +133,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.2720105" />
     <property name="project.structure.side.proportion" value="0.32568806" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -167,6 +154,28 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="usim" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="LinkScraper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ahd.uimp.LinkScraper" />
       <module name="usim.main" />
@@ -231,28 +240,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="usim" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Application.MovieBox" />
@@ -450,6 +437,7 @@
       <workItem from="1643968863607" duration="3051000" />
       <workItem from="1644296196001" duration="3672000" />
       <workItem from="1645113430632" duration="1374000" />
+      <workItem from="1648600511203" duration="1978000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="First USim Schema">
       <created>1630752367079</created>
@@ -664,8 +652,5 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/usim$main.coverage" NAME="main Coverage Results" MODIFIED="1635655381213" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/main/pyhton" />
   </component>
 </project>
